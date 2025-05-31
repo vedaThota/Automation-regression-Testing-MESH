@@ -29,7 +29,7 @@
 
   ### To run tests from cmd:
 
-    * mvn install test -Pcmcs_Test
+    * mvn install test -PMESH_Test
     
 # Internal Execution (Individual Test Cases)
  * Navigate to the src/test/java folder.
