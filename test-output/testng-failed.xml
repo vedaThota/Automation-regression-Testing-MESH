@@ -5,10 +5,10 @@
     <classes>
       <class name="com.Mesh_TestSuites.DecisionPackages">
         <methods>
+          <include name="DecisionPackage_TC_002_Verify_DecisionPackage_Creation_with_RFP_as_SubmisionType"/>
           <include name="beforetest"/>
           <include name="beforeClass"/>
           <include name="beofreMethod"/>
-          <include name="DecisionPackage_TC_001_Verify_OpsTeam_Can_Create_Package"/>
           <include name="afterClass"/>
           <include name="afterTest"/>
           <include name="afterMethod"/>
