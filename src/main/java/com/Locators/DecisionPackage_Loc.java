@@ -3,14 +3,19 @@ package com.Locators;
 import org.openqa.selenium.By;
 
 public interface DecisionPackage_Loc {
+	public static final By decisionPackages = By.xpath("//*[text()='Decision Packages']");
 	public static final By newDecisionPackage = By.xpath("//div[@title='New']");
 	public static final By State_Medicaid_Agency_Input = By
 			.xpath("//*[text()='State Medicaid Agency']/following-sibling::div//input");
 	public static final By State_Medicaid_Agency_Option = By
 			.xpath("//*[text()='State Medicaid Agency']/following::lightning-base-combobox-item");
 	public static final By Submission_Type = By.xpath("//*[text()='Submission Type']/following-sibling::div//button");
-	public static final By SubmissionTypeOption = By.xpath(
-			"//*[text()='Submission Type']/following-sibling::div//button/following::lightning-base-combobox-item");
+	public static final By SubmissionTypeOption_APD = By.xpath(
+			"//*[text()='Submission Type']/following-sibling::div//button/following::lightning-base-combobox-item//span[text()='APD']");
+	public static final By SubmissionTypeOption_RFP = By.xpath(
+			"//*[text()='Submission Type']/following-sibling::div//button/following::lightning-base-combobox-item//span[text()='RFP']");
+	public static final By SubmissionTypeOption_Contract = By.xpath(
+			"//*[text()='Submission Type']/following-sibling::div//button/following::lightning-base-combobox-item//span[text()='Contract']");
 	public static final By submitDate = By.xpath("//*[text()='Submission Date']/following-sibling::div//input");
 	public static final By acknowledgementDate = By
 			.xpath("//*[text()='Acknowledgement Date']/following-sibling::div//input");
@@ -59,7 +64,22 @@ public interface DecisionPackage_Loc {
 	public static final By stateMedicaidDirector_selected = By.xpath("//*[text()='State Medicaid Director']/following::a[1]/span//span//span");
 	public static final By State_Medicaid_Agency = By.xpath("//*[text()='State Medicaid Agency']/following::a[1]/span//span//span");
 	
-	
+	public static final By acknowledgementDate_LabelText = By.xpath("//*[text()='Acknowledgment Date']/following::lightning-formatted-text[1]");
+	public static final By dueDate = By.xpath("//*[text()='Due Date']/following::lightning-formatted-text[1]");
+	public static final By daysUntilDue = By.xpath("//*[text()='Days Until Due']/following::lightning-formatted-number[1]");
+	public static final By edit_Emergency_Request = By.xpath("//button[@title='Edit Emergency Request']");
+	public static final By emergency_Request_CheckBox = By.xpath("//*[text()='Emergency Request']/following::input[1]");
+	public static final By ContractNumber = By.xpath("//label[text()='Contract Number']/following::input[1]");
+	public static final By Total_ContractValue = By.xpath("//label[text()='Total Contract Value']/following::input[1]");
+	public static final By contractType = By.xpath("//label[text()='Contract Type']//following::button");
+	public static final By contracType_SoleSource = By.xpath("//span[text()='Sole Source']");
+	public static final By vendor = By.xpath("//*[text()='Vendor']/following::input");
+	public static final By vendorOption = By.xpath("//*[text()='Vendor']/following::input/following::ul/li[1]//lightning-base-combobox-formatted-text");
+	public static final By claimsProcessing_CheckBox = By.xpath("//*[text()='Claims Processing']/following::input[1]");
+	public static final By auditingCheckBox = By.xpath("//*[text()='Auditing']/following::input[1]");
+//	public static final By State_Medicaid_Agency = By.xpath("");
+//	public static final By State_Medicaid_Agency = By.xpath("");
+//	public static final By State_Medicaid_Agency = By.xpath("");
 	
 	
 	

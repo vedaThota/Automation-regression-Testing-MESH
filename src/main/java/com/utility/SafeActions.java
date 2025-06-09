@@ -5,6 +5,9 @@ import java.awt.AWTException;
 import java.awt.Robot;
 import java.awt.event.KeyEvent;
 import java.time.Duration;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
 import java.util.Random;
 
@@ -323,6 +326,24 @@ public class SafeActions extends TestBase {
 
 		// Return the character at that index
 		return initials.charAt(index);
+	}
+	
+	public int findTheDifference_Between(String date1, String date2) {
+		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("M/d/yyyy");
+
+        // Parse the input dates
+        LocalDate startDate = LocalDate.parse(date1, formatter);
+        LocalDate endDate = LocalDate.parse(date2, formatter);
+
+        // Calculate the difference in days
+        long daysBetween = ChronoUnit.DAYS.between(startDate, endDate);
+        return (int) daysBetween;
+	}
+	
+	public void scrollByPixels(int size) {
+		JavascriptExecutor js = (JavascriptExecutor) driver;
+        // Scroll up by 300 pixels
+        js.executeScript("window.scrollBy(0, "+size+");");
 	}
 
 }// End of the class
