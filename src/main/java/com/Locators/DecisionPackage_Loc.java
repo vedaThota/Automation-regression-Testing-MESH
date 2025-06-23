@@ -46,7 +46,7 @@ public interface DecisionPackage_Loc {
 	public static final By Edit_Recommended_Action = By.xpath("//button[@title='Edit Recommended Action']");
 	public static final By Recommended_Action = By.xpath("//button[@aria-label='Recommended Action']");
 	public static final By Approve_Option = By.xpath("//*[@data-value='Approve']");
-	public static final By save_Button = By.xpath("//button[text()='Save']");
+	public static final By save_Button = By.xpath("(//button[text()='Save'])[last()]");
 	public static final By State_Medicaid_Director_Input =  By.xpath("//label[text()='State Medicaid Director']/following::input[1]");
 	public static final By state_Medicaid_Director_Option = By.xpath("//label[text()='State Medicaid Director']/following::input[1]/following::ul[1]//lightning-base-combobox-item[1]/span[2]/span/lightning-base-combobox-formatted-text");
 	public static final By APD_Type = By.xpath("//span[@title='Planning Advanced Planning Document (PAPD)']");
@@ -77,9 +77,31 @@ public interface DecisionPackage_Loc {
 	public static final By vendorOption = By.xpath("//*[text()='Vendor']/following::input/following::ul/li[1]//lightning-base-combobox-formatted-text");
 	public static final By claimsProcessing_CheckBox = By.xpath("//*[text()='Claims Processing']/following::input[1]");
 	public static final By auditingCheckBox = By.xpath("//*[text()='Auditing']/following::input[1]");
-//	public static final By State_Medicaid_Agency = By.xpath("");
-//	public static final By State_Medicaid_Agency = By.xpath("");
-//	public static final By State_Medicaid_Agency = By.xpath("");
+	
+	public static final By RelatedProjects_button = By.xpath("//*[contains(text(), 'Related Projects')]//following::button[1]");
+	public static final By New_Link = By.xpath("//*[text()='New']");
+	public static final By MDBT_Project_Tab_Name = By.xpath("//*[text()='MDBT Project Tab Name']/following::input");
+	public static final By NewProject = By.xpath("//*[text()='New Project']");
+	public static final By newProject_MDBT_Project_Tab_Name = By.xpath("//*[text()='Project Details']//following::*[text()='MDBT Project Tab Name']/following::input");
+	public static final By newProject_FullName = By.xpath("//*[text()='Project Details']//following::*[text()='Full Project Name']/following::input");
+	public static final By newProject_State_Medicaid_Agency = By.xpath("//*[text()='Project Details']//following::*[text()='State Medicaid Agency']/following::input");
+	public static final By fundingType_EandE = By.xpath("//*[text()='Project Details']//following::*[text()='E&E']");
+	public static final By newProject_FundType_AddButton = By.xpath("//*[text()='Project Details']//following::*[text()='E&E']/following::button[1]");
+	public static final By systemTypeButton = By.xpath("//*[text()='System Type']//following::button[2]");
+	public static final By newSystem = By.xpath("//*[text()='System Type']//following::button[2]/following::*[text()='New System']");
+	public static final By newProject_State_Medicaid_Agency_Option = By.xpath("//*[text()='Project Details']//following::*[text()='State Medicaid Agency']/following::input/following::ul/li/lightning-base-combobox-item");
+	
+	public static final By beginReview = By.xpath("//*[text()='Begin Review']");
+	public static final By stateOfficerReview = By.xpath("//*[text()='Status']/following::lightning-formatted-text[text()='State Officer Review']");
+	public static final By inReview = By.xpath("//*[text()='Sub-Status']/following::lightning-formatted-text[text()='In Review']");
+	public static final By estimatedFundingRequested = By.xpath("//*[text()='Estimated Funding Requested']/following::lightning-formatted-text[1]");
+	public static final By totalContractValue = By.xpath("//*[text()='Total Contract Value']/following::lightning-formatted-text[1]");
+	
+	
+	
+	
+	
+	
 	
 	
 	

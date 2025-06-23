@@ -1,14 +1,18 @@
 package com.Mesh_TestSuites;
 
+import java.util.ArrayList;
+
 import org.testng.annotations.Test;
 
 import com.Base.TestBase;
+import com.Pages.ClearenceChecklist;
 import com.Pages.DecisionPackagePage;
 import com.Pages.HomePage;
 
 public class DecisionPackages extends TestBase {
 	HomePage homePage = new HomePage();
 	DecisionPackagePage dpp = new DecisionPackagePage();
+	ClearenceChecklist clearanceChecklistPage = new ClearenceChecklist();
 
 	@Test(groups = { "Regression"})
 	public void DecisionPackage_TC_001_Verify_DecisionPackage_Creation_with_APD_as_SubmisionType() {
@@ -22,7 +26,16 @@ public class DecisionPackages extends TestBase {
 		// Validation of required fields after decision package creation 
 		dpp.verifyMandatoryFields_OnDecisionPackage("E&E-HHS-APD", "APD");
 		dpp.selectEmergencyRequestInthe_DecisionPackage();
-//		dpp.verifyDueDate("Due Date when No Emergency");//
+		dpp.verifyBeginReviewStatus();
+		takeScreenshotFor("Begin Review status in APD type");
+		dpp.scrollToBottomOfthePage();
+		waitFor(1);
+		dpp.verifyFundingTypeAmountDisplay();
+		takeScreenshotFor("Amount Shows in APD type");
+//		dpp.verifyDueDate("Due Date when No Emergency");
+		clearanceChecklistPage.updateClearanceChecklist("APD");
+		dpp.addRelatedProject();
+		dpp.closeOtherWindows();
 	}
 	
 	@Test(groups = { "Regression"})
@@ -35,7 +48,13 @@ public class DecisionPackages extends TestBase {
 		// Validation of required fields after decision package creation 
 		dpp.verifyMandatoryFields_OnDecisionPackage("E&E-HHS-RFP", "RFP");
 		dpp.selectEmergencyRequestInthe_DecisionPackage();
-//		dpp.verifyDueDate("Due Date when No Emergency");
+		dpp.verifyBeginReviewStatus();
+		takeScreenshotFor("Begin Review status in RFP type");
+		clearanceChecklistPage.updateClearanceChecklist("RFP");
+		dpp.addRelatedProject();
+		driver.switchTo().window(new ArrayList<String>(driver.getWindowHandles()).get(1));
+		driver.close();
+		driver.switchTo().window(new ArrayList<String>(driver.getWindowHandles()).get(0));
 	}
 	
 	@Test(groups = { "Regression"})
@@ -48,6 +67,17 @@ public class DecisionPackages extends TestBase {
 		// Validation of required fields after decision package creation 
 		dpp.verifyMandatoryFieldsOn_Contract_DecisionPackage("E&E-HHS-Contract");
 		dpp.selectEmergencyRequestInthe_DecisionPackage();
+		dpp.verifyBeginReviewStatus();
+		takeScreenshotFor("Begin Review status in Contract type");
+		dpp.scrollByPixels(500);
+		waitFor(1);
+		dpp.verifyContractAmountDisplay();
+		takeScreenshotFor("Amount Shows in Contract type");
 //		dpp.verifyDueDate("Due Date when No Emergency");
+		clearanceChecklistPage.updateClearanceChecklist("Contract");
+		dpp.addRelatedProject();
 	}
+
+	
+	
 }
