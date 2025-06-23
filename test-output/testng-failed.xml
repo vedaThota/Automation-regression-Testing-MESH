@@ -9,6 +9,7 @@
           <include name="beforetest"/>
           <include name="beforeClass"/>
           <include name="beofreMethod"/>
+          <include name="DecisionPackage_TC_003_Verify_DecisionPackage_Creation_with_Contract_as_SubmisionType"/>
           <include name="afterClass"/>
           <include name="afterTest"/>
           <include name="afterMethod"/>

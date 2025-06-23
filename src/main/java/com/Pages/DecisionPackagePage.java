@@ -5,11 +5,15 @@ import java.awt.Robot;
 import java.awt.Toolkit;
 import java.awt.datatransfer.StringSelection;
 import java.awt.event.KeyEvent;
+import java.util.ArrayList;
 
 import org.openqa.selenium.By;
 import org.testng.Assert;
 
 import com.Locators.DecisionPackage_Loc;
+import com.aventstack.extentreports.Status;
+import com.aventstack.extentreports.markuputils.ExtentColor;
+import com.aventstack.extentreports.markuputils.MarkupHelper;
 import com.utility.SafeActions;
 
 public class DecisionPackagePage extends SafeActions implements DecisionPackage_Loc {
@@ -87,10 +91,16 @@ public class DecisionPackagePage extends SafeActions implements DecisionPackage_
 
 	}
 
+	public String decisionTitle = "";
 	public void verifyMandatoryFields_OnDecisionPackage(String title, String submisionType) {
+		waitFor(2);
+		stateMedicaidAgency = getTextFromUI(State_Medicaid_Agency, "State_Medicaid_Agency");
+		System.out.println("stateMedicaidAgency: " + stateMedicaidAgency);
 		waitFor(4);
+		decisionTitle = getTextFromUI(decisionPackageTitle, "decisionPackageTitle");
 		String directorState = getTextFromUI(State_Medicaid_Agency, "State_Medicaid_Agency");
 		System.out.println("directorName: " + directorState);
+		
 		verifyTextDisplay(decisionPackageTitle, title);
 		takeScreenshotFor("After Decision Package created verifying title");
 		jsClickOn(Edit_Recommended_Action, "Edit_Recommended_Action");
@@ -138,10 +148,11 @@ public class DecisionPackagePage extends SafeActions implements DecisionPackage_
 
 	}
 	
+	public String stateMedicaidAgency = "";
 	public void verifyMandatoryFieldsOn_Contract_DecisionPackage(String title) {
 		waitFor(2);
-		String directorState = getTextFromUI(State_Medicaid_Agency, "State_Medicaid_Agency");
-		System.out.println("directorName: " + directorState);
+		stateMedicaidAgency = getTextFromUI(State_Medicaid_Agency, "State_Medicaid_Agency");
+		System.out.println("stateMedicaidAgency: " + stateMedicaidAgency);
 		verifyTextDisplay(decisionPackageTitle, title);
 		takeScreenshotFor("After Decision Package created verifying title");
 		jsClickOn(Edit_Recommended_Action, "Edit_Recommended_Action");
@@ -155,7 +166,7 @@ public class DecisionPackagePage extends SafeActions implements DecisionPackage_
 		waitFor(2);
 		typeText(event_Summary_TextArea_AfterClick, "Event Summary Added", "event_Summary_TextArea_");
 		waitFor(5);
-		typeText(State_Medicaid_Director_Input, directorState.split(" ")[0], "State_Medicaid_Director_Input");
+		typeText(State_Medicaid_Director_Input, stateMedicaidAgency.split(" ")[0], "State_Medicaid_Director_Input");
 		waitFor(5);
 		String directorName = getAttribute(state_Medicaid_Director_Option, "title", "state_Medicaid_Director_Option");
 		System.out.println("directorName: " + directorName);
@@ -175,6 +186,7 @@ public class DecisionPackagePage extends SafeActions implements DecisionPackage_
 		waitFor(3);
 		verifyTextDisplay(approveChoosen, "Approve");
 		verifyTextDisplay(stateMedicaidDirector_selected, directorName);
+		
 		scrollByPixels(200);
 		verifyTextDisplay(event_Summary_Entered, "Event Summary Added");
 		scrollToTopofThePage();
@@ -204,6 +216,63 @@ public class DecisionPackagePage extends SafeActions implements DecisionPackage_
 		jsClickOn(save_Button, "save_Button");
 		waitFor(3);
 		
+	}
+	
+	public void verifyBeginReviewStatus() {
+		jsClickOn(beginReview, "beginReview");
+		waitFor(1);
+		verifyTextDisplay(stateOfficerReview, "State Officer Review");
+		verifyTextDisplay(inReview, "In Review");		
+	}
+	
+	public void verifyFundingTypeAmountDisplay() {
+		String amountDisplay = getTextFromUI(estimatedFundingRequested, "estimatedFundingRequested");
+		if(!amountDisplay.contains(".000"))
+			test.log(Status.INFO, MarkupHelper.createLabel("Amount shows correctly", ExtentColor.BLUE));
+		else
+			test.log(Status.FAIL, MarkupHelper.createLabel("Amount shows three decimal places after decimal point", ExtentColor.RED));
+	}
+	
+	public void verifyContractAmountDisplay() {
+		String amountDisplay = getTextFromUI(totalContractValue, "totalContractValue");
+		if(!amountDisplay.contains(".000"))
+			test.log(Status.INFO, MarkupHelper.createLabel("Amount shows correctly", ExtentColor.BLUE));
+		else
+			test.log(Status.FAIL, MarkupHelper.createLabel("Amount shows three decimal places after decimal point", ExtentColor.RED));
+	}
+	
+	public void addRelatedProject() {
+		jsClickOn(RelatedProjects_button, "RelatedProjects_button");
+		jsClickOn(New_Link, "RelatedProjects_button");
+		jsClickOn(MDBT_Project_Tab_Name, "MDBT_Project_Tab_Name");
+		jsClickOn(NewProject, "NewProject");
+		String stateShortForm = decisionTitle.split("-")[0];
+		String text = generateRandomString(10);
+		takeScreenshotFor("Adding new project form screenshot");
+		typeText(newProject_MDBT_Project_Tab_Name, stateShortForm+"-"+text, "newProject_MDBT_Project_Tab_Name");
+		typeText(newProject_FullName, stateShortForm+"-"+text+" Full", "newProject_FullName");
+		typeText(newProject_State_Medicaid_Agency, stateMedicaidAgency, "newProject_State_Medicaid_Agency");
+		jsClickOn(newProject_State_Medicaid_Agency_Option, "newProject_State_Medicaid_Agency_Option");
+		jsClickOn(fundingType_EandE, "fundingType_EandE");
+		jsClickOn(newProject_FundType_AddButton, "newProject_FundType_AddButton");
+		jsClickOn(systemTypeButton, "systemTypeButton");
+		jsClickOn(newSystem, "newSystem");
+		takeScreenshotFor("Before related project added screenshot");
+		jsClickOn(save_Button, "save_Button");
+		waitFor(3);
+		jsClickOn(save_Button, "save_Button");
+		takeScreenshotFor("New Project Created screenshot");
+		
+	}
+	
+	public void closeOtherWindows() {
+		driver.switchTo().window(new ArrayList<String>(driver.getWindowHandles()).get(0));
+		driver.close();
+		driver.switchTo().window(new ArrayList<String>(driver.getWindowHandles()).get(0));
+		driver.close();
+		driver.switchTo().window(new ArrayList<String>(driver.getWindowHandles()).get(1));
+		driver.close();
+		driver.switchTo().window(new ArrayList<String>(driver.getWindowHandles()).get(0));
 	}
 
 }

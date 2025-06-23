@@ -178,7 +178,7 @@ public class TestBase {
 	// To quit the browser session
 	@AfterClass(groups = { "Regression", "Smoke" })
 	public void afterClass() throws InterruptedException {
-//		driver.quit();
+		driver.quit();
 	}
 
 	// To flush out the reports information once execution completed
