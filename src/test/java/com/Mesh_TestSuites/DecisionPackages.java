@@ -26,20 +26,25 @@ public class DecisionPackages extends TestBase {
 		// Validation of required fields after decision package creation 
 		dpp.verifyMandatoryFields_OnDecisionPackage("E&E-HHS-APD", "APD");
 		dpp.selectEmergencyRequestInthe_DecisionPackage();
-		dpp.verifyBeginReviewStatus();
-		takeScreenshotFor("Begin Review status in APD type");
+		
 		dpp.scrollToBottomOfthePage();
 		waitFor(1);
 		dpp.verifyFundingTypeAmountDisplay();
 		takeScreenshotFor("Amount Shows in APD type");
 //		dpp.verifyDueDate("Due Date when No Emergency");
 		clearanceChecklistPage.updateClearanceChecklist("APD");
+		dpp.verifyBeginReviewStatus();
+		takeScreenshotFor("Begin Review status in APD type");
+		dpp.verifyTemplateGeneration();
+		takeScreenshotFor("Template Generation in APD type");
 		dpp.addRelatedProject();
 		dpp.closeOtherWindows();
 	}
 	
 	@Test(groups = { "Regression"})
 	public void DecisionPackage_TC_002_Verify_DecisionPackage_Creation_with_RFP_as_SubmisionType() {
+	
+		waitFor(2);
 		dpp.jsClickOn(DecisionPackagePage.decisionPackages, "Decision Packages");
 		dpp.jsClickOn(DecisionPackagePage.newDecisionPackage, "newDecisionPackage");
 		// Creation of Decision package
@@ -48,9 +53,11 @@ public class DecisionPackages extends TestBase {
 		// Validation of required fields after decision package creation 
 		dpp.verifyMandatoryFields_OnDecisionPackage("E&E-HHS-RFP", "RFP");
 		dpp.selectEmergencyRequestInthe_DecisionPackage();
+		clearanceChecklistPage.updateClearanceChecklist("RFP");
 		dpp.verifyBeginReviewStatus();
 		takeScreenshotFor("Begin Review status in RFP type");
-		clearanceChecklistPage.updateClearanceChecklist("RFP");
+		dpp.verifyTemplateGeneration();
+		takeScreenshotFor("Template Generation in RFP type");
 		dpp.addRelatedProject();
 		driver.switchTo().window(new ArrayList<String>(driver.getWindowHandles()).get(1));
 		driver.close();
@@ -67,14 +74,17 @@ public class DecisionPackages extends TestBase {
 		// Validation of required fields after decision package creation 
 		dpp.verifyMandatoryFieldsOn_Contract_DecisionPackage("E&E-HHS-Contract");
 		dpp.selectEmergencyRequestInthe_DecisionPackage();
-		dpp.verifyBeginReviewStatus();
-		takeScreenshotFor("Begin Review status in Contract type");
-		dpp.scrollByPixels(500);
+		
+		dpp.scrollByPixels(500);//
 		waitFor(1);
 		dpp.verifyContractAmountDisplay();
 		takeScreenshotFor("Amount Shows in Contract type");
 //		dpp.verifyDueDate("Due Date when No Emergency");
 		clearanceChecklistPage.updateClearanceChecklist("Contract");
+		dpp.verifyBeginReviewStatus();
+		takeScreenshotFor("Begin Review status in Contract type");
+		dpp.verifyTemplateGeneration();
+		takeScreenshotFor("Template Generation in Contract type");
 		dpp.addRelatedProject();
 	}
 

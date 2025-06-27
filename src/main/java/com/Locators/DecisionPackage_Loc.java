@@ -3,8 +3,8 @@ package com.Locators;
 import org.openqa.selenium.By;
 
 public interface DecisionPackage_Loc {
-	public static final By decisionPackages = By.xpath("//*[text()='Decision Packages']");
-	public static final By newDecisionPackage = By.xpath("//div[@title='New']");
+	public static final By decisionPackages = By.xpath("(//*[text()='Decision Packages'])[last()]");
+	public static final By newDecisionPackage = By.xpath("(//div[@title='New'])[last()]");
 	public static final By State_Medicaid_Agency_Input = By
 			.xpath("//*[text()='State Medicaid Agency']/following-sibling::div//input");
 	public static final By State_Medicaid_Agency_Option = By
@@ -62,7 +62,7 @@ public interface DecisionPackage_Loc {
 	public static final By APD_Update_Type_Choosen = By.xpath("//lightning-formatted-text[text()='Initial Submission']");
 	public static final By event_Summary_Entered = By.xpath("//p[text()='Event Summary Added']");
 	public static final By stateMedicaidDirector_selected = By.xpath("//*[text()='State Medicaid Director']/following::a[1]/span//span//span");
-	public static final By State_Medicaid_Agency = By.xpath("//*[text()='State Medicaid Agency']/following::a[1]/span//span//span");
+	public static final By State_Medicaid_Agency = By.xpath("(//*[text()='State Medicaid Agency']/following::a[1]/span//span//span)[last()]");
 	
 	public static final By acknowledgementDate_LabelText = By.xpath("//*[text()='Acknowledgment Date']/following::lightning-formatted-text[1]");
 	public static final By dueDate = By.xpath("//*[text()='Due Date']/following::lightning-formatted-text[1]");
@@ -96,9 +96,12 @@ public interface DecisionPackage_Loc {
 	public static final By inReview = By.xpath("//*[text()='Sub-Status']/following::lightning-formatted-text[text()='In Review']");
 	public static final By estimatedFundingRequested = By.xpath("//*[text()='Estimated Funding Requested']/following::lightning-formatted-text[1]");
 	public static final By totalContractValue = By.xpath("//*[text()='Total Contract Value']/following::lightning-formatted-text[1]");
+	public static final By DetailsTab = By.xpath("//*[text()='Details']");
 	
-	
-	
+	public static final By generateTemplate = By.xpath("//*[text()='Generate Template']");
+	public static final By selectATemplate = By.xpath("//*[text()='Select a Template']/following::button");
+	public static final By templateFirstOption = By.xpath("//*[text()='Select a Template']/following::button/following::lightning-base-combobox-item");
+	public static final By generateWordDocument = By.xpath("//*[text()='Generate Word Document']");
 	
 	
 	
