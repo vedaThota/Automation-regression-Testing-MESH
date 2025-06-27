@@ -24,7 +24,8 @@ public class HomePage extends SafeActions implements HomePage_Loc {
 		takeScreenshotFor("User Selection Screen");
 		switchToFrame(allUsersFrame);
 		// Navigating to Ops Team login screen
-		jsClickOn(oPsTeam_Login_Link, "oPsTeam_Login_Link");
+//		jsClickOn(oPsTeam_Login_Link, "oPsTeam_Login_Link");
+		jsClickOn(ThotaVEda_Login_Link, "ThotaVEda_Login_Link");
 		driver.switchTo().defaultContent();
 		// Navigating to Decision Packages screen
 		switchToWindowByIndex(2);

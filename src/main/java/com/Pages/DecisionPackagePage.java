@@ -93,7 +93,7 @@ public class DecisionPackagePage extends SafeActions implements DecisionPackage_
 
 	public String decisionTitle = "";
 	public void verifyMandatoryFields_OnDecisionPackage(String title, String submisionType) {
-		waitFor(2);
+		waitFor(5);
 		stateMedicaidAgency = getTextFromUI(State_Medicaid_Agency, "State_Medicaid_Agency");
 		System.out.println("stateMedicaidAgency: " + stateMedicaidAgency);
 		waitFor(4);
@@ -219,6 +219,8 @@ public class DecisionPackagePage extends SafeActions implements DecisionPackage_
 	}
 	
 	public void verifyBeginReviewStatus() {
+		jsClickOn(DetailsTab, "DetailsTab");
+		waitFor(1);
 		jsClickOn(beginReview, "beginReview");
 		waitFor(1);
 		verifyTextDisplay(stateOfficerReview, "State Officer Review");
@@ -258,9 +260,9 @@ public class DecisionPackagePage extends SafeActions implements DecisionPackage_
 		jsClickOn(systemTypeButton, "systemTypeButton");
 		jsClickOn(newSystem, "newSystem");
 		takeScreenshotFor("Before related project added screenshot");
-		jsClickOn(save_Button, "save_Button");
 		waitFor(3);
 		jsClickOn(save_Button, "save_Button");
+		
 		takeScreenshotFor("New Project Created screenshot");
 		
 	}
@@ -273,6 +275,14 @@ public class DecisionPackagePage extends SafeActions implements DecisionPackage_
 		driver.switchTo().window(new ArrayList<String>(driver.getWindowHandles()).get(1));
 		driver.close();
 		driver.switchTo().window(new ArrayList<String>(driver.getWindowHandles()).get(0));
+	}
+	
+	public void verifyTemplateGeneration() {
+		jsClickOn(generateTemplate, "generateTemplate");
+		jsClickOn(selectATemplate, "selectATemplate");
+		jsClickOn(templateFirstOption, "templateFirstOption");
+		jsClickOn(generateWordDocument, "generateWordDocument");
+		waitFor(4);
 	}
 
 }
