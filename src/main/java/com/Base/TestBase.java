@@ -8,6 +8,7 @@ import java.text.SimpleDateFormat;
 import java.time.Duration;
 import java.util.Base64;
 import java.util.Calendar;
+import java.util.HashMap;
 import java.util.Properties;
 import java.util.Random;
 
@@ -152,13 +153,18 @@ public class TestBase {
 
 	@BeforeClass(groups = { "Regression", "Smoke" })
 	public void beforeClass() {
-
+		String downloadFilepath =  System.getProperty("user.dir")+ "\\src\\test\\resources\\data\\FilesDownload"; 
 		// Chrome Options to disable notifications and to launch browser in incognito
 		// mode
+		HashMap<String, Object> chromePrefs = new HashMap<String, Object>();
+		chromePrefs.put("download.default_directory", downloadFilepath);
 		ChromeOptions options = new ChromeOptions();
+		options.setExperimentalOption("prefs", chromePrefs);
 		options.addArguments("--disable-notifications");
-//		options.addArguments("--incognito");
+		// options.addArguments("--incognito");
+		
 
+		options.addArguments("download.default_directory", downloadFilepath);
 		// driver instantiation
 		driver = new ChromeDriver(options);
 
@@ -194,26 +200,26 @@ public class TestBase {
 		cal.add(Calendar.DATE, numberOfDaysToBeAdded);
 		return df.format(cal.getTime());
 	}
-	
+
 	// To fetch past or future weekday dates in desired format //
 	public String fetchWeekdayDate(String format, int numberOfWeekdaysToBeAdded) {
-	    SimpleDateFormat df = new SimpleDateFormat(format);
-	    Calendar cal = Calendar.getInstance();
-	    
-	    int addedDays = 0;
-	    int direction = (numberOfWeekdaysToBeAdded >= 0) ? 1 : -1;
+		SimpleDateFormat df = new SimpleDateFormat(format);
+		Calendar cal = Calendar.getInstance();
 
-	    while (addedDays != numberOfWeekdaysToBeAdded) {
-	        cal.add(Calendar.DATE, direction);  // move one day forward or backward
-	        int dayOfWeek = cal.get(Calendar.DAY_OF_WEEK);
-	        
-	        // Only count weekdays
-	        if (dayOfWeek != Calendar.SATURDAY && dayOfWeek != Calendar.SUNDAY) {
-	            addedDays += direction;
-	        }
-	    }
+		int addedDays = 0;
+		int direction = (numberOfWeekdaysToBeAdded >= 0) ? 1 : -1;
 
-	    return df.format(cal.getTime());
+		while (addedDays != numberOfWeekdaysToBeAdded) {
+			cal.add(Calendar.DATE, direction); // move one day forward or backward
+			int dayOfWeek = cal.get(Calendar.DAY_OF_WEEK);
+
+			// Only count weekdays
+			if (dayOfWeek != Calendar.SATURDAY && dayOfWeek != Calendar.SUNDAY) {
+				addedDays += direction;
+			}
+		}
+
+		return df.format(cal.getTime());
 	}
 
 	public void waitFor(int timeInSeconds) {

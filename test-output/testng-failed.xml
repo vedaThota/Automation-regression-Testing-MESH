@@ -5,6 +5,7 @@
     <classes>
       <class name="com.Mesh_TestSuites.DecisionPackages">
         <methods>
+          <include name="DecisionPackage_TC_002_Verify_DecisionPackage_Creation_with_RFP_as_SubmisionType"/>
           <include name="beforetest"/>
           <include name="beforeClass"/>
           <include name="beofreMethod"/>
@@ -12,6 +13,7 @@
           <include name="afterClass"/>
           <include name="afterTest"/>
           <include name="afterMethod"/>
+          <include name="DecisionPackage_TC_001_Verify_DecisionPackage_Creation_with_APD_as_SubmisionType"/>
         </methods>
       </class> <!-- com.Mesh_TestSuites.DecisionPackages -->
     </classes>

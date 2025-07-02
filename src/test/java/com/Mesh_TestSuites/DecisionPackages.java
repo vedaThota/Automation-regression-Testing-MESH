@@ -31,7 +31,9 @@ public class DecisionPackages extends TestBase {
 		waitFor(1);
 		dpp.verifyFundingTypeAmountDisplay();
 		takeScreenshotFor("Amount Shows in APD type");
-//		dpp.verifyDueDate("Due Date when No Emergency");
+		dpp.verifyFileUpload("APD");
+		dpp.verifyDownloadFile("APD");
+//	////	dpp.verifyDueDate("Due Date when No Emergency");
 		clearanceChecklistPage.updateClearanceChecklist("APD");
 		dpp.verifyBeginReviewStatus();
 		takeScreenshotFor("Begin Review status in APD type");
@@ -53,6 +55,8 @@ public class DecisionPackages extends TestBase {
 		// Validation of required fields after decision package creation 
 		dpp.verifyMandatoryFields_OnDecisionPackage("E&E-HHS-RFP", "RFP");
 		dpp.selectEmergencyRequestInthe_DecisionPackage();
+		dpp.verifyFileUpload("RFP");
+		dpp.verifyDownloadFile("RFP");
 		clearanceChecklistPage.updateClearanceChecklist("RFP");
 		dpp.verifyBeginReviewStatus();
 		takeScreenshotFor("Begin Review status in RFP type");
@@ -66,7 +70,10 @@ public class DecisionPackages extends TestBase {
 	
 	@Test(groups = { "Regression"})
 	public void DecisionPackage_TC_003_Verify_DecisionPackage_Creation_with_Contract_as_SubmisionType() {
+
+		waitFor(3);
 		dpp.jsClickOn(DecisionPackagePage.decisionPackages, "Decision Packages");
+		waitFor(2);
 		dpp.jsClickOn(DecisionPackagePage.newDecisionPackage, "newDecisionPackage");
 		// Creation of Decision package
 		dpp.verifyUserCanCreate_DecisionPackage(DecisionPackagePage.SubmissionTypeOption_Contract, "Contract");
@@ -80,6 +87,8 @@ public class DecisionPackages extends TestBase {
 		dpp.verifyContractAmountDisplay();
 		takeScreenshotFor("Amount Shows in Contract type");
 //		dpp.verifyDueDate("Due Date when No Emergency");
+		dpp.verifyFileUpload("Contract");
+		dpp.verifyDownloadFile("Contract");
 		clearanceChecklistPage.updateClearanceChecklist("Contract");
 		dpp.verifyBeginReviewStatus();
 		takeScreenshotFor("Begin Review status in Contract type");

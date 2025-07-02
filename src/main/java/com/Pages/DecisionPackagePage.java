@@ -5,9 +5,15 @@ import java.awt.Robot;
 import java.awt.Toolkit;
 import java.awt.datatransfer.StringSelection;
 import java.awt.event.KeyEvent;
+import java.io.File;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.interactions.Actions;
 import org.testng.Assert;
 
 import com.Locators.DecisionPackage_Loc;
@@ -19,7 +25,7 @@ import com.utility.SafeActions;
 public class DecisionPackagePage extends SafeActions implements DecisionPackage_Loc {
 
 	public void validateMandatoryFieldsErrorMessages() {
-
+		waitFor(3);
 		jsClickOn(newDecisionPackage, "newDecisionPackage");
 
 		typeText(submitDate, fetchWeekdayDate("MMM dd, yyyy", 2), "submitDate");
@@ -58,8 +64,8 @@ public class DecisionPackagePage extends SafeActions implements DecisionPackage_
 		if (text.contains("APD")) {
 			typeText(estimatedAmount, "1000", "estimatedAmount");
 		}
-		typeText(submitDate, fetchWeekdayDate("MMM dd, yyyy", -1), "submitDate");
-		typeText(acknowledgementDate, fetchWeekdayDate("MMM dd, yyyy", -1), "acknowledgementDate");
+		typeText(submitDate, fetchWeekdayDate("MMM dd, yyyy", 0), "submitDate");
+		typeText(acknowledgementDate, fetchWeekdayDate("MMM dd, yyyy", 0), "acknowledgementDate");
 		jsClickOn(oPsDiv_HHS, "oPsDiv_HHS");
 		takeScreenshotFor("Filling the form before the file upload");
 		jsClickOn(uploadFiles, "uploadFiles");
@@ -91,7 +97,112 @@ public class DecisionPackagePage extends SafeActions implements DecisionPackage_
 
 	}
 
+	public void verifyFileUpload(String Type) {
+
+		try {
+			rb = new Robot();
+		} catch (AWTException e) {
+		}
+		waitFor(5);
+		scrollToTopofThePage();
+		switchToFrame(parentBoxFrame);
+		waitFor(1);
+		switchToFrame(boxFrame);
+		waitFor(2);
+		jsClickOn(fileUploadNewButton, "fileUploadNewButton");
+		waitFor(2);
+		jsClickOn(fileUploadButton, "fileUploadButton");
+		waitFor(1);
+		rb.keyPress(KeyEvent.VK_CONTROL);
+		rb.keyPress(KeyEvent.VK_ENTER);
+		System.out.println("KeyPress");
+		rb.keyRelease(KeyEvent.VK_CONTROL);
+		rb.keyRelease(KeyEvent.VK_ENTER);
+		System.out.println("Key release");
+		waitFor(2);
+		driver.switchTo().defaultContent();
+		String filePath = System.getProperty("user.dir")
+				+ "\\src\\test\\resources\\data\\FilesUpload\\2-Proposed Process JIRA SOP.pdf";
+		StringSelection str = new StringSelection(filePath);
+		Toolkit.getDefaultToolkit().getSystemClipboard().setContents(str, null);
+		rb.keyPress(KeyEvent.VK_ENTER);
+		rb.keyRelease(KeyEvent.VK_CONTROL);
+		waitFor(2);
+		rb.keyPress(KeyEvent.VK_CONTROL);
+		rb.keyPress(KeyEvent.VK_V);
+		waitFor(2);
+		System.out.println("File Path");
+		rb.keyRelease(KeyEvent.VK_CONTROL);
+		rb.keyRelease(KeyEvent.VK_V);
+		waitFor(2);
+		rb.keyPress(KeyEvent.VK_ENTER);
+		rb.keyRelease(KeyEvent.VK_ENTER);
+		scrollToTopofThePage();
+		takeScreenshotFor("Before File Upload for " + Type);
+		waitFor(5);
+		scrollToTopofThePage();
+		takeScreenshotFor("File Uploaded successfully for " + Type);
+	}
+
+	public String verifyFileName(String type) {
+		String condition = "";
+		File folder = new File(System.getProperty("user.dir") + "\\src\\test\\resources\\data\\FilesDownload");
+		File[] listOfFiles = folder.listFiles();
+		if (listOfFiles != null) {
+			for (int i = 0; i < listOfFiles.length; i++) {
+				if (listOfFiles[i].isFile()) {
+					String fileName = listOfFiles[i].getName();
+					System.out.println("File " + fileName);
+					if (fileName.contains(fetchDate("yyyy-MM-dd", 0)) && fileName.contains(type)) {
+						condition = fileName;
+						break;
+					}
+				}
+			}
+		}
+		return condition;
+	}
+
+	public void verifyDownloadFile(String type) {
+		switchToFrame(parentBoxFrame);
+		waitFor(1);
+		switchToFrame(boxFrame);
+		waitFor(2);
+		new Actions(driver).moveToElement(driver.findElement(selectFile)).build().perform();
+
+//		jsClickOn(selectFile, "selectFile");
+		waitFor(2);
+		jsClickOn(fileCheckbox, "fileCheckbox");
+		waitFor(2);
+		jsClickOn(moreOptions, "moreOptions");
+		waitFor(2);
+		jsClickOn(downloadButton, "downloadButton");
+		waitFor(5);
+		String isDownloaded = verifyFileName(type);
+		System.out.println("File Name : " + isDownloaded);
+		if (!isDownloaded.isEmpty())
+			test.log(Status.INFO,
+					MarkupHelper.createLabel("File downloaded with name - " + isDownloaded, ExtentColor.GREEN));
+		else
+			test.log(Status.FAIL, MarkupHelper.createLabel("File NOT downloaded", ExtentColor.RED));
+		driver.switchTo().defaultContent();
+		deleteAllFilesAfter_Verification();
+	}
+	
+	public void deleteAllFilesAfter_Verification() {
+		try {
+			Files.walk(Paths.get(System.getProperty("user.dir") + "\\src\\test\\resources\\data\\FilesDownload"))
+			.filter(Files::isRegularFile)
+			.map(Path::toFile)
+			.forEach(File::delete);
+		} catch (IOException e) {
+			
+			e.printStackTrace();
+		}
+	}
+
 	public String decisionTitle = "";
+
 	public void verifyMandatoryFields_OnDecisionPackage(String title, String submisionType) {
 		waitFor(5);
 		stateMedicaidAgency = getTextFromUI(State_Medicaid_Agency, "State_Medicaid_Agency");
@@ -100,7 +211,7 @@ public class DecisionPackagePage extends SafeActions implements DecisionPackage_
 		decisionTitle = getTextFromUI(decisionPackageTitle, "decisionPackageTitle");
 		String directorState = getTextFromUI(State_Medicaid_Agency, "State_Medicaid_Agency");
 		System.out.println("directorName: " + directorState);
-		
+
 		verifyTextDisplay(decisionPackageTitle, title);
 		takeScreenshotFor("After Decision Package created verifying title");
 		jsClickOn(Edit_Recommended_Action, "Edit_Recommended_Action");
@@ -124,8 +235,7 @@ public class DecisionPackagePage extends SafeActions implements DecisionPackage_
 			jsClickOn(APD_Type, "APD_Type");
 			jsClickOn(APD_Type_Option, "APD_Type_Option");
 		}
-		
-		
+
 		if (submisionType.contains("APD")) {
 			jsClickOn(APD_Update_Type, "APD_Update_Type");
 			jsClickOn(APD_Update_Type_Add_Button, "APD_Update_Type_Add_Button");
@@ -147,10 +257,11 @@ public class DecisionPackagePage extends SafeActions implements DecisionPackage_
 		takeScreenshotFor("Second half of the screen with Updated Mandatory fields");
 
 	}
-	
+
 	public String stateMedicaidAgency = "";
+
 	public void verifyMandatoryFieldsOn_Contract_DecisionPackage(String title) {
-		waitFor(2);
+		waitFor(5);
 		stateMedicaidAgency = getTextFromUI(State_Medicaid_Agency, "State_Medicaid_Agency");
 		System.out.println("stateMedicaidAgency: " + stateMedicaidAgency);
 		verifyTextDisplay(decisionPackageTitle, title);
@@ -172,7 +283,7 @@ public class DecisionPackagePage extends SafeActions implements DecisionPackage_
 		System.out.println("directorName: " + directorName);
 		jsClickOn(state_Medicaid_Director_Option, "state_Medicaid_Director_Option");
 		scrollToBottomOfthePage();
-		typeText(ContractNumber, "ABC"+fetchDate("yyyy", 4), "ContractNumber");
+		typeText(ContractNumber, "ABC" + fetchDate("yyyy", 4), "ContractNumber");
 		jsClickOn(contractType, "contractType");
 		jsClickOn(contracType_SoleSource, "contracType_SoleSource");
 		typeText(Total_ContractValue, "1000", "Total_ContractValue");
@@ -186,7 +297,7 @@ public class DecisionPackagePage extends SafeActions implements DecisionPackage_
 		waitFor(3);
 		verifyTextDisplay(approveChoosen, "Approve");
 		verifyTextDisplay(stateMedicaidDirector_selected, directorName);
-		
+
 		scrollByPixels(200);
 		verifyTextDisplay(event_Summary_Entered, "Event Summary Added");
 		scrollToTopofThePage();
@@ -215,34 +326,37 @@ public class DecisionPackagePage extends SafeActions implements DecisionPackage_
 		jsClickOn(emergency_Request_CheckBox, "emergency_Request_CheckBox");
 		jsClickOn(save_Button, "save_Button");
 		waitFor(3);
-		
+
 	}
-	
+
 	public void verifyBeginReviewStatus() {
 		jsClickOn(DetailsTab, "DetailsTab");
 		waitFor(1);
 		jsClickOn(beginReview, "beginReview");
 		waitFor(1);
+		scrollToTopofThePage();
 		verifyTextDisplay(stateOfficerReview, "State Officer Review");
-		verifyTextDisplay(inReview, "In Review");		
+		verifyTextDisplay(inReview, "In Review");
 	}
-	
+
 	public void verifyFundingTypeAmountDisplay() {
 		String amountDisplay = getTextFromUI(estimatedFundingRequested, "estimatedFundingRequested");
-		if(!amountDisplay.contains(".000"))
+		if (!amountDisplay.contains(".000"))
 			test.log(Status.INFO, MarkupHelper.createLabel("Amount shows correctly", ExtentColor.BLUE));
 		else
-			test.log(Status.FAIL, MarkupHelper.createLabel("Amount shows three decimal places after decimal point", ExtentColor.RED));
+			test.log(Status.FAIL,
+					MarkupHelper.createLabel("Amount shows three decimal places after decimal point", ExtentColor.RED));
 	}
-	
+
 	public void verifyContractAmountDisplay() {
 		String amountDisplay = getTextFromUI(totalContractValue, "totalContractValue");
-		if(!amountDisplay.contains(".000"))
+		if (!amountDisplay.contains(".000"))
 			test.log(Status.INFO, MarkupHelper.createLabel("Amount shows correctly", ExtentColor.BLUE));
 		else
-			test.log(Status.FAIL, MarkupHelper.createLabel("Amount shows three decimal places after decimal point", ExtentColor.RED));
+			test.log(Status.FAIL,
+					MarkupHelper.createLabel("Amount shows three decimal places after decimal point", ExtentColor.RED));
 	}
-	
+
 	public void addRelatedProject() {
 		jsClickOn(RelatedProjects_button, "RelatedProjects_button");
 		jsClickOn(New_Link, "RelatedProjects_button");
@@ -251,8 +365,8 @@ public class DecisionPackagePage extends SafeActions implements DecisionPackage_
 		String stateShortForm = decisionTitle.split("-")[0];
 		String text = generateRandomString(10);
 		takeScreenshotFor("Adding new project form screenshot");
-		typeText(newProject_MDBT_Project_Tab_Name, stateShortForm+"-"+text, "newProject_MDBT_Project_Tab_Name");
-		typeText(newProject_FullName, stateShortForm+"-"+text+" Full", "newProject_FullName");
+		typeText(newProject_MDBT_Project_Tab_Name, stateShortForm + "-" + text, "newProject_MDBT_Project_Tab_Name");
+		typeText(newProject_FullName, stateShortForm + "-" + text + " Full", "newProject_FullName");
 		typeText(newProject_State_Medicaid_Agency, stateMedicaidAgency, "newProject_State_Medicaid_Agency");
 		jsClickOn(newProject_State_Medicaid_Agency_Option, "newProject_State_Medicaid_Agency_Option");
 		jsClickOn(fundingType_EandE, "fundingType_EandE");
@@ -262,11 +376,11 @@ public class DecisionPackagePage extends SafeActions implements DecisionPackage_
 		takeScreenshotFor("Before related project added screenshot");
 		waitFor(3);
 		jsClickOn(save_Button, "save_Button");
-		
+
 		takeScreenshotFor("New Project Created screenshot");
-		
+
 	}
-	
+
 	public void closeOtherWindows() {
 		driver.switchTo().window(new ArrayList<String>(driver.getWindowHandles()).get(0));
 		driver.close();
@@ -276,7 +390,7 @@ public class DecisionPackagePage extends SafeActions implements DecisionPackage_
 		driver.close();
 		driver.switchTo().window(new ArrayList<String>(driver.getWindowHandles()).get(0));
 	}
-	
+
 	public void verifyTemplateGeneration() {
 		jsClickOn(generateTemplate, "generateTemplate");
 		jsClickOn(selectATemplate, "selectATemplate");

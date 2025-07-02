@@ -2,6 +2,8 @@ package com.Pages;
 
 import java.util.ArrayList;
 
+import org.openqa.selenium.By;
+
 import com.Locators.ClearenceCheckList_Loc;
 import com.aventstack.extentreports.Status;
 import com.aventstack.extentreports.markuputils.ExtentColor;
@@ -11,6 +13,7 @@ import com.utility.SafeActions;
 public class ClearenceChecklist extends SafeActions implements ClearenceCheckList_Loc {
 
 	public void updateClearanceChecklist(String type) {
+	
 		jsClickOn(clearanceChecklist, "clearanceChecklist");
 		jsClickOn(soReviewIsCompletede, "soReviewIsCompletede");
 		jsClickOn(mostRecentTemplateCheckBox, "mostRecentTemplateCheckBox");
