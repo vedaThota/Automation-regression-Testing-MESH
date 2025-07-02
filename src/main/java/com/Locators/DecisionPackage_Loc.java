@@ -4,7 +4,7 @@ import org.openqa.selenium.By;
 
 public interface DecisionPackage_Loc {
 	public static final By decisionPackages = By.xpath("(//*[text()='Decision Packages'])[last()]");
-	public static final By newDecisionPackage = By.xpath("(//div[@title='New'])[last()]");
+	public static final By newDecisionPackage = By.xpath("//a[@title='New']");
 	public static final By State_Medicaid_Agency_Input = By
 			.xpath("//*[text()='State Medicaid Agency']/following-sibling::div//input");
 	public static final By State_Medicaid_Agency_Option = By
@@ -103,6 +103,17 @@ public interface DecisionPackage_Loc {
 	public static final By templateFirstOption = By.xpath("//*[text()='Select a Template']/following::button/following::lightning-base-combobox-item");
 	public static final By generateWordDocument = By.xpath("//*[text()='Generate Word Document']");
 	
+	public static final By fileUploadNewButton = By.xpath("//button[@data-resin-target='share']/preceding::button[@aria-label='New']");
+	public static final By fileUploadButton = By.xpath("//*[text()='File Upload']/parent::li");
+	public static final By boxFrame = By.xpath("//iframe[@title='Box Embed Widget']");
+	public static final By parentBoxFrame = By.xpath("//iframe[contains(@class,'boxRecordBoxFolder')]");
+	
+	public static final By selectFile = By.xpath("//div[@class='SelectCheckboxButton']/following-sibling::div[@aria-label='File']");
+	public static final By fileCheckbox = By.xpath("//div[@class='SelectCheckboxButton']/span/div");
+	public static final By moreOptions = By.xpath("//button[@aria-label='More Options']");
+	public static final By downloadButton = By.xpath("//*[@data-target-id='MenuItem-download']");
+//	public static final By fileUploadNewButton = By.xpath("");
+//	public static final By fileUploadNewButton = By.xpath("");
 	
 	
 	
