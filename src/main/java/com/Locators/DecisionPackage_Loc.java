@@ -112,11 +112,20 @@ public interface DecisionPackage_Loc {
 	public static final By fileCheckbox = By.xpath("//div[@class='SelectCheckboxButton']/span/div");
 	public static final By moreOptions = By.xpath("//button[@aria-label='More Options']");
 	public static final By downloadButton = By.xpath("//*[@data-target-id='MenuItem-download']");
-//	public static final By fileUploadNewButton = By.xpath("");
-//	public static final By fileUploadNewButton = By.xpath("");
 	
+	public static final By packageLink = By.xpath("//lightning-primitive-custom-cell//a");
+	public static final By bundleButton = By.xpath("(//*[text()='Bundle'])[last()]");
+	public static final By searchDecisionPackage_Input = By.xpath("//input[@placeholder='Search Decision Packages...']");
+	public static final By reviewDecisionPackage = By.xpath("//lightning-base-combobox-item//following::*[text()='State Officer Review']/../preceding-sibling::span/span[contains(text(), 'HHS')]");
+	public static final By checkBox = By.xpath("(//*[@aria-label='Add/Remove']//following::lightning-primitive-input-checkbox//input)[last()]");
+	public static final By checkBox2 = By.xpath("(//*[@aria-label='Add/Remove']//following::lightning-primitive-input-checkbox//input)[last()-1]");
+	public static final By savebundle_button = By.xpath("//button[text()='Save Bundle']");
+	public static final By successMsg_BundleChanges = By.xpath("//*[text()='Bundle changes saved successfully']");
+	public static final By cancelAndClose = By.xpath("//button[@title='Cancel and close']");
 	
-	
+	public static final By CancelButton = By.xpath("//button[text()='Cancel']");
+	public static final By NameColumnHeader = By.xpath("//*[text()='Name']/parent::a")	;
+	public static final By packageSelectionCount = By.xpath("//*[text()='Packages Selected']/..//span[1]");
 	
 	
 }

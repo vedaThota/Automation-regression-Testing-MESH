@@ -10,9 +10,12 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.time.Duration;
 import java.util.ArrayList;
+import java.util.Iterator;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.interactions.Actions;
 import org.testng.Assert;
 
@@ -23,6 +26,8 @@ import com.aventstack.extentreports.markuputils.MarkupHelper;
 import com.utility.SafeActions;
 
 public class DecisionPackagePage extends SafeActions implements DecisionPackage_Loc {
+
+	int packageCreationDuration = 0;
 
 	public void validateMandatoryFieldsErrorMessages() {
 		waitFor(3);
@@ -51,12 +56,17 @@ public class DecisionPackagePage extends SafeActions implements DecisionPackage_
 	}
 
 	Robot rb;
+	static String stateCharacter = "";
 
 	public void verifyUserCanCreate_DecisionPackage(By submisionTypeLoc, String text) {
+		jsClickOn(CancelButton, "CancelButton");
+		waitFor(1);
+		jsClickOn(newDecisionPackage, "newDecisionPackage");
 		scrollToTopofThePage();
-		String randomChar = Character.toString(getRandomStateInitial());
+		if (text.contains("APD"))
+			stateCharacter = Character.toString(getRandomStateInitial());
 		waitFor(2);
-		typeText(State_Medicaid_Agency_Input, randomChar, "State_Medicaid_Agency_Input");
+		typeText(State_Medicaid_Agency_Input, stateCharacter, "State_Medicaid_Agency_Input");
 		jsClickOn(State_Medicaid_Agency_Option, "State_Medicaid_Agency_Option");
 		jsClickOn(Submission_Type, "Submission_Type");
 		jsClickOn(submisionTypeLoc, "SubmissionTypeOption");
@@ -64,8 +74,9 @@ public class DecisionPackagePage extends SafeActions implements DecisionPackage_
 		if (text.contains("APD")) {
 			typeText(estimatedAmount, "1000", "estimatedAmount");
 		}
-		typeText(submitDate, fetchWeekdayDate("MMM dd, yyyy", 0), "submitDate");
-		typeText(acknowledgementDate, fetchWeekdayDate("MMM dd, yyyy", 0), "acknowledgementDate");
+		typeText(submitDate, fetchWeekdayDate("MMM dd, yyyy", packageCreationDuration), "submitDate");
+		jsClickOn(acknowledgementDate, "acknowledgementDate");
+		typeText(acknowledgementDate, fetchWeekdayDate("MMM dd, yyyy", packageCreationDuration), "acknowledgementDate");
 		jsClickOn(oPsDiv_HHS, "oPsDiv_HHS");
 		takeScreenshotFor("Filling the form before the file upload");
 		jsClickOn(uploadFiles, "uploadFiles");
@@ -153,7 +164,8 @@ public class DecisionPackagePage extends SafeActions implements DecisionPackage_
 				if (listOfFiles[i].isFile()) {
 					String fileName = listOfFiles[i].getName();
 					System.out.println("File " + fileName);
-					if (fileName.contains(fetchDate("yyyy-MM-dd", 0)) && fileName.contains(type)) {
+					if (fileName.contains(fetchDate("yyyy-MM-dd", packageCreationDuration))
+							&& fileName.contains(type)) {
 						condition = fileName;
 						break;
 					}
@@ -188,20 +200,19 @@ public class DecisionPackagePage extends SafeActions implements DecisionPackage_
 		driver.switchTo().defaultContent();
 		deleteAllFilesAfter_Verification();
 	}
-	
+
 	public void deleteAllFilesAfter_Verification() {
 		try {
 			Files.walk(Paths.get(System.getProperty("user.dir") + "\\src\\test\\resources\\data\\FilesDownload"))
-			.filter(Files::isRegularFile)
-			.map(Path::toFile)
-			.forEach(File::delete);
+					.filter(Files::isRegularFile).map(Path::toFile).forEach(File::delete);
 		} catch (IOException e) {
-			
+
 			e.printStackTrace();
 		}
 	}
 
 	public String decisionTitle = "";
+	public String decisionPackageTitle_APD = "";
 
 	public void verifyMandatoryFields_OnDecisionPackage(String title, String submisionType) {
 		waitFor(5);
@@ -209,6 +220,7 @@ public class DecisionPackagePage extends SafeActions implements DecisionPackage_
 		System.out.println("stateMedicaidAgency: " + stateMedicaidAgency);
 		waitFor(4);
 		decisionTitle = getTextFromUI(decisionPackageTitle, "decisionPackageTitle");
+		System.out.println("Decision Package Title: " + decisionTitle);
 		String directorState = getTextFromUI(State_Medicaid_Agency, "State_Medicaid_Agency");
 		System.out.println("directorName: " + directorState);
 
@@ -224,7 +236,9 @@ public class DecisionPackagePage extends SafeActions implements DecisionPackage_
 		jsClickOn(event_Summary_TextArea_AfterClick, "event_Summary_TextArea_AfterClick");
 		waitFor(2);
 		typeText(event_Summary_TextArea_AfterClick, "Event Summary Added", "event_Summary_TextArea_");
-		waitFor(5);
+		waitFor(2);
+		scrollByPixels(-500);
+		waitFor(3);
 		typeText(State_Medicaid_Director_Input, directorState.split(" ")[0], "State_Medicaid_Director_Input");
 		waitFor(5);
 		String directorName = getAttribute(state_Medicaid_Director_Option, "title", "state_Medicaid_Director_Option");
@@ -234,6 +248,7 @@ public class DecisionPackagePage extends SafeActions implements DecisionPackage_
 		if (submisionType.contains("APD")) {
 			jsClickOn(APD_Type, "APD_Type");
 			jsClickOn(APD_Type_Option, "APD_Type_Option");
+			decisionPackageTitle_APD = decisionTitle;
 		}
 
 		if (submisionType.contains("APD")) {
@@ -276,13 +291,22 @@ public class DecisionPackagePage extends SafeActions implements DecisionPackage_
 		jsClickOn(event_Summary_TextArea_AfterClick, "event_Summary_TextArea_AfterClick");
 		waitFor(2);
 		typeText(event_Summary_TextArea_AfterClick, "Event Summary Added", "event_Summary_TextArea_");
-		waitFor(5);
+		waitFor(2);
+		scrollByPixels(-500);
+		waitFor(3);
 		typeText(State_Medicaid_Director_Input, stateMedicaidAgency.split(" ")[0], "State_Medicaid_Director_Input");
 		waitFor(5);
 		String directorName = getAttribute(state_Medicaid_Director_Option, "title", "state_Medicaid_Director_Option");
 		System.out.println("directorName: " + directorName);
 		jsClickOn(state_Medicaid_Director_Option, "state_Medicaid_Director_Option");
+		waitFor(5);
 		scrollToBottomOfthePage();
+		waitFor(2);
+		scrollByPixels(-600);
+		waitFor(2);
+		scrollByPixels(-500);
+		waitFor(2);
+		scrollByPixels(-300);
 		typeText(ContractNumber, "ABC" + fetchDate("yyyy", 4), "ContractNumber");
 		jsClickOn(contractType, "contractType");
 		jsClickOn(contracType_SoleSource, "contracType_SoleSource");
@@ -397,6 +421,45 @@ public class DecisionPackagePage extends SafeActions implements DecisionPackage_
 		jsClickOn(templateFirstOption, "templateFirstOption");
 		jsClickOn(generateWordDocument, "generateWordDocument");
 		waitFor(4);
+	}
+
+	static String str = "";
+	JavascriptExecutor executor;
+
+	public void verifyAddingBundleChanges() throws InterruptedException {
+		executor = (JavascriptExecutor) driver;
+		jsClickOn(decisionPackages, "decisionPackages");
+		waitFor(1);
+		takeScreenshotFor("Decision packages screen");
+		jsClickOn(packageLink, "packageLink");
+		takeScreenshotFor("navigate to recent Decision packages");
+		jsClickOn(bundleButton, "bundleButton");
+		waitFor(2);
+		typeText(searchDecisionPackage_Input, decisionPackageTitle_APD.replace("APD", "PAPD"), "searchDecisionPackage");
+		waitFor(2);
+		takeScreenshotFor("Selection of now created APD Decision Package");
+		jsClickOn(reviewDecisionPackage, "reviewDecisionPackage");
+		waitFor(1);
+//		jsClickOn(NameColumnHeader, "NameColumnHeader");
+//		waitFor(1);
+		takeScreenshotFor("Before Selection of recently created RFP and Contract Decision Packages");
+		String countBeforeSelection = getTextFromUI(packageSelectionCount, "packageSelectionCount");
+		jsClickOn(checkBox, "checkBox");
+		jsClickOn(checkBox2, "checkBox2");
+		takeScreenshotFor("After Selection of recently created RFP and Contract Decision Packages");
+		jsClickOn(savebundle_button, "savebundle_button");
+		Thread.sleep(500);
+		verifyTextDisplay(successMsg_BundleChanges, "Bundle changes saved successfully");
+		takeScreenshotFor("Bundle the packages completed");
+		String countAfterSelection = getTextFromUI(packageSelectionCount, "packageSelectionCount");
+		
+		int beforeCount = Integer.parseInt(countBeforeSelection)+ 2;
+		int afterCount = Integer.parseInt(countAfterSelection) ;
+		if(beforeCount == afterCount) {
+			test.log(Status.INFO, MarkupHelper.createLabel("Package selection count was matched", ExtentColor.GREEN));
+		} else {
+			test.log(Status.FAIL, MarkupHelper.createLabel("Package selection count was NOT  matched", ExtentColor.RED));
+		}
 	}
 
 }

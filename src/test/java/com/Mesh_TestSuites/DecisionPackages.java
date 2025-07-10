@@ -25,7 +25,8 @@ public class DecisionPackages extends TestBase {
 //		dpp.verifyDueDate("Due Date On Emergency");
 		// Validation of required fields after decision package creation 
 		dpp.verifyMandatoryFields_OnDecisionPackage("E&E-HHS-APD", "APD");
-		dpp.selectEmergencyRequestInthe_DecisionPackage();
+		
+//		dpp.selectEmergencyRequestInthe_DecisionPackage();
 		
 		dpp.scrollToBottomOfthePage();
 		waitFor(1);
@@ -54,7 +55,9 @@ public class DecisionPackages extends TestBase {
 //		dpp.verifyDueDate("Due Date On Emergency");
 		// Validation of required fields after decision package creation 
 		dpp.verifyMandatoryFields_OnDecisionPackage("E&E-HHS-RFP", "RFP");
-		dpp.selectEmergencyRequestInthe_DecisionPackage();
+		
+//		dpp.selectEmergencyRequestInthe_DecisionPackage();
+		
 		dpp.verifyFileUpload("RFP");
 		dpp.verifyDownloadFile("RFP");
 		clearanceChecklistPage.updateClearanceChecklist("RFP");
@@ -80,9 +83,10 @@ public class DecisionPackages extends TestBase {
 //		dpp.verifyDueDate("Due Date On Emergency");
 		// Validation of required fields after decision package creation 
 		dpp.verifyMandatoryFieldsOn_Contract_DecisionPackage("E&E-HHS-Contract");
-		dpp.selectEmergencyRequestInthe_DecisionPackage();
 		
-		dpp.scrollByPixels(500);//
+//		dpp.selectEmergencyRequestInthe_DecisionPackage();
+		
+		dpp.scrollByPixels(600);//
 		waitFor(1);
 		dpp.verifyContractAmountDisplay();
 		takeScreenshotFor("Amount Shows in Contract type");
@@ -97,6 +101,13 @@ public class DecisionPackages extends TestBase {
 		dpp.addRelatedProject();
 	}
 
-	
+	@Test(groups = { "Regression"})
+	public void DecisionPackage_TC_004_Verify_Adding_bundle_Packages() throws InterruptedException {
+
+		waitFor(3);
+		dpp.verifyAddingBundleChanges();
+		waitFor(2);
+		
+	}
 	
 }
