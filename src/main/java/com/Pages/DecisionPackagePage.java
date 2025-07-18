@@ -400,7 +400,8 @@ public class DecisionPackagePage extends SafeActions implements DecisionPackage_
 		takeScreenshotFor("Before related project added screenshot");
 		waitFor(3);
 		jsClickOn(save_Button, "save_Button");
-
+		waitFor(3);
+		jsClickOn(save_Button, "save_Button");
 		takeScreenshotFor("New Project Created screenshot");
 
 	}
@@ -421,6 +422,45 @@ public class DecisionPackagePage extends SafeActions implements DecisionPackage_
 		jsClickOn(templateFirstOption, "templateFirstOption");
 		jsClickOn(generateWordDocument, "generateWordDocument");
 		waitFor(4);
+	}
+	public void verifyGenerateTemplateDisappearIfRequiredFieldMiss() {
+		scrollToBottomOfthePage();
+		waitFor(2);
+		jsClickOn(editUpdateType, "editUpdateType");
+		jsClickOn(initialSubmision, "initialSubmision");
+		jsClickOn(submitback, "submitback");
+		jsClickOn(save_Button, "save_Button");
+		waitFor(3);
+		try {
+			driver.findElement(By.xpath("//*[text()='Generate Template']")).click();
+			test.log(Status.FAIL, MarkupHelper.createLabel("Generate Template button still displaying so failed", ExtentColor.RED));
+		} catch(Exception e) {
+			test.log(Status.INFO, MarkupHelper.createLabel("Generate Template button NOT displaying as expected", ExtentColor.GREEN));
+		}
+		takeScreenshotFor("Generate button Not showing on the screen");
+	}
+	
+	public void verifyGenerateTemplateDisappearIfSummaryFieldMiss() {
+		waitFor(2);
+		jsClickOn(EditStatus, "EditStatus");
+		waitFor(2);
+		scrollToBottomOfthePage();
+		waitFor(2);
+		jsClickOn(event_Summary_TextArea, "event_Summary_TextArea");
+		waitFor(2);
+		jsClickOn(event_Summary_TextArea_AfterClick, "event_Summary_TextArea_AfterClick");
+		waitFor(2);
+		driver.findElement(event_Summary_TextArea_AfterClick).clear();
+		waitFor(2);
+		jsClickOn(save_Button, "save_Button");
+		waitFor(3);
+		try {
+			driver.findElement(By.xpath("//*[text()='Generate Template']")).click();
+			test.log(Status.FAIL, MarkupHelper.createLabel("Generate Template button still displaying so failed", ExtentColor.RED));
+		} catch(Exception e) {
+			test.log(Status.INFO, MarkupHelper.createLabel("Generate Template button NOT displaying as expected", ExtentColor.GREEN));
+		}
+		takeScreenshotFor("Generate button Not showing on the screen");
 	}
 
 	static String str = "";

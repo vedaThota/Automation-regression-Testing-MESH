@@ -55,7 +55,7 @@ public interface DecisionPackage_Loc {
 	public static final By APD_Update_Type = By.xpath("//span[@title='Initial Submission']");
 	public static final By APD_Update_Type_Add_Button = By.xpath("//span[@title='Initial Submission']/following::button");
 	public static final By event_Summary_TextArea = By.xpath("//*[text()='Executive Summary']/../following-sibling::div/div/div[3]/div");
-	public static final By event_Summary_TextArea_AfterClick = By.xpath("//div[contains(@class, 'ql-editor ql-blan')]");
+	public static final By event_Summary_TextArea_AfterClick = By.xpath("//div[contains(@class, 'ql-editor')]");
 	public static final By estimatedAmount = By.xpath("//label[text()='Estimated Funding Request']/following-sibling::div/input");
 	public static final By approveChoosen = By.xpath("//lightning-formatted-text[text()='Approve']");
 	public static final By APD_Type_Choosen = By.xpath("//lightning-formatted-text[text()='Planning Advanced Planning Document (PAPD)']");
@@ -127,5 +127,10 @@ public interface DecisionPackage_Loc {
 	public static final By NameColumnHeader = By.xpath("//*[text()='Name']/parent::a")	;
 	public static final By packageSelectionCount = By.xpath("//*[text()='Packages Selected']/..//span[1]");
 	
+	public static final By editUpdateType = By.xpath("//button[@title='Edit APD Update Type']");
+	public static final By initialSubmision = By.xpath("//*[text()='Initial Submission']");
+	public static final By submitback = By.xpath("//*[text()='APD Update Type']/following::button[@title='Move to Available']");
+	
+	public static final By EditStatus = By.xpath("//button[@title='Edit Status']");
 	
 }

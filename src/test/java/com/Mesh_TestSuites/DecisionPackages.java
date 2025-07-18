@@ -32,15 +32,18 @@ public class DecisionPackages extends TestBase {
 		waitFor(1);
 		dpp.verifyFundingTypeAmountDisplay();
 		takeScreenshotFor("Amount Shows in APD type");
+		
+		dpp.verifyBeginReviewStatus();
+		takeScreenshotFor("Begin Review status in APD type");
+
 		dpp.verifyFileUpload("APD");
 		dpp.verifyDownloadFile("APD");
 //	////	dpp.verifyDueDate("Due Date when No Emergency");
 		clearanceChecklistPage.updateClearanceChecklist("APD");
-		dpp.verifyBeginReviewStatus();
-		takeScreenshotFor("Begin Review status in APD type");
+		dpp.addRelatedProject();
 		dpp.verifyTemplateGeneration();
 		takeScreenshotFor("Template Generation in APD type");
-		dpp.addRelatedProject();
+		dpp.verifyGenerateTemplateDisappearIfRequiredFieldMiss();
 		dpp.closeOtherWindows();
 	}
 	
@@ -57,15 +60,17 @@ public class DecisionPackages extends TestBase {
 		dpp.verifyMandatoryFields_OnDecisionPackage("E&E-HHS-RFP", "RFP");
 		
 //		dpp.selectEmergencyRequestInthe_DecisionPackage();
-		
+		dpp.verifyBeginReviewStatus();
+		takeScreenshotFor("Begin Review status in RFP type");
 		dpp.verifyFileUpload("RFP");
 		dpp.verifyDownloadFile("RFP");
 		clearanceChecklistPage.updateClearanceChecklist("RFP");
-		dpp.verifyBeginReviewStatus();
-		takeScreenshotFor("Begin Review status in RFP type");
+		
+		dpp.addRelatedProject();
+
 		dpp.verifyTemplateGeneration();
 		takeScreenshotFor("Template Generation in RFP type");
-		dpp.addRelatedProject();
+		dpp.verifyGenerateTemplateDisappearIfSummaryFieldMiss();
 		driver.switchTo().window(new ArrayList<String>(driver.getWindowHandles()).get(1));
 		driver.close();
 		driver.switchTo().window(new ArrayList<String>(driver.getWindowHandles()).get(0));
@@ -91,14 +96,16 @@ public class DecisionPackages extends TestBase {
 		dpp.verifyContractAmountDisplay();
 		takeScreenshotFor("Amount Shows in Contract type");
 //		dpp.verifyDueDate("Due Date when No Emergency");
+		dpp.verifyBeginReviewStatus();
+		takeScreenshotFor("Begin Review status in Contract type");
 		dpp.verifyFileUpload("Contract");
 		dpp.verifyDownloadFile("Contract");
 		clearanceChecklistPage.updateClearanceChecklist("Contract");
-		dpp.verifyBeginReviewStatus();
-		takeScreenshotFor("Begin Review status in Contract type");
-		dpp.verifyTemplateGeneration();
+		
 		takeScreenshotFor("Template Generation in Contract type");
 		dpp.addRelatedProject();
+		dpp.verifyTemplateGeneration();
+		dpp.verifyGenerateTemplateDisappearIfRequiredFieldMiss();
 	}
 
 	@Test(groups = { "Regression"})
