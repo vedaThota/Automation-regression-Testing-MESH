@@ -13,7 +13,7 @@ import com.utility.SafeActions;
 public class ClearenceChecklist extends SafeActions implements ClearenceCheckList_Loc {
 
 	public void updateClearanceChecklist(String type) {
-	
+		waitFor(5);
 		jsClickOn(clearanceChecklist, "clearanceChecklist");
 		jsClickOn(soReviewIsCompletede, "soReviewIsCompletede");
 		jsClickOn(mostRecentTemplateCheckBox, "mostRecentTemplateCheckBox");
@@ -35,10 +35,10 @@ public class ClearenceChecklist extends SafeActions implements ClearenceCheckLis
 		jsClickOn(SOCompleted_Clearance, "SOCompleted_Clearance");
 		jsClickOn(saveButton, "saveButton");
 //		waitFor(1);
-		if (type.contains("Contract") || type.contains("RFP"))
+		if (type.contains("Contract") || type.contains("APD"))
 			driver.switchTo().window(new ArrayList<String>(driver.getWindowHandles()).get(0));
 		else
-			driver.switchTo().window(new ArrayList<String>(driver.getWindowHandles()).get(2));
+			driver.switchTo().window(new ArrayList<String>(driver.getWindowHandles()).get(1));
 //		verifyTextDisplay(checklistSaved, "Checklist saved successfully");
 		takeScreenshotFor("Updated clearance checklist screenshot");
 	}

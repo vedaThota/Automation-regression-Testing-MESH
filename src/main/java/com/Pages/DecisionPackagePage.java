@@ -363,6 +363,45 @@ public class DecisionPackagePage extends SafeActions implements DecisionPackage_
 		verifyTextDisplay(inReview, "In Review");
 	}
 
+	public void verifyMoveToDeputyDirector_BeforeAll_Fields_Submit() {
+		jsClickOn(cancelAndClose, "cancelAndClose");
+		waitFor(3);
+		jsClickOn(decisionPackageTab, "decisionPackageTab");
+		By leadPackage = By.xpath("//a[@title='" + decisionPackageNameText + "']");
+		waitFor(3);
+		jsClickOn(leadPackage, "leadPackage");
+		waitFor(3);
+		jsClickOn(moveToDeputyDirector, "moveToDeputyDirector");
+		verifyTextDisplay(ErrorMessage, "APD Update Type, SO Clearance Checklist");
+		waitFor(1);
+		takeScreenshotFor("Deputy director stage naviagtion Error message");
+		try {
+			if(driver.findElement(closeErrorPopup).isDisplayed()) {
+				jsClickOn(closeErrorPopup, "closeErrorPopup");
+			}
+		}catch(Exception e) {}
+	}
+
+	public void verifyMoveToDeputyDirector_Stage() {
+		scrollToBottomOfthePage();
+		waitFor(3);
+		jsClickOn(apdEdit, "apdEdit");
+		waitFor(1);
+		jsClickOn(initialSubmision, "initialSubmision");
+		jsClickOn(APD_Type_Option, "APD_Type_Option");
+		jsClickOn(save_Button, "save_Button");
+		waitFor(3);
+		
+		jsClickOn(moveToDeputyDirector, "moveToDeputyDirector");
+		takeScreenshotFor("Deputy director stage navigation success messaage");
+		waitFor(5);
+		String status = getAttribute(deputyDirectorTab, "aria-selected", "deputyDirectorTab");
+		if (status.contains("true"))
+			test.log(Status.INFO, MarkupHelper.createLabel("Moved to Deputy Director", ExtentColor.BLUE));
+		else
+			test.log(Status.FAIL, MarkupHelper.createLabel("Failed to Moved to Deputy Director", ExtentColor.RED));
+	}
+
 	public void verifyFundingTypeAmountDisplay() {
 		String amountDisplay = getTextFromUI(estimatedFundingRequested, "estimatedFundingRequested");
 		if (!amountDisplay.contains(".000"))
@@ -382,13 +421,16 @@ public class DecisionPackagePage extends SafeActions implements DecisionPackage_
 	}
 
 	public void addRelatedProject() {
+		waitFor(5);
 		jsClickOn(RelatedProjects_button, "RelatedProjects_button");
 		jsClickOn(New_Link, "RelatedProjects_button");
 		jsClickOn(MDBT_Project_Tab_Name, "MDBT_Project_Tab_Name");
 		jsClickOn(NewProject, "NewProject");
+		waitFor(2);
 		String stateShortForm = decisionTitle.split("-")[0];
 		String text = generateRandomString(10);
 		takeScreenshotFor("Adding new project form screenshot");
+		waitFor(2);
 		typeText(newProject_MDBT_Project_Tab_Name, stateShortForm + "-" + text, "newProject_MDBT_Project_Tab_Name");
 		typeText(newProject_FullName, stateShortForm + "-" + text + " Full", "newProject_FullName");
 		typeText(newProject_State_Medicaid_Agency, stateMedicaidAgency, "newProject_State_Medicaid_Agency");
@@ -410,20 +452,19 @@ public class DecisionPackagePage extends SafeActions implements DecisionPackage_
 		driver.switchTo().window(new ArrayList<String>(driver.getWindowHandles()).get(0));
 		driver.close();
 		driver.switchTo().window(new ArrayList<String>(driver.getWindowHandles()).get(0));
-		driver.close();
-		driver.switchTo().window(new ArrayList<String>(driver.getWindowHandles()).get(1));
-		driver.close();
-		driver.switchTo().window(new ArrayList<String>(driver.getWindowHandles()).get(0));
 	}
 
 	public void verifyTemplateGeneration() {
 		jsClickOn(generateTemplate, "generateTemplate");
 		jsClickOn(selectATemplate, "selectATemplate");
 		jsClickOn(templateFirstOption, "templateFirstOption");
+		waitFor(2);
 		jsClickOn(generateWordDocument, "generateWordDocument");
 		waitFor(4);
 	}
+
 	public void verifyGenerateTemplateDisappearIfRequiredFieldMiss() {
+		waitFor(5);
 		scrollToBottomOfthePage();
 		waitFor(2);
 		jsClickOn(editUpdateType, "editUpdateType");
@@ -433,15 +474,23 @@ public class DecisionPackagePage extends SafeActions implements DecisionPackage_
 		waitFor(3);
 		try {
 			driver.findElement(By.xpath("//*[text()='Generate Template']")).click();
-			test.log(Status.FAIL, MarkupHelper.createLabel("Generate Template button still displaying so failed", ExtentColor.RED));
-		} catch(Exception e) {
-			test.log(Status.INFO, MarkupHelper.createLabel("Generate Template button NOT displaying as expected", ExtentColor.GREEN));
+			test.log(Status.FAIL,
+					MarkupHelper.createLabel("Generate Template button still displaying so failed", ExtentColor.RED));
+		} catch (Exception e) {
+			test.log(Status.INFO,
+					MarkupHelper.createLabel("Generate Template button NOT displaying as expected", ExtentColor.GREEN));
 		}
 		takeScreenshotFor("Generate button Not showing on the screen");
 	}
-	
+
+	public static String decisionPackageNameText = "";
+
+	public void collectLeadTitle() {
+		decisionPackageNameText = getTextFromUI(decisionPackageName, "decisionPackageName");
+	}
+
 	public void verifyGenerateTemplateDisappearIfSummaryFieldMiss() {
-		waitFor(2);
+		waitFor(5);
 		jsClickOn(EditStatus, "EditStatus");
 		waitFor(2);
 		scrollToBottomOfthePage();
@@ -456,11 +505,27 @@ public class DecisionPackagePage extends SafeActions implements DecisionPackage_
 		waitFor(3);
 		try {
 			driver.findElement(By.xpath("//*[text()='Generate Template']")).click();
-			test.log(Status.FAIL, MarkupHelper.createLabel("Generate Template button still displaying so failed", ExtentColor.RED));
-		} catch(Exception e) {
-			test.log(Status.INFO, MarkupHelper.createLabel("Generate Template button NOT displaying as expected", ExtentColor.GREEN));
+			test.log(Status.FAIL,
+					MarkupHelper.createLabel("Generate Template button still displaying so failed", ExtentColor.RED));
+		} catch (Exception e) {
+			test.log(Status.INFO,
+					MarkupHelper.createLabel("Generate Template button NOT displaying as expected", ExtentColor.GREEN));
 		}
+		
 		takeScreenshotFor("Generate button Not showing on the screen");
+		waitFor(5);
+		jsClickOn(EditExecutiveSummary, "EditExecutiveSummary");
+		waitFor(2);
+		scrollToBottomOfthePage();
+		waitFor(2);
+		jsClickOn(event_Summary_TextArea, "event_Summary_TextArea");
+		waitFor(2);
+		jsClickOn(event_Summary_TextArea_AfterClick, "event_Summary_TextArea_AfterClick");
+		waitFor(2);
+		typeText(event_Summary_TextArea_AfterClick, "Event Summary Added", "event_Summary_TextArea_");
+		waitFor(2);
+		jsClickOn(save_Button, "save_Button");
+		waitFor(3);
 	}
 
 	static String str = "";
@@ -479,7 +544,7 @@ public class DecisionPackagePage extends SafeActions implements DecisionPackage_
 		waitFor(2);
 		takeScreenshotFor("Selection of now created APD Decision Package");
 		jsClickOn(reviewDecisionPackage, "reviewDecisionPackage");
-		waitFor(1);
+		waitFor(3);
 //		jsClickOn(NameColumnHeader, "NameColumnHeader");
 //		waitFor(1);
 		takeScreenshotFor("Before Selection of recently created RFP and Contract Decision Packages");
@@ -492,13 +557,14 @@ public class DecisionPackagePage extends SafeActions implements DecisionPackage_
 		verifyTextDisplay(successMsg_BundleChanges, "Bundle changes saved successfully");
 		takeScreenshotFor("Bundle the packages completed");
 		String countAfterSelection = getTextFromUI(packageSelectionCount, "packageSelectionCount");
-		
-		int beforeCount = Integer.parseInt(countBeforeSelection)+ 2;
-		int afterCount = Integer.parseInt(countAfterSelection) ;
-		if(beforeCount == afterCount) {
+
+		int beforeCount = Integer.parseInt(countBeforeSelection) + 2;
+		int afterCount = Integer.parseInt(countAfterSelection);
+		if (beforeCount == afterCount) {
 			test.log(Status.INFO, MarkupHelper.createLabel("Package selection count was matched", ExtentColor.GREEN));
 		} else {
-			test.log(Status.FAIL, MarkupHelper.createLabel("Package selection count was NOT  matched", ExtentColor.RED));
+			test.log(Status.FAIL,
+					MarkupHelper.createLabel("Package selection count was NOT  matched", ExtentColor.RED));
 		}
 	}
 

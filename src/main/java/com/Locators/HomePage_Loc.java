@@ -13,7 +13,7 @@ public interface HomePage_Loc {
 	public static final By Decision_Packages = By.xpath("//a[@title='Decision Packages']");
 	public static final By allUsersFrame = By.xpath("(//iframe[@title='All Users ~ Salesforce - Unlimited Edition'])[last()]");
 	public static final By userList_V = By.xpath("//*[@class='listItemPad'][text()='V']/parent::a");
-	public static final By ThotaVEda_Login_Link = By.xpath("//a[text()='Thota, Veda']/../preceding-sibling::td/a[text()='Login']");
+	public static final By ThotaVEda_Login_Link = By.xpath("//a[contains(text(), 'Thota, Veda')]/../preceding-sibling::td/a[text()='Login']");
 
 //	public static final By setUp = By.xpath("");
 //	public static final By setUp = By.xpath("");

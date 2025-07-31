@@ -28,7 +28,7 @@ public class HomePage extends SafeActions implements HomePage_Loc {
 		jsClickOn(ThotaVEda_Login_Link, "ThotaVEda_Login_Link");
 		driver.switchTo().defaultContent();
 		// Navigating to Decision Packages screen
-		switchToWindowByIndex(2);
+		switchToWindowByIndex(1);
 		jsClickOn(Decision_Packages, "Decision_Packages");
 		waitFor(2);
 		takeScreenshotFor("Decision_Packages Navigation");

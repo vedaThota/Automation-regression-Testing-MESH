@@ -51,7 +51,7 @@ public interface DecisionPackage_Loc {
 	public static final By state_Medicaid_Director_Option = By.xpath("//label[text()='State Medicaid Director']/following::input[1]/following::ul[1]//lightning-base-combobox-item[1]/span[2]/span/lightning-base-combobox-formatted-text");
 	public static final By APD_Type = By.xpath("//span[@title='Planning Advanced Planning Document (PAPD)']");
 	public static final By APD_Type_Option = By.xpath("//span[@title='Planning Advanced Planning Document (PAPD)']/following::button");
-	
+	public static final By apdEdit = By.xpath("//button[@title='Edit APD Update Type']");
 	public static final By APD_Update_Type = By.xpath("//span[@title='Initial Submission']");
 	public static final By APD_Update_Type_Add_Button = By.xpath("//span[@title='Initial Submission']/following::button");
 	public static final By event_Summary_TextArea = By.xpath("//*[text()='Executive Summary']/../following-sibling::div/div/div[3]/div");
@@ -131,6 +131,24 @@ public interface DecisionPackage_Loc {
 	public static final By initialSubmision = By.xpath("//*[text()='Initial Submission']");
 	public static final By submitback = By.xpath("//*[text()='APD Update Type']/following::button[@title='Move to Available']");
 	
+	public static final By moveToDeputyDirector = By.xpath("(//*[text()='Move to Deputy Director'])[last()]");
+	public static final By ErrorMessage = By.xpath("//*[text()='APD Update Type, SO Clearance Checklist']");
+	public static final By closeErrorPopup = By.xpath("//button[@title='Close']");
 	public static final By EditStatus = By.xpath("//button[@title='Edit Status']");
+	public static final By Cancel_Close = By.xpath("//button[@title='Cancel and close']");
+	public static final By deputyDirectorTab = By.xpath("//*[@title='Deputy Director Review']");
+	public static final By decisionPackageTab = By.xpath("//a[@title='Decision Packages']");
+	public static final By decisionPackageName = By.xpath("//h1//*[text()='Decision Package']/following::lightning-formatted-text[1]");
+	public static final By EditExecutiveSummary = By.xpath("//button[@title='Edit Executive Summary']");
+//	public static final By EditStatus = By.xpath("//button[@title='Edit Status']");
+//	public static final By EditStatus = By.xpath("//button[@title='Edit Status']");
+//	public static final By EditStatus = By.xpath("//button[@title='Edit Status']");
+//	public static final By EditStatus = By.xpath("//button[@title='Edit Status']");
+//	public static final By EditStatus = By.xpath("//button[@title='Edit Status']");
+	
+	
+	
+	
+	
 	
 }
