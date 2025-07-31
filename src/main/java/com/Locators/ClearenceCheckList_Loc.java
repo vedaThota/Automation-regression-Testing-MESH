@@ -3,7 +3,7 @@ package com.Locators;
 import org.openqa.selenium.By;
 
 public interface ClearenceCheckList_Loc {
-	public static final By clearanceChecklist = By.xpath("//*[text()='Clearance Checklist']");
+	public static final By clearanceChecklist = By.xpath("(//*[text()='Clearance Checklist'])[last()]");
 	public static final By soReviewIsCompletede = By.xpath("//*[contains(@aria-label, 'The SO review is completed')]");
 	public static final By mostRecentTemplateCheckBox = By.xpath("//*[contains(@aria-label, 'The most recent template')]");
 	public static final By originalEmailSubmision = By.xpath("//*[contains(@aria-label, 'Original email submission')]");
