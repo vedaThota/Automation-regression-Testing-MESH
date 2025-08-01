@@ -213,6 +213,7 @@ public class DecisionPackagePage extends SafeActions implements DecisionPackage_
 
 	public String decisionTitle = "";
 	public String decisionPackageTitle_APD = "";
+	public static String directorState = "";
 
 	public void verifyMandatoryFields_OnDecisionPackage(String title, String submisionType) {
 		waitFor(5);
@@ -221,7 +222,7 @@ public class DecisionPackagePage extends SafeActions implements DecisionPackage_
 		waitFor(4);
 		decisionTitle = getTextFromUI(decisionPackageTitle, "decisionPackageTitle");
 		System.out.println("Decision Package Title: " + decisionTitle);
-		String directorState = getTextFromUI(State_Medicaid_Agency, "State_Medicaid_Agency");
+		directorState = getTextFromUI(State_Medicaid_Agency, "State_Medicaid_Agency");
 		System.out.println("directorName: " + directorState);
 
 		verifyTextDisplay(decisionPackageTitle, title);
@@ -376,10 +377,11 @@ public class DecisionPackagePage extends SafeActions implements DecisionPackage_
 		waitFor(1);
 		takeScreenshotFor("Deputy director stage naviagtion Error message");
 		try {
-			if(driver.findElement(closeErrorPopup).isDisplayed()) {
+			if (driver.findElement(closeErrorPopup).isDisplayed()) {
 				jsClickOn(closeErrorPopup, "closeErrorPopup");
 			}
-		}catch(Exception e) {}
+		} catch (Exception e) {
+		}
 	}
 
 	public void verifyMoveToDeputyDirector_Stage() {
@@ -391,7 +393,7 @@ public class DecisionPackagePage extends SafeActions implements DecisionPackage_
 		jsClickOn(APD_Type_Option, "APD_Type_Option");
 		jsClickOn(save_Button, "save_Button");
 		waitFor(3);
-		
+
 		jsClickOn(moveToDeputyDirector, "moveToDeputyDirector");
 		takeScreenshotFor("Deputy director stage navigation success messaage");
 		waitFor(5);
@@ -493,14 +495,8 @@ public class DecisionPackagePage extends SafeActions implements DecisionPackage_
 		waitFor(5);
 		jsClickOn(EditStatus, "EditStatus");
 		waitFor(2);
-		scrollToBottomOfthePage();
-		waitFor(2);
-		jsClickOn(event_Summary_TextArea, "event_Summary_TextArea");
-		waitFor(2);
-		jsClickOn(event_Summary_TextArea_AfterClick, "event_Summary_TextArea_AfterClick");
-		waitFor(2);
-		driver.findElement(event_Summary_TextArea_AfterClick).clear();
-		waitFor(2);
+		jsClickOn(clearMedicaidDirector, "clearMedicaidDirector");
+		waitFor(1);
 		jsClickOn(save_Button, "save_Button");
 		waitFor(3);
 		try {
@@ -511,21 +507,22 @@ public class DecisionPackagePage extends SafeActions implements DecisionPackage_
 			test.log(Status.INFO,
 					MarkupHelper.createLabel("Generate Template button NOT displaying as expected", ExtentColor.GREEN));
 		}
-		
+
 		takeScreenshotFor("Generate button Not showing on the screen");
+		jsClickOn(EditStatus, "EditStatus");
+		waitFor(2);
+		scrollByPixels(400);
+		jsClickOn(State_Medicaid_Director_Input, "State_Medicaid_Director_Input");
+		waitFor(1);
+		typeText(State_Medicaid_Director_Input, directorState.split(" ")[0], "State_Medicaid_Director_Input");
 		waitFor(5);
-		jsClickOn(EditExecutiveSummary, "EditExecutiveSummary");
-		waitFor(2);
-		scrollToBottomOfthePage();
-		waitFor(2);
-		jsClickOn(event_Summary_TextArea, "event_Summary_TextArea");
-		waitFor(2);
-		jsClickOn(event_Summary_TextArea_AfterClick, "event_Summary_TextArea_AfterClick");
-		waitFor(2);
-		typeText(event_Summary_TextArea_AfterClick, "Event Summary Added", "event_Summary_TextArea_");
+		String directorName = getAttribute(state_Medicaid_Director_Option, "title", "state_Medicaid_Director_Option");
+		System.out.println("directorName: " + directorName);
+		jsClickOn(state_Medicaid_Director_Option, "state_Medicaid_Director_Option");
 		waitFor(2);
 		jsClickOn(save_Button, "save_Button");
 		waitFor(3);
+		takeScreenshotFor("Generate Template button enabled after all mandataory fields added");
 	}
 
 	static String str = "";

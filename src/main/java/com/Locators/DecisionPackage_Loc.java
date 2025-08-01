@@ -140,7 +140,7 @@ public interface DecisionPackage_Loc {
 	public static final By decisionPackageTab = By.xpath("//a[@title='Decision Packages']");
 	public static final By decisionPackageName = By.xpath("//h1//*[text()='Decision Package']/following::lightning-formatted-text[1]");
 	public static final By EditExecutiveSummary = By.xpath("//button[@title='Edit Executive Summary']");
-//	public static final By EditStatus = By.xpath("//button[@title='Edit Status']");
+	public static final By clearMedicaidDirector = By.xpath("//*[text()='State Medicaid Director']/following::button[@title='Clear Selection']");
 //	public static final By EditStatus = By.xpath("//button[@title='Edit Status']");
 //	public static final By EditStatus = By.xpath("//button[@title='Edit Status']");
 //	public static final By EditStatus = By.xpath("//button[@title='Edit Status']");
