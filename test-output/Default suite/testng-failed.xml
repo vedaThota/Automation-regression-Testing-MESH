@@ -3,17 +3,17 @@
 <suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="com.Mesh_TestSuites.DecisionPackages">
+      <class name="com.Mesh_TestSuites.DecisionPackages_Bundle_Validation">
         <methods>
           <include name="beforetest"/>
-          <include name="DecisionPackage_TC_004_Verify_Adding_bundle_Packages"/>
           <include name="beforeClass"/>
           <include name="beofreMethod"/>
           <include name="afterClass"/>
           <include name="afterTest"/>
+          <include name="DecisionPackage_TC_002_Verify_DecisionPackage_Creation_with_RFP_as_SubmisionType"/>
           <include name="afterMethod"/>
         </methods>
-      </class> <!-- com.Mesh_TestSuites.DecisionPackages -->
+      </class> <!-- com.Mesh_TestSuites.DecisionPackages_Bundle_Validation -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->

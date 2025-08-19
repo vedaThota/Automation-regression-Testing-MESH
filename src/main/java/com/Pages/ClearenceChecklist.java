@@ -14,7 +14,7 @@ public class ClearenceChecklist extends SafeActions implements ClearenceCheckLis
 
 	public void updateClearanceChecklist(String type) {
 		waitFor(5);
-		jsClickOn(clearanceChecklist, "clearanceChecklist");
+		jsClickOn(clearanceChecklistLast, "clearanceChecklistLast");
 		jsClickOn(soReviewIsCompletede, "soReviewIsCompletede");
 		jsClickOn(mostRecentTemplateCheckBox, "mostRecentTemplateCheckBox");
 		jsClickOn(originalEmailSubmision, "originalEmailSubmision");
@@ -22,25 +22,57 @@ public class ClearenceChecklist extends SafeActions implements ClearenceCheckLis
 		waitFor(getRandomStateInitial());
 		int count = driver.getWindowHandles().size();
 		System.out.println("Count: " + count);
-		if (count == 4 || count == 2) {
+		if (count == 3) {
 			test.log(Status.INFO,
 					MarkupHelper.createLabel("Most recent template link launching new window", ExtentColor.BLUE));
 		} else {
 			test.log(Status.FAIL,
 					MarkupHelper.createLabel("Most recent template link NOT launching new window", ExtentColor.RED));
 		}
+		waitFor(2);
+		if (type.contains("APD")) {
+			driver.switchTo().window(new ArrayList<String>(driver.getWindowHandles()).get(2));
+			driver.close();
+			driver.switchTo().window(new ArrayList<String>(driver.getWindowHandles()).get(1));
+		}
+		if (type.contains("RFP") || type.contains("Contract")) {
+			driver.switchTo().window(new ArrayList<String>(driver.getWindowHandles()).get(1));
+			driver.close();
+			driver.switchTo().window(new ArrayList<String>(driver.getWindowHandles()).get(0));
+		}
 		jsClickOn(submisionTypeCheckbox, "submisionTypeCheckbox");
+		waitFor(1);
 		if (type.contains("Contract") || type.contains("RFP"))
 			jsClickOn(scopeOfContractCheckbox, "scopeOfContractCheckbox");
+		if (type.contains("APD"))
+			jsClickOn(theCorrespondingOpDiv, "theCorrespondingOpDiv");
+
 		jsClickOn(SOCompleted_Clearance, "SOCompleted_Clearance");
 		jsClickOn(saveButton, "saveButton");
-//		waitFor(1);
-		if (type.contains("Contract") || type.contains("APD"))
-			driver.switchTo().window(new ArrayList<String>(driver.getWindowHandles()).get(0));
-		else
-			driver.switchTo().window(new ArrayList<String>(driver.getWindowHandles()).get(1));
-//		verifyTextDisplay(checklistSaved, "Checklist saved successfully");
+		waitFor(1);
+
+		verifyTextDisplay(checklistSaved, "Checklist saved successfully");
 		takeScreenshotFor("Updated clearance checklist screenshot");
 	}
+
+	public void moveToMainPage() {
+		driver.switchTo().window(new ArrayList<String>(driver.getWindowHandles()).get(0));
+		driver.close();
+		driver.switchTo().window(new ArrayList<String>(driver.getWindowHandles()).get(0));
+
+	}
+
+	public void moveToFistChildPackage() {
+		jsClickOn(firstChildPackageNavigationLink, "firstChildPackageNavigationLink");
+	}
+
+	public void moveToSecondChildPackage() {
+		jsClickOn(secondChildPackageNavigationLink, "secondChildPackageNavigationLink");
+	}
+
+	public void moveToLeadPackage() {
+		waitFor(2);
+		jsClickOn(leadPackageNavLink, "leadPackageNavLink");
+	};
 
 }

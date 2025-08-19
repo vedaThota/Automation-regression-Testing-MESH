@@ -58,7 +58,7 @@ public class DecisionPackagePage extends SafeActions implements DecisionPackage_
 	Robot rb;
 	static String stateCharacter = "";
 
-	public void verifyUserCanCreate_DecisionPackage(By submisionTypeLoc, String text) {
+	public void verifyUserCanCreate_DecisionPackage(By submisionTypeLoc, String text, String OPsType) {
 		jsClickOn(CancelButton, "CancelButton");
 		waitFor(1);
 		jsClickOn(newDecisionPackage, "newDecisionPackage");
@@ -77,7 +77,13 @@ public class DecisionPackagePage extends SafeActions implements DecisionPackage_
 		typeText(submitDate, fetchWeekdayDate("MMM dd, yyyy", packageCreationDuration), "submitDate");
 		jsClickOn(acknowledgementDate, "acknowledgementDate");
 		typeText(acknowledgementDate, fetchWeekdayDate("MMM dd, yyyy", packageCreationDuration), "acknowledgementDate");
-		jsClickOn(oPsDiv_HHS, "oPsDiv_HHS");
+		if (OPsType.contains("HHS"))
+			jsClickOn(oPsDiv_HHS, "oPsDiv_HHS");
+		if (OPsType.contains("CMS"))
+			jsClickOn(oPsDiv_CMS, "oPsDiv_CMS");
+		if (OPsType.contains("FNS"))
+			jsClickOn(oPsDiv_FNS, "oPsDiv_FNS");
+
 		takeScreenshotFor("Filling the form before the file upload");
 		jsClickOn(uploadFiles, "uploadFiles");
 		waitFor(5);
@@ -213,6 +219,9 @@ public class DecisionPackagePage extends SafeActions implements DecisionPackage_
 
 	public String decisionTitle = "";
 	public String decisionPackageTitle_APD = "";
+	public static String directorState = "";
+	public static String rfpTitle = "";
+	public static String contractTitle = "";
 
 	public void verifyMandatoryFields_OnDecisionPackage(String title, String submisionType) {
 		waitFor(5);
@@ -220,8 +229,11 @@ public class DecisionPackagePage extends SafeActions implements DecisionPackage_
 		System.out.println("stateMedicaidAgency: " + stateMedicaidAgency);
 		waitFor(4);
 		decisionTitle = getTextFromUI(decisionPackageTitle, "decisionPackageTitle");
-		System.out.println("Decision Package Title: " + decisionTitle);
-		String directorState = getTextFromUI(State_Medicaid_Agency, "State_Medicaid_Agency");
+		if(submisionType.contains("RFP")){
+				rfpTitle = decisionTitle;
+		}
+	   System.out.println("Decision Package Title: " + decisionTitle);
+		directorState = getTextFromUI(State_Medicaid_Agency, "State_Medicaid_Agency");
 		System.out.println("directorName: " + directorState);
 
 		verifyTextDisplay(decisionPackageTitle, title);
@@ -231,6 +243,7 @@ public class DecisionPackagePage extends SafeActions implements DecisionPackage_
 		jsClickOn(Recommended_Action, "Recommended_Action");
 		waitFor(2);
 		jsClickOn(Approve_Option, "Approve_Option");
+		
 		jsClickOn(event_Summary_TextArea, "event_Summary_TextArea");
 		waitFor(2);
 		jsClickOn(event_Summary_TextArea_AfterClick, "event_Summary_TextArea_AfterClick");
@@ -258,7 +271,9 @@ public class DecisionPackagePage extends SafeActions implements DecisionPackage_
 		takeScreenshotFor("Mandatory Fields before submit");
 		jsClickOn(save_Button, "save_Button");
 		waitFor(3);
+		
 		verifyTextDisplay(approveChoosen, "Approve");
+		
 		if (submisionType.contains("APD")) {
 			verifyTextDisplay(APD_Type_Choosen, "Planning Advanced Planning Document (PAPD)");
 			verifyTextDisplay(APD_Update_Type_Choosen, "Initial Submission");
@@ -273,12 +288,13 @@ public class DecisionPackagePage extends SafeActions implements DecisionPackage_
 
 	}
 
-	public String stateMedicaidAgency = "";
+	public static String stateMedicaidAgency = "";
 
 	public void verifyMandatoryFieldsOn_Contract_DecisionPackage(String title) {
 		waitFor(5);
 		stateMedicaidAgency = getTextFromUI(State_Medicaid_Agency, "State_Medicaid_Agency");
 		System.out.println("stateMedicaidAgency: " + stateMedicaidAgency);
+		contractTitle = getTextFromUI(decisionPackageTitle, "decisionPackageTitle");
 		verifyTextDisplay(decisionPackageTitle, title);
 		takeScreenshotFor("After Decision Package created verifying title");
 		jsClickOn(Edit_Recommended_Action, "Edit_Recommended_Action");
@@ -294,7 +310,7 @@ public class DecisionPackagePage extends SafeActions implements DecisionPackage_
 		waitFor(2);
 		scrollByPixels(-500);
 		waitFor(3);
-		typeText(State_Medicaid_Director_Input, stateMedicaidAgency.split(" ")[0], "State_Medicaid_Director_Input");
+		typeText(State_Medicaid_Director_Input, stateMedicaidAgency.trim().split(" ")[0], "State_Medicaid_Director_Input");
 		waitFor(5);
 		String directorName = getAttribute(state_Medicaid_Director_Option, "title", "state_Medicaid_Director_Option");
 		System.out.println("directorName: " + directorName);
@@ -363,7 +379,7 @@ public class DecisionPackagePage extends SafeActions implements DecisionPackage_
 		verifyTextDisplay(inReview, "In Review");
 	}
 
-	public void verifyMoveToDeputyDirector_BeforeAll_Fields_Submit() {
+	public void verifyMoveToDeputyDirector_BeforeAll_Fields_Submit(String opDivType) {
 		jsClickOn(cancelAndClose, "cancelAndClose");
 		waitFor(3);
 		jsClickOn(decisionPackageTab, "decisionPackageTab");
@@ -372,14 +388,25 @@ public class DecisionPackagePage extends SafeActions implements DecisionPackage_
 		jsClickOn(leadPackage, "leadPackage");
 		waitFor(3);
 		jsClickOn(moveToDeputyDirector, "moveToDeputyDirector");
-		verifyTextDisplay(ErrorMessage, "APD Update Type, SO Clearance Checklist");
+		verifyTextDisplay(ErrorMessage, "At least one project should be linked to the decision package., No Letter Generated, SO Clearance Checklist");
 		waitFor(1);
+		if(opDivType.contains("CMS")) {
+		String EM_ChildPak = getTextFromUI(ErrorMessage2, "ErrorMessage2");
+		if(EM_ChildPak.contains("Bundled Decision Package Errors:") && EM_ChildPak.contains("At least one project should be linked to the decision package")
+				&& EM_ChildPak.contains("SO Clearance Checklist, At least one project should be linked to the decision package.") && EM_ChildPak.contains("The following Bundled Packages have a Recommended Action does not match the Lead Package:")) {
+			test.log(Status.INFO, MarkupHelper.createLabel("Bundled packages error messages displayed as expected", ExtentColor.BLUE));
+		} else {
+			test.log(Status.FAIL, MarkupHelper.createLabel("Bundled packages error messages NOT displayed as expected", ExtentColor.RED));
+		}
+		waitFor(1);
+	}
 		takeScreenshotFor("Deputy director stage naviagtion Error message");
-		try {
-			if(driver.findElement(closeErrorPopup).isDisplayed()) {
-				jsClickOn(closeErrorPopup, "closeErrorPopup");
-			}
-		}catch(Exception e) {}
+//		try {
+//			if (driver.findElement(closeErrorPopup).isDisplayed()) {
+//				jsClickOn(closeErrorPopup, "closeErrorPopup");
+//			}
+//		} catch (Exception e) {
+//		}
 	}
 
 	public void verifyMoveToDeputyDirector_Stage() {
@@ -391,7 +418,7 @@ public class DecisionPackagePage extends SafeActions implements DecisionPackage_
 		jsClickOn(APD_Type_Option, "APD_Type_Option");
 		jsClickOn(save_Button, "save_Button");
 		waitFor(3);
-		
+
 		jsClickOn(moveToDeputyDirector, "moveToDeputyDirector");
 		takeScreenshotFor("Deputy director stage navigation success messaage");
 		waitFor(5);
@@ -421,9 +448,13 @@ public class DecisionPackagePage extends SafeActions implements DecisionPackage_
 	}
 
 	public void addRelatedProject() {
-		waitFor(5);
+		waitFor(10);
+		scrollToBottomOfthePage();
+		waitFor(2);
 		jsClickOn(RelatedProjects_button, "RelatedProjects_button");
+		waitFor(2);
 		jsClickOn(New_Link, "RelatedProjects_button");
+		waitFor(2);
 		jsClickOn(MDBT_Project_Tab_Name, "MDBT_Project_Tab_Name");
 		jsClickOn(NewProject, "NewProject");
 		waitFor(2);
@@ -493,14 +524,8 @@ public class DecisionPackagePage extends SafeActions implements DecisionPackage_
 		waitFor(5);
 		jsClickOn(EditStatus, "EditStatus");
 		waitFor(2);
-		scrollToBottomOfthePage();
-		waitFor(2);
-		jsClickOn(event_Summary_TextArea, "event_Summary_TextArea");
-		waitFor(2);
-		jsClickOn(event_Summary_TextArea_AfterClick, "event_Summary_TextArea_AfterClick");
-		waitFor(2);
-		driver.findElement(event_Summary_TextArea_AfterClick).clear();
-		waitFor(2);
+		jsClickOn(clearMedicaidDirector, "clearMedicaidDirector");
+		waitFor(1);
 		jsClickOn(save_Button, "save_Button");
 		waitFor(3);
 		try {
@@ -511,21 +536,22 @@ public class DecisionPackagePage extends SafeActions implements DecisionPackage_
 			test.log(Status.INFO,
 					MarkupHelper.createLabel("Generate Template button NOT displaying as expected", ExtentColor.GREEN));
 		}
-		
+
 		takeScreenshotFor("Generate button Not showing on the screen");
+		jsClickOn(EditStatus, "EditStatus");
+		waitFor(2);
+		scrollByPixels(400);
+		jsClickOn(State_Medicaid_Director_Input, "State_Medicaid_Director_Input");
+		waitFor(2);
+		typeText(State_Medicaid_Director_Input, stateMedicaidAgency.trim().split(" ")[0], "State_Medicaid_Director_Input");
 		waitFor(5);
-		jsClickOn(EditExecutiveSummary, "EditExecutiveSummary");
-		waitFor(2);
-		scrollToBottomOfthePage();
-		waitFor(2);
-		jsClickOn(event_Summary_TextArea, "event_Summary_TextArea");
-		waitFor(2);
-		jsClickOn(event_Summary_TextArea_AfterClick, "event_Summary_TextArea_AfterClick");
-		waitFor(2);
-		typeText(event_Summary_TextArea_AfterClick, "Event Summary Added", "event_Summary_TextArea_");
+		String directorName = getAttribute(state_Medicaid_Director_Option, "title", "state_Medicaid_Director_Option");
+		System.out.println("directorName: " + directorName);
+		jsClickOn(state_Medicaid_Director_Option, "state_Medicaid_Director_Option");
 		waitFor(2);
 		jsClickOn(save_Button, "save_Button");
 		waitFor(3);
+		takeScreenshotFor("Generate Template button enabled after all mandataory fields added");
 	}
 
 	static String str = "";
@@ -543,12 +569,14 @@ public class DecisionPackagePage extends SafeActions implements DecisionPackage_
 		typeText(searchDecisionPackage_Input, decisionPackageTitle_APD.replace("APD", "PAPD"), "searchDecisionPackage");
 		waitFor(2);
 		takeScreenshotFor("Selection of now created APD Decision Package");
-		jsClickOn(reviewDecisionPackage, "reviewDecisionPackage");
+		jsClickOn(reviewDecisionPackageFNS, "reviewDecisionPackageFNS");
 		waitFor(3);
 //		jsClickOn(NameColumnHeader, "NameColumnHeader");
 //		waitFor(1);
 		takeScreenshotFor("Before Selection of recently created RFP and Contract Decision Packages");
 		String countBeforeSelection = getTextFromUI(packageSelectionCount, "packageSelectionCount");
+		By checkBox = By.xpath("//button[@title='Add "+rfpTitle+"']");
+		By checkBox2 = By.xpath("//button[contains(@title, 'Add "+contractTitle+"')]");
 		jsClickOn(checkBox, "checkBox");
 		jsClickOn(checkBox2, "checkBox2");
 		takeScreenshotFor("After Selection of recently created RFP and Contract Decision Packages");

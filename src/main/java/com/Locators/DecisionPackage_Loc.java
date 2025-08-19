@@ -36,6 +36,8 @@ public interface DecisionPackage_Loc {
 	public static final By Emergency_Request = By.xpath("//label[text()='Emergency Request']/following::label[1]/span");
 	public static final By fundType_E_E = By.xpath("// *[text()='E&E']/preceding-sibling::span");
 	public static final By oPsDiv_HHS = By.xpath("//*[text()='HHS']/preceding-sibling::span");
+	public static final By oPsDiv_CMS = By.xpath("//*[text()='CMS']/preceding-sibling::span");
+	public static final By oPsDiv_FNS = By.xpath("//*[text()='FNS']/preceding-sibling::span");
 	public static final By uploadFiles = By.xpath("(//*[text()='Upload Files']/lightning-primitive-icon)[last()]");
 	public static final By done_Button = By.xpath("//*[text()='Done']/..");
 	public static final By successMessage = By
@@ -46,6 +48,7 @@ public interface DecisionPackage_Loc {
 	public static final By Edit_Recommended_Action = By.xpath("//button[@title='Edit Recommended Action']");
 	public static final By Recommended_Action = By.xpath("//button[@aria-label='Recommended Action']");
 	public static final By Approve_Option = By.xpath("//*[@data-value='Approve']");
+	public static final By RAI_Option = By.xpath("//*[@data-value='RAI']");
 	public static final By save_Button = By.xpath("(//button[text()='Save'])[last()]");
 	public static final By State_Medicaid_Director_Input =  By.xpath("//label[text()='State Medicaid Director']/following::input[1]");
 	public static final By state_Medicaid_Director_Option = By.xpath("//label[text()='State Medicaid Director']/following::input[1]/following::ul[1]//lightning-base-combobox-item[1]/span[2]/span/lightning-base-combobox-formatted-text");
@@ -58,6 +61,7 @@ public interface DecisionPackage_Loc {
 	public static final By event_Summary_TextArea_AfterClick = By.xpath("//div[contains(@class, 'ql-editor')]");
 	public static final By estimatedAmount = By.xpath("//label[text()='Estimated Funding Request']/following-sibling::div/input");
 	public static final By approveChoosen = By.xpath("//lightning-formatted-text[text()='Approve']");
+	public static final By RAI_Choosen = By.xpath("//lightning-formatted-text[text()='RAI']");
 	public static final By APD_Type_Choosen = By.xpath("//lightning-formatted-text[text()='Planning Advanced Planning Document (PAPD)']");
 	public static final By APD_Update_Type_Choosen = By.xpath("//lightning-formatted-text[text()='Initial Submission']");
 	public static final By event_Summary_Entered = By.xpath("//p[text()='Event Summary Added']");
@@ -117,8 +121,9 @@ public interface DecisionPackage_Loc {
 	public static final By bundleButton = By.xpath("(//*[text()='Bundle'])[last()]");
 	public static final By searchDecisionPackage_Input = By.xpath("//input[@placeholder='Search Decision Packages...']");
 	public static final By reviewDecisionPackage = By.xpath("//lightning-base-combobox-item//following::*[text()='State Officer Review']/../preceding-sibling::span/span[contains(text(), 'HHS')]");
-	public static final By checkBox = By.xpath("(//*[@aria-label='Add/Remove']//following::lightning-primitive-input-checkbox//input)[last()]");
-	public static final By checkBox2 = By.xpath("(//*[@aria-label='Add/Remove']//following::lightning-primitive-input-checkbox//input)[last()-1]");
+	public static final By reviewDecisionPackageFNS = By.xpath("(//lightning-base-combobox-item//following::*[text()='State Officer Review']/../preceding-sibling::span/span[contains(text(), 'FNS')])[last()]");
+//	public static final By checkBox = By.xpath("(//*[@aria-label='Add/Remove']//following::lightning-primitive-input-checkbox//input[contains(@aria-label, 'RFP')])[last()]");
+//	public static final By checkBox2 = By.xpath("(//*[@aria-label='Add/Remove']//following::lightning-primitive-input-checkbox//input[contains(@aria-label, 'Contract')])[last()]");
 	public static final By savebundle_button = By.xpath("//button[text()='Save Bundle']");
 	public static final By successMsg_BundleChanges = By.xpath("//*[text()='Bundle changes saved successfully']");
 	public static final By cancelAndClose = By.xpath("//button[@title='Cancel and close']");
@@ -132,7 +137,8 @@ public interface DecisionPackage_Loc {
 	public static final By submitback = By.xpath("//*[text()='APD Update Type']/following::button[@title='Move to Available']");
 	
 	public static final By moveToDeputyDirector = By.xpath("(//*[text()='Move to Deputy Director'])[last()]");
-	public static final By ErrorMessage = By.xpath("//*[text()='APD Update Type, SO Clearance Checklist']");
+	public static final By ErrorMessage = By.xpath("//*[text()='At least one project should be linked to the decision package., No Letter Generated, SO Clearance Checklist']");
+	public static final By ErrorMessage2 = By.xpath("(//*[contains(text(),'At least one project should be linked to the decision package.')])[last()]");
 	public static final By closeErrorPopup = By.xpath("//button[@title='Close']");
 	public static final By EditStatus = By.xpath("//button[@title='Edit Status']");
 	public static final By Cancel_Close = By.xpath("//button[@title='Cancel and close']");
@@ -140,7 +146,7 @@ public interface DecisionPackage_Loc {
 	public static final By decisionPackageTab = By.xpath("//a[@title='Decision Packages']");
 	public static final By decisionPackageName = By.xpath("//h1//*[text()='Decision Package']/following::lightning-formatted-text[1]");
 	public static final By EditExecutiveSummary = By.xpath("//button[@title='Edit Executive Summary']");
-//	public static final By EditStatus = By.xpath("//button[@title='Edit Status']");
+	public static final By clearMedicaidDirector = By.xpath("//*[text()='State Medicaid Director']/following::button[@title='Clear Selection']");
 //	public static final By EditStatus = By.xpath("//button[@title='Edit Status']");
 //	public static final By EditStatus = By.xpath("//button[@title='Edit Status']");
 //	public static final By EditStatus = By.xpath("//button[@title='Edit Status']");
