@@ -1,6 +1,10 @@
 package com.Mesh_TestSuites;
 
-import java.util.ArrayList;
+import java.io.File;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 
 import org.testng.annotations.Test;
 
@@ -9,7 +13,8 @@ import com.Pages.ClearenceChecklist;
 import com.Pages.DecisionPackagePage;
 import com.Pages.HomePage;
 
-public class DecisionPackages extends TestBase {
+public class Decision_Package_Creation extends TestBase{
+	
 	HomePage homePage = new HomePage();
 	DecisionPackagePage dpp = new DecisionPackagePage();
 	ClearenceChecklist clearanceChecklistPage = new ClearenceChecklist();
@@ -21,10 +26,10 @@ public class DecisionPackages extends TestBase {
 		// Validating the all mandatory fields on the Decision package creation form
 		dpp.validateMandatoryFieldsErrorMessages();
 		// Creation of Decision package
-		dpp.verifyUserCanCreate_DecisionPackage(DecisionPackagePage.SubmissionTypeOption_APD, "APD", "HHS");
+		dpp.verifyUserCanCreate_DecisionPackage(DecisionPackagePage.SubmissionTypeOption_APD, "APD", "CMS_FNS");
 //		dpp.verifyDueDate("Due Date On Emergency");
 		// Validation of required fields after decision package creation
-		dpp.verifyMandatoryFields_OnDecisionPackage("E&E-HHS-APD", "APD");
+		dpp.verifyMandatoryFields_OnDecisionPackage("E&E-FNS-APD", "APD");
 
 //		dpp.selectEmergencyRequestInthe_DecisionPackage();
 
@@ -47,7 +52,7 @@ public class DecisionPackages extends TestBase {
 		dpp.collectLeadTitle();
 		System.out.println("========================  First Test case completed  =================================");
 	}
-
+	
 	@Test(groups = { "Regression" })
 	public void DecisionPackage_TC_002_Verify_DecisionPackage_Creation_with_RFP_as_SubmisionType() {
 
@@ -74,19 +79,18 @@ public class DecisionPackages extends TestBase {
 		dpp.verifyGenerateTemplateDisappearIfSummaryFieldMiss();
 		System.out.println("================================ Test Case Two Completed ===========================");
 	}
-
+	
 	@Test(groups = { "Regression" })
 	public void DecisionPackage_TC_003_Verify_DecisionPackage_Creation_with_Contract_as_SubmisionType() {
-
 		waitFor(3);
 		dpp.jsClickOn(DecisionPackagePage.decisionPackages, "Decision Packages");
 		waitFor(2);
 		dpp.jsClickOn(DecisionPackagePage.newDecisionPackage, "newDecisionPackage");
 		// Creation of Decision package
-		dpp.verifyUserCanCreate_DecisionPackage(DecisionPackagePage.SubmissionTypeOption_Contract, "Contract", "HHS");
+		dpp.verifyUserCanCreate_DecisionPackage(DecisionPackagePage.SubmissionTypeOption_Contract, "Contract", "CMSFNS");
 //		dpp.verifyDueDate("Due Date On Emergency");
 		// Validation of required fields after decision package creation
-		dpp.verifyMandatoryFieldsOn_Contract_DecisionPackage("E&E-HHS-Contract");
+		dpp.verifyMandatoryFieldsOn_Contract_DecisionPackage("E&E-FNS-Contract");
 
 //		dpp.selectEmergencyRequestInthe_DecisionPackage();
 
@@ -105,17 +109,6 @@ public class DecisionPackages extends TestBase {
 		dpp.verifyTemplateGeneration();
 		dpp.verifyGenerateTemplateDisappearIfSummaryFieldMiss();
 		System.out.println("================================ Test Case Three Completed ===========================");
-	}
-
-	@Test(groups = { "Regression" })
-	public void DecisionPackage_TC_004_Verify_Adding_bundle_Packages() throws InterruptedException {
-
-		waitFor(3);
-		dpp.verifyAddingBundleChanges();
-		waitFor(2);
-		dpp.verifyMoveToDeputyDirector_BeforeAll_Fields_Submit("HHS");
-		clearanceChecklistPage.updateClearanceChecklist("APD");
-		dpp.verifyMoveToDeputyDirector_Stage();
 	}
 
 }
