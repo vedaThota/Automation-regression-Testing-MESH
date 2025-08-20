@@ -7,7 +7,7 @@ import com.Pages.ClearenceChecklist;
 import com.Pages.DecisionPackagePage;
 import com.Pages.HomePage;
 
-public class DecisionPackages_Bundle_Validation extends TestBase {
+public class CMS_FNS_DecisionPackages_Bundle_Validation extends TestBase {
 	HomePage homePage = new HomePage();
 	DecisionPackagePage dpp = new DecisionPackagePage();
 	ClearenceChecklist clearanceChecklistPage = new ClearenceChecklist();
@@ -24,7 +24,7 @@ public class DecisionPackages_Bundle_Validation extends TestBase {
 		// Validation of required fields after decision package creation
 		dpp.verifyMandatoryFields_OnDecisionPackage("E&E-FNS-APD", "APD");
 		dpp.collectLeadTitle();
-//
+
 ////		dpp.selectEmergencyRequestInthe_DecisionPackage();
 //
 		dpp.scrollToBottomOfthePage();
@@ -110,22 +110,22 @@ public class DecisionPackages_Bundle_Validation extends TestBase {
 	public void DecisionPackage_TC_004_Verify_Adding_bundle_Packages() throws InterruptedException {
 
 		waitFor(3);
-		dpp.verifyAddingBundleChanges();
+		dpp.verifyAddingBundleChanges("FNS");
 		waitFor(2);
 		dpp.verifyMoveToDeputyDirector_BeforeAll_Fields_Submit("CMS");
-		clearanceChecklistPage.updateClearanceChecklist("APD");
+		clearanceChecklistPage.updateClearanceChecklist("APD", "FNS");
 		clearanceChecklistPage.moveToMainPage();
 		dpp.addRelatedProject();
 		dpp.verifyTemplateGeneration();
 		takeScreenshotFor("Template Generation in APD type");
 		clearanceChecklistPage.moveToFistChildPackage();
-		clearanceChecklistPage.updateClearanceChecklist("RFP");
+		clearanceChecklistPage.updateClearanceChecklist("RFP", "FNS");
 		dpp.addRelatedProject();
 		waitFor(2);
 		clearanceChecklistPage.moveToLeadPackage();
 		waitFor(2);
 		clearanceChecklistPage.moveToSecondChildPackage();
-		clearanceChecklistPage.updateClearanceChecklist("Contract");
+		clearanceChecklistPage.updateClearanceChecklist("Contract", "FNS");
 		waitFor(2);
 		dpp.addRelatedProject();
 		clearanceChecklistPage.moveToLeadPackage();

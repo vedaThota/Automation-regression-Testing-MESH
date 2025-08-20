@@ -70,7 +70,7 @@ public class Decision_Package_Creation extends TestBase{
 		takeScreenshotFor("Begin Review status in RFP type");
 //		dpp.verifyFileUpload("RFP");
 //		dpp.verifyDownloadFile("RFP");
-		clearanceChecklistPage.updateClearanceChecklist("RFP");
+		clearanceChecklistPage.updateClearanceChecklist("RFP", "");
 		dpp.closeOtherWindows();
 		dpp.addRelatedProject();
 
@@ -103,7 +103,7 @@ public class Decision_Package_Creation extends TestBase{
 		takeScreenshotFor("Begin Review status in Contract type");
 //		dpp.verifyFileUpload("Contract");
 //		dpp.verifyDownloadFile("Contract");
-		clearanceChecklistPage.updateClearanceChecklist("Contract");
+		clearanceChecklistPage.updateClearanceChecklist("Contract", "");
 		takeScreenshotFor("Template Generation in Contract type");
 		dpp.addRelatedProject();
 		dpp.verifyTemplateGeneration();

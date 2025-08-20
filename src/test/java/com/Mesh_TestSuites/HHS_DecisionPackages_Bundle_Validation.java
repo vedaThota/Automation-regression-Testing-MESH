@@ -1,7 +1,5 @@
 package com.Mesh_TestSuites;
 
-import java.util.ArrayList;
-
 import org.testng.annotations.Test;
 
 import com.Base.TestBase;
@@ -9,7 +7,7 @@ import com.Pages.ClearenceChecklist;
 import com.Pages.DecisionPackagePage;
 import com.Pages.HomePage;
 
-public class DecisionPackages extends TestBase {
+public class HHS_DecisionPackages_Bundle_Validation extends TestBase {
 	HomePage homePage = new HomePage();
 	DecisionPackagePage dpp = new DecisionPackagePage();
 	ClearenceChecklist clearanceChecklistPage = new ClearenceChecklist();
@@ -25,26 +23,27 @@ public class DecisionPackages extends TestBase {
 //		dpp.verifyDueDate("Due Date On Emergency");
 		// Validation of required fields after decision package creation
 		dpp.verifyMandatoryFields_OnDecisionPackage("E&E-HHS-APD", "APD");
-
-//		dpp.selectEmergencyRequestInthe_DecisionPackage();
-
+		dpp.collectLeadTitle();
+//
+////		dpp.selectEmergencyRequestInthe_DecisionPackage();
+//
 		dpp.scrollToBottomOfthePage();
 		waitFor(1);
 		dpp.verifyFundingTypeAmountDisplay();
 		takeScreenshotFor("Amount Shows in APD type");
-
+//
 		dpp.verifyBeginReviewStatus();
 		takeScreenshotFor("Begin Review status in APD type");
 		
-//		dpp.verifyFileUpload("APD");
-//		dpp.verifyDownloadFile("APD");
-//	////	dpp.verifyDueDate("Due Date when No Emergency");
-
-		dpp.addRelatedProject();
-		dpp.verifyTemplateGeneration();
-		takeScreenshotFor("Template Generation in APD type");
-		dpp.verifyGenerateTemplateDisappearIfRequiredFieldMiss();
-		dpp.collectLeadTitle();
+////		dpp.verifyFileUpload("APD");
+////		dpp.verifyDownloadFile("APD");
+////	////	dpp.verifyDueDate("Due Date when No Emergency");
+//
+//		dpp.addRelatedProject();
+//		dpp.verifyTemplateGeneration();
+//		takeScreenshotFor("Template Generation in APD type");
+//		dpp.verifyGenerateTemplateDisappearIfRequiredFieldMiss();
+		
 		System.out.println("========================  First Test case completed  =================================");
 	}
 
@@ -59,19 +58,19 @@ public class DecisionPackages extends TestBase {
 //		dpp.verifyDueDate("Due Date On Emergency");
 		// Validation of required fields after decision package creation
 		dpp.verifyMandatoryFields_OnDecisionPackage("E&E-HHS-RFP", "RFP");
-
-//		dpp.selectEmergencyRequestInthe_DecisionPackage();
+//
+////		dpp.selectEmergencyRequestInthe_DecisionPackage();
 		dpp.verifyBeginReviewStatus();
 		takeScreenshotFor("Begin Review status in RFP type");
-//		dpp.verifyFileUpload("RFP");
-//		dpp.verifyDownloadFile("RFP");
-		clearanceChecklistPage.updateClearanceChecklist("RFP", "");
-		dpp.closeOtherWindows();
-		dpp.addRelatedProject();
-
-		dpp.verifyTemplateGeneration();
-		takeScreenshotFor("Template Generation in RFP type");
-		dpp.verifyGenerateTemplateDisappearIfSummaryFieldMiss();
+////		dpp.verifyFileUpload("RFP");
+////		dpp.verifyDownloadFile("RFP");
+//		clearanceChecklistPage.updateClearanceChecklist("RFP");
+//		dpp.closeOtherWindows();
+//		dpp.addRelatedProject();
+//
+//		dpp.verifyTemplateGeneration();
+//		takeScreenshotFor("Template Generation in RFP type");
+//		dpp.verifyGenerateTemplateDisappearIfSummaryFieldMiss();
 		System.out.println("================================ Test Case Two Completed ===========================");
 	}
 
@@ -87,23 +86,23 @@ public class DecisionPackages extends TestBase {
 //		dpp.verifyDueDate("Due Date On Emergency");
 		// Validation of required fields after decision package creation
 		dpp.verifyMandatoryFieldsOn_Contract_DecisionPackage("E&E-HHS-Contract");
-
-//		dpp.selectEmergencyRequestInthe_DecisionPackage();
-
-		dpp.scrollByPixels(600);//
-		waitFor(1);
-		dpp.verifyContractAmountDisplay();
-		takeScreenshotFor("Amount Shows in Contract type");
-//		dpp.verifyDueDate("Due Date when No Emergency");
+//
+////		dpp.selectEmergencyRequestInthe_DecisionPackage();
+//
+//		dpp.scrollByPixels(600);//
+//		waitFor(1);
+//		dpp.verifyContractAmountDisplay();
+//		takeScreenshotFor("Amount Shows in Contract type");
+////		dpp.verifyDueDate("Due Date when No Emergency");
 		dpp.verifyBeginReviewStatus();
 		takeScreenshotFor("Begin Review status in Contract type");
-//		dpp.verifyFileUpload("Contract");
-//		dpp.verifyDownloadFile("Contract");
-		clearanceChecklistPage.updateClearanceChecklist("Contract", "");
-		takeScreenshotFor("Template Generation in Contract type");
-		dpp.addRelatedProject();
-		dpp.verifyTemplateGeneration();
-		dpp.verifyGenerateTemplateDisappearIfSummaryFieldMiss();
+////		dpp.verifyFileUpload("Contract");
+////		dpp.verifyDownloadFile("Contract");
+//		clearanceChecklistPage.updateClearanceChecklist("Contract");
+//		takeScreenshotFor("Template Generation in Contract type");
+//		dpp.addRelatedProject();
+//		dpp.verifyTemplateGeneration();
+//		dpp.verifyGenerateTemplateDisappearIfSummaryFieldMiss();
 		System.out.println("================================ Test Case Three Completed ===========================");
 	}
 
@@ -111,10 +110,25 @@ public class DecisionPackages extends TestBase {
 	public void DecisionPackage_TC_004_Verify_Adding_bundle_Packages() throws InterruptedException {
 
 		waitFor(3);
-		dpp.verifyAddingBundleChanges("");
+		dpp.verifyAddingBundleChanges("HHS");
 		waitFor(2);
 		dpp.verifyMoveToDeputyDirector_BeforeAll_Fields_Submit("HHS");
-		clearanceChecklistPage.updateClearanceChecklist("APD", "");
+		clearanceChecklistPage.updateClearanceChecklist("APD", "HHS");
+		clearanceChecklistPage.moveToMainPage();
+		dpp.addRelatedProject();
+		dpp.verifyTemplateGeneration();
+		takeScreenshotFor("Template Generation in APD type");
+		clearanceChecklistPage.moveToFistChildPackage();
+		clearanceChecklistPage.updateClearanceChecklist("RFP", "HHS");
+		dpp.addRelatedProject();
+		waitFor(2);
+		clearanceChecklistPage.moveToLeadPackage();
+		waitFor(2);
+		clearanceChecklistPage.moveToSecondChildPackage();
+		clearanceChecklistPage.updateClearanceChecklist("Contract", "HHS");
+		waitFor(2);
+		dpp.addRelatedProject();
+		clearanceChecklistPage.moveToLeadPackage();
 		dpp.verifyMoveToDeputyDirector_Stage();
 	}
 

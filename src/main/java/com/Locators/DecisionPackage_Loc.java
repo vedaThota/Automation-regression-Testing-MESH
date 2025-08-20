@@ -122,7 +122,9 @@ public interface DecisionPackage_Loc {
 	public static final By searchDecisionPackage_Input = By.xpath("//input[@placeholder='Search Decision Packages...']");
 	public static final By reviewDecisionPackage = By.xpath("//lightning-base-combobox-item//following::*[text()='State Officer Review']/../preceding-sibling::span/span[contains(text(), 'HHS')]");
 	public static final By reviewDecisionPackageFNS = By.xpath("(//lightning-base-combobox-item//following::*[text()='State Officer Review']/../preceding-sibling::span/span[contains(text(), 'FNS')])[last()]");
-//	public static final By checkBox = By.xpath("(//*[@aria-label='Add/Remove']//following::lightning-primitive-input-checkbox//input[contains(@aria-label, 'RFP')])[last()]");
+	public static final By reviewDecisionPackageHHS = By.xpath("(//lightning-base-combobox-item//following::*[text()='State Officer Review']/../preceding-sibling::span/span[contains(text(), 'HHS')])[last()]");
+
+	//	public static final By checkBox = By.xpath("(//*[@aria-label='Add/Remove']//following::lightning-primitive-input-checkbox//input[contains(@aria-label, 'RFP')])[last()]");
 //	public static final By checkBox2 = By.xpath("(//*[@aria-label='Add/Remove']//following::lightning-primitive-input-checkbox//input[contains(@aria-label, 'Contract')])[last()]");
 	public static final By savebundle_button = By.xpath("//button[text()='Save Bundle']");
 	public static final By successMsg_BundleChanges = By.xpath("//*[text()='Bundle changes saved successfully']");
@@ -138,7 +140,7 @@ public interface DecisionPackage_Loc {
 	
 	public static final By moveToDeputyDirector = By.xpath("(//*[text()='Move to Deputy Director'])[last()]");
 	public static final By ErrorMessage = By.xpath("//*[text()='At least one project should be linked to the decision package., No Letter Generated, SO Clearance Checklist']");
-	public static final By ErrorMessage2 = By.xpath("(//*[contains(text(),'At least one project should be linked to the decision package.')])[last()]");
+	public static final By ErrorMessage2 = By.xpath("//div[@class='toast-content']");
 	public static final By closeErrorPopup = By.xpath("//button[@title='Close']");
 	public static final By EditStatus = By.xpath("//button[@title='Edit Status']");
 	public static final By Cancel_Close = By.xpath("//button[@title='Cancel and close']");
