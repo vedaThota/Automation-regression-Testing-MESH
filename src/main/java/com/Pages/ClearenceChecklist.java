@@ -12,7 +12,7 @@ import com.utility.SafeActions;
 
 public class ClearenceChecklist extends SafeActions implements ClearenceCheckList_Loc {
 
-	public void updateClearanceChecklist(String type) {
+	public void updateClearanceChecklist(String submisionType, String opDivType) {
 		waitFor(5);
 		jsClickOn(clearanceChecklistLast, "clearanceChecklistLast");
 		jsClickOn(soReviewIsCompletede, "soReviewIsCompletede");
@@ -22,7 +22,7 @@ public class ClearenceChecklist extends SafeActions implements ClearenceCheckLis
 		waitFor(getRandomStateInitial());
 		int count = driver.getWindowHandles().size();
 		System.out.println("Count: " + count);
-		if (count == 3) {
+		if (count == 3 || count == 2) {
 			test.log(Status.INFO,
 					MarkupHelper.createLabel("Most recent template link launching new window", ExtentColor.BLUE));
 		} else {
@@ -30,27 +30,26 @@ public class ClearenceChecklist extends SafeActions implements ClearenceCheckLis
 					MarkupHelper.createLabel("Most recent template link NOT launching new window", ExtentColor.RED));
 		}
 		waitFor(2);
-		if (type.contains("APD")) {
+		if (submisionType.contains("APD")) {
 			driver.switchTo().window(new ArrayList<String>(driver.getWindowHandles()).get(2));
 			driver.close();
 			driver.switchTo().window(new ArrayList<String>(driver.getWindowHandles()).get(1));
 		}
-		if (type.contains("RFP") || type.contains("Contract")) {
+		if (submisionType.contains("RFP") || submisionType.contains("Contract")) {
 			driver.switchTo().window(new ArrayList<String>(driver.getWindowHandles()).get(1));
 			driver.close();
 			driver.switchTo().window(new ArrayList<String>(driver.getWindowHandles()).get(0));
 		}
 		jsClickOn(submisionTypeCheckbox, "submisionTypeCheckbox");
 		waitFor(1);
-		if (type.contains("Contract") || type.contains("RFP"))
+		if (submisionType.contains("Contract") || submisionType.contains("RFP"))
 			jsClickOn(scopeOfContractCheckbox, "scopeOfContractCheckbox");
-		if (type.contains("APD"))
+		if (submisionType.contains("APD") && opDivType.contains("FNS"))
 			jsClickOn(theCorrespondingOpDiv, "theCorrespondingOpDiv");
 
 		jsClickOn(SOCompleted_Clearance, "SOCompleted_Clearance");
 		jsClickOn(saveButton, "saveButton");
 		waitFor(1);
-
 		verifyTextDisplay(checklistSaved, "Checklist saved successfully");
 		takeScreenshotFor("Updated clearance checklist screenshot");
 	}

@@ -229,10 +229,10 @@ public class DecisionPackagePage extends SafeActions implements DecisionPackage_
 		System.out.println("stateMedicaidAgency: " + stateMedicaidAgency);
 		waitFor(4);
 		decisionTitle = getTextFromUI(decisionPackageTitle, "decisionPackageTitle");
-		if(submisionType.contains("RFP")){
-				rfpTitle = decisionTitle;
+		if (submisionType.contains("RFP")) {
+			rfpTitle = decisionTitle;
 		}
-	   System.out.println("Decision Package Title: " + decisionTitle);
+		System.out.println("Decision Package Title: " + decisionTitle);
 		directorState = getTextFromUI(State_Medicaid_Agency, "State_Medicaid_Agency");
 		System.out.println("directorName: " + directorState);
 
@@ -243,7 +243,7 @@ public class DecisionPackagePage extends SafeActions implements DecisionPackage_
 		jsClickOn(Recommended_Action, "Recommended_Action");
 		waitFor(2);
 		jsClickOn(Approve_Option, "Approve_Option");
-		
+
 		jsClickOn(event_Summary_TextArea, "event_Summary_TextArea");
 		waitFor(2);
 		jsClickOn(event_Summary_TextArea_AfterClick, "event_Summary_TextArea_AfterClick");
@@ -271,9 +271,9 @@ public class DecisionPackagePage extends SafeActions implements DecisionPackage_
 		takeScreenshotFor("Mandatory Fields before submit");
 		jsClickOn(save_Button, "save_Button");
 		waitFor(3);
-		
+
 		verifyTextDisplay(approveChoosen, "Approve");
-		
+
 		if (submisionType.contains("APD")) {
 			verifyTextDisplay(APD_Type_Choosen, "Planning Advanced Planning Document (PAPD)");
 			verifyTextDisplay(APD_Update_Type_Choosen, "Initial Submission");
@@ -310,7 +310,8 @@ public class DecisionPackagePage extends SafeActions implements DecisionPackage_
 		waitFor(2);
 		scrollByPixels(-500);
 		waitFor(3);
-		typeText(State_Medicaid_Director_Input, stateMedicaidAgency.trim().split(" ")[0], "State_Medicaid_Director_Input");
+		typeText(State_Medicaid_Director_Input, stateMedicaidAgency.trim().split(" ")[0],
+				"State_Medicaid_Director_Input");
 		waitFor(5);
 		String directorName = getAttribute(state_Medicaid_Director_Option, "title", "state_Medicaid_Director_Option");
 		System.out.println("directorName: " + directorName);
@@ -388,18 +389,42 @@ public class DecisionPackagePage extends SafeActions implements DecisionPackage_
 		jsClickOn(leadPackage, "leadPackage");
 		waitFor(3);
 		jsClickOn(moveToDeputyDirector, "moveToDeputyDirector");
-		verifyTextDisplay(ErrorMessage, "At least one project should be linked to the decision package., No Letter Generated, SO Clearance Checklist");
+		verifyTextDisplay(ErrorMessage,
+				"At least one project should be linked to the decision package., No Letter Generated, SO Clearance Checklist");
+
 		waitFor(1);
-		if(opDivType.contains("CMS")) {
-		String EM_ChildPak = getTextFromUI(ErrorMessage2, "ErrorMessage2");
-		if(EM_ChildPak.contains("Bundled Decision Package Errors:") && EM_ChildPak.contains("At least one project should be linked to the decision package")
-				&& EM_ChildPak.contains("SO Clearance Checklist, At least one project should be linked to the decision package.") && EM_ChildPak.contains("The following Bundled Packages have a Recommended Action does not match the Lead Package:")) {
-			test.log(Status.INFO, MarkupHelper.createLabel("Bundled packages error messages displayed as expected", ExtentColor.BLUE));
-		} else {
-			test.log(Status.FAIL, MarkupHelper.createLabel("Bundled packages error messages NOT displayed as expected", ExtentColor.RED));
+		if (opDivType.contains("HHS")) {
+			String EM_ChildPak = getTextFromUI(ErrorMessage2, "ErrorMessage2");
+			if (EM_ChildPak.contains("Bundled Decision Package Errors:")
+					&& EM_ChildPak.contains(
+							"SO Clearance Checklist, At least one project should be linked to the decision package.")
+					&& EM_ChildPak.contains(
+							"SO Clearance Checklist, At least one project should be linked to the decision package.")) {
+				test.log(Status.INFO, MarkupHelper.createLabel("Bundled packages error messages displayed as expected",
+						ExtentColor.BLUE));
+			} else {
+				test.log(Status.FAIL, MarkupHelper
+						.createLabel("Bundled packages error messages NOT displayed as expected", ExtentColor.RED));
+			}
+			waitFor(1);
 		}
-		waitFor(1);
-	}
+		if (opDivType.contains("CMS")) {
+			String EM_ChildPak = getTextFromUI(ErrorMessage2, "ErrorMessage2");
+			if (EM_ChildPak.contains("Lead Decision Package Errors:")
+					&& EM_ChildPak.contains("At least one project should be linked to the decision package., No Letter Generated, SO Clearance Checklist")
+					&& EM_ChildPak.contains(
+							"Bundled Decision Package Errors:")
+					&& EM_ChildPak.contains(
+							"SO Clearance Checklist, At least one project should be linked to the decision package.")) {
+				test.log(Status.INFO, MarkupHelper.createLabel("Bundled packages error messages displayed as expected",
+						ExtentColor.BLUE));
+			} else {
+				test.log(Status.FAIL, MarkupHelper
+						.createLabel("Bundled packages error messages NOT displayed as expected", ExtentColor.RED));
+			}
+			waitFor(1);
+		}
+
 		takeScreenshotFor("Deputy director stage naviagtion Error message");
 //		try {
 //			if (driver.findElement(closeErrorPopup).isDisplayed()) {
@@ -448,7 +473,9 @@ public class DecisionPackagePage extends SafeActions implements DecisionPackage_
 	}
 
 	public void addRelatedProject() {
-		waitFor(10);
+		waitFor(6);
+		scrollByPixels(500);
+		waitFor(2);
 		scrollToBottomOfthePage();
 		waitFor(2);
 		jsClickOn(RelatedProjects_button, "RelatedProjects_button");
@@ -543,7 +570,8 @@ public class DecisionPackagePage extends SafeActions implements DecisionPackage_
 		scrollByPixels(400);
 		jsClickOn(State_Medicaid_Director_Input, "State_Medicaid_Director_Input");
 		waitFor(2);
-		typeText(State_Medicaid_Director_Input, stateMedicaidAgency.trim().split(" ")[0], "State_Medicaid_Director_Input");
+		typeText(State_Medicaid_Director_Input, stateMedicaidAgency.trim().split(" ")[0],
+				"State_Medicaid_Director_Input");
 		waitFor(5);
 		String directorName = getAttribute(state_Medicaid_Director_Option, "title", "state_Medicaid_Director_Option");
 		System.out.println("directorName: " + directorName);
@@ -557,7 +585,7 @@ public class DecisionPackagePage extends SafeActions implements DecisionPackage_
 	static String str = "";
 	JavascriptExecutor executor;
 
-	public void verifyAddingBundleChanges() throws InterruptedException {
+	public void verifyAddingBundleChanges(String Type) throws InterruptedException {
 		executor = (JavascriptExecutor) driver;
 		jsClickOn(decisionPackages, "decisionPackages");
 		waitFor(1);
@@ -569,14 +597,17 @@ public class DecisionPackagePage extends SafeActions implements DecisionPackage_
 		typeText(searchDecisionPackage_Input, decisionPackageTitle_APD.replace("APD", "PAPD"), "searchDecisionPackage");
 		waitFor(2);
 		takeScreenshotFor("Selection of now created APD Decision Package");
-		jsClickOn(reviewDecisionPackageFNS, "reviewDecisionPackageFNS");
+		if (Type.contains("FNS"))
+			jsClickOn(reviewDecisionPackageFNS, "reviewDecisionPackageFNS");
+		else
+			jsClickOn(reviewDecisionPackageHHS, "reviewDecisionPackageHHS");
 		waitFor(3);
 //		jsClickOn(NameColumnHeader, "NameColumnHeader");
 //		waitFor(1);
 		takeScreenshotFor("Before Selection of recently created RFP and Contract Decision Packages");
 		String countBeforeSelection = getTextFromUI(packageSelectionCount, "packageSelectionCount");
-		By checkBox = By.xpath("//button[@title='Add "+rfpTitle+"']");
-		By checkBox2 = By.xpath("//button[contains(@title, 'Add "+contractTitle+"')]");
+		By checkBox = By.xpath("//button[@title='Add " + rfpTitle + "']");
+		By checkBox2 = By.xpath("//button[contains(@title, 'Add " + contractTitle + "')]");
 		jsClickOn(checkBox, "checkBox");
 		jsClickOn(checkBox2, "checkBox2");
 		takeScreenshotFor("After Selection of recently created RFP and Contract Decision Packages");
