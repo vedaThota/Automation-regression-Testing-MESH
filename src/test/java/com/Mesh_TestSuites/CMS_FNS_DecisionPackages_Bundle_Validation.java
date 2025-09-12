@@ -15,7 +15,7 @@ public class CMS_FNS_DecisionPackages_Bundle_Validation extends TestBase {
 	@Test(groups = { "Regression" })
 	public void DecisionPackage_TC_001_Verify_DecisionPackage_Creation_with_APD_as_SubmisionType() {
 		// Navigating to Decision package screen
-		homePage.navigateTo_OpsTeam_DecisionPackage_Screen();
+		homePage.navigateTo_OpsTeam_DecisionPackage_Screen("Ops Team");
 		// Validating the all mandatory fields on the Decision package creation form
 		dpp.validateMandatoryFieldsErrorMessages();
 		// Creation of Decision package
@@ -43,7 +43,7 @@ public class CMS_FNS_DecisionPackages_Bundle_Validation extends TestBase {
 //		dpp.verifyTemplateGeneration();
 //		takeScreenshotFor("Template Generation in APD type");
 //		dpp.verifyGenerateTemplateDisappearIfRequiredFieldMiss();
-		
+
 		System.out.println("========================  First Test case completed  =================================");
 	}
 
@@ -82,7 +82,8 @@ public class CMS_FNS_DecisionPackages_Bundle_Validation extends TestBase {
 		waitFor(2);
 		dpp.jsClickOn(DecisionPackagePage.newDecisionPackage, "newDecisionPackage");
 		// Creation of Decision package
-		dpp.verifyUserCanCreate_DecisionPackage(DecisionPackagePage.SubmissionTypeOption_Contract, "Contract", "CMSFNS");
+		dpp.verifyUserCanCreate_DecisionPackage(DecisionPackagePage.SubmissionTypeOption_Contract, "Contract",
+				"CMSFNS");
 //		dpp.verifyDueDate("Due Date On Emergency");
 		// Validation of required fields after decision package creation
 		dpp.verifyMandatoryFieldsOn_Contract_DecisionPackage("E&E-FNS-Contract");
@@ -108,13 +109,22 @@ public class CMS_FNS_DecisionPackages_Bundle_Validation extends TestBase {
 
 	@Test(groups = { "Regression" })
 	public void DecisionPackage_TC_004_Verify_Adding_bundle_Packages() throws InterruptedException {
-
+		dpp.logoutFromApp();
+		waitFor(1);
+		loginToApplication();
+		waitFor(5);
+		homePage.closePreviousWindows();
+		waitFor(1);
+		homePage.navigateTo_OpsTeam_DecisionPackage_Screen("State Officer");
+		waitFor(5);
+		homePage.closePreviousWindows();
 		waitFor(3);
 		dpp.verifyAddingBundleChanges("FNS");
 		waitFor(2);
 		dpp.verifyMoveToDeputyDirector_BeforeAll_Fields_Submit("CMS");
+		dpp.removeOpDiv_OnCMS_FNS();
 		clearanceChecklistPage.updateClearanceChecklist("APD", "FNS");
-		clearanceChecklistPage.moveToMainPage();
+//		clearanceChecklistPage.moveToMainPage();
 		dpp.addRelatedProject();
 		dpp.verifyTemplateGeneration();
 		takeScreenshotFor("Template Generation in APD type");
@@ -129,7 +139,21 @@ public class CMS_FNS_DecisionPackages_Bundle_Validation extends TestBase {
 		waitFor(2);
 		dpp.addRelatedProject();
 		clearanceChecklistPage.moveToLeadPackage();
-		dpp.verifyMoveToDeputyDirector_Stage();
+		dpp.verifyEmergencyRequestErrorMsg_OpDiv_ErrorMsg();
+		dpp.verifyMoveToDeputyDirector_Stage_AfterAllValidations();
+		waitFor(1);
+		dpp.logoutFromApp();
+		waitFor(1);
+		loginToApplication();
+		waitFor(5);
+//		homePage.closePreviousWindows();
+//		waitFor(1);
+		homePage.navigateTo_OpsTeam_DecisionPackage_Screen("Deputy Director");
+		waitFor(5);
+		homePage.moveToActiveWindow();
+		dpp.navigateToLeadPackage();
+		dpp.performBeginReview();
+		
 	}
 
 }

@@ -18,7 +18,7 @@ public interface ClearenceCheckList_Loc {
 	public static final By firstChildPackageNavigationLink = By.xpath("//*[text()='Bundled Packages']/following::a//*[contains(text(), 'RFP')]");
 	public static final By leadPackageNavLink = By.xpath("//*[text()='Lead Package']/following::a[1]");
 	public static final By theCorrespondingOpDiv = By.xpath("//*[contains(@aria-label, 'The corresponding')]");
-//	public static final By decisionPackages = By.xpath("");
+	
 	
 	
 }

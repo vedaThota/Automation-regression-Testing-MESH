@@ -22,7 +22,7 @@ public class Decision_Package_Creation extends TestBase{
 	@Test(groups = { "Regression" })
 	public void DecisionPackage_TC_001_Verify_DecisionPackage_Creation_with_APD_as_SubmisionType() {
 		// Navigating to Decision package screen
-		homePage.navigateTo_OpsTeam_DecisionPackage_Screen();
+		homePage.navigateTo_OpsTeam_DecisionPackage_Screen("Vedha");
 		// Validating the all mandatory fields on the Decision package creation form
 		dpp.validateMandatoryFieldsErrorMessages();
 		// Creation of Decision package

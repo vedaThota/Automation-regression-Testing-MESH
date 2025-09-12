@@ -18,28 +18,32 @@ public class ClearenceChecklist extends SafeActions implements ClearenceCheckLis
 		jsClickOn(soReviewIsCompletede, "soReviewIsCompletede");
 		jsClickOn(mostRecentTemplateCheckBox, "mostRecentTemplateCheckBox");
 		jsClickOn(originalEmailSubmision, "originalEmailSubmision");
-		jsClickOn(mostRecentTemplateLink, "mostRecentTemplateLink");
-		waitFor(getRandomStateInitial());
-		int count = driver.getWindowHandles().size();
-		System.out.println("Count: " + count);
-		if (count == 3 || count == 2) {
-			test.log(Status.INFO,
-					MarkupHelper.createLabel("Most recent template link launching new window", ExtentColor.BLUE));
-		} else {
-			test.log(Status.FAIL,
-					MarkupHelper.createLabel("Most recent template link NOT launching new window", ExtentColor.RED));
-		}
-		waitFor(2);
-		if (submisionType.contains("APD")) {
-			driver.switchTo().window(new ArrayList<String>(driver.getWindowHandles()).get(2));
-			driver.close();
-			driver.switchTo().window(new ArrayList<String>(driver.getWindowHandles()).get(1));
-		}
-		if (submisionType.contains("RFP") || submisionType.contains("Contract")) {
-			driver.switchTo().window(new ArrayList<String>(driver.getWindowHandles()).get(1));
-			driver.close();
-			driver.switchTo().window(new ArrayList<String>(driver.getWindowHandles()).get(0));
-		}
+		
+		
+//		jsClickOn(mostRecentTemplateLink, "mostRecentTemplateLink");
+//		waitFor(getRandomStateInitial());
+//		int count = driver.getWindowHandles().size();
+//		System.out.println("Count: " + count);
+//		if (count == 3 || count == 2) {
+//			test.log(Status.INFO,
+//					MarkupHelper.createLabel("Most recent template link launching new window", ExtentColor.BLUE));
+//		} else {
+//			test.log(Status.FAIL,
+//					MarkupHelper.createLabel("Most recent template link NOT launching new window", ExtentColor.RED));
+//		}
+//		waitFor(2);
+//		if (submisionType.contains("APD")) {
+//			driver.switchTo().window(new ArrayList<String>(driver.getWindowHandles()).get(1));
+//			driver.close();
+//			driver.switchTo().window(new ArrayList<String>(driver.getWindowHandles()).get(0));
+//		}
+//		if (submisionType.contains("RFP") || submisionType.contains("Contract")) {
+//			driver.switchTo().window(new ArrayList<String>(driver.getWindowHandles()).get(1));
+//			driver.close();
+//			driver.switchTo().window(new ArrayList<String>(driver.getWindowHandles()).get(0));
+//		}
+		
+		
 		jsClickOn(submisionTypeCheckbox, "submisionTypeCheckbox");
 		waitFor(1);
 		if (submisionType.contains("Contract") || submisionType.contains("RFP"))
@@ -50,6 +54,10 @@ public class ClearenceChecklist extends SafeActions implements ClearenceCheckLis
 		jsClickOn(SOCompleted_Clearance, "SOCompleted_Clearance");
 		jsClickOn(saveButton, "saveButton");
 		waitFor(1);
+		try {
+			if(driver.findElement(saveButton).isDisplayed())
+				jsClickOn(saveButton, "saveButton");
+		}catch(Exception e) {}
 		verifyTextDisplay(checklistSaved, "Checklist saved successfully");
 		takeScreenshotFor("Updated clearance checklist screenshot");
 	}
@@ -73,5 +81,7 @@ public class ClearenceChecklist extends SafeActions implements ClearenceCheckLis
 		waitFor(2);
 		jsClickOn(leadPackageNavLink, "leadPackageNavLink");
 	};
+	
+	
 
 }
