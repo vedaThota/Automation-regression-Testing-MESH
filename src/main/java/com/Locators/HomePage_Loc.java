@@ -15,8 +15,8 @@ public interface HomePage_Loc {
 	public static final By userList_V = By.xpath("//*[@class='listItemPad'][text()='V']/parent::a");
 	public static final By ThotaVEda_Login_Link = By.xpath("//a[contains(text(), 'Thota, Veda')]/../preceding-sibling::td/a[text()='Login']");
 
-//	public static final By setUp = By.xpath("");
-//	public static final By setUp = By.xpath("");
+	public static final By stateOfficer_LoginLink = By.xpath("//a[contains(text(), 'State Officer')]/../preceding-sibling::td/a[text()='Login']");
+	public static final By deputyDirector_LoginLink = By.xpath("//a[contains(text(), 'Deputy Director')]/../preceding-sibling::td/a[text()='Login']");
 //	public static final By setUp = By.xpath("");
 //	public static final By setUp = By.xpath("");
 //	public static final By setUp = By.xpath("");

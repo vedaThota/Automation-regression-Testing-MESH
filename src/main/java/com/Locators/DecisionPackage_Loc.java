@@ -51,6 +51,7 @@ public interface DecisionPackage_Loc {
 	public static final By RAI_Option = By.xpath("//*[@data-value='RAI']");
 	public static final By save_Button = By.xpath("(//button[text()='Save'])[last()]");
 	public static final By State_Medicaid_Director_Input =  By.xpath("//label[text()='State Medicaid Director']/following::input[1]");
+	public static final By clearStateMedicaid_Director = By.xpath("//label[text()='State Medicaid Director']/following::input[1]/following::button[@title='Clear Selection']");
 	public static final By state_Medicaid_Director_Option = By.xpath("//label[text()='State Medicaid Director']/following::input[1]/following::ul[1]//lightning-base-combobox-item[1]/span[2]/span/lightning-base-combobox-formatted-text");
 	public static final By APD_Type = By.xpath("//span[@title='Planning Advanced Planning Document (PAPD)']");
 	public static final By APD_Type_Option = By.xpath("//span[@title='Planning Advanced Planning Document (PAPD)']/following::button");
@@ -67,8 +68,10 @@ public interface DecisionPackage_Loc {
 	public static final By event_Summary_Entered = By.xpath("//p[text()='Event Summary Added']");
 	public static final By stateMedicaidDirector_selected = By.xpath("//*[text()='State Medicaid Director']/following::a[1]/span//span//span");
 	public static final By State_Medicaid_Agency = By.xpath("(//*[text()='State Medicaid Agency']/following::a[1]/span//span//span)[last()]");
-	
-	public static final By acknowledgementDate_LabelText = By.xpath("//*[text()='Acknowledgment Date']/following::lightning-formatted-text[1]");
+	public static final By pointOfContactInput = By.xpath("//label[text()='Point of Contact']/following::input");
+	public static final By pointOfContact = By.xpath("(//label[text()='Point of Contact']/following::input/following::lightning-base-combobox-item)[last()-1]");
+			
+    public static final By acknowledgementDate_LabelText = By.xpath("//*[text()='Acknowledgment Date']/following::lightning-formatted-text[1]");
 	public static final By dueDate = By.xpath("//*[text()='Due Date']/following::lightning-formatted-text[1]");
 	public static final By daysUntilDue = By.xpath("//*[text()='Days Until Due']/following::lightning-formatted-number[1]");
 	public static final By edit_Emergency_Request = By.xpath("//button[@title='Edit Emergency Request']");
@@ -79,6 +82,7 @@ public interface DecisionPackage_Loc {
 	public static final By contracType_SoleSource = By.xpath("//span[text()='Sole Source']");
 	public static final By vendor = By.xpath("//*[text()='Vendor']/following::input");
 	public static final By vendorOption = By.xpath("//*[text()='Vendor']/following::input/following::ul/li[1]//lightning-base-combobox-formatted-text");
+	public static final By vendorOption2 = By.xpath("//*[text()='Vendor']/following::input/following::ul/li[2]//lightning-base-combobox-formatted-text");
 	public static final By claimsProcessing_CheckBox = By.xpath("//*[text()='Claims Processing']/following::input[1]");
 	public static final By auditingCheckBox = By.xpath("//*[text()='Auditing']/following::input[1]");
 	
@@ -149,8 +153,24 @@ public interface DecisionPackage_Loc {
 	public static final By decisionPackageName = By.xpath("//h1//*[text()='Decision Package']/following::lightning-formatted-text[1]");
 	public static final By EditExecutiveSummary = By.xpath("//button[@title='Edit Executive Summary']");
 	public static final By clearMedicaidDirector = By.xpath("//*[text()='State Medicaid Director']/following::button[@title='Clear Selection']");
-//	public static final By EditStatus = By.xpath("//button[@title='Edit Status']");
-//	public static final By EditStatus = By.xpath("//button[@title='Edit Status']");
+	public static final By checkEmergencyRequest = By.xpath("(//*[text()='Emergency Request']/following::input[1])[last()]");
+	public static final By uncheckEmergencyRequest = By.xpath("//*[contains(text(),'Emergency requests cannot')]/preceding-sibling::div//input");
+			
+	public static final By emergencyRequestMsg = By.xpath("//*[contains(text(), 'Emergency requests cannot be')]");
+	public static final By oPDiv_HHS = By.xpath("//*[text()='OpDiv']/following::*[@data-value='HHS']");
+	public static final By add_oPDiv_HHS = By.xpath("//*[text()='OpDiv']/following::*[text()='OpDiv']/following::*[@data-value='HHS']/following::button[1]");
+	public static final By remove_OpDiv_HHS = By.xpath("(//*[text()='OpDiv']/following::*[@data-value='HHS']//preceding::button[@title='Move to Available'])[last()]");
+
+	public static final By editOpDiv = By.xpath("(//button[@title='Edit OpDiv'])[last()]");
+	
+	public static final By userProfile = By.xpath("//span[contains(@class, 'userProfileCardTriggerRoot')]//button");
+	public static final By logOutButton = By.xpath("//a[text()='Log Out']");
+	public static final By viewListDropdown = By.xpath("//h1[text()='Decision Packages']//following::span[text()='Recently Viewed']");
+	public static final By allDecisionPackages = By.xpath("//h1[text()='Decision Packages']//following::span[text()='Recently Viewed']/following::span[@title='All Decision Packages']");
+	public static final By searchList = By.xpath("//input[@placeholder='Search this list...']");
+	public static final By editEmergencyRequest = By.xpath("(//button[@title='Edit Emergency Request'])[last()]");
+	public static final By moveToFMReviewer = By.xpath("//button[text()='Move to FM Reviewer']");
+	public static final By confirmButton = By.xpath("//button[text()='Confirm']");
 //	public static final By EditStatus = By.xpath("//button[@title='Edit Status']");
 //	public static final By EditStatus = By.xpath("//button[@title='Edit Status']");
 	

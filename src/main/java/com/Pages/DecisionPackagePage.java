@@ -243,7 +243,13 @@ public class DecisionPackagePage extends SafeActions implements DecisionPackage_
 		jsClickOn(Recommended_Action, "Recommended_Action");
 		waitFor(2);
 		jsClickOn(Approve_Option, "Approve_Option");
-
+		waitFor(1);
+		scrollByPixels(500);
+		waitFor(1);
+		typeText(pointOfContactInput, directorState.split(" ")[0], "pointOfContactInput");
+		waitFor(1);
+		jsClickOn(pointOfContact, "pointOfContact");
+		waitFor(1);
 		jsClickOn(event_Summary_TextArea, "event_Summary_TextArea");
 		waitFor(2);
 		jsClickOn(event_Summary_TextArea_AfterClick, "event_Summary_TextArea_AfterClick");
@@ -252,6 +258,12 @@ public class DecisionPackagePage extends SafeActions implements DecisionPackage_
 		waitFor(2);
 		scrollByPixels(-500);
 		waitFor(3);
+		try {
+			if (driver.findElement(clearStateMedicaid_Director).isDisplayed()) {
+				jsClickOn(clearStateMedicaid_Director, "clearStateMedicaid_Director");
+			}
+		} catch (Exception e) {
+		}
 		typeText(State_Medicaid_Director_Input, directorState.split(" ")[0], "State_Medicaid_Director_Input");
 		waitFor(5);
 		String directorName = getAttribute(state_Medicaid_Director_Option, "title", "state_Medicaid_Director_Option");
@@ -302,6 +314,13 @@ public class DecisionPackagePage extends SafeActions implements DecisionPackage_
 		jsClickOn(Recommended_Action, "Recommended_Action");
 		waitFor(2);
 		jsClickOn(Approve_Option, "Approve_Option");
+		waitFor(1);
+		jsClickOn(pointOfContactInput, "pointOfContactInput");
+		waitFor(1);
+		typeText(pointOfContactInput, directorState.split(" ")[0], "pointOfContactInput");
+		waitFor(1);
+		jsClickOn(pointOfContact, "pointOfContact");
+		waitFor(1);
 		jsClickOn(event_Summary_TextArea, "event_Summary_TextArea");
 		waitFor(2);
 		jsClickOn(event_Summary_TextArea_AfterClick, "event_Summary_TextArea_AfterClick");
@@ -310,6 +329,12 @@ public class DecisionPackagePage extends SafeActions implements DecisionPackage_
 		waitFor(2);
 		scrollByPixels(-500);
 		waitFor(3);
+		try {
+			if (driver.findElement(clearStateMedicaid_Director).isDisplayed()) {
+				jsClickOn(clearStateMedicaid_Director, "clearStateMedicaid_Director");
+			}
+		} catch (Exception e) {
+		}
 		typeText(State_Medicaid_Director_Input, stateMedicaidAgency.trim().split(" ")[0],
 				"State_Medicaid_Director_Input");
 		waitFor(5);
@@ -329,8 +354,8 @@ public class DecisionPackagePage extends SafeActions implements DecisionPackage_
 		jsClickOn(contracType_SoleSource, "contracType_SoleSource");
 		typeText(Total_ContractValue, "1000", "Total_ContractValue");
 		typeText(vendor, "test", "Vendor");
-		waitFor(1);
-		jsClickOn(vendorOption, "vendorOption");
+		waitFor(2);
+		jsClickOn(vendorOption2, "vendorOption2");
 		jsClickOn(claimsProcessing_CheckBox, "claimsProcessing_CheckBox");
 		jsClickOn(auditingCheckBox, "auditingCheckBox");
 		takeScreenshotFor("Mandatory Fields before submit");
@@ -379,20 +404,67 @@ public class DecisionPackagePage extends SafeActions implements DecisionPackage_
 		verifyTextDisplay(stateOfficerReview, "State Officer Review");
 		verifyTextDisplay(inReview, "In Review");
 	}
+	
+	public void navigateToLeadPackage() {
+		waitFor(3);
+		jsClickOn(decisionPackageTab, "decisionPackageTab");
+		By leadPackage = By.xpath("(//a[contains(@title, '" + decisionPackageNameText + "')])[last()]");
+		waitFor(3);
+		jsClickOn(viewListDropdown, "viewListDropdown");
+		jsClickOn(allDecisionPackages, "allDecisionPackages");
+		waitFor(3);
+		typeText(searchList, decisionPackageNameText, "searchList");
+		Robot robot;
+		try {
+			robot = new Robot();
+			robot.keyPress(KeyEvent.VK_ENTER);
+			robot.keyRelease(KeyEvent.VK_ENTER);
+		} catch (Exception e) {
+		}
+		waitFor(3);
+		jsClickOn(leadPackage, "leadPackage");
+		waitFor(3);
+	}
+	
+	public void performBeginReview() {
+		jsClickOn(beginReview, "beginReview");
+		waitFor(5);
+		verifyTextDisplay(moveToFMReviewer, "Move to FM Reviewer");
+		takeScreenshotFor("DD successfully started review");
+	}
 
 	public void verifyMoveToDeputyDirector_BeforeAll_Fields_Submit(String opDivType) {
 		jsClickOn(cancelAndClose, "cancelAndClose");
 		waitFor(3);
 		jsClickOn(decisionPackageTab, "decisionPackageTab");
-		By leadPackage = By.xpath("//a[@title='" + decisionPackageNameText + "']");
+		By leadPackage = By.xpath("(//a[contains(@title,'"+decisionPackageNameText+"') and contains(@class, 'slds-truncate')])[last()]");
+		waitFor(3);
+		jsClickOn(viewListDropdown, "viewListDropdown");
+		jsClickOn(allDecisionPackages, "allDecisionPackages");
+		waitFor(3);
+		typeText(searchList, decisionPackageNameText, "searchList");
+		Robot robot;
+		try {
+			robot = new Robot();
+			robot.keyPress(KeyEvent.VK_ENTER);
+			robot.keyRelease(KeyEvent.VK_ENTER);
+		} catch (Exception e) {
+		}
 		waitFor(3);
 		jsClickOn(leadPackage, "leadPackage");
 		waitFor(3);
+		// Updating Decision package Op Div type to HHS
+		if (opDivType.contains("CMS")) {
+			updateOpDivWithHHS();
+		}
 		jsClickOn(moveToDeputyDirector, "moveToDeputyDirector");
-		verifyTextDisplay(ErrorMessage,
-				"At least one project should be linked to the decision package., No Letter Generated, SO Clearance Checklist");
-
 		waitFor(1);
+		try {
+			if (driver.findElement(By.xpath("//button[text()='Confirm']")).isDisplayed()) {
+				driver.findElement(By.xpath("//button[text()='Confirm']")).click();
+			}
+		} catch (Exception e) {
+		}
 		if (opDivType.contains("HHS")) {
 			String EM_ChildPak = getTextFromUI(ErrorMessage2, "ErrorMessage2");
 			if (EM_ChildPak.contains("Bundled Decision Package Errors:")
@@ -410,12 +482,13 @@ public class DecisionPackagePage extends SafeActions implements DecisionPackage_
 		}
 		if (opDivType.contains("CMS")) {
 			String EM_ChildPak = getTextFromUI(ErrorMessage2, "ErrorMessage2");
-			if (EM_ChildPak.contains("Lead Decision Package Errors:")
-					&& EM_ChildPak.contains("At least one project should be linked to the decision package., No Letter Generated, SO Clearance Checklist")
+			if (EM_ChildPak.contains("Lead Decision Package Errors:") && EM_ChildPak.contains(
+					"No Letter Generated, SO Clearance Checklist, At least one project should be linked to the decision package.")
+					&& EM_ChildPak.contains("Bundled Decision Package Errors:")
 					&& EM_ChildPak.contains(
-							"Bundled Decision Package Errors:")
+							"SO Clearance Checklist, At least one project should be linked to the decision package.")
 					&& EM_ChildPak.contains(
-							"SO Clearance Checklist, At least one project should be linked to the decision package.")) {
+							"HHS packages can only be bundled with other HHS packages. The following Bundled Packages have a mismatched OpDiv:")) {
 				test.log(Status.INFO, MarkupHelper.createLabel("Bundled packages error messages displayed as expected",
 						ExtentColor.BLUE));
 			} else {
@@ -445,6 +518,25 @@ public class DecisionPackagePage extends SafeActions implements DecisionPackage_
 		waitFor(3);
 
 		jsClickOn(moveToDeputyDirector, "moveToDeputyDirector");
+		waitFor(1);
+		jsClickOn(confirmButton, "confirmButton");
+		waitFor(1);
+		takeScreenshotFor("Deputy director stage navigation success messaage");
+		waitFor(5);
+		String status = getAttribute(deputyDirectorTab, "aria-selected", "deputyDirectorTab");
+		if (status.contains("true"))
+			test.log(Status.INFO, MarkupHelper.createLabel("Moved to Deputy Director", ExtentColor.BLUE));
+		else
+			test.log(Status.FAIL, MarkupHelper.createLabel("Failed to Moved to Deputy Director", ExtentColor.RED));
+	}
+	
+	public void verifyMoveToDeputyDirector_Stage_AfterAllValidations() {
+		scrollToBottomOfthePage();
+		waitFor(3);
+		jsClickOn(moveToDeputyDirector, "moveToDeputyDirector");
+		waitFor(1);
+		jsClickOn(confirmButton, "confirmButton");
+		waitFor(1);
 		takeScreenshotFor("Deputy director stage navigation success messaage");
 		waitFor(5);
 		String status = getAttribute(deputyDirectorTab, "aria-selected", "deputyDirectorTab");
@@ -476,6 +568,8 @@ public class DecisionPackagePage extends SafeActions implements DecisionPackage_
 		waitFor(6);
 		scrollByPixels(500);
 		waitFor(2);
+		scrollByPixels(500);
+		waitFor(2);
 		scrollToBottomOfthePage();
 		waitFor(2);
 		jsClickOn(RelatedProjects_button, "RelatedProjects_button");
@@ -502,6 +596,7 @@ public class DecisionPackagePage extends SafeActions implements DecisionPackage_
 		jsClickOn(save_Button, "save_Button");
 		waitFor(3);
 		jsClickOn(save_Button, "save_Button");
+		waitFor(3);
 		takeScreenshotFor("New Project Created screenshot");
 
 	}
@@ -592,6 +687,7 @@ public class DecisionPackagePage extends SafeActions implements DecisionPackage_
 		takeScreenshotFor("Decision packages screen");
 		jsClickOn(packageLink, "packageLink");
 		takeScreenshotFor("navigate to recent Decision packages");
+
 		jsClickOn(bundleButton, "bundleButton");
 		waitFor(2);
 		typeText(searchDecisionPackage_Input, decisionPackageTitle_APD.replace("APD", "PAPD"), "searchDecisionPackage");
@@ -625,6 +721,74 @@ public class DecisionPackagePage extends SafeActions implements DecisionPackage_
 			test.log(Status.FAIL,
 					MarkupHelper.createLabel("Package selection count was NOT  matched", ExtentColor.RED));
 		}
+
+	}
+
+	public void logoutFromApp() {
+		jsClickOn(userProfile, "userProfile");
+		waitFor(1);
+		jsClickOn(logOutButton, "logOutButton");
+	}
+
+	public void verifyEmergencyRequestErrorMsg_OpDiv_ErrorMsg() {
+		scrollToTopofThePage();
+		waitFor(1);
+		jsClickOn(editEmergencyRequest, "editEmergencyRequest");
+		waitFor(1);
+		jsClickOn(checkEmergencyRequest, "checkEmergencyRequest");
+		jsClickOn(save_Button, "save_Button");
+		String errorMsg = getTextFromUI(emergencyRequestMsg, "emergencyRequestMsg");
+		if (errorMsg.contains(
+				"Emergency requests cannot be part of a bundle. Please remove this package from its bundle and try again.")) {
+			test.log(Status.INFO,
+					MarkupHelper.createLabel("Emergency request error displayed as expected", ExtentColor.GREEN));
+		} else {
+			test.log(Status.FAIL,
+					MarkupHelper.createLabel("Emergency request error NOT  displayed as expected", ExtentColor.RED));
+		}
+		jsClickOn(uncheckEmergencyRequest, "uncheckEmergencyRequest");
+		waitFor(1);
+		jsClickOn(save_Button, "save_Button");
+		waitFor(5);
+	}
+
+	public void updateOpDivWithHHS() {
+		waitFor(5);
+		scrollByPixels(500);
+		waitFor(5);
+		jsClickOn(editOpDiv, "editOpDiv");
+		waitFor(1);
+		try {
+			waitFor(3);
+			if (driver.findElement(editOpDiv).isDisplayed())
+				jsClickOn(editOpDiv, "editOpDiv");
+			waitFor(1);
+		} catch (Exception e) {
+		}
+		jsClickOn(oPDiv_HHS, "oPDiv_HHS");
+		waitFor(1);
+		jsClickOn(add_oPDiv_HHS, "add_oPDiv_HHS");
+		jsClickOn(save_Button, "save_Button");
+		waitFor(3);
+	}
+
+	public void removeOpDiv_OnCMS_FNS() {
+		waitFor(10);
+		scrollByPixels(500);
+		waitFor(5);
+		jsClickOn(editOpDiv, "editOpDiv");
+		waitFor(1);
+		try {
+			waitFor(3);
+			if (driver.findElement(editOpDiv).isDisplayed())
+				jsClickOn(editOpDiv, "editOpDiv");
+			waitFor(1);
+		} catch (Exception e) {
+		}
+		jsClickOn(oPDiv_HHS, "oPDiv_HHS");
+		jsClickOn(remove_OpDiv_HHS, "remove_OpDiv_HHS");
+		jsClickOn(save_Button, "save_Button");
+		waitFor(10);
 	}
 
 }
