@@ -52,6 +52,7 @@ public class ClearenceChecklist extends SafeActions implements ClearenceCheckLis
 			jsClickOn(theCorrespondingOpDiv, "theCorrespondingOpDiv");
 
 		jsClickOn(SOCompleted_Clearance, "SOCompleted_Clearance");
+		waitFor(3);
 		jsClickOn(saveButton, "saveButton");
 		waitFor(1);
 		try {
@@ -60,6 +61,58 @@ public class ClearenceChecklist extends SafeActions implements ClearenceCheckLis
 		}catch(Exception e) {}
 		verifyTextDisplay(checklistSaved, "Checklist saved successfully");
 		takeScreenshotFor("Updated clearance checklist screenshot");
+	}
+	
+	public void updateParentDecsionPackage(String submisionType, String opDivType) {
+		waitFor(5);
+		jsClickOn(clearanceChecklistLast, "clearanceChecklistLast");
+		jsClickOn(soReviewIsCompletede, "soReviewIsCompletede");
+		jsClickOn(mostRecentTemplateCheckBox, "mostRecentTemplateCheckBox");
+		jsClickOn(originalEmailSubmision, "originalEmailSubmision");
+		
+		jsClickOn(submisionTypeCheckbox, "submisionTypeCheckbox");
+		waitFor(1);
+		if (submisionType.contains("Contract") || submisionType.contains("RFP"))
+			jsClickOn(scopeOfContractCheckbox, "scopeOfContractCheckbox");
+		if (submisionType.contains("APD") && opDivType.contains("FNS"))
+			jsClickOn(theCorrespondingOpDiv, "theCorrespondingOpDiv");
+
+		jsClickOn(SOCompleted_Clearance, "SOCompleted_Clearance");
+		jsClickOn(FM_CompletedClearanceChecklist, "FM_CompletedClearanceChecklist");
+		waitFor(1);
+		jsClickOn(saveButton, "saveButton");
+		waitFor(1);
+		try {
+			if(driver.findElement(saveButton).isDisplayed())
+				jsClickOn(saveButton, "saveButton");
+		}catch(Exception e) {}
+		verifyTextDisplay(checklistSaved, "Checklist saved successfully");
+		takeScreenshotFor("Updated clearance checklist screenshot");
+	}
+	public void updateFirstChildClearance_CheckList() {
+		waitFor(5);
+		jsClickOn(clearanceChecklistLast, "clearanceChecklistLast");
+		jsClickOn(spellCheckWasUsed, "spellCheckWasUsed");
+		waitFor(1);
+		scrollToBottomOfthePage();
+		waitFor(5);
+		jsClickOn(FM_CompletedClearanceChecklist, "FM_CompletedClearanceChecklist");
+		waitFor(2);
+		jsClickOn(saveButton, "saveButton");
+		waitFor(5);
+	}
+	
+	public void updateSecondChildClearance_CheckList() {
+		waitFor(5);
+		jsClickOn(clearanceChecklistLast, "clearanceChecklistLast");
+		jsClickOn(spellCheckWasUsed, "spellCheckWasUsed");
+		waitFor(1);
+		scrollToBottomOfthePage();
+		waitFor(5);
+		jsClickOn(FM_CompletedClearanceChecklist, "FM_CompletedClearanceChecklist");
+		waitFor(2);
+		jsClickOn(saveButton, "saveButton");
+		waitFor(1);
 	}
 
 	public void moveToMainPage() {
@@ -72,9 +125,16 @@ public class ClearenceChecklist extends SafeActions implements ClearenceCheckLis
 	public void moveToFistChildPackage() {
 		jsClickOn(firstChildPackageNavigationLink, "firstChildPackageNavigationLink");
 	}
+	
+	public void moveToSecondChildPpackageFromLleadPpackage() {
+		jsClickOn(SC_Ffrom_leadpackage, "SC_Ffrom_leadpackage");
+	}
 
 	public void moveToSecondChildPackage() {
-		jsClickOn(secondChildPackageNavigationLink, "secondChildPackageNavigationLink");
+		jsClickOn(leadPpackageLlink, "leadPpackageLlink");
+		waitFor(5);
+		jsClickOn(SC_Ffrom_leadpackage, "SC_Ffrom_leadpackage");
+		waitFor(2);
 	}
 
 	public void moveToLeadPackage() {

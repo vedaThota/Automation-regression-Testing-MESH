@@ -171,8 +171,30 @@ public interface DecisionPackage_Loc {
 	public static final By editEmergencyRequest = By.xpath("(//button[@title='Edit Emergency Request'])[last()]");
 	public static final By moveToFMReviewer = By.xpath("//button[text()='Move to FM Reviewer']");
 	public static final By confirmButton = By.xpath("//button[text()='Confirm']");
-//	public static final By EditStatus = By.xpath("//button[@title='Edit Status']");
-//	public static final By EditStatus = By.xpath("//button[@title='Edit Status']");
+	
+	public static final By moveToFMReviewr = By.xpath("//*[text()='Move to FM Reviewer']");
+	public static final By deputyConfirm = By.xpath("//*[text()='Do you want to complete this action as a Deputy Director?']");
+	public static final By fmReviewTab = By.xpath("//a[@data-tab-name='FM Review']");
+	
+	public static final By moveToDivisionDirector = By.xpath("//*[text()='Move to Division Director']");
+	public static final By FMReviewerConfirm = By.xpath("//*[text()='Do you want to complete this action as a FM Reviewer?']");
+	
+	public static final By divisionDirectorTab = By.xpath("//a[@title='Division Director Review']");
+	
+	public static final By approvePackage = By.xpath("//*[text()='Approve Package']");
+	public static final By DivisionDirectorConfirm = By.xpath("//*[text()='Do you want to complete this action as a Division Director?']");
+	
+	public static final By pendingIssuanceStatus = By.xpath("//a[@title='Pending Issuance to State']");
+	
+	public static final By closeOutPackage = By.xpath("//*[text()='Closeout Package']");
+	
+	public static final By stateOfficerConfirm = By.xpath("//*[text()='Do you want to complete this action as a State Officer?']");
+	
+	public static final By completedTab = By.xpath("//a[@title='Completed']");
+	
+//	public static final By EditStatus = By.xpath("dvfdjvjkfnvfd");
+//	public static final By EditStatus = By.xpath("dvfdjvjkfnvfd");
+//	public static final By EditStatus = By.xpath("dvfdjvjkfnvfd");
 	
 	
 	

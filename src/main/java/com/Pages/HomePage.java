@@ -35,11 +35,18 @@ public class HomePage extends SafeActions implements HomePage_Loc {
 		} else if (userType.contains("Deputy Director")) {
 			jsClickOn(deputyDirector_LoginLink, "deputyDirector_LoginLink");
 		}
+		else if (userType.contains("Division Director")) {
+			jsClickOn(division_Director_LoginLink, "division_Director_LoginLink");
+		}else if (userType.contains("FM Reviewer")) {
+			jsClickOn(FM_Reviewer_loginLink, "FM_Reviewer_loginLink");
+		}
+		
 	
 			driver.switchTo().defaultContent();
 		
 		// Navigating to Decision Packages screen
-		if (userType.contains("State Officer") || userType.contains("Deputy Director")) {
+		if (userType.contains("State Officer") || userType.contains("Deputy Director")|| userType.contains("FM Reviewer")
+				|| userType.contains("Division Director")) {
 
 		} else {
 			jsClickOn(Decision_Packages, "Decision_Packages");

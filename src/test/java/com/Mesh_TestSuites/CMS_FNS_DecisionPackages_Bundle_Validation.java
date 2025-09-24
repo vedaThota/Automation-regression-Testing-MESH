@@ -25,15 +25,15 @@ public class CMS_FNS_DecisionPackages_Bundle_Validation extends TestBase {
 		dpp.verifyMandatoryFields_OnDecisionPackage("E&E-FNS-APD", "APD");
 		dpp.collectLeadTitle();
 
-////		dpp.selectEmergencyRequestInthe_DecisionPackage();
-//
+//////		dpp.selectEmergencyRequestInthe_DecisionPackage();
+		
 		dpp.scrollToBottomOfthePage();
 		waitFor(1);
 		dpp.verifyFundingTypeAmountDisplay();
 		takeScreenshotFor("Amount Shows in APD type");
-//
 		dpp.verifyBeginReviewStatus();
 		takeScreenshotFor("Begin Review status in APD type");
+		
 //		
 ////		dpp.verifyFileUpload("APD");
 ////		dpp.verifyDownloadFile("APD");
@@ -134,7 +134,7 @@ public class CMS_FNS_DecisionPackages_Bundle_Validation extends TestBase {
 		waitFor(2);
 		clearanceChecklistPage.moveToLeadPackage();
 		waitFor(2);
-		clearanceChecklistPage.moveToSecondChildPackage();
+		clearanceChecklistPage.moveToSecondChildPpackageFromLleadPpackage();
 		clearanceChecklistPage.updateClearanceChecklist("Contract", "FNS");
 		waitFor(2);
 		dpp.addRelatedProject();
@@ -153,6 +153,54 @@ public class CMS_FNS_DecisionPackages_Bundle_Validation extends TestBase {
 		homePage.moveToActiveWindow();
 		dpp.navigateToLeadPackage();
 		dpp.performBeginReview();
+		System.out.println("================================ Test Case Four Completed ===========================");
+	}
+	
+	@Test(groups = { "Regression" })
+	public void DecisionPackage_TC_005_Verify_Package_Completion_Flow() throws InterruptedException {
+		dpp.verifyFMReviewer_Flow();
+		waitFor(1);
+		dpp.logoutFromApp();
+		waitFor(1);
+		loginToApplication();
+		waitFor(5);
+		homePage.closePreviousWindows();
+		waitFor(1);
+		homePage.navigateTo_OpsTeam_DecisionPackage_Screen("FM Reviewer");
+		waitFor(5);
+		homePage.moveToActiveWindow();
+		dpp.navigateToLeadPackage();
+		dpp.performBeginReview_FMReview();
+		clearanceChecklistPage.updateParentDecsionPackage("APD", "FNS");
+		clearanceChecklistPage.moveToFistChildPackage();
+		clearanceChecklistPage.updateFirstChildClearance_CheckList();
+		clearanceChecklistPage.moveToSecondChildPackage();
+		clearanceChecklistPage.updateSecondChildClearance_CheckList();
+		waitFor(2);
+		dpp.navigateToLeadPackage();
+		dpp.verifyDivisionDirector_Review_Flow();
+		waitFor(1);
+		dpp.logoutFromApp();
+		waitFor(1);
+		loginToApplication();
+		waitFor(5);
+		homePage.closePreviousWindows();
+		waitFor(1);
+		homePage.navigateTo_OpsTeam_DecisionPackage_Screen("Division Director");
+		waitFor(5);
+		homePage.moveToActiveWindow();
+		dpp.navigateToLeadPackage();
+		dpp.performBeginReview_DivisionDirector();
+		dpp.verifyApprovingPackage();
+		dpp.verifyDecisionPackage_MoveTo_PendingIssuanceToState();
+		waitFor(1);
+		dpp.logoutFromApp();
+		waitFor(1);
+		loginToApplication();
+		waitFor(5);
+		homePage.moveToActiveWindow();
+		dpp.navigateToLeadPackage();
+		dpp.verifyCloseoutPackage();
 		
 	}
 
