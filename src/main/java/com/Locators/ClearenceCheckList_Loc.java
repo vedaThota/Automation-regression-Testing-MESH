@@ -14,11 +14,18 @@ public interface ClearenceCheckList_Loc {
 	public static final By SOCompleted_Clearance = By.xpath("//*[text()='SO Completed the Clearance Checklist.']");
 	public static final By saveButton = By.xpath("//*[text()='Save']");
 	public static final By checklistSaved = By.xpath("//*[contains(text(), 'Checklist saved successfully')]");
-	public static final By secondChildPackageNavigationLink = By.xpath("//*[text()='Bundled Packages']/following::a//*[contains(text(), 'Contract')]");
-	public static final By firstChildPackageNavigationLink = By.xpath("//*[text()='Bundled Packages']/following::a//*[contains(text(), 'RFP')]");
+	public static final By secondChildPackageNavigationLink = By.xpath("//*[text()='Other Child Packages Details:']/following::a[contains(text(), 'Contract')]");
+	public static final By firstChildPackageNavigationLink = By.xpath("(//*[text()='Bundled Packages']/following::a//*[contains(text(), 'RFP')])[last()]");
 	public static final By leadPackageNavLink = By.xpath("//*[text()='Lead Package']/following::a[1]");
 	public static final By theCorrespondingOpDiv = By.xpath("//*[contains(@aria-label, 'The corresponding')]");
 	
+	public static final By FM_CompletedClearanceChecklist = By.xpath("//*[text()='FM Completed the Clearance Checklist.']/preceding::input[1]");
+	
+	public static final By spellCheckWasUsed = By.xpath("//*[contains(@aria-label, 'Spell check was used')]");
+	public static final By SC_Ffrom_leadpackage = By.xpath("(//*[text()='Bundled Packages']/following::a//*[contains(text(), 'Contract')])[last()]");
+	public static final By leadPpackageLlink = By.xpath("//*[text()='Lead Package']/following::a[1]");
+//	public static final By spellCheckWasUsed = By.xpath("//*[contains(@aria-label, 'Spell check was used')]");
+//	public static final By spellCheckWasUsed = By.xpath("//*[contains(@aria-label, 'Spell check was used')]");
 	
 	
 }

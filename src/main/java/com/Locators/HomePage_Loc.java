@@ -17,8 +17,8 @@ public interface HomePage_Loc {
 
 	public static final By stateOfficer_LoginLink = By.xpath("//a[contains(text(), 'State Officer')]/../preceding-sibling::td/a[text()='Login']");
 	public static final By deputyDirector_LoginLink = By.xpath("//a[contains(text(), 'Deputy Director')]/../preceding-sibling::td/a[text()='Login']");
-//	public static final By setUp = By.xpath("");
-//	public static final By setUp = By.xpath("");
+	public static final By FM_Reviewer_loginLink = By.xpath("//a[contains(text(), 'FM Reviewer')]/../preceding-sibling::td/a[text()='Login']");
+	public static final By division_Director_LoginLink = By.xpath("//a[contains(text(), 'Division Director')]/../preceding-sibling::td/a[text()='Login']");
 //	public static final By setUp = By.xpath("");
 //	public static final By setUp = By.xpath("");
 //	public static final By setUp = By.xpath("");

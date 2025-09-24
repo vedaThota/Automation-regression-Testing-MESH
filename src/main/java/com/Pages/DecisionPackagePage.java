@@ -14,6 +14,7 @@ import java.time.Duration;
 import java.util.ArrayList;
 import java.util.Iterator;
 
+import org.ghost4j.analyzer.AnalyzerException;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.interactions.Actions;
@@ -243,9 +244,10 @@ public class DecisionPackagePage extends SafeActions implements DecisionPackage_
 		jsClickOn(Recommended_Action, "Recommended_Action");
 		waitFor(2);
 		jsClickOn(Approve_Option, "Approve_Option");
-		waitFor(1);
-		scrollByPixels(500);
-		waitFor(1);
+		waitFor(3);
+		scrollByPixels(100);
+		waitFor(2);
+		jsClickOn(pointOfContactInput, "pointOfContactInput");
 		typeText(pointOfContactInput, directorState.split(" ")[0], "pointOfContactInput");
 		waitFor(1);
 		jsClickOn(pointOfContact, "pointOfContact");
@@ -314,7 +316,9 @@ public class DecisionPackagePage extends SafeActions implements DecisionPackage_
 		jsClickOn(Recommended_Action, "Recommended_Action");
 		waitFor(2);
 		jsClickOn(Approve_Option, "Approve_Option");
-		waitFor(1);
+		waitFor(3);
+		scrollByPixels(100);
+		waitFor(2);
 		jsClickOn(pointOfContactInput, "pointOfContactInput");
 		waitFor(1);
 		typeText(pointOfContactInput, directorState.split(" ")[0], "pointOfContactInput");
@@ -404,13 +408,14 @@ public class DecisionPackagePage extends SafeActions implements DecisionPackage_
 		verifyTextDisplay(stateOfficerReview, "State Officer Review");
 		verifyTextDisplay(inReview, "In Review");
 	}
-	
+
 	public void navigateToLeadPackage() {
 		waitFor(3);
 		jsClickOn(decisionPackageTab, "decisionPackageTab");
 		By leadPackage = By.xpath("(//a[contains(@title, '" + decisionPackageNameText + "')])[last()]");
 		waitFor(3);
 		jsClickOn(viewListDropdown, "viewListDropdown");
+		waitFor(2);
 		jsClickOn(allDecisionPackages, "allDecisionPackages");
 		waitFor(3);
 		typeText(searchList, decisionPackageNameText, "searchList");
@@ -425,24 +430,65 @@ public class DecisionPackagePage extends SafeActions implements DecisionPackage_
 		jsClickOn(leadPackage, "leadPackage");
 		waitFor(3);
 	}
-	
+
 	public void performBeginReview() {
 		jsClickOn(beginReview, "beginReview");
 		waitFor(5);
+		try {
+			driver.findElement(confirmButton).click();
+			waitFor(5);
+		} catch (Exception e) {
+		}
 		verifyTextDisplay(moveToFMReviewer, "Move to FM Reviewer");
 		takeScreenshotFor("DD successfully started review");
+	}
+
+	public void performBeginReview_FMReview() {
+		jsClickOn(beginReview, "beginReview");
+		waitFor(5);
+		try {
+			driver.findElement(confirmButton).click();
+			waitFor(5);
+		} catch (Exception e) {
+		}
+		takeScreenshotFor("FM Reviewer started review");
+		verifyTextDisplay(moveToDivisionDirector, "Move to Division Director");
+	}
+
+	public void performBeginReview_DivisionDirector() {
+		jsClickOn(beginReview, "beginReview");
+		waitFor(5);
+		try {
+			driver.findElement(confirmButton).click();
+			waitFor(5);
+		} catch (Exception e) {
+		}
+		takeScreenshotFor("Division Director started review");
+		verifyTextDisplay(approvePackage, "Approve Package");
+	}
+
+	public void verifyApprovingPackage() {
+		waitFor(5);
+		jsClickOn(approvePackage, "approvePackage");
+		waitFor(1);
+		verifyTextDisplay(DivisionDirectorConfirm, "Do you want to complete this action as a Division Director?");
+		jsClickOn(confirmButton, "confirmButton");
+		waitFor(1);
+
 	}
 
 	public void verifyMoveToDeputyDirector_BeforeAll_Fields_Submit(String opDivType) {
 		jsClickOn(cancelAndClose, "cancelAndClose");
 		waitFor(3);
 		jsClickOn(decisionPackageTab, "decisionPackageTab");
-		By leadPackage = By.xpath("(//a[contains(@title,'"+decisionPackageNameText+"') and contains(@class, 'slds-truncate')])[last()]");
+		By leadPackage = By.xpath("(//a[contains(@title,'" + decisionPackageNameText
+				+ "') and contains(@class, 'slds-truncate')])[last()]");
 		waitFor(3);
 		jsClickOn(viewListDropdown, "viewListDropdown");
 		jsClickOn(allDecisionPackages, "allDecisionPackages");
 		waitFor(3);
 		typeText(searchList, decisionPackageNameText, "searchList");
+		waitFor(2);
 		Robot robot;
 		try {
 			robot = new Robot();
@@ -483,12 +529,16 @@ public class DecisionPackagePage extends SafeActions implements DecisionPackage_
 		if (opDivType.contains("CMS")) {
 			String EM_ChildPak = getTextFromUI(ErrorMessage2, "ErrorMessage2");
 			if (EM_ChildPak.contains("Lead Decision Package Errors:") && EM_ChildPak.contains(
-					"No Letter Generated, SO Clearance Checklist, At least one project should be linked to the decision package.")
+					"No Letter Generated")
+					&& EM_ChildPak.contains(
+							"Clearance Checklist is incomplete")
+					&& EM_ChildPak.contains(
+							"At least one project should be linked to the decision package")
 					&& EM_ChildPak.contains("Bundled Decision Package Errors:")
 					&& EM_ChildPak.contains(
-							"SO Clearance Checklist, At least one project should be linked to the decision package.")
+							"Clearance Checklist is incomplete, At least one project should be linked to the decision package")
 					&& EM_ChildPak.contains(
-							"HHS packages can only be bundled with other HHS packages. The following Bundled Packages have a mismatched OpDiv:")) {
+							"HHS packages can only be bundled with other HHS packages. The following Bundled Packages have a mismatched OpDiv")) {
 				test.log(Status.INFO, MarkupHelper.createLabel("Bundled packages error messages displayed as expected",
 						ExtentColor.BLUE));
 			} else {
@@ -529,7 +579,7 @@ public class DecisionPackagePage extends SafeActions implements DecisionPackage_
 		else
 			test.log(Status.FAIL, MarkupHelper.createLabel("Failed to Moved to Deputy Director", ExtentColor.RED));
 	}
-	
+
 	public void verifyMoveToDeputyDirector_Stage_AfterAllValidations() {
 		scrollToBottomOfthePage();
 		waitFor(3);
@@ -681,11 +731,31 @@ public class DecisionPackagePage extends SafeActions implements DecisionPackage_
 	JavascriptExecutor executor;
 
 	public void verifyAddingBundleChanges(String Type) throws InterruptedException {
+		String decisionPackageNameText = decisionPackageTitle_APD.replace("APD", "PAPD");
 		executor = (JavascriptExecutor) driver;
 		jsClickOn(decisionPackages, "decisionPackages");
 		waitFor(1);
 		takeScreenshotFor("Decision packages screen");
-		jsClickOn(packageLink, "packageLink");
+		
+		By leadPackage = By.xpath("(//a[contains(@title, '" + decisionPackageNameText + "')])[last()]");
+		waitFor(3);
+		jsClickOn(viewListDropdown, "viewListDropdown");
+		waitFor(2);
+		jsClickOn(allDecisionPackages, "allDecisionPackages");
+		waitFor(3);
+		typeText(searchList, decisionPackageNameText, "searchList");
+		Robot robot;
+		try {
+			robot = new Robot();
+			robot.keyPress(KeyEvent.VK_ENTER);
+			robot.keyRelease(KeyEvent.VK_ENTER);
+		} catch (Exception e) {
+		}
+		waitFor(3);
+		jsClickOn(leadPackage, "leadPackage");
+		waitFor(3);
+		
+//		jsClickOn(packageLink, "packageLink");
 		takeScreenshotFor("navigate to recent Decision packages");
 
 		jsClickOn(bundleButton, "bundleButton");
@@ -789,6 +859,81 @@ public class DecisionPackagePage extends SafeActions implements DecisionPackage_
 		jsClickOn(remove_OpDiv_HHS, "remove_OpDiv_HHS");
 		jsClickOn(save_Button, "save_Button");
 		waitFor(10);
+	}
+
+	public void verifyFMReviewer_Flow() {
+		jsClickOn(moveToFMReviewr, "moveToFMReviewr");
+		verifyTextDisplay(deputyConfirm, "Do you want to complete this action as a Deputy Director?");
+		jsClickOn(confirmButton, "ConfirmButtton");
+		waitFor(5);
+		String roleChangeStatus = getAttribute(fmReviewTab, "aria-selected", "FMReviewTab");
+		if (roleChangeStatus.equals("true")) {
+			test.log(Status.INFO, MarkupHelper.createLabel("Moved to FM Reveiwer", ExtentColor.GREEN));
+		} else {
+			test.log(Status.FAIL, MarkupHelper.createLabel("failed to Moved to FM Reveiwer", ExtentColor.RED));
+		}
+
+	}
+
+	public void verifyDivisionDirector_Review_Flow() {
+		jsClickOn(moveToDivisionDirector, "moveToDivisionDirector");
+		verifyTextDisplay(FMReviewerConfirm, "Do you want to complete this action as a FM Reviewer?");
+		jsClickOn(confirmButton, "ConfirmButtton");
+		waitFor(10);
+		try {
+			if (driver.findElement(confirmButton).isDisplayed())
+				driver.findElement(confirmButton).click();
+			;
+			waitFor(5);
+		} catch (Exception e) {
+		}
+		String roleChangeStatus = getAttribute(divisionDirectorTab, "aria-selected", "FMReviewTab");
+		if (roleChangeStatus.equals("true")) {
+			test.log(Status.INFO, MarkupHelper.createLabel("Moved to Division Director", ExtentColor.GREEN));
+		} else {
+			test.log(Status.FAIL, MarkupHelper.createLabel("failed to Moved to Division Director", ExtentColor.RED));
+		}
+
+	}
+
+	public void verifyDecisionPackage_MoveTo_PendingIssuanceToState() {
+		waitFor(5);
+		String roleChangeStatus = getAttribute(pendingIssuanceStatus, "aria-selected", "pendingIssuanceStatus");
+		if (roleChangeStatus.equals("true")) {
+			test.log(Status.INFO, MarkupHelper.createLabel("Moved to pendingIssuanceStatus", ExtentColor.GREEN));
+		} else {
+			test.log(Status.FAIL,
+					MarkupHelper.createLabel("failed to Moved to pendingIssuanceStatus", ExtentColor.RED));
+		}
+	}
+
+	public void verifyCloseoutPackage() {
+		try {
+			waitFor(5);
+			if (driver.findElement(closeOutPackage).isDisplayed()) {
+
+				jsClickOn(closeOutPackage, "closeOutPackage");
+				waitFor(1);
+				verifyTextDisplay(stateOfficerConfirm, "Do you want to complete this action as a State Officer?");
+				jsClickOn(confirmButton, "ConfirmButtton");
+				waitFor(5);
+				try {
+					if (driver.findElement(confirmButton).isDisplayed())
+						driver.findElement(confirmButton).click();
+					;
+					waitFor(5);
+				} catch (Exception e) {
+				}
+			}
+		} catch (Exception e) {
+		}
+		
+		String roleChangeStatus = getAttribute(completedTab, "aria-selected", "completedTab");
+		if (roleChangeStatus.equals("true")) {
+			test.log(Status.INFO, MarkupHelper.createLabel("Moved to Completed", ExtentColor.GREEN));
+		} else {
+			test.log(Status.FAIL, MarkupHelper.createLabel("failed to Moved to Completed", ExtentColor.RED));
+		}
 	}
 
 }

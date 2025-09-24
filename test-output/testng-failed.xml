@@ -8,6 +8,7 @@
           <include name="beforetest"/>
           <include name="beforeClass"/>
           <include name="beofreMethod"/>
+          <include name="DecisionPackage_TC_005_Verify_Package_Completion_Flow"/>
           <include name="afterClass"/>
           <include name="DecisionPackage_TC_004_Verify_Adding_bundle_Packages"/>
           <include name="afterTest"/>
