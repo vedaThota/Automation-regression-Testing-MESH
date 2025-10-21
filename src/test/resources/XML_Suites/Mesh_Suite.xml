@@ -12,9 +12,11 @@
 		</groups>
 
 		<classes>
-			<class name="com.Mesh_TestSuites.DecisionPackages" />
-			
+			<class name="com.Mesh_TestSuites.CMS_FNS_DecisionPackages_Bundle_Validation" />
+			<class name="com.Mesh_TestSuites.HHS_DecisionPackages_Bundle_Validation" />
+			<class name="com.Mesh_TestSuites.Package_SO_Updates_Suite" />
 		</classes>
+		
 	</test> <!-- Test -->
 	
 </suite> <!-- Suite -->

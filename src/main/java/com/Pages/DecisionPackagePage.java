@@ -10,11 +10,7 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.time.Duration;
 import java.util.ArrayList;
-import java.util.Iterator;
-
-import org.ghost4j.analyzer.AnalyzerException;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.interactions.Actions;
@@ -505,12 +501,12 @@ public class DecisionPackagePage extends SafeActions implements DecisionPackage_
 		}
 		jsClickOn(moveToDeputyDirector, "moveToDeputyDirector");
 		waitFor(1);
-		try {
-			if (driver.findElement(By.xpath("//button[text()='Confirm']")).isDisplayed()) {
-				driver.findElement(By.xpath("//button[text()='Confirm']")).click();
-			}
-		} catch (Exception e) {
-		}
+//			if (driver.findElement(By.xpath("//button[text()='Confirm']")).isDisplayed()) {
+//				driver.findElement(By.xpath("//button[text()='Confirm']")).click();
+//			}
+//		} catch (Exception e) {
+//		}	try {
+//	
 		if (opDivType.contains("HHS")) {
 			String EM_ChildPak = getTextFromUI(ErrorMessage2, "ErrorMessage2");
 			if (EM_ChildPak.contains("Bundled Decision Package Errors:")
