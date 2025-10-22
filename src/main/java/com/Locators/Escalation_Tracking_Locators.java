@@ -15,6 +15,7 @@ public interface Escalation_Tracking_Locators {
 	public static By issueDescriptionIsMissing = By.xpath("//*[text()='Issue Description is missing.']");
 	public static By RecommendationIsMissing = By.xpath("//*[text()='Recommendation is missing.']");
 	public static By RiskImpactScoreIsMissing = By.xpath("//*[text()='Risk Impact Score is missing.']");
+	public static By escalationTrackerCreation_SuccessMsg = By.xpath("//*[contains(text(),'The Escalation Tracking record has been created successfully')]");
 	
 	public static By pleaseSelectYesOrNo = By.xpath("//*[text()='Please select Yes or No.']");
 	public static By ImpactedMESBusinessIsMissing = By.xpath("//*[text()='Impacted MES Business Area is missing.']");
