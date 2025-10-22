@@ -1,62 +1,173 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results ignored="0" total="1" passed="1" failed="0" skipped="0">
+<testng-results ignored="0" total="5" passed="5" failed="0" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2025-10-21T09:08:22 EDT" name="Default suite" finished-at="2025-10-21T09:09:41 EDT" duration-ms="79312">
+  <suite started-at="2025-10-22T09:22:07 EDT" name="Default suite" finished-at="2025-10-22T09:41:15 EDT" duration-ms="1148550">
     <groups>
+      <group name="Regression">
+        <method signature="CMS_FNS_DecisionPackages_Bundle_Validation.DecisionPackage_TC_001_Verify_DecisionPackage_Creation_with_APD_as_SubmisionType()[pri:0, instance:com.Mesh_TestSuites.CMS_FNS_DecisionPackages_Bundle_Validation@36fc695d]" name="DecisionPackage_TC_001_Verify_DecisionPackage_Creation_with_APD_as_SubmisionType" class="com.Mesh_TestSuites.CMS_FNS_DecisionPackages_Bundle_Validation"/>
+        <method signature="CMS_FNS_DecisionPackages_Bundle_Validation.DecisionPackage_TC_002_Verify_DecisionPackage_Creation_with_RFP_as_SubmisionType()[pri:0, instance:com.Mesh_TestSuites.CMS_FNS_DecisionPackages_Bundle_Validation@36fc695d]" name="DecisionPackage_TC_002_Verify_DecisionPackage_Creation_with_RFP_as_SubmisionType" class="com.Mesh_TestSuites.CMS_FNS_DecisionPackages_Bundle_Validation"/>
+        <method signature="CMS_FNS_DecisionPackages_Bundle_Validation.DecisionPackage_TC_003_Verify_DecisionPackage_Creation_with_Contract_as_SubmisionType()[pri:0, instance:com.Mesh_TestSuites.CMS_FNS_DecisionPackages_Bundle_Validation@36fc695d]" name="DecisionPackage_TC_003_Verify_DecisionPackage_Creation_with_Contract_as_SubmisionType" class="com.Mesh_TestSuites.CMS_FNS_DecisionPackages_Bundle_Validation"/>
+        <method signature="CMS_FNS_DecisionPackages_Bundle_Validation.DecisionPackage_TC_004_Verify_Adding_bundle_Packages()[pri:0, instance:com.Mesh_TestSuites.CMS_FNS_DecisionPackages_Bundle_Validation@36fc695d]" name="DecisionPackage_TC_004_Verify_Adding_bundle_Packages" class="com.Mesh_TestSuites.CMS_FNS_DecisionPackages_Bundle_Validation"/>
+        <method signature="CMS_FNS_DecisionPackages_Bundle_Validation.DecisionPackage_TC_005_Verify_Package_Completion_Flow()[pri:0, instance:com.Mesh_TestSuites.CMS_FNS_DecisionPackages_Bundle_Validation@36fc695d]" name="DecisionPackage_TC_005_Verify_Package_Completion_Flow" class="com.Mesh_TestSuites.CMS_FNS_DecisionPackages_Bundle_Validation"/>
+      </group> <!-- Regression -->
     </groups>
-    <test started-at="2025-10-21T09:08:22 EDT" name="Default test" finished-at="2025-10-21T09:09:41 EDT" duration-ms="79312">
-      <class name="com.Mesh_TestSuites.Escalation_Tracking">
-        <test-method is-config="true" signature="beforetest(org.testng.ITestContext)[pri:0, instance:com.Mesh_TestSuites.Escalation_Tracking@5e0e82ae]" started-at="2025-10-21T09:08:22 EDT" name="beforetest" finished-at="2025-10-21T09:08:22 EDT" duration-ms="198" status="PASS">
+    <test started-at="2025-10-22T09:22:07 EDT" name="Default test" finished-at="2025-10-22T09:41:15 EDT" duration-ms="1148550">
+      <class name="com.Mesh_TestSuites.CMS_FNS_DecisionPackages_Bundle_Validation">
+        <test-method is-config="true" signature="beforetest(org.testng.ITestContext)[pri:0, instance:com.Mesh_TestSuites.CMS_FNS_DecisionPackages_Bundle_Validation@36fc695d]" started-at="2025-10-22T09:22:07 EDT" name="beforetest" finished-at="2025-10-22T09:22:07 EDT" duration-ms="196" status="PASS">
           <params>
             <param index="0">
               <value>
-                <![CDATA[org.testng.TestRunner@24fba488]]>
+                <![CDATA[org.testng.TestRunner@59e938a4]]>
               </value>
             </param>
           </params>
           <reporter-output>
           </reporter-output>
         </test-method> <!-- beforetest -->
-        <test-method is-config="true" signature="beforeClass()[pri:0, instance:com.Mesh_TestSuites.Escalation_Tracking@5e0e82ae]" started-at="2025-10-21T09:08:22 EDT" name="beforeClass" finished-at="2025-10-21T09:08:27 EDT" duration-ms="5175" status="PASS">
+        <test-method is-config="true" signature="beforeClass()[pri:0, instance:com.Mesh_TestSuites.CMS_FNS_DecisionPackages_Bundle_Validation@36fc695d]" started-at="2025-10-22T09:22:07 EDT" name="beforeClass" finished-at="2025-10-22T09:22:13 EDT" duration-ms="6221" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- beforeClass -->
-        <test-method is-config="true" signature="beofreMethod(org.testng.ITestResult)[pri:0, instance:com.Mesh_TestSuites.Escalation_Tracking@5e0e82ae]" started-at="2025-10-21T09:08:28 EDT" name="beofreMethod" finished-at="2025-10-21T09:08:28 EDT" duration-ms="2" status="PASS">
+        <test-method is-config="true" signature="beofreMethod(org.testng.ITestResult)[pri:0, instance:com.Mesh_TestSuites.CMS_FNS_DecisionPackages_Bundle_Validation@36fc695d]" started-at="2025-10-22T09:22:13 EDT" name="beofreMethod" finished-at="2025-10-22T09:22:13 EDT" duration-ms="1" status="PASS">
           <params>
             <param index="0">
               <value>
-                <![CDATA[[TestResult name={null} status=CREATED method=Escalation_Tracking.TC_001_Verify_Creation_Of_New_Escalation_Tracking()[pri:0, instance:com.Mesh_TestSuites.Escalation_Tracking@5e0e82ae] output={null}]]]>
+                <![CDATA[[TestResult name={null} status=CREATED method=CMS_FNS_DecisionPackages_Bundle_Validation.DecisionPackage_TC_001_Verify_DecisionPackage_Creation_with_APD_as_SubmisionType()[pri:0, instance:com.Mesh_TestSuites.CMS_FNS_DecisionPackages_Bundle_Validation@36fc695d] output={null}]]]>
               </value>
             </param>
           </params>
           <reporter-output>
           </reporter-output>
         </test-method> <!-- beofreMethod -->
-        <test-method signature="TC_001_Verify_Creation_Of_New_Escalation_Tracking()[pri:0, instance:com.Mesh_TestSuites.Escalation_Tracking@5e0e82ae]" started-at="2025-10-21T09:08:28 EDT" name="TC_001_Verify_Creation_Of_New_Escalation_Tracking" finished-at="2025-10-21T09:09:41 EDT" duration-ms="73222" status="PASS">
+        <test-method signature="DecisionPackage_TC_001_Verify_DecisionPackage_Creation_with_APD_as_SubmisionType()[pri:0, instance:com.Mesh_TestSuites.CMS_FNS_DecisionPackages_Bundle_Validation@36fc695d]" started-at="2025-10-22T09:22:13 EDT" name="DecisionPackage_TC_001_Verify_DecisionPackage_Creation_with_APD_as_SubmisionType" finished-at="2025-10-22T09:24:36 EDT" duration-ms="143032" status="PASS">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- TC_001_Verify_Creation_Of_New_Escalation_Tracking -->
-        <test-method is-config="true" signature="afterMethod(org.testng.ITestResult)[pri:0, instance:com.Mesh_TestSuites.Escalation_Tracking@5e0e82ae]" started-at="2025-10-21T09:09:41 EDT" name="afterMethod" finished-at="2025-10-21T09:09:41 EDT" duration-ms="202" status="PASS">
+        </test-method> <!-- DecisionPackage_TC_001_Verify_DecisionPackage_Creation_with_APD_as_SubmisionType -->
+        <test-method is-config="true" signature="afterMethod(org.testng.ITestResult)[pri:0, instance:com.Mesh_TestSuites.CMS_FNS_DecisionPackages_Bundle_Validation@36fc695d]" started-at="2025-10-22T09:24:36 EDT" name="afterMethod" finished-at="2025-10-22T09:24:36 EDT" duration-ms="350" status="PASS">
           <params>
             <param index="0">
               <value>
-                <![CDATA[[TestResult name=TC_001_Verify_Creation_Of_New_Escalation_Tracking status=SUCCESS method=Escalation_Tracking.TC_001_Verify_Creation_Of_New_Escalation_Tracking()[pri:0, instance:com.Mesh_TestSuites.Escalation_Tracking@5e0e82ae] output={null}]]]>
+                <![CDATA[[TestResult name=DecisionPackage_TC_001_Verify_DecisionPackage_Creation_with_APD_as_SubmisionType status=SUCCESS method=CMS_FNS_DecisionPackages_Bundle_Validation.DecisionPackage_TC_001_Verify_DecisionPackage_Creation_with_APD_as_SubmisionType()[pri:0, instance:com.Mesh_TestSuites.CMS_FNS_DecisionPackages_Bundle_Validation@36fc695d] output={null}]]]>
               </value>
             </param>
           </params>
           <reporter-output>
           </reporter-output>
         </test-method> <!-- afterMethod -->
-        <test-method is-config="true" signature="afterClass()[pri:0, instance:com.Mesh_TestSuites.Escalation_Tracking@5e0e82ae]" started-at="2025-10-21T09:09:41 EDT" name="afterClass" finished-at="2025-10-21T09:09:41 EDT" duration-ms="0" status="PASS">
+        <test-method is-config="true" signature="beofreMethod(org.testng.ITestResult)[pri:0, instance:com.Mesh_TestSuites.CMS_FNS_DecisionPackages_Bundle_Validation@36fc695d]" started-at="2025-10-22T09:24:36 EDT" name="beofreMethod" finished-at="2025-10-22T09:24:36 EDT" duration-ms="0" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[[TestResult name={null} status=CREATED method=CMS_FNS_DecisionPackages_Bundle_Validation.DecisionPackage_TC_002_Verify_DecisionPackage_Creation_with_RFP_as_SubmisionType()[pri:0, instance:com.Mesh_TestSuites.CMS_FNS_DecisionPackages_Bundle_Validation@36fc695d] output={null}]]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- beofreMethod -->
+        <test-method signature="DecisionPackage_TC_002_Verify_DecisionPackage_Creation_with_RFP_as_SubmisionType()[pri:0, instance:com.Mesh_TestSuites.CMS_FNS_DecisionPackages_Bundle_Validation@36fc695d]" started-at="2025-10-22T09:24:36 EDT" name="DecisionPackage_TC_002_Verify_DecisionPackage_Creation_with_RFP_as_SubmisionType" finished-at="2025-10-22T09:26:08 EDT" duration-ms="91060" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- DecisionPackage_TC_002_Verify_DecisionPackage_Creation_with_RFP_as_SubmisionType -->
+        <test-method is-config="true" signature="afterMethod(org.testng.ITestResult)[pri:0, instance:com.Mesh_TestSuites.CMS_FNS_DecisionPackages_Bundle_Validation@36fc695d]" started-at="2025-10-22T09:26:08 EDT" name="afterMethod" finished-at="2025-10-22T09:26:08 EDT" duration-ms="310" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[[TestResult name=DecisionPackage_TC_002_Verify_DecisionPackage_Creation_with_RFP_as_SubmisionType status=SUCCESS method=CMS_FNS_DecisionPackages_Bundle_Validation.DecisionPackage_TC_002_Verify_DecisionPackage_Creation_with_RFP_as_SubmisionType()[pri:0, instance:com.Mesh_TestSuites.CMS_FNS_DecisionPackages_Bundle_Validation@36fc695d] output={null}]]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- afterMethod -->
+        <test-method is-config="true" signature="beofreMethod(org.testng.ITestResult)[pri:0, instance:com.Mesh_TestSuites.CMS_FNS_DecisionPackages_Bundle_Validation@36fc695d]" started-at="2025-10-22T09:26:08 EDT" name="beofreMethod" finished-at="2025-10-22T09:26:08 EDT" duration-ms="1" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[[TestResult name={null} status=CREATED method=CMS_FNS_DecisionPackages_Bundle_Validation.DecisionPackage_TC_003_Verify_DecisionPackage_Creation_with_Contract_as_SubmisionType()[pri:0, instance:com.Mesh_TestSuites.CMS_FNS_DecisionPackages_Bundle_Validation@36fc695d] output={null}]]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- beofreMethod -->
+        <test-method signature="DecisionPackage_TC_003_Verify_DecisionPackage_Creation_with_Contract_as_SubmisionType()[pri:0, instance:com.Mesh_TestSuites.CMS_FNS_DecisionPackages_Bundle_Validation@36fc695d]" started-at="2025-10-22T09:26:08 EDT" name="DecisionPackage_TC_003_Verify_DecisionPackage_Creation_with_Contract_as_SubmisionType" finished-at="2025-10-22T09:27:56 EDT" duration-ms="107697" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- DecisionPackage_TC_003_Verify_DecisionPackage_Creation_with_Contract_as_SubmisionType -->
+        <test-method is-config="true" signature="afterMethod(org.testng.ITestResult)[pri:0, instance:com.Mesh_TestSuites.CMS_FNS_DecisionPackages_Bundle_Validation@36fc695d]" started-at="2025-10-22T09:27:56 EDT" name="afterMethod" finished-at="2025-10-22T09:27:56 EDT" duration-ms="346" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[[TestResult name=DecisionPackage_TC_003_Verify_DecisionPackage_Creation_with_Contract_as_SubmisionType status=SUCCESS method=CMS_FNS_DecisionPackages_Bundle_Validation.DecisionPackage_TC_003_Verify_DecisionPackage_Creation_with_Contract_as_SubmisionType()[pri:0, instance:com.Mesh_TestSuites.CMS_FNS_DecisionPackages_Bundle_Validation@36fc695d] output={null}]]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- afterMethod -->
+        <test-method is-config="true" signature="beofreMethod(org.testng.ITestResult)[pri:0, instance:com.Mesh_TestSuites.CMS_FNS_DecisionPackages_Bundle_Validation@36fc695d]" started-at="2025-10-22T09:27:56 EDT" name="beofreMethod" finished-at="2025-10-22T09:27:56 EDT" duration-ms="1" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[[TestResult name={null} status=CREATED method=CMS_FNS_DecisionPackages_Bundle_Validation.DecisionPackage_TC_004_Verify_Adding_bundle_Packages()[pri:0, instance:com.Mesh_TestSuites.CMS_FNS_DecisionPackages_Bundle_Validation@36fc695d] output={null}]]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- beofreMethod -->
+        <test-method signature="DecisionPackage_TC_004_Verify_Adding_bundle_Packages()[pri:0, instance:com.Mesh_TestSuites.CMS_FNS_DecisionPackages_Bundle_Validation@36fc695d]" started-at="2025-10-22T09:27:56 EDT" name="DecisionPackage_TC_004_Verify_Adding_bundle_Packages" finished-at="2025-10-22T09:35:45 EDT" duration-ms="468685" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- DecisionPackage_TC_004_Verify_Adding_bundle_Packages -->
+        <test-method is-config="true" signature="afterMethod(org.testng.ITestResult)[pri:0, instance:com.Mesh_TestSuites.CMS_FNS_DecisionPackages_Bundle_Validation@36fc695d]" started-at="2025-10-22T09:35:45 EDT" name="afterMethod" finished-at="2025-10-22T09:35:45 EDT" duration-ms="329" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[[TestResult name=DecisionPackage_TC_004_Verify_Adding_bundle_Packages status=SUCCESS method=CMS_FNS_DecisionPackages_Bundle_Validation.DecisionPackage_TC_004_Verify_Adding_bundle_Packages()[pri:0, instance:com.Mesh_TestSuites.CMS_FNS_DecisionPackages_Bundle_Validation@36fc695d] output={null}]]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- afterMethod -->
+        <test-method is-config="true" signature="beofreMethod(org.testng.ITestResult)[pri:0, instance:com.Mesh_TestSuites.CMS_FNS_DecisionPackages_Bundle_Validation@36fc695d]" started-at="2025-10-22T09:35:45 EDT" name="beofreMethod" finished-at="2025-10-22T09:35:45 EDT" duration-ms="0" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[[TestResult name={null} status=CREATED method=CMS_FNS_DecisionPackages_Bundle_Validation.DecisionPackage_TC_005_Verify_Package_Completion_Flow()[pri:0, instance:com.Mesh_TestSuites.CMS_FNS_DecisionPackages_Bundle_Validation@36fc695d] output={null}]]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- beofreMethod -->
+        <test-method signature="DecisionPackage_TC_005_Verify_Package_Completion_Flow()[pri:0, instance:com.Mesh_TestSuites.CMS_FNS_DecisionPackages_Bundle_Validation@36fc695d]" started-at="2025-10-22T09:35:45 EDT" name="DecisionPackage_TC_005_Verify_Package_Completion_Flow" finished-at="2025-10-22T09:41:14 EDT" duration-ms="328980" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- DecisionPackage_TC_005_Verify_Package_Completion_Flow -->
+        <test-method is-config="true" signature="afterMethod(org.testng.ITestResult)[pri:0, instance:com.Mesh_TestSuites.CMS_FNS_DecisionPackages_Bundle_Validation@36fc695d]" started-at="2025-10-22T09:41:14 EDT" name="afterMethod" finished-at="2025-10-22T09:41:14 EDT" duration-ms="399" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[[TestResult name=DecisionPackage_TC_005_Verify_Package_Completion_Flow status=SUCCESS method=CMS_FNS_DecisionPackages_Bundle_Validation.DecisionPackage_TC_005_Verify_Package_Completion_Flow()[pri:0, instance:com.Mesh_TestSuites.CMS_FNS_DecisionPackages_Bundle_Validation@36fc695d] output={null}]]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- afterMethod -->
+        <test-method is-config="true" signature="afterClass()[pri:0, instance:com.Mesh_TestSuites.CMS_FNS_DecisionPackages_Bundle_Validation@36fc695d]" started-at="2025-10-22T09:41:14 EDT" name="afterClass" finished-at="2025-10-22T09:41:14 EDT" duration-ms="1" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- afterClass -->
-        <test-method is-config="true" signature="afterTest()[pri:0, instance:com.Mesh_TestSuites.Escalation_Tracking@5e0e82ae]" started-at="2025-10-21T09:09:41 EDT" name="afterTest" finished-at="2025-10-21T09:09:41 EDT" duration-ms="475" status="PASS">
+        <test-method is-config="true" signature="afterTest()[pri:0, instance:com.Mesh_TestSuites.CMS_FNS_DecisionPackages_Bundle_Validation@36fc695d]" started-at="2025-10-22T09:41:14 EDT" name="afterTest" finished-at="2025-10-22T09:41:15 EDT" duration-ms="868" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- afterTest -->
-      </class> <!-- com.Mesh_TestSuites.Escalation_Tracking -->
+      </class> <!-- com.Mesh_TestSuites.CMS_FNS_DecisionPackages_Bundle_Validation -->
     </test> <!-- Default test -->
   </suite> <!-- Default suite -->
 </testng-results>

@@ -59,7 +59,8 @@ public class Escalation_Tracking_PO extends SafeActions implements Escalation_Tr
 		waitFor(1);
 //		typeText(resolutionNeededBy_Input, fetchDate("MMM d, yyyy", 0), "resolutionNeededBy_Input");
 		jsClickOn(submitButton, "submitButton");
-		waitFor(2);
+		waitFor(1);
+		verifyTextDisplay(escalationTrackerCreation_SuccessMsg, "The Escalation Tracking record has been created successfully");
 		takeScreenshotFor("Escalation Tracking Creation");
 
 	}
@@ -74,7 +75,10 @@ public class Escalation_Tracking_PO extends SafeActions implements Escalation_Tr
 			test.log(Status.FAIL, MarkupHelper.createLabel("Triage NOT selected by default as expected",
 					ExtentColor.RED));
 		}
-		
+		scrollToBottomOfthePage();
+		waitFor(2);
+		scrollToTopofThePage();
+		waitFor(2);
 		scrollToElement(issue_Sub_Status);
 		verifyTextDisplay(issue_Sub_Status, "Pending Review");
 		
