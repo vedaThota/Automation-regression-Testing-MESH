@@ -113,23 +113,23 @@ public class HHS_DecisionPackages_Bundle_Validation extends TestBase {
 		dpp.verifyAddingBundleChanges("HHS");
 		waitFor(2);
 		dpp.verifyMoveToDeputyDirector_BeforeAll_Fields_Submit("HHS");
-//		clearanceChecklistPage.updateClearanceChecklist("APD", "HHS");
-//		clearanceChecklistPage.moveToMainPage();
-//		dpp.addRelatedProject();
-//		dpp.verifyTemplateGeneration();
-//		takeScreenshotFor("Template Generation in APD type");
-//		clearanceChecklistPage.moveToFistChildPackage();
-//		clearanceChecklistPage.updateClearanceChecklist("RFP", "HHS");
-//		dpp.addRelatedProject();
-//		waitFor(2);
-//		clearanceChecklistPage.moveToLeadPackage();
-//		waitFor(2);
-//		clearanceChecklistPage.moveToSecondChildPackage();
-//		clearanceChecklistPage.updateClearanceChecklist("Contract", "HHS");
-//		waitFor(2);
-//		dpp.addRelatedProject();
-//		clearanceChecklistPage.moveToLeadPackage();
-//		dpp.verifyMoveToDeputyDirector_Stage();
+		clearanceChecklistPage.updateClearanceChecklist("APD", "HHS");
+		clearanceChecklistPage.moveToMainPage();
+		dpp.addRelatedProject();
+		dpp.verifyTemplateGeneration();
+		takeScreenshotFor("Template Generation in APD type");
+		clearanceChecklistPage.moveToFistChildPackage();
+		clearanceChecklistPage.updateClearanceChecklist("RFP", "HHS");
+		dpp.addRelatedProject();
+		waitFor(2);
+		clearanceChecklistPage.moveToLeadPackage();
+		waitFor(2);
+		clearanceChecklistPage.moveToSecondChildPackage();
+		clearanceChecklistPage.updateClearanceChecklist("Contract", "HHS");
+		waitFor(2);
+		dpp.addRelatedProject();
+		clearanceChecklistPage.moveToLeadPackage();
+		dpp.verifyMoveToDeputyDirector_Stage();
 	}
 
 }
