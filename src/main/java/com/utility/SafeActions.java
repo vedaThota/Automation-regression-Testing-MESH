@@ -317,34 +317,50 @@ public class SafeActions extends TestBase {
 		return randomChar;
 	}
 
+	static int index = 0;
+
 	public static char getRandomStateInitial() {
 		// The string of first characters of U.S. states
-		String initials = "AAAACCDFGHIIIKKLMMMMNMMMMNNOOOPRSSSTTUVVWWW";
+		String initials = "AAAA CCC DFGHIIIIKKLMMMMMMMMNNNNNNNNOOOPRSSTTUVVWWWW";
 
 		// Generate a random index
 		Random random = new Random();
-		int index = random.nextInt(initials.length());
-
+		index = random.nextInt(initials.length());
+		System.out.println("Index: " + index);
 		// Return the character at that index
 		return initials.charAt(index);
 	}
-	
+
+	public static String getRandomStateInitial_() {
+		String initials[] = { "AL", "AK", "AZ", "AR", "CA", "CO", "CT", "DE", "FL", "GA", "HI", "ID", "IL", "IN", "IA",
+				"KS", "KY", "LA", "ME", "MD", "MA", "MI", "MN", "MS", "MO", "MT", "NE", "NV", "NH", "NJ", "NM", "NY",
+				"NC", "ND", "OH", "OK", "OR", "PA", "RI", "SC", "SD", "TN", "TX", "UT", "VT", "VA", "WA", "WV", "WI",
+				"WY" };
+
+		// Generate a random index
+//		Random random = new Random();
+//		 index = random.nextInt(initials.length);
+		System.out.println("Index2: " + index);
+		// Return the character at that index
+		return initials[index];
+	}
+
 	public int findTheDifference_Between(String date1, String date2) {
 		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("M/d/yyyy");
 
-        // Parse the input dates
-        LocalDate startDate = LocalDate.parse(date1, formatter);
-        LocalDate endDate = LocalDate.parse(date2, formatter);
+		// Parse the input dates
+		LocalDate startDate = LocalDate.parse(date1, formatter);
+		LocalDate endDate = LocalDate.parse(date2, formatter);
 
-        // Calculate the difference in days
-        long daysBetween = ChronoUnit.DAYS.between(startDate, endDate);
-        return (int) daysBetween;
+		// Calculate the difference in days
+		long daysBetween = ChronoUnit.DAYS.between(startDate, endDate);
+		return (int) daysBetween;
 	}
-	
+
 	public void scrollByPixels(int size) {
 		JavascriptExecutor js = (JavascriptExecutor) driver;
-        // Scroll up by 300 pixels
-        js.executeScript("window.scrollBy(0, "+size+");");
+		// Scroll up by 300 pixels
+		js.executeScript("window.scrollBy(0, " + size + ");");
 	}
 
 }// End of the class

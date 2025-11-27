@@ -1,5 +1,7 @@
 package com.Mesh_TestSuites;
 
+import java.text.ParseException;
+
 import org.testng.annotations.Test;
 
 import com.Base.TestBase;
@@ -18,5 +20,28 @@ public class Escalation_Tracking extends TestBase {
 		ET_PO.verifyLeadershipReview();
 	}
 
+	@Test
+	public void TC_002_Verify_Escalation_Tracking_NoActionNeede() {
+	
+		ET_PO.OpenNew_ET_Creation_Form();
+		ET_PO.verify_Escalation_Tracking_Creation();
+		ET_PO.verifyEscalationTrackerwith_NoActionNeeded();
+	}
+
+	@Test
+	public void TC_003_Verify_Escalation_Tracking_Other_Reason() {
+		ET_PO.OpenNew_ET_Creation_Form();
+		ET_PO.verify_Escalation_Tracking_Creation();
+		ET_PO.verifyEscalationTrackerwith_OtherReason();
+	}
+
+	@Test
+	public void TC_004_Verify_Escalation_Tracking_Return_Item() throws ParseException {
+		ET_PO.OpenNew_ET_Creation_Form();
+		ET_PO.verify_Escalation_Tracking_Creation();
+		ET_PO.moveEscalationTo_Review_Stage();
+		ET_PO.verifyReturnEscalationItem();
+		ET_PO.validateEmailNotification();
+	}
 
 }

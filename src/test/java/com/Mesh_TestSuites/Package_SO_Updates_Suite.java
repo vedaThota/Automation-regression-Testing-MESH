@@ -45,7 +45,8 @@ public class Package_SO_Updates_Suite extends TestBase {
 	  
 	  @Test public void
 	  TC_003_Verify_Email_Notification_After_StateOfficer_Replacement() throws
-	  ParseException { ps_Page.validateEmailNotification();
+	  ParseException {
+		  ps_Page.validateEmailNotification();
 	  
 	  }
 	 

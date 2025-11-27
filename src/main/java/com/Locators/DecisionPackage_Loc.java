@@ -28,7 +28,7 @@ public interface DecisionPackage_Loc {
 	public static final By Submission_Date_is_required = By
 			.xpath("//*[text()='Submission Date must be today or earlier.']");
 	public static final By Acknowledgement_Date_is_required = By
-			.xpath("//*[text()='Acknowledgement date cannot be a future date.']");
+			.xpath("//*[text()='Acknowledgement Date cannot be a future date.']");
 	public static final By At_least_one_OpDiv_must_be_selected = By
 			.xpath("//*[text()='At least one OpDiv must be selected.']");
 	public static final By Maximum_file_size_is_4MB = By.xpath("//*[contains(text(), 'Maximum file size is 4MB.')]");

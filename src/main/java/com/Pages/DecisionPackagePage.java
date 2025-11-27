@@ -46,7 +46,7 @@ public class DecisionPackagePage extends SafeActions implements DecisionPackage_
 		scrollToBottomOfthePage();
 		jsClickOn(submitButton, "submitButton");
 		waitFor(1);
-		verifyTextDisplay(Acknowledgement_Date_is_required, "Acknowledgement date cannot be a future date.");
+		verifyTextDisplay(Acknowledgement_Date_is_required, "Acknowledgement Date cannot be a future date.");
 		verifyTextDisplay(At_least_one_OpDiv_must_be_selected, "At least one OpDiv must be selected.");
 		verifyTextDisplay(Maximum_file_size_is_4MB, "Maximum file size is 4MB.");
 		takeScreenshotFor("Seccond half of validation form ");
@@ -241,7 +241,7 @@ public class DecisionPackagePage extends SafeActions implements DecisionPackage_
 		waitFor(2);
 		jsClickOn(Approve_Option, "Approve_Option");
 		waitFor(3);
-		scrollByPixels(100);
+		scrollByPixels(200);
 		waitFor(2);
 		jsClickOn(pointOfContactInput, "pointOfContactInput");
 		typeText(pointOfContactInput, directorState.split(" ")[0], "pointOfContactInput");
@@ -511,9 +511,10 @@ public class DecisionPackagePage extends SafeActions implements DecisionPackage_
 			String EM_ChildPak = getTextFromUI(ErrorMessage2, "ErrorMessage2");
 			if (EM_ChildPak.contains("Bundled Decision Package Errors:")
 					&& EM_ChildPak.contains(
-							"SO Clearance Checklist, At least one project should be linked to the decision package.")
+							"Clearance Checklist is incomplete, At least one project should be linked to the decision package.")
+					
 					&& EM_ChildPak.contains(
-							"SO Clearance Checklist, At least one project should be linked to the decision package.")) {
+							"Clearance Checklist is incomplete, At least one project should be linked to the decision package.")) {
 				test.log(Status.INFO, MarkupHelper.createLabel("Bundled packages error messages displayed as expected",
 						ExtentColor.BLUE));
 			} else {

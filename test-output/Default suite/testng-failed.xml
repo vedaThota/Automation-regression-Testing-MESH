@@ -5,12 +5,12 @@
     <classes>
       <class name="com.Mesh_TestSuites.Escalation_Tracking">
         <methods>
+          <include name="TC_004_Verify_Escalation_Tracking_Return_Item"/>
           <include name="beforetest"/>
           <include name="beforeClass"/>
           <include name="beofreMethod"/>
           <include name="afterClass"/>
           <include name="afterTest"/>
-          <include name="TC_001_Verify_Creation_Of_New_Escalation_Tracking"/>
           <include name="afterMethod"/>
         </methods>
       </class> <!-- com.Mesh_TestSuites.Escalation_Tracking -->
