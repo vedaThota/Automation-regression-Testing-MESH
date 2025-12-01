@@ -39,12 +39,18 @@ public interface Escalation_Tracking_Locators {
 	public static By riskImpactButton = By.xpath("(//*[text()='Risk Impact Score']/following::button[1])[last()]");
 	public static By riskImpactOption = By.xpath(
 			"(//*[text()='Risk Impact Score']/following::button[1]/following::lightning-base-combobox-item[1])[last()]");
+	public static By riskImpactOption2 = By.xpath(
+			"(//*[text()='Risk Impact Score']/following::button[1]/following::lightning-base-combobox-item[3])[last()]");
 	public static By potentialImpactAccess_Yes = By
 			.xpath("(//*[text()='Potential Impact to Access Benefits?']/following::input[@value='Yes'])[last()]");
 	public static By bussinessImpactArea_Button = By
 			.xpath("(//*[text()='Impacted MES Business Area']/following::button[1])[last()]");
 	public static By bussinessImpactArea_Option = By.xpath(
 			"(//*[text()='Impacted MES Business Area']/following::button[1]/following::lightning-base-combobox-item[1])[last()]");
+	public static By bussinessImpactArea_Button_MES = By
+			.xpath("(//*[text()='Impacted/MES Business Area']/following::button[1])[last()]");
+	public static By bussinessImpactArea_MES_Option = By.xpath(
+			"(//*[text()='Impacted/MES Business Area']/following::button[1]/following::lightning-base-combobox-item[3])[last()]");
 	public static By resolutionNeededBy_Input = By
 			.xpath("(//*[text()='Resolution Needed By']/following::input[1])[last()]");
 
@@ -116,6 +122,30 @@ public interface Escalation_Tracking_Locators {
 	public static By reassignSuccessMessage = By.xpath("//*[text()='Decision packages reassigned successfully.']");
 	public static By emailThread = By.xpath("//tbody/tr/td[2]/div/div");
 	public static By emailHeader = By.xpath("//h2[text()='Sandbox: Escalation Item Has Been Returned']");
+	
+	public static By editTitle = By.xpath("//button[@title='Edit Title']");
+	public static By issueStatus = By.xpath("//*[text()='Issue Status']/following::button[1]");
+	public static By issueStatusOption = By.xpath("(//*[text()='Issue Status']/following::button[1]/following::lightning-base-combobox-item[4])[last()]");
+	public static By issueSubStatus = By.xpath("//*[text()='Issue Sub-Status']/following::button[1]");
+	public static By issueSubStatusOption = By.xpath("(//*[text()='Issue Sub-Status']/following::button[1]/following::lightning-base-combobox-item[5])[last()]");
+	public static By viewAll = By.xpath("//*[@class='view-all-label']/..");
+	
+	public static By escalationTracker_Link = By.xpath("//a[@title='Escalation Tracking']/following::li[1]/a");
+	public static By statusMemoTab = By.xpath("//a[text()='Status Memo']");
+	public static By writeAComment = By.xpath("//input[@placeholder='Write a comment...']");
+	public static By optionItem = By.xpath("//a[@class='optionItem medium']");
+	public static By comment_Button = By.xpath("//button[text()='Comment']");
+	
+	public static By comments_TextField = By.xpath("//div[contains(@class, 'ql-editor ql-blank')]");
+	public static By writeAComment_ = By.xpath("//div[@data-placeholder='Write a comment...']");
+	public static By writeComments_TextField = By.xpath("//*[contains(@class, 'ql-editor slds-rich-text-area__content')]");
+	public static By answerComment = By.xpath("//textarea[@placeholder='Write a comment...']");
+//	public static By underRevieww = By.xpath("dsdfdsfdsf");
+//	public static By underRevieww = By.xpath("dsdfdsfdsf");
+//	public static By underRevieww = By.xpath("dsdfdsfdsf");
+//	public static By underRevieww = By.xpath("dsdfdsfdsf");
+//	public static By underRevieww = By.xpath("dsdfdsfdsf");
+//	public static By underRevieww = By.xpath("dsdfdsfdsf");
 //	public static By underRevieww = By.xpath("dsdfdsfdsf");
 //	public static By underRevieww = By.xpath("dsdfdsfdsf");
 //	public static By underRevieww = By.xpath("dsdfdsfdsf");

@@ -42,6 +42,12 @@ public class Escalation_Tracking extends TestBase {
 		ET_PO.moveEscalationTo_Review_Stage();
 		ET_PO.verifyReturnEscalationItem();
 		ET_PO.validateEmailNotification();
+		
+		// Related Tab functionality
+		ET_PO.updateEscalationTracker();
+		ET_PO.validateUpdatedFields_Under_Related_Tab();
+		// Status Memo functionality
+		ET_PO.validateStatusMemo_Comment_Answer();
 	}
 
 }
