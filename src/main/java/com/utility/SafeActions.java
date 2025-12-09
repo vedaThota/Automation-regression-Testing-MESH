@@ -68,7 +68,7 @@ public class SafeActions extends TestBase {
 			((JavascriptExecutor) driver).executeScript("arguments[0].style.border='3px solid red'",
 					driver.findElement(loc));
 			((JavascriptExecutor) driver).executeScript("arguments[0].style.border=''", driver.findElement(loc));
-			driver.findElement(loc).click();
+//			driver.findElement(loc).click();
 			driver.findElement(loc).clear();
 			driver.findElement(loc).sendKeys(text);
 

@@ -11,7 +11,9 @@ public class HomePage extends SafeActions implements HomePage_Loc {
 
 		jsClickOn(setUpIcon, "setUpIcon");
 		takeScreenshotFor("Set Up Menu");
+		waitFor(1);
 		jsClickOn(setUpLink, "setUpLink");
+		waitFor(1);
 		switchToWindowByIndex(1);
 		jsClickOn(userSideMenu, "userSideMenu");
 		jsClickOn(userLink, "userLink");
@@ -34,26 +36,70 @@ public class HomePage extends SafeActions implements HomePage_Loc {
 			jsClickOn(stateOfficer_LoginLink, "stateOfficer_LoginLink");
 		} else if (userType.contains("Deputy Director")) {
 			jsClickOn(deputyDirector_LoginLink, "deputyDirector_LoginLink");
-		}
-		else if (userType.contains("Division Director")) {
+		} else if (userType.contains("Division Director")) {
 			jsClickOn(division_Director_LoginLink, "division_Director_LoginLink");
-		}else if (userType.contains("FM Reviewer")) {
+		} else if (userType.contains("FM Reviewer")) {
 			jsClickOn(FM_Reviewer_loginLink, "FM_Reviewer_loginLink");
 		}
-		
-	
-			driver.switchTo().defaultContent();
-		
+
+		driver.switchTo().defaultContent();
+
 		// Navigating to Decision Packages screen
-		if (userType.contains("State Officer") || userType.contains("Deputy Director")|| userType.contains("FM Reviewer")
-				|| userType.contains("Division Director")) {
+		if (userType.contains("State Officer") || userType.contains("Deputy Director")
+				|| userType.contains("FM Reviewer") || userType.contains("Division Director")) {
 
 		} else {
 			jsClickOn(Decision_Packages, "Decision_Packages");
 			waitFor(2);
 			takeScreenshotFor("Decision_Packages Navigation");
 		}
+
+	}
+	
+	public void navigateTo_DeputyDirecter_Screen() {
+		// Below has been scripted to navigated to All users screen
+
+		jsClickOn(setUpIcon, "setUpIcon");
+		takeScreenshotFor("Set Up Menu");
+		waitFor(1);
+		jsClickOn(setUpLink, "setUpLink");
+		waitFor(1);
+		switchToWindowByIndex(1);
+		jsClickOn(userSideMenu, "userSideMenu");
+		jsClickOn(userLink, "userLink");
+		waitFor(1);
+		switchToFrame(allUsersFrame);
+		// Navigating to M Users list
+		jsClickOn(userList_M, "userList_M");
+		waitFor(3);
+		driver.switchTo().defaultContent();
+		takeScreenshotFor("User Selection Screen");
+		switchToFrame(allUsersFrame);
+		jsClickOn(Melendez_Login_Link, "Melendez_Login_Link");
+		// Navigating to Ops Team login screen
 		
+	}
+	
+	public void moveToEsalation_Stage() {
+		jsClickOn(edit_EscalationTracking,"edit_EscalationTracking");
+		waitFor(3);
+		jsClickOn(check_Escalation_Tracking, "check_Escalation_Tracking");
+		jsClickOn(save_Button, "save_Button");
+		waitFor(5);
+		
+	}
+	
+	
+	
+	public void go_to_Escalation_Tracking_Screen() {
+		waitFor(3);
+		jsClickOn(appLauncher, "appLauncher");
+		waitFor(1);
+		typeText(searchApps_Items, "Escalation Tracking", "searchApps_Items");
+		waitFor(1);
+		jsClickOn(Escalation_Tracking_Link, "Escalation_Tracking_Link");
+		waitFor(1);
+		takeScreenshotFor("Escalation Tracking Form");
 	}
 
 	public void closePreviousWindows() {
@@ -61,12 +107,13 @@ public class HomePage extends SafeActions implements HomePage_Loc {
 		switchToWindowByIndex(0);
 		driver.close();
 		System.out.println("Closed first Window");
+
 		switchToWindowByIndex(0);
 		driver.close();
 		System.out.println("Closed Second Window");
 		switchToWindowByIndex(0);
 	}
-	
+
 	public void moveToActiveWindow() {
 		switchToWindowByIndex(2);
 	}
