@@ -240,12 +240,13 @@ public class DecisionPackagePage extends SafeActions implements DecisionPackage_
 		jsClickOn(Recommended_Action, "Recommended_Action");
 		waitFor(2);
 		jsClickOn(Approve_Option, "Approve_Option");
-		waitFor(3);
+		waitFor(5);
 		scrollByPixels(200);
 		waitFor(2);
 		jsClickOn(pointOfContactInput, "pointOfContactInput");
-		typeText(pointOfContactInput, directorState.split(" ")[0], "pointOfContactInput");
 		waitFor(1);
+		typeText(pointOfContactInput, directorState.split(" ")[0], "pointOfContactInput");
+		waitFor(3);
 		jsClickOn(pointOfContact, "pointOfContact");
 		waitFor(1);
 		jsClickOn(event_Summary_TextArea, "event_Summary_TextArea");
@@ -280,7 +281,7 @@ public class DecisionPackagePage extends SafeActions implements DecisionPackage_
 		}
 		takeScreenshotFor("Mandatory Fields before submit");
 		jsClickOn(save_Button, "save_Button");
-		waitFor(3);
+		waitFor(5);
 
 		verifyTextDisplay(approveChoosen, "Approve");
 
@@ -353,7 +354,7 @@ public class DecisionPackagePage extends SafeActions implements DecisionPackage_
 		jsClickOn(contractType, "contractType");
 		jsClickOn(contracType_SoleSource, "contracType_SoleSource");
 		typeText(Total_ContractValue, "1000", "Total_ContractValue");
-		typeText(vendor, "test", "Vendor");
+		typeText(vendor, "tyler", "Vendor");
 		waitFor(2);
 		jsClickOn(vendorOption2, "vendorOption2");
 		jsClickOn(claimsProcessing_CheckBox, "claimsProcessing_CheckBox");
@@ -397,9 +398,9 @@ public class DecisionPackagePage extends SafeActions implements DecisionPackage_
 
 	public void verifyBeginReviewStatus() {
 		jsClickOn(DetailsTab, "DetailsTab");
-		waitFor(1);
+		waitFor(5);
 		jsClickOn(beginReview, "beginReview");
-		waitFor(1);
+		waitFor(2);
 		scrollToTopofThePage();
 		verifyTextDisplay(stateOfficerReview, "State Officer Review");
 		verifyTextDisplay(inReview, "In Review");
@@ -750,7 +751,7 @@ public class DecisionPackagePage extends SafeActions implements DecisionPackage_
 		}
 		waitFor(3);
 		jsClickOn(leadPackage, "leadPackage");
-		waitFor(3);
+		waitFor(5);
 		
 //		jsClickOn(packageLink, "packageLink");
 		takeScreenshotFor("navigate to recent Decision packages");

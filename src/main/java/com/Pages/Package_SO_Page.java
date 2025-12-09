@@ -110,7 +110,11 @@ public class Package_SO_Page extends SafeActions implements Package_SO_Loc {
 	String URL = "";
 
 	public void validateEmailNotification() throws ParseException {
-		driver.get("https://mailosaur.com/app/servers/drwhn6bn/messages/inbox");
+		if (prop.getProperty("url").contains("uat")) {
+			driver.get("https://mailosaur.com/app/servers/csee9izm/messages/inbox");
+		} else {
+			driver.get("https://mailosaur.com/app/servers/drwhn6bn/messages/inbox");
+		}
 		waitFor(10);
 		typeText(emailAddressTextField, "pghosh@index-analytics.com", "emailAddressTextField");
 		jsClickOn(continueButton, "continueButton");
@@ -138,9 +142,13 @@ public class Package_SO_Page extends SafeActions implements Package_SO_Loc {
 					MarkupHelper.createLabel("Email Notification not received to the server", ExtentColor.RED));
 		}
 	}
-	
+
 	public void validate_Reassignment_EmailNotification() throws ParseException {
-		driver.get("https://mailosaur.com/app/servers/drwhn6bn/messages/inbox");
+		if (prop.getProperty("url").contains("uat")) {
+			driver.get("https://mailosaur.com/app/servers/csee9izm/messages/inbox");
+		} else {
+			driver.get("https://mailosaur.com/app/servers/drwhn6bn/messages/inbox");
+		}
 		waitFor(10);
 //		typeText(emailAddressTextField, "pghosh@index-analytics.com", "emailAddressTextField");
 //		jsClickOn(continueButton, "continueButton");
@@ -202,7 +210,8 @@ public class Package_SO_Page extends SafeActions implements Package_SO_Loc {
 				typeText(selectStateOfficer, "", "selectStateOfficer");
 				waitFor(1);
 				int firstIndexx = rn.nextInt(50) + 1;
-				By currentOfficerLocator = By.xpath("(//ul[@aria-label='Search Results']//span[2])[" + firstIndexx + "]");
+				By currentOfficerLocator = By
+						.xpath("(//ul[@aria-label='Search Results']//span[2])[" + firstIndexx + "]");
 				jsClickOn(currentOfficerLocator, "currentOfficerLocator");
 				waitFor(2);
 			}

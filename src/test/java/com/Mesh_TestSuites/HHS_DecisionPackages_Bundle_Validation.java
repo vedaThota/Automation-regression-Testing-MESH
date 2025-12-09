@@ -31,7 +31,7 @@ public class HHS_DecisionPackages_Bundle_Validation extends TestBase {
 		waitFor(1);
 		dpp.verifyFundingTypeAmountDisplay();
 		takeScreenshotFor("Amount Shows in APD type");
-//
+
 		dpp.verifyBeginReviewStatus();
 		takeScreenshotFor("Begin Review status in APD type");
 		

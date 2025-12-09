@@ -121,7 +121,7 @@ public interface Escalation_Tracking_Locators {
 			.xpath("//*[text()='Reassign 1 package(s) to New State Officer']/following::input");
 	public static By reassignSuccessMessage = By.xpath("//*[text()='Decision packages reassigned successfully.']");
 	public static By emailThread = By.xpath("//tbody/tr/td[2]/div/div");
-	public static By emailHeader = By.xpath("//h2[text()='Sandbox: Escalation Item Has Been Returned']");
+	public static By emailHeader = By.xpath("//p[text()='Sandbox: Ricardo Melendez mentioned you in a comment']");
 	
 	public static By editTitle = By.xpath("//button[@title='Edit Title']");
 	public static By issueStatus = By.xpath("//*[text()='Issue Status']/following::button[1]");
@@ -140,6 +140,8 @@ public interface Escalation_Tracking_Locators {
 	public static By writeAComment_ = By.xpath("//div[@data-placeholder='Write a comment...']");
 	public static By writeComments_TextField = By.xpath("//*[contains(@class, 'ql-editor slds-rich-text-area__content')]");
 	public static By answerComment = By.xpath("//textarea[@placeholder='Write a comment...']");
+	public static final By createEscaltionTracking = By.xpath("//*[text()='Create Escalation Tracking']");
+	
 //	public static By underRevieww = By.xpath("dsdfdsfdsf");
 //	public static By underRevieww = By.xpath("dsdfdsfdsf");
 //	public static By underRevieww = By.xpath("dsdfdsfdsf");

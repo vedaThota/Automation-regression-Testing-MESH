@@ -107,7 +107,7 @@ public class Escalation_Tracking_PO extends SafeActions implements Escalation_Tr
 		scrollToBottomOfthePage();
 		jsClickOn(resolutionNeededBy_Input, "resolutionNeededBy_Input");
 		waitFor(1);
-		typeText(resolutionNeededBy_Input, fetchDate("MMM d, yyyy", 0), "resolutionNeededBy_Input");
+		typeText(resolutionNeededBy_Input, fetchDate("MMM d, yyyy", 1), "resolutionNeededBy_Input");
 		waitFor(1);
 		jsClickOn(submitButton, "submitButton");
 		waitFor(1);
@@ -183,6 +183,36 @@ public class Escalation_Tracking_PO extends SafeActions implements Escalation_Tr
 		takeScreenshotFor("Escalation Tracking item has been returned");
 		currentURL = driver.getCurrentUrl();
 	}
+	
+	public void createEscationTracking() {
+		jsClickOn(createEscaltionTracking, "createEscaltionTracking");
+		waitFor(2);
+		typeText(titleInput, generateRandomString(10), "titleInput");
+		typeText(issueDescription, generateRandomString(10), "issueDescription");
+		jsClickOn(riskImpactButton, "riskImpactButton");
+		waitFor(1);
+		jsClickOn(riskImpactOption, "riskImpactOption");
+		waitFor(1);
+		jsClickOn(potentialImpactAccess_Yes, "potentialImpactAccess_Yes");
+		jsClickOn(bussinessImpactArea_Button, "bussinessImpactArea_Button");
+		waitFor(1);
+		jsClickOn(bussinessImpactArea_Option, "bussinessImpactArea_Option");
+		waitFor(1);
+		scrollToElement(resolutionNeededBy_Input);
+		scrollToBottomOfthePage();
+		jsClickOn(resolutionNeededBy_Input, "resolutionNeededBy_Input");
+		waitFor(1);
+		typeText(resolutionNeededBy_Input, fetchDate("MMM d, yyyy", 1), "resolutionNeededBy_Input");
+		waitFor(1);
+		jsClickOn(submitButton, "submitButton");
+		waitFor(1);
+		driver.findElement(submitButton).click();
+		waitFor(1);
+		verifyTextDisplay(escalationTrackerCreation_SuccessMsg,
+				"The Escalation Tracking record has been created successfully");
+		takeScreenshotFor("Escalation Tracking Creation");
+		
+	}
 
 	String currentURL = "";
 
@@ -243,16 +273,16 @@ public class Escalation_Tracking_PO extends SafeActions implements Escalation_Tr
 		jsClickOn(resolved_Option, "resolved_Option");
 		jsClickOn(save_Button, "save_Button");
 		waitFor(2);
-		scrollToBottomOfthePage();
-		verifyTextDisplay(actionTaken_ErrorMsg, "Please provide Status Update/Actions Taken when resolving an ET item");
-		takeScreenshotFor("actionTaken_ErrorMsg");
-		jsClickOn(actionTakenArea, "actionTakenArea");
-		waitFor(2);
-		typeText(actionTakenArea_, "Test", "actionTakenArea_");
-		jsClickOn(save_Button, "save_Button");
-		waitFor(2);
-		jsClickOn(save_Button, "save_Button");
-		waitFor(2);
+		// Action taken code
+		
+		  scrollToBottomOfthePage(); verifyTextDisplay(actionTaken_ErrorMsg,
+		  "Please provide Status Update/Actions Taken when resolving an ET item");
+		  takeScreenshotFor("actionTaken_ErrorMsg"); jsClickOn(actionTakenArea,
+		  "actionTakenArea"); waitFor(2); typeText(actionTakenArea_, "Test",
+		  "actionTakenArea_"); jsClickOn(save_Button, "save_Button"); waitFor(2);
+		  jsClickOn(save_Button, "save_Button"); waitFor(2);
+		 
+		
 		takeScreenshotFor(screenshotName);
 	}
 
@@ -280,9 +310,9 @@ public class Escalation_Tracking_PO extends SafeActions implements Escalation_Tr
 		}
 
 		jsClickOn(relatedTab, "relatedTab");
-		waitFor(1);
+		waitFor(3);
 		jsClickOn(detailsTab, "detailsTab");
-		waitFor(1);
+		waitFor(3);
 		scrollToBottomOfthePage();
 		waitFor(2);
 		scrollToTopofThePage();
@@ -296,6 +326,7 @@ public class Escalation_Tracking_PO extends SafeActions implements Escalation_Tr
 		jsClickOn(save_Button, "save_Button");
 		waitFor(2);
 		scrollToTopofThePage();
+		waitFor(2);
 		String leadership_ReviewStatus = getAttribute(LeadershipReview_StageSelection, "aria-selected",
 				"LeadershipReview_StageSelection");
 		if (leadership_ReviewStatus.equals("true")) {
@@ -310,7 +341,11 @@ public class Escalation_Tracking_PO extends SafeActions implements Escalation_Tr
 	String sentTime = "";
 
 	public void validateEmailNotification() throws ParseException {
-		driver.get("https://mailosaur.com/app/servers/drwhn6bn/messages/inbox");
+		if (prop.getProperty("url").contains("uat")) {
+			driver.get("https://mailosaur.com/app/servers/csee9izm/messages/inbox");
+		} else {
+			driver.get("https://mailosaur.com/app/servers/drwhn6bn/messages/inbox");
+		}
 		waitFor(10);
 		typeText(emailAddressTextField, "pghosh@index-analytics.com", "emailAddressTextField");
 		jsClickOn(continueButton, "continueButton");
@@ -342,6 +377,7 @@ public class Escalation_Tracking_PO extends SafeActions implements Escalation_Tr
 	}
 	
 	public void updateEscalationTracker() {
+		
 		jsClickOn(editTitle, "editTitle");
 		waitFor(1);
 		typeText(titleInput, generateRandomString(12), "titleInput");
@@ -349,10 +385,12 @@ public class Escalation_Tracking_PO extends SafeActions implements Escalation_Tr
 		jsClickOn(riskImpactOption2, "riskImpactOption2");
 		jsClickOn(bussinessImpactArea_Button_MES, "bussinessImpactArea_Button_MES");
 		jsClickOn(bussinessImpactArea_MES_Option, "bussinessImpactArea_MES_Option");
-		jsClickOn(issueStatus, "issueStatus");
-		jsClickOn(issueStatusOption, "issueStatusOption");
-		jsClickOn(issueSubStatus, "issueSubStatus");
-		jsClickOn(issueSubStatusOption, "issueSubStatusOption");
+//		jsClickOn(issueStatus, "issueStatus");
+//		jsClickOn(issueStatusOption, "issueStatusOption");
+//		jsClickOn(issueSubStatus, "issueSubStatus");
+//		jsClickOn(issueSubStatusOption, "issueSubStatusOption");
+		jsClickOn(leadershipDsipositionDropdown, "leadershipDsipositionDropdown");
+		jsClickOn(disposition_Monitoring_Option, "disposition_Monitoring_Option");
 		scrollToTopofThePage();
 		waitFor(1);
 		scrollToTopofThePage();
