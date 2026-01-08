@@ -416,6 +416,7 @@ public class DecisionPackagePage extends SafeActions implements DecisionPackage_
 		jsClickOn(allDecisionPackages, "allDecisionPackages");
 		waitFor(3);
 		typeText(searchList, decisionPackageNameText, "searchList");
+		waitFor(3);
 		Robot robot;
 		try {
 			robot = new Robot();
@@ -794,7 +795,7 @@ public class DecisionPackagePage extends SafeActions implements DecisionPackage_
 
 	public void logoutFromApp() {
 		jsClickOn(userProfile, "userProfile");
-		waitFor(1);
+		waitFor(4);
 		jsClickOn(logOutButton, "logOutButton");
 	}
 

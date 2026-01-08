@@ -7,17 +7,29 @@ import java.util.Random;
 
 import org.openqa.selenium.By;
 
+import com.Locators.HomePage_Loc;
 import com.Locators.Package_SO_Loc;
 import com.aventstack.extentreports.Status;
 import com.aventstack.extentreports.markuputils.ExtentColor;
 import com.aventstack.extentreports.markuputils.MarkupHelper;
 import com.utility.SafeActions;
 
-public class Package_SO_Page extends SafeActions implements Package_SO_Loc {
+public class Package_SO_Page extends SafeActions implements Package_SO_Loc, HomePage_Loc{
 
 	public void packageSOUpdates_Display_For_Admin() {
 		waitFor(3);
 		verifyTextDisplay(packageSO_Updates_Link, "Package SO Updates");
+	}
+
+	// To navigate Package SO Updates application
+	public void navigateTo_PackageSO_Updates() {
+		waitFor(5);
+		javaScriptClickOn(appLauncher, "App Launcher Icon");
+		waitFor(2);
+		typeText(searchApps_Items, "Package SO Updates", "searchApps_Items");
+		javaScriptClickOn(package_SO_Updates, "package_SO_Updates");
+		waitFor(2);
+		takeScreenshotFor("Navigated to Package SO Updates screen");
 	}
 
 	public void verifyPackageSOUpdates_NON_Display_For_StateOfficer() {

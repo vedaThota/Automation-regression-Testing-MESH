@@ -60,7 +60,7 @@
 
 	<profiles>
 		<profile>
-			<id>MESH_Test</id>
+			<id>Mesh_Suite_One</id>
 			<activation>
 				<activeByDefault>false</activeByDefault>
 			</activation>
@@ -73,7 +73,7 @@
 						<configuration>
 							<suiteXmlFiles>
 								<suiteXmlFile>
-									src//test//resources//XML_Suites//Mesh_Suite.xml
+									src//test//resources//XML_Suites//DecissionPackages.xml
 								</suiteXmlFile>
 							</suiteXmlFiles>
 						</configuration>
@@ -81,5 +81,29 @@
 				</plugins>
 			</build>
 		</profile>
+		
+		<profile>
+			<id>Mesh_Suite_Two</id>
+			<activation>
+				<activeByDefault>false</activeByDefault>
+			</activation>
+			<build>
+				<plugins>
+					<plugin>
+						<groupId>org.apache.maven.plugins</groupId>
+						<artifactId>maven-surefire-plugin</artifactId>
+						<version>3.5.2</version>
+						<configuration>
+							<suiteXmlFiles>
+								<suiteXmlFile>
+									src//test//resources//XML_Suites//Escalation_PackageSO.xml
+								</suiteXmlFile>
+							</suiteXmlFiles>
+						</configuration>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
+		
 	</profiles>
 </project>

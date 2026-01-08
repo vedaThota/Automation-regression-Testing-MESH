@@ -1,5 +1,11 @@
 package com.Pages;
 
+import java.awt.AWTException;
+import java.awt.Robot;
+import java.awt.event.KeyEvent;
+
+import org.openqa.selenium.By;
+
 import com.Locators.HomePage_Loc;
 import com.utility.SafeActions;
 
@@ -49,6 +55,13 @@ public class HomePage extends SafeActions implements HomePage_Loc {
 				|| userType.contains("FM Reviewer") || userType.contains("Division Director")) {
 
 		} else {
+			waitFor(2);
+			jsClickOn(appLauncher, "appLauncher");
+			waitFor(1);
+			typeText(Escalation_Tracking_PO.appSearchTextField, "Decision Package Workflow", "appSearchTextFiel");
+			waitFor(1);
+			jsClickOn(Escalation_Tracking_PO.decisionPackageWorkFlow, "decisionPackageWorkFlow");
+			waitFor(1);
 			jsClickOn(Decision_Packages, "Decision_Packages");
 			waitFor(2);
 			takeScreenshotFor("Decision_Packages Navigation");
@@ -80,6 +93,30 @@ public class HomePage extends SafeActions implements HomePage_Loc {
 		
 	}
 	
+	public void navigateTo_Director_Screen() {
+		// Below has been scripted to navigated to All users screen
+
+		jsClickOn(setUpIcon, "setUpIcon");
+		takeScreenshotFor("Set Up Menu");
+		waitFor(1);
+		jsClickOn(setUpLink, "setUpLink");
+		waitFor(5);
+		switchToWindowByIndex(1);
+		jsClickOn(userSideMenu, "userSideMenu");
+		jsClickOn(userLink, "userLink");
+		waitFor(1);
+		switchToFrame(allUsersFrame);
+		// Navigating to M Users list
+		jsClickOn(userList_D, "userList_D");
+		waitFor(3);
+		driver.switchTo().defaultContent();
+		takeScreenshotFor("User Selection Screen");
+		switchToFrame(allUsersFrame);
+		jsClickOn(Purvi_Login_Link, "Purvi_Login_Link");
+		// Navigating to Ops Team login screen
+		
+	}
+	
 	public void moveToEsalation_Stage() {
 		jsClickOn(edit_EscalationTracking,"edit_EscalationTracking");
 		waitFor(3);
@@ -92,7 +129,8 @@ public class HomePage extends SafeActions implements HomePage_Loc {
 	
 	
 	public void go_to_Escalation_Tracking_Screen() {
-		waitFor(3);
+		driver.switchTo().defaultContent();
+		waitFor(5);
 		jsClickOn(appLauncher, "appLauncher");
 		waitFor(1);
 		typeText(searchApps_Items, "Escalation Tracking", "searchApps_Items");
@@ -112,9 +150,26 @@ public class HomePage extends SafeActions implements HomePage_Loc {
 		driver.close();
 		System.out.println("Closed Second Window");
 		switchToWindowByIndex(0);
+		
 	}
 
 	public void moveToActiveWindow() {
 		switchToWindowByIndex(2);
 	}
+	
+	public void navigateToRecentEscalation() throws AWTException {
+		jsClickOn(recentlyViewed, "recentlyViewed");
+		jsClickOn(allOption, "allOption");
+		jsClickOn(searchList, "searchList");
+		typeText(searchList, Escalation_Tracking_PO.title, "searchList");
+		Robot rb = new Robot();
+		rb.keyPress(KeyEvent.VK_ENTER);
+		rb.keyRelease(KeyEvent.VK_ENTER);
+		waitFor(2);
+		By ET_Link = By.xpath("//a[@title='"+Escalation_Tracking_PO.title+"']");
+		jsClickOn(ET_Link, "ET_Link");
+		
+	}
+	
+	
 }

@@ -1,5 +1,10 @@
 package com.Pages;
 
+import java.awt.AWTException;
+import java.awt.Robot;
+import java.awt.Toolkit;
+import java.awt.datatransfer.StringSelection;
+import java.awt.event.KeyEvent;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -10,6 +15,7 @@ import java.util.Map;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 
 import com.Locators.Escalation_Tracking_Locators;
 import com.aventstack.extentreports.Status;
@@ -21,6 +27,12 @@ public class Escalation_Tracking_PO extends SafeActions implements Escalation_Tr
 
 	public void verifyMandatoryFieldsOn_EscalationTracking() {
 		waitFor(2);
+		jsClickOn(appLauncher, "appLauncher");
+		waitFor(1);
+		typeText(appSearchTextField, "Escalation Tracking", "appSearchTextFiel");
+		waitFor(1);
+		jsClickOn(escalationTracking, "escalationTracking");
+		waitFor(1);
 		jsClickOn(escalationTracking_Tab, "escalationTracking_Tab");
 		waitFor(1);
 		jsClickOn(newButton, "newButton");
@@ -49,6 +61,12 @@ public class Escalation_Tracking_PO extends SafeActions implements Escalation_Tr
 
 	public void OpenNew_ET_Creation_Form() {
 		waitFor(2);
+		jsClickOn(appLauncher, "appLauncher");
+		waitFor(1);
+		typeText(appSearchTextField, "Escalation Tracking", "appSearchTextFiel");
+		waitFor(1);
+		jsClickOn(escalationTracking, "escalationTracking");
+		waitFor(1);
 		jsClickOn(escalationTracking_Tab, "escalationTracking_Tab");
 		waitFor(1);
 		jsClickOn(newButton, "newButton");
@@ -59,6 +77,7 @@ public class Escalation_Tracking_PO extends SafeActions implements Escalation_Tr
 	}
 
 	String str = "";
+	static String title = "";
 
 	public void verify_Escalation_Tracking_Creation() {
 		str = Character.toString(getRandomStateInitial());
@@ -91,8 +110,8 @@ public class Escalation_Tracking_PO extends SafeActions implements Escalation_Tr
 				System.out.println("Decission Package not available in " + i + " search");
 			}
 		}
-
-		typeText(titleInput, generateRandomString(10), "titleInput");
+		title = generateRandomString(10);
+		typeText(titleInput, title, "titleInput");
 		typeText(issueDescription, generateRandomString(10), "issueDescription");
 		jsClickOn(riskImpactButton, "riskImpactButton");
 		waitFor(1);
@@ -113,9 +132,13 @@ public class Escalation_Tracking_PO extends SafeActions implements Escalation_Tr
 		waitFor(1);
 		driver.findElement(submitButton).click();
 		waitFor(1);
+		sentTime = fetchDate("MMM d, yyyy, h:m a", 0);
 		verifyTextDisplay(escalationTrackerCreation_SuccessMsg,
 				"The Escalation Tracking record has been created successfully");
 		takeScreenshotFor("Escalation Tracking Creation");
+		waitFor(5);
+		currentURL = driver.getCurrentUrl();
+		System.out.println("currentURL: " + currentURL);
 
 	}
 
@@ -176,14 +199,14 @@ public class Escalation_Tracking_PO extends SafeActions implements Escalation_Tr
 		jsClickOn(submitButton, "submitButton");
 		waitFor(2);
 		scrollToTopofThePage();
-		sentTime = fetchDate("MMM d, yyyy, h:m a", 0);
+
 		waitFor(2);
 		verifyTextDisplay(return_Esc_AlertMessage,
 				"Escalation Tracking item has been returned and is being reviewed by the creator");
 		takeScreenshotFor("Escalation Tracking item has been returned");
 		currentURL = driver.getCurrentUrl();
 	}
-	
+
 	public void createEscationTracking() {
 		jsClickOn(createEscaltionTracking, "createEscaltionTracking");
 		waitFor(2);
@@ -211,7 +234,7 @@ public class Escalation_Tracking_PO extends SafeActions implements Escalation_Tr
 		verifyTextDisplay(escalationTrackerCreation_SuccessMsg,
 				"The Escalation Tracking record has been created successfully");
 		takeScreenshotFor("Escalation Tracking Creation");
-		
+
 	}
 
 	String currentURL = "";
@@ -274,15 +297,18 @@ public class Escalation_Tracking_PO extends SafeActions implements Escalation_Tr
 		jsClickOn(save_Button, "save_Button");
 		waitFor(2);
 		// Action taken code
-		
-		  scrollToBottomOfthePage(); verifyTextDisplay(actionTaken_ErrorMsg,
-		  "Please provide Status Update/Actions Taken when resolving an ET item");
-		  takeScreenshotFor("actionTaken_ErrorMsg"); jsClickOn(actionTakenArea,
-		  "actionTakenArea"); waitFor(2); typeText(actionTakenArea_, "Test",
-		  "actionTakenArea_"); jsClickOn(save_Button, "save_Button"); waitFor(2);
-		  jsClickOn(save_Button, "save_Button"); waitFor(2);
-		 
-		
+
+		scrollToBottomOfthePage();
+		verifyTextDisplay(actionTaken_ErrorMsg, "Please provide Status Update/Actions Taken when resolving an ET item");
+		takeScreenshotFor("actionTaken_ErrorMsg");
+		jsClickOn(actionTakenArea, "actionTakenArea");
+		waitFor(2);
+		typeText(actionTakenArea_, "Test", "actionTakenArea_");
+		jsClickOn(save_Button, "save_Button");
+		waitFor(2);
+		jsClickOn(save_Button, "save_Button");
+		waitFor(2);
+
 		takeScreenshotFor(screenshotName);
 	}
 
@@ -352,7 +378,7 @@ public class Escalation_Tracking_PO extends SafeActions implements Escalation_Tr
 		typeText(passwordTextField, "Pass0110!@", "passwordTextField");
 		jsClickOn(loginButtonEmail, "loginButtonEmail");
 		waitFor(3);
-		takeScreenshotFor("Email notification");
+		takeScreenshotFor("Email notification - A New Escalation Item Has Been Created and Ready for Triage");
 		String receivedDate = getTextFromUI(dateRecieved, "dateRecieved");
 
 		SimpleDateFormat df = new SimpleDateFormat("MMM d, yyyy, h:m a");
@@ -363,10 +389,66 @@ public class Escalation_Tracking_PO extends SafeActions implements Escalation_Tr
 
 			jsClickOn(emailThread, "emailThread");
 			waitFor(3);
-			verifyTextDisplay(emailHeader, "Sandbox: Escalation Item Has Been Returned");
+			verifyTextDisplay(emailHeader, "Sandbox: A New Escalation Item Has Been Created and Ready for Triage");
 			String str = getTextFromUI(emailBody, "emailBody");
 			test.log(Status.PASS, MarkupHelper.createLabel("Email Body - " + str, ExtentColor.BLUE));
-			takeScreenshotFor("Email Body");
+			takeScreenshotFor("Email Body - A New Escalation Item Has Been Created and Ready for Triage");
+
+		} else {
+			test.log(Status.FAIL,
+					MarkupHelper.createLabel("Email Notification not received to the server", ExtentColor.RED));
+		}
+
+		driver.get(currentURL);
+
+	}
+
+	public void assignLeaderShip_VerifyEmail() throws ParseException {
+		currentURL = driver.getCurrentUrl();
+		waitFor(5);
+		scrollToBottomOfthePage();
+		waitFor(5);
+		jsClickOn(editLeaderShipAssigned, "editLeaderShipAssigned");
+		typeText(leadershipAssigngedInput, "Purvi Dholakia", "leadershipAssigngedInput");
+		jsClickOn(leadershipAssignedOption, "leadershipAssignedOption");
+		jsClickOn(save_Button, "save_Button");
+		waitFor(1);
+		sentTime = fetchDate("MMM d, yyyy, h:m a", 0);
+		waitFor(2);
+		scrollToTopofThePage();
+		waitFor(2);
+
+		String leadership_ReviewStatus = getAttribute(LeadershipReview_StageSelection, "aria-selected",
+				"LeadershipReview_StageSelection");
+		if (leadership_ReviewStatus.equals("true")) {
+			test.log(Status.INFO, MarkupHelper.createLabel("LeadershipReview selected as expected", ExtentColor.GREEN));
+
+		} else {
+			test.log(Status.FAIL,
+					MarkupHelper.createLabel("LeadershipReview NOT selected as expected", ExtentColor.RED));
+		}
+
+		if (prop.getProperty("url").contains("uat")) {
+			driver.get("https://mailosaur.com/app/servers/csee9izm/messages/inbox");
+		} else {
+			driver.get("https://mailosaur.com/app/servers/drwhn6bn/messages/inbox");
+		}
+		waitFor(10);
+		takeScreenshotFor("Email notification - An Escalation Item is Ready for your Review");
+		String receivedDate = getTextFromUI(dateRecieved, "dateRecieved");
+
+		SimpleDateFormat df = new SimpleDateFormat("MMM d, yyyy, h:m a");
+
+		Date d1 = df.parse(sentTime);
+		Date d2 = df.parse(receivedDate);
+		if (d1.equals(d2) || d2.after(d1)) {
+
+			jsClickOn(emailThread, "emailThread");
+			waitFor(3);
+			verifyTextDisplay(emailHeader2, "Sandbox: An Escalation Item is Ready for your Review");
+			String str = getTextFromUI(emailBody, "emailBody");
+			test.log(Status.PASS, MarkupHelper.createLabel("Email Body - " + str, ExtentColor.BLUE));
+			takeScreenshotFor("Email Body - An Escalation Item is Ready for your Review");
 
 		} else {
 			test.log(Status.FAIL,
@@ -375,9 +457,9 @@ public class Escalation_Tracking_PO extends SafeActions implements Escalation_Tr
 
 		driver.get(currentURL);
 	}
-	
+
 	public void updateEscalationTracker() {
-		
+
 		jsClickOn(editTitle, "editTitle");
 		waitFor(1);
 		typeText(titleInput, generateRandomString(12), "titleInput");
@@ -403,11 +485,12 @@ public class Escalation_Tracking_PO extends SafeActions implements Escalation_Tr
 		jsClickOn(save_Button, "save_Button");
 		waitFor(2);
 	}
+
 	public void validateUpdatedFields_Under_Related_Tab() {
 		jsClickOn(relatedTab, "relatedTab");
 		jsClickOn(viewAll, "relatedTab");
 		waitFor(1);
-		
+
 		jsClickOn(By.xpath("//*[@title='Escalation Tracking History']/following::table/tbody/tr[1]"), "First row");
 		scrollToElement(By.xpath("//*[@title='Escalation Tracking History']/following::table/tbody"));
 //		scrollByElement(By.xpath("//h1[text()='State Record History']/following::table/tbody"));
@@ -443,17 +526,21 @@ public class Escalation_Tracking_PO extends SafeActions implements Escalation_Tr
 		}
 		try {
 			if (stringCounts.get("Impacted/MES Business Area").toString().equals("2")) {
-				test.log(Status.INFO, MarkupHelper.createLabel("Impacted/MES Business Area updated as expected", ExtentColor.BLUE));
+				test.log(Status.INFO,
+						MarkupHelper.createLabel("Impacted/MES Business Area updated as expected", ExtentColor.BLUE));
 			}
 		} catch (Exception e) {
-			test.log(Status.FAIL, MarkupHelper.createLabel("Impacted/MES Business Area NOT updated as expected", ExtentColor.RED));
+			test.log(Status.FAIL,
+					MarkupHelper.createLabel("Impacted/MES Business Area NOT updated as expected", ExtentColor.RED));
 		}
 		try {
 			if (stringCounts.get("Risk Impact Score").toString().equals("1")) {
-				test.log(Status.INFO, MarkupHelper.createLabel("Risk Impact Score updated as expected", ExtentColor.BLUE));
+				test.log(Status.INFO,
+						MarkupHelper.createLabel("Risk Impact Score updated as expected", ExtentColor.BLUE));
 			}
 		} catch (Exception e) {
-			test.log(Status.FAIL, MarkupHelper.createLabel("Risk Impact Score NOT updated as expected", ExtentColor.RED));
+			test.log(Status.FAIL,
+					MarkupHelper.createLabel("Risk Impact Score NOT updated as expected", ExtentColor.RED));
 		}
 		try {
 			if (stringCounts.get("Created.").toString().equals("1")) {
@@ -480,10 +567,12 @@ public class Escalation_Tracking_PO extends SafeActions implements Escalation_Tr
 		}
 		try {
 			if (stringCounts.get("Leadership Assigned").toString().equals("2")) {
-				test.log(Status.INFO, MarkupHelper.createLabel("Leadership Assignedupdated as expected", ExtentColor.BLUE));
+				test.log(Status.INFO,
+						MarkupHelper.createLabel("Leadership Assignedupdated as expected", ExtentColor.BLUE));
 			}
 		} catch (Exception e) {
-			test.log(Status.FAIL, MarkupHelper.createLabel("Leadership Assigned NOT updated as expected", ExtentColor.RED));
+			test.log(Status.FAIL,
+					MarkupHelper.createLabel("Leadership Assigned NOT updated as expected", ExtentColor.RED));
 		}
 		try {
 			if (stringCounts.get("Title").toString().equals("2")) {
@@ -501,14 +590,16 @@ public class Escalation_Tracking_PO extends SafeActions implements Escalation_Tr
 		}
 		try {
 			if (stringCounts.get("Issue Sub-Status").toString().equals("7")) {
-				test.log(Status.INFO, MarkupHelper.createLabel("Issue Sub-Status updated as expected", ExtentColor.BLUE));
+				test.log(Status.INFO,
+						MarkupHelper.createLabel("Issue Sub-Status updated as expected", ExtentColor.BLUE));
 			}
 		} catch (Exception e) {
-			test.log(Status.FAIL, MarkupHelper.createLabel("Issue Sub-Status NOT updated as expected", ExtentColor.RED));
+			test.log(Status.FAIL,
+					MarkupHelper.createLabel("Issue Sub-Status NOT updated as expected", ExtentColor.RED));
 		}
 
 	}
-	
+
 	public void validateStatusMemo_Comment_Answer() {
 		jsClickOn(escalationTracker_Link, "escalationTracker_Link");
 		jsClickOn(statusMemoTab, "statusMemoTab");
@@ -529,6 +620,124 @@ public class Escalation_Tracking_PO extends SafeActions implements Escalation_Tr
 		waitFor(2);
 		takeScreenshotFor("Answer Added");
 	}
+
+	Robot rb;
+
+	public void UploadFile() {
+		jsClickOn(boxTab, "boxTab");
+		waitFor(2);
+		jsClickOn(createFolder, "createFolder");
+		waitFor(30);
+		switchToFrame(firstFrame);
+		switchToFrame(secondFrame);
+		scrollToBottomOfthePage();
+		waitFor(2);
+		jsClickOn(uploadButton, "uploadButton");
+		waitFor(2);
+		String filePath = System.getProperty("user.dir")
+				+ "\\src\\test\\resources\\data\\RAI Closeout Process and Closeout Email Template (2).docx";
+		driver.findElement(uploadFile).sendKeys(filePath);
+//		clickOn(uploadFile, "uploadFile");
+//		new Actions(driver).moveToElement(driver.findElement(uploadFile)).build().perform();
+//		waitFor(5);
+//	
+		try {
+			rb = new Robot();
+		} catch (AWTException e) {
+		}
+//		String filePath = System.getProperty("user.dir")
+//				+ "\\src\\test\\resources\\data\\RAI Closeout Process and Closeout Email Template (2).docx";
+		StringSelection str = new StringSelection(filePath);
+		Toolkit.getDefaultToolkit().getSystemClipboard().setContents(str, null);
+		waitFor(2);
+		rb.keyPress(KeyEvent.VK_CONTROL);
+		rb.keyPress(KeyEvent.VK_V);
+		waitFor(2);
+		rb.keyRelease(KeyEvent.VK_CONTROL);
+		rb.keyRelease(KeyEvent.VK_V);
+		waitFor(2);
+		rb.keyPress(KeyEvent.VK_ENTER);
+		rb.keyRelease(KeyEvent.VK_ENTER);
+		waitFor(2);
+
+//		verifyTextDisplay(successMessage, "The Decision Package has been Created Sucessfully");
+		takeScreenshotFor("After submitting the form");
+
+	}
 	
+	public void beginReview_VerifyEmail() throws ParseException {
+		verifyReturnEscalationItem();
+		waitFor(5);
+		sentTime = fetchDate("MMM d, yyyy, h:m a", 0);
+		waitFor(2);
+
+		if (prop.getProperty("url").contains("uat")) {
+			driver.get("https://mailosaur.com/app/servers/csee9izm/messages/inbox");
+		} else {
+			driver.get("https://mailosaur.com/app/servers/drwhn6bn/messages/inbox");
+		}
+		waitFor(10);
+		takeScreenshotFor("Email notification - Escalation Item Has Been Returned");
+		String receivedDate = getTextFromUI(dateRecieved, "dateRecieved");
+
+		SimpleDateFormat df = new SimpleDateFormat("MMM d, yyyy, h:m a");
+
+		Date d1 = df.parse(sentTime);
+		Date d2 = df.parse(receivedDate);
+		if (d1.equals(d2) || d2.after(d1)) {
+
+			jsClickOn(emailThread, "emailThread");
+			waitFor(3);
+			verifyTextDisplay(emailHeader3, "Sandbox: Escalation Item Has Been Returned");
+			String str = getTextFromUI(emailBody, "emailBody");
+			test.log(Status.PASS, MarkupHelper.createLabel("Email Body - " + str, ExtentColor.BLUE));
+			takeScreenshotFor("Email Body - Escalation Item Has Been Returned");
+
+		} else {
+			test.log(Status.FAIL,
+					MarkupHelper.createLabel("Email Notification not received to the server", ExtentColor.RED));
+		}
+
+		driver.get(currentURL);
+	}
+	
+	public void returnToDirector_VerifyEmail() throws ParseException {
+		jsClickOn(returnToDirector, "returnToDirector");
+		waitFor(5);
+		typeText(commentsTextField, "Test", "commentsTextField");
+		jsClickOn(submitButton, "submitButton");
+		waitFor(5);
+		sentTime = fetchDate("MMM d, yyyy, h:m a", 0);
+		waitFor(2);
+
+		if (prop.getProperty("url").contains("uat")) {
+			driver.get("https://mailosaur.com/app/servers/csee9izm/messages/inbox");
+		} else {
+			driver.get("https://mailosaur.com/app/servers/drwhn6bn/messages/inbox");
+		}
+		waitFor(10);
+		takeScreenshotFor("Email notification - Escalation Item Has Been Returned to Director");
+		String receivedDate = getTextFromUI(dateRecieved, "dateRecieved");
+
+		SimpleDateFormat df = new SimpleDateFormat("MMM d, yyyy, h:m a");
+
+		Date d1 = df.parse(sentTime);
+		Date d2 = df.parse(receivedDate);
+		if (d1.equals(d2) || d2.after(d1)) {
+
+			jsClickOn(emailThread, "emailThread");
+			waitFor(3);
+			verifyTextDisplay(emailHeader4, "Sandbox: Escalation Item Has Been Returned to Director");
+			String str = getTextFromUI(emailBody, "emailBody");
+			test.log(Status.PASS, MarkupHelper.createLabel("Email Body - " + str, ExtentColor.BLUE));
+			takeScreenshotFor("Email Body - Escalation Item Has Been Returned to Director");
+
+		} else {
+			test.log(Status.FAIL,
+					MarkupHelper.createLabel("Email Notification not received to the server", ExtentColor.RED));
+		}
+
+		driver.get(currentURL);
+	}
 
 }// ENd of the Class

@@ -1,5 +1,6 @@
 package com.Mesh_TestSuites;
 
+import java.awt.AWTException;
 import java.text.ParseException;
 
 import org.testng.annotations.Test;
@@ -74,5 +75,35 @@ public class Escalation_Tracking extends TestBase {
 		homePage.moveToEsalation_Stage();
 		ET_PO.createEscationTracking();
 	}
-
+	
+	@Test
+	public void TC_006_Verify_Escalation_Tracking_Emails_Validations() throws ParseException, AWTException {
+		dpp.logoutFromApp();
+		waitFor(1);
+		loginToApplication();
+		waitFor(5);
+		homePage.go_to_Escalation_Tracking_Screen();
+		ET_PO.OpenNew_ET_Creation_Form();
+		ET_PO.verify_Escalation_Tracking_Creation();
+		ET_PO.validateEmailNotification();
+		ET_PO.assignLeaderShip_VerifyEmail();
+		dpp.logoutFromApp();
+		waitFor(1);
+		loginToApplication();
+		waitFor(5);
+		homePage.navigateTo_Director_Screen();
+		homePage.go_to_Escalation_Tracking_Screen();
+		homePage.navigateToRecentEscalation();
+		ET_PO.beginReview_VerifyEmail();
+		dpp.logoutFromApp();
+		waitFor(1);
+		loginToApplication();
+		waitFor(5);
+		homePage.go_to_Escalation_Tracking_Screen();
+		homePage.navigateToRecentEscalation();
+		ET_PO.returnToDirector_VerifyEmail();
+	}
+	
+	
+	
 }
