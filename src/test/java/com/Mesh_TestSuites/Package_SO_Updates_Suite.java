@@ -17,6 +17,7 @@ public class Package_SO_Updates_Suite extends TestBase {
 
 	@Test
 	public void TC_001_Verify_Package_SO_Updates_Displays_Only_For_Admin_OPsTeam() {
+		ps_Page.navigateTo_PackageSO_Updates();
 		ps_Page.packageSOUpdates_Display_For_Admin();
 		dpp.logoutFromApp();
 		waitFor(1);

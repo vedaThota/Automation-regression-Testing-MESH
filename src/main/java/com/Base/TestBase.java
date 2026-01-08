@@ -55,7 +55,9 @@ public class TestBase {
 	public static final By userName = By.xpath("//label[contains(text(), 'Username')]/..//input");
 	public static final By password = By.xpath("//label[contains(text(), 'Password')]/following-sibling::input");
 	public static final By loginButton = By.xpath("//*[@value='Log In to Sandbox']");
-	public static final By appLauncher = By.xpath("//*[@title='App Launcher']");
+	public static final By appLauncher = By.xpath("(//*[@title='App Launcher'])[last()]");
+//	public static final By searchApps_Items = By.xpath("//input[@placeholder='Search apps and items...']");
+	public static final By package_SO_Updates = By.xpath("//b[text()='Package SO Updates']");
 
 	// Data kept in properties file, will be store in "prop" variable
 	static {

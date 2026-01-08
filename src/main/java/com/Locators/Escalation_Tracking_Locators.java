@@ -121,7 +121,10 @@ public interface Escalation_Tracking_Locators {
 			.xpath("//*[text()='Reassign 1 package(s) to New State Officer']/following::input");
 	public static By reassignSuccessMessage = By.xpath("//*[text()='Decision packages reassigned successfully.']");
 	public static By emailThread = By.xpath("//tbody/tr/td[2]/div/div");
-	public static By emailHeader = By.xpath("//p[text()='Sandbox: Ricardo Melendez mentioned you in a comment']");
+	public static By emailHeader = By.xpath("//h2[text()='Sandbox: A New Escalation Item Has Been Created and Ready for Triage']");
+	public static By emailHeader2 = By.xpath("//h2[text()='Sandbox: An Escalation Item is Ready for your Review']");
+	public static By emailHeader3 = By.xpath("//h2[text()='Sandbox: Escalation Item Has Been Returned']");
+	public static By emailHeader4 = By.xpath("//h2[text()='Sandbox: Escalation Item Has Been Returned to Director']");
 	
 	public static By editTitle = By.xpath("//button[@title='Edit Title']");
 	public static By issueStatus = By.xpath("//*[text()='Issue Status']/following::button[1]");
@@ -142,18 +145,22 @@ public interface Escalation_Tracking_Locators {
 	public static By answerComment = By.xpath("//textarea[@placeholder='Write a comment...']");
 	public static final By createEscaltionTracking = By.xpath("//*[text()='Create Escalation Tracking']");
 	
-//	public static By underRevieww = By.xpath("dsdfdsfdsf");
-//	public static By underRevieww = By.xpath("dsdfdsfdsf");
-//	public static By underRevieww = By.xpath("dsdfdsfdsf");
-//	public static By underRevieww = By.xpath("dsdfdsfdsf");
-//	public static By underRevieww = By.xpath("dsdfdsfdsf");
-//	public static By underRevieww = By.xpath("dsdfdsfdsf");
-//	public static By underRevieww = By.xpath("dsdfdsfdsf");
-//	public static By underRevieww = By.xpath("dsdfdsfdsf");
-//	public static By underRevieww = By.xpath("dsdfdsfdsf");
-//	public static By underRevieww = By.xpath("dsdfdsfdsf");
-//	public static By underRevieww = By.xpath("dsdfdsfdsf");
-//	public static By underRevieww = By.xpath("dsdfdsfdsf");
+	public static By appSearchTextField = By.xpath("//input[@placeholder='Search apps and items...']");
+	public static By escalationTracking = By.xpath("//b[text()='Escalation Tracking']");
+	public static By decisionPackageWorkFlow = By.xpath("//b[text()='Decision Package Workflow']");
+	
+	public static By boxTab = By.xpath("//a[text()='Box']");
+	public static By createFolder = By.xpath("//button[text()='Create Folder']");
+	public static By uploadButton = By.xpath("//button[@aria-label='Upload']");
+	public static By uploadFile = By.xpath("//li[@data-target-id='UploadMenuItem-emptyStateUploadFile']");
+	
+	public static By firstFrame = By.xpath("//iframe[@title='Box Record Content']");
+	
+	public static By secondFrame = By.xpath("//iframe[@title='Box Embed Widget']");
+	
+	public static By returnToDirector = By.xpath("//button[text()='Return to Director']");
+	public static By commentsTextField = By.xpath("//label/following::textarea");
+//	public static By submitButton = By.xpath("//button[text()='Submit']");
 //	public static By underRevieww = By.xpath("dsdfdsfdsf");
 
 }

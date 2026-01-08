@@ -10,12 +10,14 @@ public interface HomePage_Loc {
 	public static final By userLink = By.xpath("(//div[@title='Users'])[last()]/a");
 	public static final By userList_T = By.xpath("//*[@class='listItemPad'][text()='T']/parent::a");
 	public static final By userList_M = By.xpath("//*[@class='listItemPad'][text()='M']/parent::a");
+	public static final By userList_D = By.xpath("//*[@class='listItemPad'][text()='D']/parent::a");
 	public static final By oPsTeam_Login_Link = By.xpath("//a[text()='Test, Ops Team']/../preceding-sibling::td/a[text()='Login']");
 	public static final By Decision_Packages = By.xpath("//a[@title='Decision Packages']");
 	public static final By allUsersFrame = By.xpath("(//iframe[@title='All Users ~ Salesforce - Unlimited Edition'])[last()]");
 	public static final By userList_V = By.xpath("//*[@class='listItemPad'][text()='V']/parent::a");
 	public static final By ThotaVEda_Login_Link = By.xpath("//a[contains(text(), 'Thota, Veda')]/../preceding-sibling::td/a[text()='Login']");
 	public static final By Melendez_Login_Link = By.xpath("//a[text()='Melendez, Ricardo']/../preceding-sibling::td/a[text()='Login']");
+	public static final By Purvi_Login_Link = By.xpath("//a[text()='Dholakia, Purvi']/../preceding-sibling::td/a[text()='Login']");
 
 	public static final By stateOfficer_LoginLink = By.xpath("//a[contains(text(), 'State Officer')]/../preceding-sibling::td/a[text()='Login']");
 	public static final By deputyDirector_LoginLink = By.xpath("//a[contains(text(), 'Deputy Director')]/../preceding-sibling::td/a[text()='Login']");
@@ -32,9 +34,10 @@ public interface HomePage_Loc {
 	public static final By check_Escalation_Tracking = By.xpath("//input[@name='Escalation_Tracking__c']");
 	public static final By save_Button = By.xpath("//*[text()='Save']");
 	
-//	public static final By setUp = By.xpath("");
-//	public static final By setUp = By.xpath("");
-//	public static final By setUp = By.xpath("");
+	public static final By recentlyViewed = By.xpath("//span[text()='Recently Viewed']");
+	public static final By allOption = By.xpath("//lightning-base-combobox-item[@data-value='All']");
+	public static final By searchList = By.xpath("//input[@aria-label='Search this list...']");
+	
 //	public static final By setUp = By.xpath("");
 //	public static final By setUp = By.xpath("");
 //	public static final By setUp = By.xpath("");
