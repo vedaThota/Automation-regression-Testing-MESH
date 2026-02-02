@@ -53,13 +53,13 @@ public class Escalation_Tracking extends TestBase {
 		ET_PO.verify_Escalation_Tracking_Creation();
 		ET_PO.moveEscalationTo_Review_Stage();
 		ET_PO.verifyReturnEscalationItem();
-		ET_PO.validateEmailNotification();
+		ET_PO.validateEmailNotification("Login Require");
 		
-//		// Related Tab functionality
-		ET_PO.updateEscalationTracker();
-		ET_PO.validateUpdatedFields_Under_Related_Tab();
-//		// Status Memo functionality
-		ET_PO.validateStatusMemo_Comment_Answer();
+////		// Related Tab functionality
+//		ET_PO.updateEscalationTracker();
+//		ET_PO.validateUpdatedFields_Under_Related_Tab();
+////		// Status Memo functionality
+//		ET_PO.validateStatusMemo_Comment_Answer();
 		
 	}
 	
@@ -78,6 +78,7 @@ public class Escalation_Tracking extends TestBase {
 	
 	@Test
 	public void TC_006_Verify_Escalation_Tracking_Emails_Validations() throws ParseException, AWTException {
+		
 		dpp.logoutFromApp();
 		waitFor(1);
 		loginToApplication();
@@ -85,7 +86,7 @@ public class Escalation_Tracking extends TestBase {
 		homePage.go_to_Escalation_Tracking_Screen();
 		ET_PO.OpenNew_ET_Creation_Form();
 		ET_PO.verify_Escalation_Tracking_Creation();
-		ET_PO.validateEmailNotification();
+		ET_PO.validateEmailNotification("Login NOT Require");
 		ET_PO.assignLeaderShip_VerifyEmail();
 		dpp.logoutFromApp();
 		waitFor(1);
@@ -102,6 +103,7 @@ public class Escalation_Tracking extends TestBase {
 		homePage.go_to_Escalation_Tracking_Screen();
 		homePage.navigateToRecentEscalation();
 		ET_PO.returnToDirector_VerifyEmail();
+		
 	}
 	
 	

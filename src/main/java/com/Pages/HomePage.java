@@ -17,9 +17,9 @@ public class HomePage extends SafeActions implements HomePage_Loc {
 
 		jsClickOn(setUpIcon, "setUpIcon");
 		takeScreenshotFor("Set Up Menu");
-		waitFor(1);
+		waitFor(3);
 		jsClickOn(setUpLink, "setUpLink");
-		waitFor(1);
+		waitFor(3);
 		switchToWindowByIndex(1);
 		jsClickOn(userSideMenu, "userSideMenu");
 		jsClickOn(userLink, "userLink");
@@ -29,7 +29,7 @@ public class HomePage extends SafeActions implements HomePage_Loc {
 		jsClickOn(userList_T, "userList_T");
 		waitFor(3);
 		driver.switchTo().defaultContent();
-		takeScreenshotFor("User Selection Screen");
+		takeScreenshotFor("User Selection Screen"+userType);
 		switchToFrame(allUsersFrame);
 		// Navigating to Ops Team login screen
 		if (userType.contains("Ops Team")) {
@@ -55,18 +55,24 @@ public class HomePage extends SafeActions implements HomePage_Loc {
 				|| userType.contains("FM Reviewer") || userType.contains("Division Director")) {
 
 		} else {
-			waitFor(2);
-			jsClickOn(appLauncher, "appLauncher");
-			waitFor(1);
-			typeText(Escalation_Tracking_PO.appSearchTextField, "Decision Package Workflow", "appSearchTextFiel");
-			waitFor(1);
-			jsClickOn(Escalation_Tracking_PO.decisionPackageWorkFlow, "decisionPackageWorkFlow");
-			waitFor(1);
-			jsClickOn(Decision_Packages, "Decision_Packages");
-			waitFor(2);
-			takeScreenshotFor("Decision_Packages Navigation");
+			
+			naviateToDecisionPackage();
+			
 		}
 
+	}
+	
+	public void naviateToDecisionPackage() {
+		waitFor(2);
+		jsClickOn(appLauncher, "appLauncher");
+		waitFor(1);
+		typeText(Escalation_Tracking_PO.appSearchTextField, "Decision Package Workflow", "appSearchTextFiel");
+		waitFor(1);
+		jsClickOn(Escalation_Tracking_PO.decisionPackageWorkFlow, "decisionPackageWorkFlow");
+		waitFor(1);
+		jsClickOn(Decision_Packages, "Decision_Packages");
+		waitFor(2);
+		takeScreenshotFor("Decision_Packages Navigation");
 	}
 	
 	public void navigateTo_DeputyDirecter_Screen() {
@@ -162,13 +168,15 @@ public class HomePage extends SafeActions implements HomePage_Loc {
 		jsClickOn(allOption, "allOption");
 		jsClickOn(searchList, "searchList");
 		typeText(searchList, Escalation_Tracking_PO.title, "searchList");
+		waitFor(3);
 		Robot rb = new Robot();
 		rb.keyPress(KeyEvent.VK_ENTER);
 		rb.keyRelease(KeyEvent.VK_ENTER);
-		waitFor(2);
+		waitFor(3);
+		
 		By ET_Link = By.xpath("//a[@title='"+Escalation_Tracking_PO.title+"']");
 		jsClickOn(ET_Link, "ET_Link");
-		
+		waitFor(5);
 	}
 	
 	

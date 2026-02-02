@@ -198,9 +198,20 @@ public class TestBase {
 	// To fetch dates in desired format //
 	public String fetchDate(String format, int numberOfDaysToBeAdded) {
 		SimpleDateFormat df = new SimpleDateFormat(format);
-		Calendar cal = Calendar.getInstance();
-		cal.add(Calendar.DATE, numberOfDaysToBeAdded);
-		return df.format(cal.getTime());
+		  Calendar cal = Calendar.getInstance();
+
+		  int daysToAdd = numberOfDaysToBeAdded;
+
+		  while (daysToAdd > 0) {
+		      cal.add(Calendar.DATE, 1);
+
+		      int dayOfWeek = cal.get(Calendar.DAY_OF_WEEK);
+		      if (dayOfWeek != Calendar.SATURDAY && dayOfWeek != Calendar.SUNDAY) {
+		          daysToAdd--;
+		      }
+		  }
+		  
+		 return df.format(cal.getTime()); 
 	}
 
 	// To fetch past or future weekday dates in desired format //

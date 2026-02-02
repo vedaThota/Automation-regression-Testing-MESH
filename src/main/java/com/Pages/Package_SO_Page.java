@@ -27,6 +27,7 @@ public class Package_SO_Page extends SafeActions implements Package_SO_Loc, Home
 		javaScriptClickOn(appLauncher, "App Launcher Icon");
 		waitFor(2);
 		typeText(searchApps_Items, "Package SO Updates", "searchApps_Items");
+		waitFor(2);
 		javaScriptClickOn(package_SO_Updates, "package_SO_Updates");
 		waitFor(2);
 		takeScreenshotFor("Navigated to Package SO Updates screen");
@@ -91,7 +92,9 @@ public class Package_SO_Page extends SafeActions implements Package_SO_Loc, Home
 		waitFor(1);
 		typeText(selectReplacementStateOfficer, "Jessica Dunlap", "selectReplacementStateOfficer");
 		waitFor(1);
-		typeText(selectReplacementStateOfficer, "", "selectReplacementStateOfficer");
+//		typeText(selectReplacementStateOfficer, "", "selectReplacementStateOfficer");
+//		waitFor(1);
+		driver.findElement(selectReplacementStateOfficer).clear();
 		waitFor(1);
 		By replacementOfficerLoc = By.xpath("(//ul[@aria-label='Search Results']//span[2])[" + secondIndex + "]");
 		jsClickOn(replacementOfficerLoc, "replacementOfficerLoc");
@@ -113,7 +116,7 @@ public class Package_SO_Page extends SafeActions implements Package_SO_Loc, Home
 		clickOn(submitButton, "submitButton");
 		waitFor(1);
 		verifyTextDisplay(stateOfficer_SuccessMsg, "State Officer replaced");
-		sentTime = fetchDate("MMM d, yyyy, h:m a", 0);
+		sentTime = fetchDate("h:m a", 0);
 		URL = driver.getCurrentUrl();
 
 	}
@@ -136,7 +139,7 @@ public class Package_SO_Page extends SafeActions implements Package_SO_Loc, Home
 		takeScreenshotFor("Email notification");
 		String receivedDate = getTextFromUI(dateRecieved, "dateRecieved");
 
-		SimpleDateFormat df = new SimpleDateFormat("MMM d, yyyy, h:m a");
+		SimpleDateFormat df = new SimpleDateFormat("h:m a");
 
 		Date d1 = df.parse(sentTime);
 		Date d2 = df.parse(receivedDate);

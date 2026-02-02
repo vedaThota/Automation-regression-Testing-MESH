@@ -25,6 +25,8 @@ import com.utility.SafeActions;
 
 public class Escalation_Tracking_PO extends SafeActions implements Escalation_Tracking_Locators {
 
+	int ET_CreationDay = 2;
+
 	public void verifyMandatoryFieldsOn_EscalationTracking() {
 		waitFor(2);
 		jsClickOn(appLauncher, "appLauncher");
@@ -60,7 +62,7 @@ public class Escalation_Tracking_PO extends SafeActions implements Escalation_Tr
 	}
 
 	public void OpenNew_ET_Creation_Form() {
-		waitFor(2);
+		waitFor(6);
 		jsClickOn(appLauncher, "appLauncher");
 		waitFor(1);
 		typeText(appSearchTextField, "Escalation Tracking", "appSearchTextFiel");
@@ -126,7 +128,7 @@ public class Escalation_Tracking_PO extends SafeActions implements Escalation_Tr
 		scrollToBottomOfthePage();
 		jsClickOn(resolutionNeededBy_Input, "resolutionNeededBy_Input");
 		waitFor(1);
-		typeText(resolutionNeededBy_Input, fetchDate("MMM d, yyyy", 1), "resolutionNeededBy_Input");
+		typeText(resolutionNeededBy_Input, fetchDate("MMM d, yyyy", ET_CreationDay), "resolutionNeededBy_Input");
 		waitFor(1);
 		jsClickOn(submitButton, "submitButton");
 		waitFor(1);
@@ -137,6 +139,10 @@ public class Escalation_Tracking_PO extends SafeActions implements Escalation_Tr
 				"The Escalation Tracking record has been created successfully");
 		takeScreenshotFor("Escalation Tracking Creation");
 		waitFor(5);
+		takeScreenshotFor("Escalation Tracking Creation first half of the screen");
+		scrollToBottomOfthePage();
+		waitFor(2);
+		verifyTextDisplay(submissionDate, fetchDate("M/d/yyy", 0));
 		currentURL = driver.getCurrentUrl();
 		System.out.println("currentURL: " + currentURL);
 
@@ -198,6 +204,7 @@ public class Escalation_Tracking_PO extends SafeActions implements Escalation_Tr
 		typeText(comments, "Test", "comments");
 		jsClickOn(submitButton, "submitButton");
 		waitFor(2);
+		sentTime = fetchDate("MMM d, yyyy, h:m a", 0);
 		scrollToTopofThePage();
 
 		waitFor(2);
@@ -225,7 +232,7 @@ public class Escalation_Tracking_PO extends SafeActions implements Escalation_Tr
 		scrollToBottomOfthePage();
 		jsClickOn(resolutionNeededBy_Input, "resolutionNeededBy_Input");
 		waitFor(1);
-		typeText(resolutionNeededBy_Input, fetchDate("MMM d, yyyy", 1), "resolutionNeededBy_Input");
+		typeText(resolutionNeededBy_Input, fetchDate("MMM d, yyyy", ET_CreationDay), "resolutionNeededBy_Input");
 		waitFor(1);
 		jsClickOn(submitButton, "submitButton");
 		waitFor(1);
@@ -233,7 +240,10 @@ public class Escalation_Tracking_PO extends SafeActions implements Escalation_Tr
 		waitFor(1);
 		verifyTextDisplay(escalationTrackerCreation_SuccessMsg,
 				"The Escalation Tracking record has been created successfully");
-		takeScreenshotFor("Escalation Tracking Creation");
+		takeScreenshotFor("Escalation Tracking Creation first half of the screen");
+		scrollToBottomOfthePage();
+		verifyTextDisplay(submissionDate, fetchDate("M/d/yyy", 0));
+		takeScreenshotFor("Escalation Tracking Creation second half of the screen");
 
 	}
 
@@ -366,18 +376,20 @@ public class Escalation_Tracking_PO extends SafeActions implements Escalation_Tr
 
 	String sentTime = "";
 
-	public void validateEmailNotification() throws ParseException {
+	public void validateEmailNotification(String loginRequire) throws ParseException {
 		if (prop.getProperty("url").contains("uat")) {
 			driver.get("https://mailosaur.com/app/servers/csee9izm/messages/inbox");
 		} else {
 			driver.get("https://mailosaur.com/app/servers/drwhn6bn/messages/inbox");
 		}
 		waitFor(10);
-		typeText(emailAddressTextField, "pghosh@index-analytics.com", "emailAddressTextField");
-		jsClickOn(continueButton, "continueButton");
-		typeText(passwordTextField, "Pass0110!@", "passwordTextField");
-		jsClickOn(loginButtonEmail, "loginButtonEmail");
-		waitFor(3);
+		if (loginRequire.contains("Login Require")) {
+			typeText(emailAddressTextField, "pghosh@index-analytics.com", "emailAddressTextField");
+			jsClickOn(continueButton, "continueButton");
+			typeText(passwordTextField, "Pass0110!@", "passwordTextField");
+			jsClickOn(loginButtonEmail, "loginButtonEmail");
+			waitFor(3);
+		}
 		takeScreenshotFor("Email notification - A New Escalation Item Has Been Created and Ready for Triage");
 		String receivedDate = getTextFromUI(dateRecieved, "dateRecieved");
 
@@ -385,6 +397,7 @@ public class Escalation_Tracking_PO extends SafeActions implements Escalation_Tr
 
 		Date d1 = df.parse(sentTime);
 		Date d2 = df.parse(receivedDate);
+		waitFor(5);
 		if (d1.equals(d2) || d2.after(d1)) {
 
 			jsClickOn(emailThread, "emailThread");
@@ -601,6 +614,7 @@ public class Escalation_Tracking_PO extends SafeActions implements Escalation_Tr
 	}
 
 	public void validateStatusMemo_Comment_Answer() {
+		waitFor(5);
 		jsClickOn(escalationTracker_Link, "escalationTracker_Link");
 		jsClickOn(statusMemoTab, "statusMemoTab");
 		jsClickOn(writeAComment, "writeAComment");
@@ -664,7 +678,7 @@ public class Escalation_Tracking_PO extends SafeActions implements Escalation_Tr
 		takeScreenshotFor("After submitting the form");
 
 	}
-	
+
 	public void beginReview_VerifyEmail() throws ParseException {
 		verifyReturnEscalationItem();
 		waitFor(5);
@@ -700,7 +714,7 @@ public class Escalation_Tracking_PO extends SafeActions implements Escalation_Tr
 
 		driver.get(currentURL);
 	}
-	
+
 	public void returnToDirector_VerifyEmail() throws ParseException {
 		jsClickOn(returnToDirector, "returnToDirector");
 		waitFor(5);
