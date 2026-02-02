@@ -169,6 +169,7 @@ public class TestBase {
 		options.addArguments("--disable-dev-shm-usage");
 		options.addArguments("--disable-gpu");
 		options.addArguments("--window-size=1920,1080");
+		options.setBinary("/usr/bin/google-chrome-stable");
 
 		options.addArguments("download.default_directory", downloadFilepath);
 		// driver instantiation
