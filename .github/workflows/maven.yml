@@ -44,8 +44,8 @@ jobs:
 
     - name: Install ChromeDriver
       run: |
-	      sudo apt-get install -y chromium-chromedriver
-	      sudo ln -sf /usr/lib/chromium-browser/chromedriver /usr/bin/chromedriver
+        sudo apt-get install -y chromium-chromedriver
+        sudo ln -sf /usr/lib/chromium-browser/chromedriver /usr/bin/chromedriver
 
     - name: Run Maven Tests & Verify
       run: mvn install test -PMesh_Suite_Two verify
