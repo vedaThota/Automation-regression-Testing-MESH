@@ -14,7 +14,7 @@ public class CertificationWorkflow_TestSuite extends TestBase {
 	public void TC_001_Verifying_Certification_Workflow_Creation() {
 		CW_Details_Page.navigateTo_Certification_Workflow_Screen();
 		CW_Creation_Page.verifying_Mandatory_Fields_CW_Creation_Form();
-		
+//		
 	}
 
 }
