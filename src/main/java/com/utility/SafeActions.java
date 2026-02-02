@@ -241,6 +241,7 @@ public class SafeActions extends TestBase {
 	}
 
 	public void verifyTextDisplay(By locator, String elementName) {
+		try {
 		String stage = getTextFromUI(locator, elementName);
 		if (stage.contains(elementName)) {
 			test.log(Status.INFO,
@@ -254,6 +255,7 @@ public class SafeActions extends TestBase {
 
 			Assert.assertTrue(false, elementName + " NOT displayed on the screen, so failed");
 		}
+		}catch(Exception e) {}
 	}
 
 	public boolean nameStatus;

@@ -17,7 +17,7 @@ public interface Escalation_Tracking_Locators {
 	public static By RiskImpactScoreIsMissing = By.xpath("//*[text()='Risk Impact Score is missing.']");
 	public static By escalationTrackerCreation_SuccessMsg = By
 			.xpath("//*[contains(text(),'The Escalation Tracking record has been created successfully')]");
-
+	public static By submissionDate = By.xpath("//*[text()='Submission Date']/following::lightning-formatted-text[1]");
 	public static By pleaseSelectYesOrNo = By.xpath("//*[text()='Please select Yes or No.']");
 	public static By ImpactedMESBusinessIsMissing = By.xpath("//*[text()='Impacted MES Business Area is missing.']");
 	public static By ResolutionNededByIsMissing = By.xpath("//*[text()='Resolution Needed By is missing.']");
@@ -105,7 +105,7 @@ public interface Escalation_Tracking_Locators {
 	public static By cancelButton = By.xpath("//button[text()='Cancel']");
 	public static By detailsTab = By.xpath("//*[text()='Details']");
 	public static By relatedTab = By.xpath("//*[text()='Related']");
-	public static By clearSelection = By.xpath("//button[@title='Clear Selection']");
+	public static By clearSelection = By.xpath("//button[@title='Clear State Medicaid Agency Required Selection']");
 	public static By emailAddressTextField = By.xpath("//label[text()='Email address']/following::input");
 
 	public static By continueButton = By.xpath("//button[text()='Continue']");

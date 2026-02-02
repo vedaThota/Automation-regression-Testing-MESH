@@ -7,7 +7,7 @@ import com.Pages.ClearenceChecklist;
 import com.Pages.DecisionPackagePage;
 import com.Pages.HomePage;
 
-public class CMS_FNS_DecisionPackages_Bundle_Validation extends TestBase {
+public class CMS_FNS_DecisionPackages_Bundle_Cross_Role_Validation extends TestBase {
 	HomePage homePage = new HomePage();
 	DecisionPackagePage dpp = new DecisionPackagePage();
 	ClearenceChecklist clearanceChecklistPage = new ClearenceChecklist();
@@ -186,15 +186,15 @@ public class CMS_FNS_DecisionPackages_Bundle_Validation extends TestBase {
 		waitFor(5);
 		homePage.closePreviousWindows();
 		waitFor(1);
-		homePage.navigateTo_OpsTeam_DecisionPackage_Screen("Division Director");
+		homePage.navigateTo_OpsTeam_DecisionPackage_Screen("Deputy Director instead Divsion");
 		waitFor(5);
 		homePage.moveToActiveWindow();
 		dpp.navigateToLeadPackage();
-		dpp.performBeginReview_DivisionDirector("Division Director started Review");
+		dpp.performBeginReview_DivisionDirector("Deputy Director started Review");
 		dpp.verifyApprovingPackage();
 		dpp.verifyDecisionPackage_MoveTo_PendingIssuanceToState();
 		waitFor(1);
-		dpp.logoutFromApp();
+		dpp.logoutAs_Deputy_Director();
 		waitFor(1);
 		loginToApplication();
 		waitFor(5);

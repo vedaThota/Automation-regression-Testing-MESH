@@ -51,7 +51,7 @@ public interface DecisionPackage_Loc {
 	public static final By RAI_Option = By.xpath("//*[@data-value='RAI']");
 	public static final By save_Button = By.xpath("(//button[text()='Save'])[last()]");
 	public static final By State_Medicaid_Director_Input =  By.xpath("//label[text()='State Medicaid Director']/following::input[1]");
-	public static final By clearStateMedicaid_Director = By.xpath("//label[text()='State Medicaid Director']/following::input[1]/following::button[@title='Clear Selection']");
+	public static final By clearStateMedicaid_Director = By.xpath("//button[@title='Clear State Medicaid Director Selection']");
 	public static final By state_Medicaid_Director_Option = By.xpath("//label[text()='State Medicaid Director']/following::input[1]/following::ul[1]//lightning-base-combobox-item[1]/span[2]/span/lightning-base-combobox-formatted-text");
 	public static final By APD_Type = By.xpath("//span[@title='Planning Advanced Planning Document (PAPD)']");
 	public static final By APD_Type_Option = By.xpath("//span[@title='Planning Advanced Planning Document (PAPD)']/following::button");
@@ -159,7 +159,7 @@ public interface DecisionPackage_Loc {
 	public static final By emergencyRequestMsg = By.xpath("//*[contains(text(), 'Emergency requests cannot be')]");
 	public static final By oPDiv_HHS = By.xpath("//*[text()='OpDiv']/following::*[@data-value='HHS']");
 	public static final By add_oPDiv_HHS = By.xpath("//*[text()='OpDiv']/following::*[text()='OpDiv']/following::*[@data-value='HHS']/following::button[1]");
-	public static final By remove_OpDiv_HHS = By.xpath("(//*[text()='OpDiv']/following::*[@data-value='HHS']//preceding::button[@title='Move to Available'])[last()]");
+	public static final By remove_OpDiv_HHS = By.xpath("(//*[text()='OpDiv']/following::*[@data-value='HHS']//preceding::button[@title='Move selection to Available'])[last()]");
 
 	public static final By editOpDiv = By.xpath("(//button[@title='Edit OpDiv'])[last()]");
 	

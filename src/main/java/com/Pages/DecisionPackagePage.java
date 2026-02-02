@@ -24,7 +24,7 @@ import com.utility.SafeActions;
 
 public class DecisionPackagePage extends SafeActions implements DecisionPackage_Loc {
 
-	int packageCreationDuration = 0;
+	int packageCreationDuration = -1;
 
 	public void validateMandatoryFieldsErrorMessages() {
 		waitFor(3);
@@ -279,6 +279,7 @@ public class DecisionPackagePage extends SafeActions implements DecisionPackage_
 			jsClickOn(APD_Update_Type, "APD_Update_Type");
 			jsClickOn(APD_Update_Type_Add_Button, "APD_Update_Type_Add_Button");
 		}
+
 		takeScreenshotFor("Mandatory Fields before submit");
 		jsClickOn(save_Button, "save_Button");
 		waitFor(5);
@@ -416,7 +417,9 @@ public class DecisionPackagePage extends SafeActions implements DecisionPackage_
 		jsClickOn(allDecisionPackages, "allDecisionPackages");
 		waitFor(3);
 		typeText(searchList, decisionPackageNameText, "searchList");
-		waitFor(3);
+		waitFor(2);
+		jsClickOn(searchList, "searchList");
+		waitFor(10);
 		Robot robot;
 		try {
 			robot = new Robot();
@@ -424,8 +427,17 @@ public class DecisionPackagePage extends SafeActions implements DecisionPackage_
 			robot.keyRelease(KeyEvent.VK_ENTER);
 		} catch (Exception e) {
 		}
-		waitFor(3);
+		waitFor(5);
 		jsClickOn(leadPackage, "leadPackage");
+		waitFor(5);
+		try {
+			By leadPackage2 = By.xpath("//a[contains(@title, '" + decisionPackageNameText + "')]");
+			if (driver.findElement(leadPackage2).isDisplayed()) {
+				jsClickOn(leadPackage2, "leadPackage");
+				waitFor(5);
+			}
+		} catch (Exception e) {
+		}
 		waitFor(3);
 	}
 
@@ -453,7 +465,7 @@ public class DecisionPackagePage extends SafeActions implements DecisionPackage_
 		verifyTextDisplay(moveToDivisionDirector, "Move to Division Director");
 	}
 
-	public void performBeginReview_DivisionDirector() {
+	public void performBeginReview_DivisionDirector(String context) {
 		jsClickOn(beginReview, "beginReview");
 		waitFor(5);
 		try {
@@ -461,7 +473,7 @@ public class DecisionPackagePage extends SafeActions implements DecisionPackage_
 			waitFor(5);
 		} catch (Exception e) {
 		}
-		takeScreenshotFor("Division Director started review");
+		takeScreenshotFor(context);
 		verifyTextDisplay(approvePackage, "Approve Package");
 	}
 
@@ -472,7 +484,6 @@ public class DecisionPackagePage extends SafeActions implements DecisionPackage_
 		verifyTextDisplay(DivisionDirectorConfirm, "Do you want to complete this action as a Division Director?");
 		jsClickOn(confirmButton, "confirmButton");
 		waitFor(1);
-
 	}
 
 	public void verifyMoveToDeputyDirector_BeforeAll_Fields_Submit(String opDivType) {
@@ -511,10 +522,9 @@ public class DecisionPackagePage extends SafeActions implements DecisionPackage_
 //	
 		if (opDivType.contains("HHS")) {
 			String EM_ChildPak = getTextFromUI(ErrorMessage2, "ErrorMessage2");
-			if (EM_ChildPak.contains("Bundled Decision Package Errors:")
-					&& EM_ChildPak.contains(
-							"Clearance Checklist is incomplete, At least one project should be linked to the decision package.")
-					
+			if (EM_ChildPak.contains("Bundled Decision Package Errors:") && EM_ChildPak.contains(
+					"Clearance Checklist is incomplete, At least one project should be linked to the decision package.")
+
 					&& EM_ChildPak.contains(
 							"Clearance Checklist is incomplete, At least one project should be linked to the decision package.")) {
 				test.log(Status.INFO, MarkupHelper.createLabel("Bundled packages error messages displayed as expected",
@@ -527,12 +537,9 @@ public class DecisionPackagePage extends SafeActions implements DecisionPackage_
 		}
 		if (opDivType.contains("CMS")) {
 			String EM_ChildPak = getTextFromUI(ErrorMessage2, "ErrorMessage2");
-			if (EM_ChildPak.contains("Lead Decision Package Errors:") && EM_ChildPak.contains(
-					"No Letter Generated")
-					&& EM_ChildPak.contains(
-							"Clearance Checklist is incomplete")
-					&& EM_ChildPak.contains(
-							"At least one project should be linked to the decision package")
+			if (EM_ChildPak.contains("Lead Decision Package Errors:") && EM_ChildPak.contains("No Letter Generated")
+					&& EM_ChildPak.contains("Clearance Checklist is incomplete")
+					&& EM_ChildPak.contains("At least one project should be linked to the decision package")
 					&& EM_ChildPak.contains("Bundled Decision Package Errors:")
 					&& EM_ChildPak.contains(
 							"Clearance Checklist is incomplete, At least one project should be linked to the decision package")
@@ -735,7 +742,7 @@ public class DecisionPackagePage extends SafeActions implements DecisionPackage_
 		jsClickOn(decisionPackages, "decisionPackages");
 		waitFor(1);
 		takeScreenshotFor("Decision packages screen");
-		
+
 		By leadPackage = By.xpath("(//a[contains(@title, '" + decisionPackageNameText + "')])[last()]");
 		waitFor(3);
 		jsClickOn(viewListDropdown, "viewListDropdown");
@@ -743,6 +750,7 @@ public class DecisionPackagePage extends SafeActions implements DecisionPackage_
 		jsClickOn(allDecisionPackages, "allDecisionPackages");
 		waitFor(3);
 		typeText(searchList, decisionPackageNameText, "searchList");
+		waitFor(3);
 		Robot robot;
 		try {
 			robot = new Robot();
@@ -753,7 +761,7 @@ public class DecisionPackagePage extends SafeActions implements DecisionPackage_
 		waitFor(3);
 		jsClickOn(leadPackage, "leadPackage");
 		waitFor(5);
-		
+
 //		jsClickOn(packageLink, "packageLink");
 		takeScreenshotFor("navigate to recent Decision packages");
 
@@ -796,6 +804,13 @@ public class DecisionPackagePage extends SafeActions implements DecisionPackage_
 	public void logoutFromApp() {
 		jsClickOn(userProfile, "userProfile");
 		waitFor(4);
+		jsClickOn(logOutButton, "logOutButton");
+	}
+	
+	public void logoutAs_Deputy_Director() {
+		jsClickOn(userProfile, "userProfile");
+		waitFor(4);
+		takeScreenshotFor("Log Out As Deputy Director");
 		jsClickOn(logOutButton, "logOutButton");
 	}
 
@@ -926,7 +941,7 @@ public class DecisionPackagePage extends SafeActions implements DecisionPackage_
 			}
 		} catch (Exception e) {
 		}
-		
+
 		String roleChangeStatus = getAttribute(completedTab, "aria-selected", "completedTab");
 		if (roleChangeStatus.equals("true")) {
 			test.log(Status.INFO, MarkupHelper.createLabel("Moved to Completed", ExtentColor.GREEN));
