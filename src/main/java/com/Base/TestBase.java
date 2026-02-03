@@ -155,7 +155,7 @@ public class TestBase {
 
 	@BeforeClass(groups = { "Regression", "Smoke" })
 	public void beforeClass() {
-		String downloadFilepath =  System.getProperty("user.dir")+ "\\src\\test\\resources\\data\\FilesDownload"; 
+		String downloadFilepath = System.getProperty("user.dir") + "\\src\\test\\resources\\data\\FilesDownload";
 		// Chrome Options to disable notifications and to launch browser in incognito
 		// mode
 		HashMap<String, Object> chromePrefs = new HashMap<String, Object>();
@@ -164,7 +164,11 @@ public class TestBase {
 		options.setExperimentalOption("prefs", chromePrefs);
 		options.addArguments("--disable-notifications");
 		// options.addArguments("--incognito");
-		
+		options.addArguments("--headless=new");
+		options.addArguments("--no-sandbox");
+		options.addArguments("--disable-dev-shm-usage");
+		options.addArguments("--disable-gpu");
+		options.addArguments("--window-size=1920,1080");
 
 		options.addArguments("download.default_directory", downloadFilepath);
 		// driver instantiation
@@ -198,20 +202,20 @@ public class TestBase {
 	// To fetch dates in desired format //
 	public String fetchDate(String format, int numberOfDaysToBeAdded) {
 		SimpleDateFormat df = new SimpleDateFormat(format);
-		  Calendar cal = Calendar.getInstance();
+		Calendar cal = Calendar.getInstance();
 
-		  int daysToAdd = numberOfDaysToBeAdded;
+		int daysToAdd = numberOfDaysToBeAdded;
 
-		  while (daysToAdd > 0) {
-		      cal.add(Calendar.DATE, 1);
+		while (daysToAdd > 0) {
+			cal.add(Calendar.DATE, 1);
 
-		      int dayOfWeek = cal.get(Calendar.DAY_OF_WEEK);
-		      if (dayOfWeek != Calendar.SATURDAY && dayOfWeek != Calendar.SUNDAY) {
-		          daysToAdd--;
-		      }
-		  }
-		  
-		 return df.format(cal.getTime()); 
+			int dayOfWeek = cal.get(Calendar.DAY_OF_WEEK);
+			if (dayOfWeek != Calendar.SATURDAY && dayOfWeek != Calendar.SUNDAY) {
+				daysToAdd--;
+			}
+		}
+
+		return df.format(cal.getTime());
 	}
 
 	// To fetch past or future weekday dates in desired format //

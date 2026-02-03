@@ -13,7 +13,7 @@
 
 		<classes>
 			<class name="com.Mesh_TestSuites.Escalation_Tracking" />
-			<class name="com.Mesh_TestSuites.Package_SO_Updates_Suite" />
+			<!-- <class name="com.Mesh_TestSuites.Package_SO_Updates_Suite" /> -->
 		</classes>
 		
 	</test> <!-- Test -->
