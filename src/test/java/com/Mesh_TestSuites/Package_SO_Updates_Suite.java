@@ -37,22 +37,20 @@ public class Package_SO_Updates_Suite extends TestBase {
 		waitFor(5);
 		homePage.closePreviousWindows();
 		waitFor(3);
-		
+//
 	}
 
-	
-	  @Test public void TC_002_Verify_Package_SO_Updates_StateOfficer_Replacement()
-	  { ps_Page.verifyStateOfficerReplacement();
-	  
-	  }
-	  
-	  @Test public void
-	  TC_003_Verify_Email_Notification_After_StateOfficer_Replacement() throws
-	  ParseException {
-		  ps_Page.validateEmailNotification();
-	  
-	  }
-	 
+	@Test
+	public void TC_002_Verify_Package_SO_Updates_StateOfficer_Replacement() {
+		ps_Page.verifyStateOfficerReplacement();
+
+	}
+
+	@Test
+	public void TC_003_Verify_Email_Notification_After_StateOfficer_Replacement() throws ParseException {
+		ps_Page.validateEmailNotification();
+
+	}
 
 	@Test
 	public void TC_004_Verify_Package_SO_Updates_StateOfficer_Re_ASSIGN() {
