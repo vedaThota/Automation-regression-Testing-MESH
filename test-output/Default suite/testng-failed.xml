@@ -3,17 +3,17 @@
 <suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="com.Mesh_TestSuites.CertificationWorkflow_TestSuite">
+      <class name="com.Mesh_TestSuites.Escalation_Tracking">
         <methods>
           <include name="beforetest"/>
           <include name="beforeClass"/>
           <include name="beofreMethod"/>
-          <include name="TC_001_Verifying_Certification_Workflow_Creation"/>
           <include name="afterClass"/>
           <include name="afterTest"/>
+          <include name="TC_001_Verify_Creation_Of_New_Escalation_Tracking"/>
           <include name="afterMethod"/>
         </methods>
-      </class> <!-- com.Mesh_TestSuites.CertificationWorkflow_TestSuite -->
+      </class> <!-- com.Mesh_TestSuites.Escalation_Tracking -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->
