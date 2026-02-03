@@ -28,7 +28,7 @@ public class Escalation_Tracking_PO extends SafeActions implements Escalation_Tr
 	int ET_CreationDay = 2;
 
 	public void verifyMandatoryFieldsOn_EscalationTracking() {
-		waitFor(2);
+		waitFor(5);
 		jsClickOn(appLauncher, "appLauncher");
 		waitFor(1);
 		typeText(appSearchTextField, "Escalation Tracking", "appSearchTextFiel");
