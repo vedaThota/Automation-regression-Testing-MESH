@@ -37,29 +37,15 @@ jobs:
           java-version: '17'
           distribution: 'temurin'
 
-      # Install Google Chrome (2025+ correct method)
-      - name: Install Google Chrome
+      # Install Chromium + matching ChromeDriver
+      - name: Install Chromium & ChromeDriver
         run: |
           sudo apt-get update
-          sudo apt-get install -y wget gnupg
-          wget -q -O - https://dl.google.com/linux/linux_signing_key.pub | \
-            gpg --dearmor | sudo tee /usr/share/keyrings/google-linux-signing-keyring.gpg > /dev/null
-          echo "deb [arch=amd64 signed-by=/usr/share/keyrings/google-linux-signing-keyring.gpg] http://dl.google.com/linux/chrome/deb/ stable main" | \
-            sudo tee /etc/apt/sources.list.d/google-chrome.list
-          sudo apt-get update
-          sudo apt-get install -y google-chrome-stable
-
-      # Install ChromeDriver matching Chrome version
-      - name: Install ChromeDriver
-        run: |
-          CHROME_VERSION=$(google-chrome --version | awk '{print $3}')
-          MAJOR_VERSION=${CHROME_VERSION%%.*}
-          DRIVER_URL="https://chromedriver.storage.googleapis.com/LATEST_RELEASE_${MAJOR_VERSION}"
-          DRIVER_VERSION=$(curl -s $DRIVER_URL)
-          wget -q "https://chromedriver.storage.googleapis.com/${DRIVER_VERSION}/chromedriver_linux64.zip"
-          unzip chromedriver_linux64.zip
-          sudo mv chromedriver /usr/local/bin/
-          sudo chmod +x /usr/local/bin/chromedriver
+          sudo apt-get install -y chromium-browser chromium-chromedriver
+          echo "Chromium version:"
+          chromium-browser --version
+          echo "ChromeDriver version:"
+          chromedriver --version
 
       - name: Run Maven Tests & Verify
         run: mvn -P Mesh_Suite_Two clean verify
