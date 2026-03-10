@@ -26,7 +26,7 @@ public class Package_SO_Updates_Suite extends TestBase {
 		waitFor(5);
 		homePage.navigateTo_OpsTeam_DecisionPackage_Screen("State Officer");
 		waitFor(5);
-		homePage.closePreviousWindows();
+		homePage.closePreviousWindow();
 		waitFor(3);
 		ps_Page.verifyPackageSOUpdates_NON_Display_For_StateOfficer();
 		dpp.logoutFromApp();
@@ -35,7 +35,7 @@ public class Package_SO_Updates_Suite extends TestBase {
 		waitFor(5);
 		homePage.navigateTo_OpsTeam_DecisionPackage_Screen("Ops Team");
 		waitFor(5);
-		homePage.closePreviousWindows();
+		homePage.closePreviousWindow();
 		waitFor(3);
 //
 	}

@@ -113,11 +113,11 @@ public class CMS_FNS_DecisionPackages_Bundle_Cross_Role_Validation extends TestB
 		waitFor(1);
 		loginToApplication();
 		waitFor(5);
-		homePage.closePreviousWindows();
+		homePage.closePreviousWindow();
 		waitFor(1);
 		homePage.navigateTo_OpsTeam_DecisionPackage_Screen("State Officer");
 		waitFor(5);
-		homePage.closePreviousWindows();
+		homePage.closePreviousWindow();
 		waitFor(3);
 		dpp.verifyAddingBundleChanges("FNS");
 		waitFor(2);
@@ -146,7 +146,7 @@ public class CMS_FNS_DecisionPackages_Bundle_Cross_Role_Validation extends TestB
 		waitFor(1);
 		loginToApplication();
 		waitFor(5);
-//		homePage.closePreviousWindows();
+//		homePage.closePreviousWindow();
 //		waitFor(1);
 		homePage.navigateTo_OpsTeam_DecisionPackage_Screen("Deputy Director");
 		waitFor(5);
@@ -164,7 +164,7 @@ public class CMS_FNS_DecisionPackages_Bundle_Cross_Role_Validation extends TestB
 		waitFor(1);
 		loginToApplication();
 		waitFor(5);
-		homePage.closePreviousWindows();
+		homePage.closePreviousWindow();
 		waitFor(1);
 		homePage.navigateTo_OpsTeam_DecisionPackage_Screen("FM Reviewer");
 		waitFor(5);
@@ -184,7 +184,7 @@ public class CMS_FNS_DecisionPackages_Bundle_Cross_Role_Validation extends TestB
 		waitFor(1);
 		loginToApplication();
 		waitFor(5);
-		homePage.closePreviousWindows();
+		homePage.closePreviousWindow();
 		waitFor(1);
 		homePage.navigateTo_OpsTeam_DecisionPackage_Screen("Deputy Director instead Divsion");
 		waitFor(5);

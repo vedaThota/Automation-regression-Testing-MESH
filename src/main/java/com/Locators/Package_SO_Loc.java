@@ -20,9 +20,9 @@ public interface Package_SO_Loc {
 	public static By endDate_ErrorMsg = By.xpath("//*[text()='End Date must be after Start Date.']");
 	public static By startDate_ErrorMsg = By.xpath("//*[text()='Start Date is required when End Date is provided.']");
 	// https://mailosaur.com/app/servers/drwhn6bn/messages/inbox
-	public static By emailThread = By.xpath("//tbody/tr/td[2]/div/div");
-	public static By emailHeader = By.xpath("//h2[text()='Sandbox: State Officer Change Notification']");
-	public static By Re_assign_emailHeader = By.xpath("//h2[contains(text(),'Sandbox:')]");
+	public static By emailThread = By.xpath("//div[@data-testid='message-list']//a[2]");
+	public static By emailHeader = By.xpath("//h3[@data-testid='subject']");
+	public static By Re_assign_emailHeader = By.xpath("//h3[contains(text(),'Sandbox:')]");
 	public static By emptyServer = By.xpath("//*[text()='Empty Server']");
 	public static By emailAddressTextField = By.xpath("//label[text()='Email address']/following::input");
 	

@@ -220,6 +220,8 @@ public class SafeActions extends TestBase {
 			robot.keyPress(KeyEvent.VK_HOME);
 			robot.keyRelease(KeyEvent.VK_HOME);
 			robot.keyRelease(KeyEvent.VK_CONTROL);
+			scrollByPixels(-500);
+			scrollByPixels(-500);
 		} catch (AWTException e) {
 			e.printStackTrace();
 		}
@@ -242,20 +244,21 @@ public class SafeActions extends TestBase {
 
 	public void verifyTextDisplay(By locator, String elementName) {
 		try {
-		String stage = getTextFromUI(locator, elementName);
-		if (stage.contains(elementName)) {
-			test.log(Status.INFO,
-					MarkupHelper.createLabel(elementName + " displayed on the screen", ExtentColor.GREEN));
+			String stage = getTextFromUI(locator, elementName);
+			if (stage.contains(elementName)) {
+				test.log(Status.INFO,
+						MarkupHelper.createLabel(elementName + " displayed on the screen", ExtentColor.GREEN));
 //			jsClickOn(locator, elementName);
-			System.out.println(elementName + " displayed on the screen");
+				System.out.println(elementName + " displayed on the screen");
 
-		} else {
-			test.log(Status.FAIL,
-					MarkupHelper.createLabel(elementName + " NOT displayed on the screen", ExtentColor.RED));
+			} else {
+				test.log(Status.FAIL,
+						MarkupHelper.createLabel(elementName + " NOT displayed on the screen", ExtentColor.RED));
 
-			Assert.assertTrue(false, elementName + " NOT displayed on the screen, so failed");
+				Assert.assertTrue(false, elementName + " NOT displayed on the screen, so failed");
+			}
+		} catch (Exception e) {
 		}
-		}catch(Exception e) {}
 	}
 
 	public boolean nameStatus;
@@ -289,6 +292,11 @@ public class SafeActions extends TestBase {
 	}
 
 	public void scrollToBottomOfthePage() {
+		scrollByPixels(500);
+		scrollByPixels(500);
+		scrollByPixels(500);
+		scrollByPixels(500);
+		
 		Robot robot;
 		try {
 			robot = new Robot();
@@ -363,6 +371,11 @@ public class SafeActions extends TestBase {
 		JavascriptExecutor js = (JavascriptExecutor) driver;
 		// Scroll up by 300 pixels
 		js.executeScript("window.scrollBy(0, " + size + ");");
+	}
+
+	public int getRandom1to15() {
+		Random rand = new Random();
+		return rand.nextInt(15) + 1;
 	}
 
 }// End of the class

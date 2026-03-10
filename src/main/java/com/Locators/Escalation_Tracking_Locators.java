@@ -111,7 +111,7 @@ public interface Escalation_Tracking_Locators {
 	public static By continueButton = By.xpath("//button[text()='Continue']");
 	public static By passwordTextField = By.xpath("//label[text()='Password']/following::input");
 	public static By loginButtonEmail = By.xpath("//button[text()='Log in']");
-	public static By dateRecieved = By.xpath("//tbody/tr/td[2]/div/div[2]/p");
+	public static By dateRecieved = By.xpath("//div[@data-testid='message-list']//a[2]//div[3]");
 	public static By emailBody = By.xpath("//div[@id='mailcontainer']");
 
 	public static By Reassign_Decision_Package = By.xpath("//button[text()='Reassign Decision Package']");
@@ -120,11 +120,11 @@ public interface Escalation_Tracking_Locators {
 	public static By reassignPackageInput = By
 			.xpath("//*[text()='Reassign 1 package(s) to New State Officer']/following::input");
 	public static By reassignSuccessMessage = By.xpath("//*[text()='Decision packages reassigned successfully.']");
-	public static By emailThread = By.xpath("//tbody/tr/td[2]/div/div");
-	public static By emailHeader = By.xpath("//h2[text()='Sandbox: A New Escalation Item Has Been Created and Ready for Triage']");
-	public static By emailHeader2 = By.xpath("//h2[text()='Sandbox: An Escalation Item is Ready for your Review']");
-	public static By emailHeader3 = By.xpath("//h2[text()='Sandbox: Escalation Item Has Been Returned']");
-	public static By emailHeader4 = By.xpath("//h2[text()='Sandbox: Escalation Item Has Been Returned to Director']");
+	public static By emailThread = By.xpath("//div[@data-testid='message-list']//a[2]");
+	public static By emailHeader = By.xpath("//h3[text()='Sandbox: A New Escalation Item Has Been Created and Ready for Triage']");
+	public static By emailHeader2 = By.xpath("//h3[text()='Sandbox: An Escalation Item is Ready for your Review']");
+	public static By emailHeader3 = By.xpath("//h3[text()='Sandbox: Escalation Item Has Been Returned']");
+	public static By emailHeader4 = By.xpath("//h3[text()='Sandbox: Escalation Item Has Been Returned to Director']");
 	
 	public static By editTitle = By.xpath("//button[@title='Edit Title']");
 	public static By issueStatus = By.xpath("//*[text()='Issue Status']/following::button[1]");

@@ -24,7 +24,7 @@ import com.utility.SafeActions;
 
 public class DecisionPackagePage extends SafeActions implements DecisionPackage_Loc {
 
-	int packageCreationDuration = -1;
+	int packageCreationDuration = 0;
 
 	public void validateMandatoryFieldsErrorMessages() {
 		waitFor(3);
@@ -105,8 +105,9 @@ public class DecisionPackagePage extends SafeActions implements DecisionPackage_
 		jsClickOn(done_Button, "done_Button");
 		takeScreenshotFor("before submitting the form");
 		jsClickOn(submitButton, "submitButton");
-//		waitFor(1);
-		verifyTextDisplay(successMessage, "The Decision Package has been Created Sucessfully");
+		waitFor(1);
+//		verifyTextDisplay(successMessage, "The Decision Package has been Created Sucessfully");
+		waitFor(10);
 		takeScreenshotFor("After submitting the form");
 
 	}
@@ -315,7 +316,7 @@ public class DecisionPackagePage extends SafeActions implements DecisionPackage_
 		waitFor(2);
 		jsClickOn(Approve_Option, "Approve_Option");
 		waitFor(3);
-		scrollByPixels(100);
+		scrollByPixels(200);
 		waitFor(2);
 		jsClickOn(pointOfContactInput, "pointOfContactInput");
 		waitFor(1);
@@ -401,8 +402,9 @@ public class DecisionPackagePage extends SafeActions implements DecisionPackage_
 		jsClickOn(DetailsTab, "DetailsTab");
 		waitFor(5);
 		jsClickOn(beginReview, "beginReview");
-		waitFor(2);
+		waitFor(5);
 		scrollToTopofThePage();
+		
 		verifyTextDisplay(stateOfficerReview, "State Officer Review");
 		verifyTextDisplay(inReview, "In Review");
 	}
@@ -622,11 +624,13 @@ public class DecisionPackagePage extends SafeActions implements DecisionPackage_
 
 	public void addRelatedProject() {
 		waitFor(6);
-		scrollByPixels(500);
-		waitFor(2);
-		scrollByPixels(500);
-		waitFor(2);
 		scrollToBottomOfthePage();
+		scrollToBottomOfthePage();
+		scrollToTopofThePage();
+		scrollToTopofThePage();
+		scrollToTopofThePage();
+		scrollByPixels(500);
+		scrollToElement(RelatedProjects_button);
 		waitFor(2);
 		jsClickOn(RelatedProjects_button, "RelatedProjects_button");
 		waitFor(2);

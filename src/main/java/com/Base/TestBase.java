@@ -164,11 +164,11 @@ public class TestBase {
 		options.setExperimentalOption("prefs", chromePrefs);
 		options.addArguments("--disable-notifications");
 		// options.addArguments("--incognito");
-		options.addArguments("--headless=new");
-		options.addArguments("--no-sandbox");
-		options.addArguments("--disable-dev-shm-usage");
-		options.addArguments("--disable-gpu");
-		options.addArguments("--window-size=1920,1080");
+//		options.addArguments("--headless=new");
+//		options.addArguments("--no-sandbox");
+//		options.addArguments("--disable-dev-shm-usage");
+//		options.addArguments("--disable-gpu");
+//		options.addArguments("--window-size=1920,1080");
 
 		options.addArguments("download.default_directory", downloadFilepath);
 		// driver instantiation
@@ -200,18 +200,20 @@ public class TestBase {
 	}
 
 	// To fetch dates in desired format //
-	public String fetchDate(String format, int numberOfDaysToBeAdded) {
+	public String fetchDate(String format, int numberOfWeekdaysToBeAdded) {
 		SimpleDateFormat df = new SimpleDateFormat(format);
 		Calendar cal = Calendar.getInstance();
 
-		int daysToAdd = numberOfDaysToBeAdded;
+		int addedDays = 0;
+		int direction = (numberOfWeekdaysToBeAdded >= 0) ? 1 : -1;
 
-		while (daysToAdd > 0) {
-			cal.add(Calendar.DATE, 1);
-
+		while (addedDays != numberOfWeekdaysToBeAdded) {
+			cal.add(Calendar.DATE, direction); // move one day forward or backward
 			int dayOfWeek = cal.get(Calendar.DAY_OF_WEEK);
+
+			// Only count weekdays
 			if (dayOfWeek != Calendar.SATURDAY && dayOfWeek != Calendar.SUNDAY) {
-				daysToAdd--;
+				addedDays += direction;
 			}
 		}
 
@@ -246,6 +248,26 @@ public class TestBase {
 			e.printStackTrace();
 		}
 
+	}
+	
+	public String fetchWeekendDate(String format, int numberOfWeekendDaysToAdd) {
+	    SimpleDateFormat df = new SimpleDateFormat(format);
+	    Calendar cal = Calendar.getInstance();
+
+	    int addedDays = 0;
+	    int direction = (numberOfWeekendDaysToAdd >= 0) ? 1 : -1;
+
+	    while (addedDays != numberOfWeekendDaysToAdd) {
+	        cal.add(Calendar.DATE, direction); // move one day forward or backward
+	        int dayOfWeek = cal.get(Calendar.DAY_OF_WEEK);
+
+	        // Count only weekend days
+	        if (dayOfWeek == Calendar.SATURDAY || dayOfWeek == Calendar.SUNDAY) {
+	            addedDays += direction;
+	        }
+	    }
+
+	    return df.format(cal.getTime());
 	}
 
 	// Below will take screenshot into specified location
