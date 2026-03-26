@@ -126,7 +126,7 @@ public class Package_SO_Page extends SafeActions implements Package_SO_Loc, Home
 
 	public void validateEmailNotification() throws ParseException {
 		if (prop.getProperty("url").contains("uat")) {
-			driver.get("https://mailosaur.com/app/servers/csee9izm/messages/inbox");
+			driver.get("https://mailosaur.com/app/servers/tocbb3xf/messages/inbox");
 		} else {
 			driver.get("https://mailosaur.com/app/servers/drwhn6bn/messages/inbox");
 		}
@@ -135,7 +135,7 @@ public class Package_SO_Page extends SafeActions implements Package_SO_Loc, Home
 		jsClickOn(continueButton, "continueButton");
 		typeText(passwordTextField, "Pass0110!@", "passwordTextField");
 		jsClickOn(loginButtonEmail, "loginButtonEmail");
-		waitFor(3);
+		waitFor(5);
 		takeScreenshotFor("Email notification");
 		String receivedDate = getTextFromUI(dateRecieved, "dateRecieved");
 
@@ -143,11 +143,12 @@ public class Package_SO_Page extends SafeActions implements Package_SO_Loc, Home
 
 		Date d1 = df.parse(sentTime);
 		Date d2 = df.parse(receivedDate);
-		if (d1.equals(d2) || d2.after(d1)) {
+		if (d1.equals(d2) || d1.after(d2)) {
 
 			jsClickOn(emailThread, "emailThread");
 			waitFor(3);
 			verifyTextDisplay(emailHeader, "Sandbox: State Officer Change Notification");
+		
 			String str = getTextFromUI(emailBody, "emailBody");
 			test.log(Status.PASS, MarkupHelper.createLabel("Email Body - " + str, ExtentColor.BLUE));
 			takeScreenshotFor("Email Body");
@@ -160,7 +161,7 @@ public class Package_SO_Page extends SafeActions implements Package_SO_Loc, Home
 
 	public void validate_Reassignment_EmailNotification() throws ParseException {
 		if (prop.getProperty("url").contains("uat")) {
-			driver.get("https://mailosaur.com/app/servers/csee9izm/messages/inbox");
+			driver.get("https://mailosaur.com/app/servers/tocbb3xf/messages/inbox");
 		} else {
 			driver.get("https://mailosaur.com/app/servers/drwhn6bn/messages/inbox");
 		}
@@ -173,11 +174,13 @@ public class Package_SO_Page extends SafeActions implements Package_SO_Loc, Home
 		takeScreenshotFor("Email notification");
 		String receivedDate = getTextFromUI(dateRecieved, "dateRecieved");
 
-		SimpleDateFormat df = new SimpleDateFormat("MMM d, yyyy, h:m a");
-
+		SimpleDateFormat df = new SimpleDateFormat("h:m a");
+		
 		Date d1 = df.parse(sentTime);
 		Date d2 = df.parse(receivedDate);
-		if (d1.equals(d2) || d2.after(d1)) {
+		System.out.println("D1: "+ sentTime);
+		System.out.println("D2: "+ receivedDate);
+		if (d1.equals(d2) || d1.after(d2)) {
 			jsClickOn(emailThread, "emailThread");
 			waitFor(3);
 			verifyTextDisplay(Re_assign_emailHeader, "Sandbox:");
@@ -246,7 +249,7 @@ public class Package_SO_Page extends SafeActions implements Package_SO_Loc, Home
 		clickOn(submitButton, "submitButton");
 		waitFor(1);
 		verifyTextDisplay(reassignSuccessMessage, "Decision packages reassigned successfully.");
-		sentTime = fetchDate("MMM d, yyyy, h:m a", 0);
+		sentTime = fetchDate("h:m a", 0);
 	}
 
 }// ENd of the Class

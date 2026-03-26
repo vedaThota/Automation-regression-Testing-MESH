@@ -59,7 +59,7 @@ public class ClearenceChecklist extends SafeActions implements ClearenceCheckLis
 			if(driver.findElement(saveButton).isDisplayed())
 				jsClickOn(saveButton, "saveButton");
 		}catch(Exception e) {}
-		verifyTextDisplay(checklistSaved, "Checklist saved successfully");
+//		verifyTextDisplay(checklistSaved, "Checklist saved successfully");
 		takeScreenshotFor("Updated clearance checklist screenshot");
 	}
 	

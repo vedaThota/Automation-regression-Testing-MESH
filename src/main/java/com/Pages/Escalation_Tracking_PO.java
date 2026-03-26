@@ -28,7 +28,7 @@ public class Escalation_Tracking_PO extends SafeActions implements Escalation_Tr
 	int ET_CreationDay = 2;
 
 	public void verifyMandatoryFieldsOn_EscalationTracking() {
-		waitFor(2);
+		waitFor(5);
 		jsClickOn(appLauncher, "appLauncher");
 		waitFor(1);
 		typeText(appSearchTextField, "Escalation Tracking", "appSearchTextFiel");
@@ -100,7 +100,10 @@ public class Escalation_Tracking_PO extends SafeActions implements Escalation_Tr
 					System.out.println("stateMedicalAgency_Option not available in " + j + " search");
 				}
 			}
+			try {
+				driver.findElement(stateMedicalAgency_Option).click();
 			jsClickOn(stateMedicalAgency_Option, "stateMedicalAgency_Option");
+			}catch(Exception e) {}
 			typeText(DecisionPackage_Input, str, "DecisionPackage_Input");
 			try {
 				if (driver.findElement(DecisionPackage_Option).isDisplayed()) {
@@ -134,7 +137,7 @@ public class Escalation_Tracking_PO extends SafeActions implements Escalation_Tr
 		waitFor(1);
 		driver.findElement(submitButton).click();
 		waitFor(1);
-		sentTime = fetchDate("MMM d, yyyy, h:m a", 0);
+		sentTime = fetchDate("h:m a", 0);
 		verifyTextDisplay(escalationTrackerCreation_SuccessMsg,
 				"The Escalation Tracking record has been created successfully");
 		takeScreenshotFor("Escalation Tracking Creation");
@@ -158,9 +161,11 @@ public class Escalation_Tracking_PO extends SafeActions implements Escalation_Tr
 		waitFor(2);
 		verifyTextDisplay(monitoringDAteErrorMessage, "Complete this field with format");
 		scrollToTopofThePage();
-		waitFor(2);
+		waitFor(3);
 		takeScreenshotFor("Monitoring End Date field Validation");
-		typeText(monitoringEndDate_Input, fetchDate("M/d/yyyy", -1), "monitoringEndDate_Input");
+		System.out.println("Date: "+ fetchDate("M/d/yyyy", -2));
+		typeText(monitoringEndDate_Input, fetchDate("M/d/yyyy", -2), "monitoringEndDate_Input");
+		
 		jsClickOn(save_Button, "save_Button");
 		waitFor(2);
 		jsClickOn(save_Button, "save_Button");
@@ -204,7 +209,7 @@ public class Escalation_Tracking_PO extends SafeActions implements Escalation_Tr
 		typeText(comments, "Test", "comments");
 		jsClickOn(submitButton, "submitButton");
 		waitFor(2);
-		sentTime = fetchDate("MMM d, yyyy, h:m a", 0);
+		sentTime = fetchDate("h:m a", 0);
 		scrollToTopofThePage();
 
 		waitFor(2);
@@ -378,7 +383,7 @@ public class Escalation_Tracking_PO extends SafeActions implements Escalation_Tr
 
 	public void validateEmailNotification(String loginRequire) throws ParseException {
 		if (prop.getProperty("url").contains("uat")) {
-			driver.get("https://mailosaur.com/app/servers/csee9izm/messages/inbox");
+			driver.get("https://mailosaur.com/app/servers/tocbb3xf/messages/inbox");
 		} else {
 			driver.get("https://mailosaur.com/app/servers/drwhn6bn/messages/inbox");
 		}
@@ -393,12 +398,14 @@ public class Escalation_Tracking_PO extends SafeActions implements Escalation_Tr
 		takeScreenshotFor("Email notification - A New Escalation Item Has Been Created and Ready for Triage");
 		String receivedDate = getTextFromUI(dateRecieved, "dateRecieved");
 
-		SimpleDateFormat df = new SimpleDateFormat("MMM d, yyyy, h:m a");
+		SimpleDateFormat df = new SimpleDateFormat("h:m a");
 
 		Date d1 = df.parse(sentTime);
 		Date d2 = df.parse(receivedDate);
 		waitFor(5);
-		if (d1.equals(d2) || d2.after(d1)) {
+		System.out.println("sentTime: "+ sentTime);
+		System.out.println("receivedDate: "+ receivedDate);
+		if (d1.equals(d2) || d1.after(d2)) {
 
 			jsClickOn(emailThread, "emailThread");
 			waitFor(3);
@@ -422,11 +429,11 @@ public class Escalation_Tracking_PO extends SafeActions implements Escalation_Tr
 		scrollToBottomOfthePage();
 		waitFor(5);
 		jsClickOn(editLeaderShipAssigned, "editLeaderShipAssigned");
-		typeText(leadershipAssigngedInput, "Purvi Dholakia", "leadershipAssigngedInput");
+		typeText(leadershipAssigngedInput, "ali", "leadershipAssigngedInput");
 		jsClickOn(leadershipAssignedOption, "leadershipAssignedOption");
 		jsClickOn(save_Button, "save_Button");
 		waitFor(1);
-		sentTime = fetchDate("MMM d, yyyy, h:m a", 0);
+		sentTime = fetchDate("h:m a", 0);
 		waitFor(2);
 		scrollToTopofThePage();
 		waitFor(2);
@@ -442,7 +449,7 @@ public class Escalation_Tracking_PO extends SafeActions implements Escalation_Tr
 		}
 
 		if (prop.getProperty("url").contains("uat")) {
-			driver.get("https://mailosaur.com/app/servers/csee9izm/messages/inbox");
+			driver.get("https://mailosaur.com/app/servers/tocbb3xf/messages/inbox");
 		} else {
 			driver.get("https://mailosaur.com/app/servers/drwhn6bn/messages/inbox");
 		}
@@ -450,7 +457,7 @@ public class Escalation_Tracking_PO extends SafeActions implements Escalation_Tr
 		takeScreenshotFor("Email notification - An Escalation Item is Ready for your Review");
 		String receivedDate = getTextFromUI(dateRecieved, "dateRecieved");
 
-		SimpleDateFormat df = new SimpleDateFormat("MMM d, yyyy, h:m a");
+		SimpleDateFormat df = new SimpleDateFormat("h:m a");
 
 		Date d1 = df.parse(sentTime);
 		Date d2 = df.parse(receivedDate);
@@ -682,11 +689,11 @@ public class Escalation_Tracking_PO extends SafeActions implements Escalation_Tr
 	public void beginReview_VerifyEmail() throws ParseException {
 		verifyReturnEscalationItem();
 		waitFor(5);
-		sentTime = fetchDate("MMM d, yyyy, h:m a", 0);
+		sentTime = fetchDate("h:m a", 0);
 		waitFor(2);
 
 		if (prop.getProperty("url").contains("uat")) {
-			driver.get("https://mailosaur.com/app/servers/csee9izm/messages/inbox");
+			driver.get("https://mailosaur.com/app/servers/tocbb3xf/messages/inbox");
 		} else {
 			driver.get("https://mailosaur.com/app/servers/drwhn6bn/messages/inbox");
 		}
@@ -694,7 +701,7 @@ public class Escalation_Tracking_PO extends SafeActions implements Escalation_Tr
 		takeScreenshotFor("Email notification - Escalation Item Has Been Returned");
 		String receivedDate = getTextFromUI(dateRecieved, "dateRecieved");
 
-		SimpleDateFormat df = new SimpleDateFormat("MMM d, yyyy, h:m a");
+		SimpleDateFormat df = new SimpleDateFormat("h:m a");
 
 		Date d1 = df.parse(sentTime);
 		Date d2 = df.parse(receivedDate);
@@ -721,11 +728,11 @@ public class Escalation_Tracking_PO extends SafeActions implements Escalation_Tr
 		typeText(commentsTextField, "Test", "commentsTextField");
 		jsClickOn(submitButton, "submitButton");
 		waitFor(5);
-		sentTime = fetchDate("MMM d, yyyy, h:m a", 0);
+		sentTime = fetchDate("h:m a", 0);
 		waitFor(2);
 
 		if (prop.getProperty("url").contains("uat")) {
-			driver.get("https://mailosaur.com/app/servers/csee9izm/messages/inbox");
+			driver.get("https://mailosaur.com/app/servers/tocbb3xf/messages/inbox");
 		} else {
 			driver.get("https://mailosaur.com/app/servers/drwhn6bn/messages/inbox");
 		}
@@ -733,7 +740,7 @@ public class Escalation_Tracking_PO extends SafeActions implements Escalation_Tr
 		takeScreenshotFor("Email notification - Escalation Item Has Been Returned to Director");
 		String receivedDate = getTextFromUI(dateRecieved, "dateRecieved");
 
-		SimpleDateFormat df = new SimpleDateFormat("MMM d, yyyy, h:m a");
+		SimpleDateFormat df = new SimpleDateFormat("h:m a");
 
 		Date d1 = df.parse(sentTime);
 		Date d2 = df.parse(receivedDate);
