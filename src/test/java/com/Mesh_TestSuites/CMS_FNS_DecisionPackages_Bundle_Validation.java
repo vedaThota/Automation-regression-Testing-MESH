@@ -15,7 +15,7 @@ public class CMS_FNS_DecisionPackages_Bundle_Validation extends TestBase {
 	@Test(groups = { "Regression" })
 	public void DecisionPackage_TC_001_Verify_DecisionPackage_Creation_with_APD_as_SubmisionType() {
 		// Navigating to Decision package screen
-		homePage.navigateTo_OpsTeam_DecisionPackage_Screen("Ops Team");
+		homePage.navigateTo_OpsTeam_DecisionPackage_Screen("Banton");
 		// Validating the all mandatory fields on the Decision package creation form
 		dpp.validateMandatoryFieldsErrorMessages();
 		// Creation of Decision package
@@ -166,6 +166,8 @@ public class CMS_FNS_DecisionPackages_Bundle_Validation extends TestBase {
 		waitFor(5);
 		homePage.closePreviousWindow();
 		waitFor(1);
+		driver.navigate().refresh();
+		waitFor(5);
 		homePage.navigateTo_OpsTeam_DecisionPackage_Screen("FM Reviewer");
 		waitFor(5);
 		homePage.moveToActiveWindow();
@@ -199,6 +201,8 @@ public class CMS_FNS_DecisionPackages_Bundle_Validation extends TestBase {
 		loginToApplication();
 		waitFor(5);
 		homePage.moveToActiveWindow();
+		driver.navigate().refresh();
+		waitFor(5);
 		dpp.navigateToLeadPackage();
 		dpp.verifyCloseoutPackage();
 		

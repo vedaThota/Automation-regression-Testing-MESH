@@ -4,12 +4,13 @@ import org.openqa.selenium.By;
 
 public interface HomePage_Loc {
 	
-	public static final By setUpIcon = By.xpath("//*[@icon-name='utility:setup']");
+	public static final By setUpIcon = By.xpath("(//*[@icon-name='utility:setup']//lightning-primitive-icon)[last()]");
 	public static final By setUpLink = By.xpath("//a[@title='Setup']");
 	public static final By userSideMenu = By.xpath("//div[@title='Users']/button");
 	public static final By userLink = By.xpath("(//div[@title='Users'])[last()]/a");
 	public static final By userList_T = By.xpath("//*[@class='listItemPad'][text()='T']/parent::a");
 	public static final By userList_O = By.xpath("//*[@class='listItemPad'][text()='O']/parent::a");
+	public static final By userList_B = By.xpath("//*[@class='listItemPad'][text()='B']/parent::a");
 	public static final By userList_M = By.xpath("//*[@class='listItemPad'][text()='M']/parent::a");
 	public static final By userList_S = By.xpath("//*[@class='listItemPad'][text()='S']/parent::a");
 	public static final By userList_J = By.xpath("//*[@class='listItemPad'][text()='J']/parent::a");
@@ -31,6 +32,7 @@ public interface HomePage_Loc {
 	public static final By Alimu_Login_Link = By.xpath("//a[text()='Haimiti, Alimu']/../preceding-sibling::td/a[text()='Login']");
 	public static final By johnson_Login_Link = By.xpath("//a[text()='Johnson, Alejandra']/../preceding-sibling::td/a[text()='Login']");
 	public static final By Walter_Login_Link = By.xpath("//a[text()='Ellis, Walter']/../preceding-sibling::td/a[text()='Login']");
+	public static final By Banton_Login_Link = By.xpath("//a[text()='BANTON, KIA']/../preceding-sibling::td/a[text()='Login']");
 
 	public static final By stateOfficer_LoginLink = By.xpath("//a[text()='State Officer 01, Test']/../preceding-sibling::td/a[text()='Login']");
 	public static final By deputyDirector_LoginLink = By.xpath("//a[contains(text(), 'Deputy Director')]/../preceding-sibling::td/a[text()='Login']");

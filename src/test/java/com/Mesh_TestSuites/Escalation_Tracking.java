@@ -61,17 +61,21 @@ public class Escalation_Tracking extends TestBase {
 //////		// Status Memo functionality
 ////		ET_PO.validateStatusMemo_Comment_Answer();
 //		
+		System.out.println("=====================================    Test Case 04 completed    ========================================");
 	}
 	
 	@Test
 	public void TC_005_Verify_Escalation_Tracking_Creation_From_DecisionPackage() {
+		driver.navigate().refresh();
+		waitFor(5);
 		dpp.logoutFromApp();
 		waitFor(1);
 		loginToApplication();
 		waitFor(5);
-		homePage.navigateTo_OpsTeam_DecisionPackage_Screen("Ops Team");
+		homePage.navigateTo_OpsTeam_DecisionPackage_Screen("Banton");
 		homePage.jsClickOn(DecisionPackagePage.newDecisionPackage, "newDecisionPackage");
 		dpp.verifyUserCanCreate_DecisionPackage(DecisionPackagePage.SubmissionTypeOption_APD, "APD", "CMSFNS");
+		
 		homePage.moveToEsalation_Stage();
 		ET_PO.createEscationTracking();
 	}
@@ -82,6 +86,8 @@ public class Escalation_Tracking extends TestBase {
 		dpp.logoutFromApp();
 		waitFor(1);
 		loginToApplication();
+		waitFor(5);
+		driver.navigate().refresh();
 		waitFor(5);
 		homePage.go_to_Escalation_Tracking_Screen();
 		ET_PO.OpenNew_ET_Creation_Form();
@@ -99,6 +105,8 @@ public class Escalation_Tracking extends TestBase {
 		dpp.logoutFromApp();
 		waitFor(1);
 		loginToApplication();
+		waitFor(5);
+		driver.navigate().refresh();
 		waitFor(5);
 		homePage.go_to_Escalation_Tracking_Screen();
 		homePage.navigateToRecentEscalation();
