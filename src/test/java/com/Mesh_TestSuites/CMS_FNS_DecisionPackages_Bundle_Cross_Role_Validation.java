@@ -15,7 +15,7 @@ public class CMS_FNS_DecisionPackages_Bundle_Cross_Role_Validation extends TestB
 	@Test(groups = { "Regression" })
 	public void DecisionPackage_TC_001_Verify_DecisionPackage_Creation_with_APD_as_SubmisionType() {
 		// Navigating to Decision package screen
-		homePage.navigateTo_OpsTeam_DecisionPackage_Screen("Ops Team");
+		homePage.navigateTo_OpsTeam_DecisionPackage_Screen("Banton");
 		// Validating the all mandatory fields on the Decision package creation form
 		dpp.validateMandatoryFieldsErrorMessages();
 		// Creation of Decision package
@@ -146,8 +146,8 @@ public class CMS_FNS_DecisionPackages_Bundle_Cross_Role_Validation extends TestB
 		waitFor(1);
 		loginToApplication();
 		waitFor(5);
-//		homePage.closePreviousWindow();
-//		waitFor(1);
+//		homePage.closePreviousWindows(); // Enabled on 27th March
+		waitFor(1);
 		homePage.navigateTo_OpsTeam_DecisionPackage_Screen("Deputy Director");
 		waitFor(5);
 		homePage.moveToActiveWindow();
@@ -164,8 +164,10 @@ public class CMS_FNS_DecisionPackages_Bundle_Cross_Role_Validation extends TestB
 		waitFor(1);
 		loginToApplication();
 		waitFor(5);
-		homePage.closePreviousWindow();
+		homePage.closePreviousWindow(); // Enabled on 27th March
 		waitFor(1);
+		driver.navigate().refresh();
+		waitFor(5);
 		homePage.navigateTo_OpsTeam_DecisionPackage_Screen("FM Reviewer");
 		waitFor(5);
 		homePage.moveToActiveWindow();
@@ -184,7 +186,7 @@ public class CMS_FNS_DecisionPackages_Bundle_Cross_Role_Validation extends TestB
 		waitFor(1);
 		loginToApplication();
 		waitFor(5);
-		homePage.closePreviousWindow();
+		homePage.closePreviousWindow(); // Enabled on 27th March
 		waitFor(1);
 		homePage.navigateTo_OpsTeam_DecisionPackage_Screen("Deputy Director instead Divsion");
 		waitFor(5);
@@ -199,6 +201,8 @@ public class CMS_FNS_DecisionPackages_Bundle_Cross_Role_Validation extends TestB
 		loginToApplication();
 		waitFor(5);
 		homePage.moveToActiveWindow();
+		driver.navigate().refresh();
+		waitFor(5);
 		dpp.navigateToLeadPackage();
 		dpp.verifyCloseoutPackage();
 		

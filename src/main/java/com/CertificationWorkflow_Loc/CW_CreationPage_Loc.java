@@ -4,7 +4,7 @@ import org.openqa.selenium.By;
 
 public interface CW_CreationPage_Loc {
 	public static By new_Button = By.xpath("//*[@title='New']");
-	public static By save_Button = By.xpath("//*[text()='Save']");
+	public static By save_Button = By.xpath("(//*[text()='Save'])[last()]");
 	public static By stateMedicaidAgencyIs_required = By.xpath("//*[text()='State Medicaid Agency is required.']");
 	public static By reviewType_ErrorMessage = By.xpath("//*[text()='Select at least one Review Type.']");
 	public static By certification_ModuleIs_Required = By.xpath("//*[text()='Certification Module is required.']");
@@ -17,12 +17,12 @@ public interface CW_CreationPage_Loc {
 	public static By State_Medicaid_Agency = By.xpath("//*[text()='State Medicaid Agency']/following::input[1]");
 	public static By CAP_Request = By.xpath("//*[@title='CAP Request']");
 	public static By Demo = By.xpath("//*[@title='Demo']");
-	public static By Certification_Module = By.xpath("//*[text()='Certification Module']/following::button[1]");
+	public static By Certification_Module = By.xpath("(//*[text()='Certification Module']/following::button[1])[last()]");
 	public static By certificaation_Module_Option = By.xpath("//*[text()='Certification Module']/following::button[1]/following::lightning-base-combobox-item[2]");
-	public static By Certification_Request_Date_Input  = By.xpath("//*[text()='Certification Request Date']/following::input[1]");
-	public static By ORR_Date_Input = By.xpath("//*[text()='ORR Date']/following::input[1]");
-	public static By submission_Date_Input = By.xpath("//*[text()='Submission Date']/following::input[1]");
-	public static By certifcation_Review_Date = By.xpath("//*[text()='Certification Review Date']/following::input[1]");
+	public static By Certification_Request_Date_Input  = By.xpath("(//*[text()='Certification Request Date']/following::input[1])[last()]");
+	public static By ORR_Date_Input = By.xpath("(//*[text()='ORR Date']/following::input[1])[last()]");
+	public static By submission_Date_Input = By.xpath("(//*[text()='Submission Date']/following::input[1])[last()]");
+	public static By certifcation_Review_Date = By.xpath("(//*[text()='Certification Review Date']/following::input[1])[last()]");
 	public static By Executive_Summary = By.xpath("//div[contains(@class, 'slds-rich-text-area__content slds-grow slds-text-color-weak standin')]");
 	public static By executive_Summary_ = By.xpath("//div[@part='rich-text-editor-textarea']/div");
 	

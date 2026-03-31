@@ -12,7 +12,7 @@ public interface CW_DetailsPage_Loc {
 	public static By move_to_SO_Reeview = By.xpath("//*[text()='Move to SO Review']");
 	public static By Edit_Director = By.xpath("//button[@title='Edit DSS/DSG Director']");
 	public static By director_Input = By.xpath("//*[text()='DSS/DSG Director']/following::input[1]");
-	public static By director_Option = By.xpath("//*[text()='DSS/DSG Director']/following::input[1]/following::lightning-base-combobox-item[1]");
+	public static By director_Option = By.xpath("//*[text()='DSS/DSG Director']/following::input[1]/following::lightning-base-combobox-item[2]");
 	public static By save_Button = By.xpath("//*[text()='Save']");
 	public static By confirm_Button = By.xpath("//*[text()='Confirm']");
 	public static By status_Updated = By.xpath("(//*[text()='Status']/following::lightning-formatted-text[1])[last()]");
@@ -30,13 +30,48 @@ public interface CW_DetailsPage_Loc {
 	public static By create_Folder = By.xpath("//button[text()='Create Folder']");
 	public static By Box_Link = By.xpath("//a[@data-label='Box']");
 	public static By documentUploaded_Successfully = By.xpath("//*[text()='Document successfully uploaded']");
-//	public static By Box_Link = By.xpath("//a[@data-label='Box']");
-//	public static By Box_Link = By.xpath("//a[@data-label='Box']");
-//	public static By Box_Link = By.xpath("//a[@data-label='Box']");
-//	public static By Box_Link = By.xpath("//a[@data-label='Box']");
-//	public static By Box_Link = By.xpath("//a[@data-label='Box']");
-//	public static By Box_Link = By.xpath("//a[@data-label='Box']");
-//	public static By Box_Link = By.xpath("//a[@data-label='Box']");
+
+	public static By withdrawn_Button = By.xpath("//button[text()='Withdraw']");
+	public static By reason_For_Withdrawn = By.xpath("//select[@name='Reason_for_Withdraw']");
+	public static By withdrawal_Comments = By.xpath("//*[text()='Withdrawal Comments']/following::input");
+	public static By next_Button = By.xpath("//button[text()='Next']");
+	public static By Status_Field = By.xpath("//*[text()='Status']/following::lightning-formatted-text[1]");
+	public static By Sub_Status_Field = By.xpath("//*[text()='Sub-status']/following::lightning-formatted-text[1]");
+	public static By Edit_Certification_Request_Date = By.xpath("//button[@title='Edit Certification Request Date']");
+	public static By certificationPackage_Locked = By.xpath("//*[text()='The Certification Package is Completed and Locked.']");
+	public static By Cancel_Button = By.xpath("//button[text()='Cancel']");
+	public static By submittionDate_Field = By.xpath("//*[contains(text(),'Submission Date​')]/following::lightning-formatted-text[1]");
+	
+	public static By emailThread = By.xpath("//div[@data-testid='message-list']//a[2]");
+	public static By emailHeader = By.xpath("//h3[@data-testid='subject']");
+	public static By Re_assign_emailHeader = By.xpath("//h3[contains(text(),'Sandbox:')]");
+	public static By emptyServer = By.xpath("//*[text()='Empty Server']");
+	public static By emailAddressTextField = By.xpath("//label[text()='Email address']/following::input");
+	
+	public static By continueButton = By.xpath("//button[text()='Continue']");
+	public static By passwordTextField = By.xpath("//label[text()='Password']/following::input");
+	public static By loginButtonEmail = By.xpath("//button[text()='Log in']");
+//	public static By dateRecieved = By.xpath("//tbody/tr/td[2]/div/div[2]/p");
+	public static By dateRecieved = By.xpath("//div[@data-testid='message-list']//a[2]//div[3]");
+	public static By emailBody = By.xpath("//div[@id='mailcontainer']");
+	
+	
+	public static By other_Reason_Without_Comments = By.xpath("//*[text()='Comments are required when \"Other\" is selected as the Reason for Withdraw.']");
+	public static By goBackButton = By.xpath("//*[text()='Go back']");
+	public static By CT_Tab = By.xpath("(//*[@title='Certification Workflow'])[last()]");
+	public static By dropShadow = By.xpath("//*[contains(@filter, 'drop-shadow')]");
+	public static By insertShadow = By.xpath("//*[contains(@filter, 'inset-shadow')]");
+	
+//	public static By decisionPackageWorkFlow = By.xpath("gbjbjgfnbkgfkj");
+//	public static By decisionPackageWorkFlow = By.xpath("gbjbjgfnbkgfkj");
+//	public static By decisionPackageWorkFlow = By.xpath("gbjbjgfnbkgfkj");
+//	public static By decisionPackageWorkFlow = By.xpath("gbjbjgfnbkgfkj");
+//	public static By decisionPackageWorkFlow = By.xpath("gbjbjgfnbkgfkj");
+//	public static By decisionPackageWorkFlow = By.xpath("gbjbjgfnbkgfkj");
+//	public static By decisionPackageWorkFlow = By.xpath("gbjbjgfnbkgfkj");
+//	public static By decisionPackageWorkFlow = By.xpath("gbjbjgfnbkgfkj");
+//	public static By decisionPackageWorkFlow = By.xpath("gbjbjgfnbkgfkj");
+//	public static By decisionPackageWorkFlow = By.xpath("gbjbjgfnbkgfkj");
 //	public static By decisionPackageWorkFlow = By.xpath("gbjbjgfnbkgfkj");
 	
 	

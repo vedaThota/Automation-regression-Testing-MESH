@@ -3,17 +3,21 @@
 <suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="com.Mesh_TestSuites.Escalation_Tracking">
+      <class name="com.Mesh_TestSuites.CMS_FNS_DecisionPackages_Bundle_Validation">
         <methods>
           <include name="beforetest"/>
           <include name="beforeClass"/>
+          <include name="DecisionPackage_TC_001_Verify_DecisionPackage_Creation_with_APD_as_SubmisionType"/>
           <include name="beofreMethod"/>
+          <include name="DecisionPackage_TC_002_Verify_DecisionPackage_Creation_with_RFP_as_SubmisionType"/>
+          <include name="DecisionPackage_TC_005_Verify_Package_Completion_Flow"/>
           <include name="afterClass"/>
-          <include name="TC_006_Verify_Escalation_Tracking_Emails_Validations"/>
+          <include name="DecisionPackage_TC_004_Verify_Adding_bundle_Packages"/>
           <include name="afterTest"/>
           <include name="afterMethod"/>
+          <include name="DecisionPackage_TC_003_Verify_DecisionPackage_Creation_with_Contract_as_SubmisionType"/>
         </methods>
-      </class> <!-- com.Mesh_TestSuites.Escalation_Tracking -->
+      </class> <!-- com.Mesh_TestSuites.CMS_FNS_DecisionPackages_Bundle_Validation -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->

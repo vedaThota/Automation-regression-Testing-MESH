@@ -46,6 +46,7 @@ public class CW_CreationPage extends SafeActions implements CW_CreationPage_Loc 
 		typeText(certifcation_Review_Date, fetchWeekdayDate("MMM d, yyyy", 2), "certifcation_Review_Date");
 		jsClickOn(Executive_Summary, "Executive_Summary");
 		typeText(executive_Summary_, "Test", "executive_Summary_");
+		waitFor(2);
 		jsClickOn(save_Button, "save_Button");
 		waitFor(2);
 		verifyTextDisplay(RequestDate_CannotBeFuture_ErrorMsg, "Request Date cannot be in the future.");
@@ -58,6 +59,7 @@ public class CW_CreationPage extends SafeActions implements CW_CreationPage_Loc 
 		typeText(submission_Date_Input, fetchWeekendDate("MMM d, yyyy", -1), "submission_Date_Input");
 		typeText(certifcation_Review_Date, fetchWeekendDate("MMM d, yyyy", -1), "certifcation_Review_Date");
 		typeText(executive_Summary_, "Testing", "executive_Summary_");
+		waitFor(2);waitFor(2);
 		scrollToElement(save_Button);
 		scrollToBottomOfthePage();
 		jsClickOn(save_Button, "save_Button");
@@ -77,7 +79,7 @@ public class CW_CreationPage extends SafeActions implements CW_CreationPage_Loc 
 	
 	public static String CW_Title_text = "";
 	
-	public void create_Certification_Workflow() {
+	public void create_Certification_Workflow(int noOfDays) {
 		
 		typeText(State_Medicaid_Agency, getRandomStateInitial_(), "State_Medicaid_Agency");
 		waitFor(1);
@@ -88,37 +90,37 @@ public class CW_CreationPage extends SafeActions implements CW_CreationPage_Loc 
 		jsClickOn(moveToSelected, "moveToSelected");
 		jsClickOn(Certification_Module, "Certification_Module");
 		int index = getRandom1to15();
-		By certificationMod_Random = By.xpath("//*[text()='Certification Module']/following::button[1]/following::lightning-base-combobox-item["+index+"]");
+		By certificationMod_Random = By.xpath("(//*[text()='Certification Module']/following::button[1]/following::lightning-base-combobox-item["+index+"])[last()]");
 		jsClickOn(certificationMod_Random, "certificaation_Module_Option");
 		
-		typeText(Certification_Request_Date_Input, fetchWeekdayDate("MMM d, yyyy", -1), "Certification_Request_Date_Input");
-		typeText(ORR_Date_Input, fetchWeekdayDate("MMM d, yyyy", -1), "ORR_Date_Input");
-		typeText(submission_Date_Input, fetchWeekdayDate("MMM d, yyyy", -1), "submission_Date_Input");
-		typeText(certifcation_Review_Date, fetchWeekdayDate("MMM d, yyyy", -1), "certifcation_Review_Date");
+		typeText(Certification_Request_Date_Input, fetchWeekdayDate("MMM d, yyyy", -noOfDays), "Certification_Request_Date_Input");
+		typeText(ORR_Date_Input, fetchWeekdayDate("MMM d, yyyy", -noOfDays), "ORR_Date_Input");
+		typeText(submission_Date_Input, fetchWeekdayDate("MMM d, yyyy", -noOfDays), "submission_Date_Input");
+		typeText(certifcation_Review_Date, fetchWeekdayDate("MMM d, yyyy", -noOfDays), "certifcation_Review_Date");
 		typeText(executive_Summary_, "Testing Updated", "executive_Summary_");
-//		
-//		jsClickOn(uploadFiles, "uploadFiles");
-//		waitFor(5);
-//		
-//		try {
-//			rb = new Robot();
-//		} catch (AWTException e) {
-//		}
-//		String filePath = System.getProperty("user.dir")
-//				+ "\\src\\test\\resources\\data\\RAI Closeout Process and Closeout Email Template (2).docx";
-//		StringSelection str = new StringSelection(filePath);
-//		Toolkit.getDefaultToolkit().getSystemClipboard().setContents(str, null);
-//		waitFor(2);
-//		rb.keyPress(KeyEvent.VK_CONTROL);
-//		rb.keyPress(KeyEvent.VK_V);
-//		waitFor(2);
-//		rb.keyRelease(KeyEvent.VK_CONTROL);
-//		rb.keyRelease(KeyEvent.VK_V);
-//		waitFor(2);
-//		rb.keyPress(KeyEvent.VK_ENTER);
-//		rb.keyRelease(KeyEvent.VK_ENTER);
-//		waitFor(2);
-//		jsClickOn(done_Button, "done_Button");
+	
+		jsClickOn(uploadFiles, "uploadFiles");
+		waitFor(5);
+		
+		try {
+			rb = new Robot();
+		} catch (AWTException e) {
+		}
+		String filePath = System.getProperty("user.dir")
+				+ "\\src\\test\\resources\\data\\RAI Closeout Process and Closeout Email Template (2).docx";
+		StringSelection str = new StringSelection(filePath);
+		Toolkit.getDefaultToolkit().getSystemClipboard().setContents(str, null);
+		waitFor(2);
+		rb.keyPress(KeyEvent.VK_CONTROL);
+		rb.keyPress(KeyEvent.VK_V);
+		waitFor(2);
+		rb.keyRelease(KeyEvent.VK_CONTROL);
+		rb.keyRelease(KeyEvent.VK_V);
+		waitFor(2);
+		rb.keyPress(KeyEvent.VK_ENTER);
+		rb.keyRelease(KeyEvent.VK_ENTER);
+		waitFor(2);
+		jsClickOn(done_Button, "done_Button");
 		takeScreenshotFor("before submitting the form");
 		jsClickOn(save_Button, "save_Button");
 		waitFor(1);

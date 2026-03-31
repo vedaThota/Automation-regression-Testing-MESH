@@ -1,4 +1,6 @@
-package com.Mesh_TestSuites;
+package com.CertificationWorkflow_TestSuite;
+
+import java.text.ParseException;
 
 import org.testng.annotations.Test;
 
@@ -19,7 +21,7 @@ public class CertificationWorkflow_TestSuite extends TestBase {
 		waitFor(5);
 		CW_Details_Page.navigateTo_Certification_Workflow_Screen();
 		CW_Creation_Page.verifying_Mandatory_Fields_CW_Creation_Form();
-		CW_Creation_Page.create_Certification_Workflow();
+		CW_Creation_Page.create_Certification_Workflow(1);
 		CW_Details_Page.verify_Generate_template_Activity();
 		CW_Details_Page.verify_SO_Review_Activity();
 		homePage.logoutAs_currentUser();
@@ -31,7 +33,9 @@ public class CertificationWorkflow_TestSuite extends TestBase {
 	
 	@Test
 	public void TC_002_Verifying_CW_SO_Review() {
-		homePage.navigateTo_StateOfficer_Screen();
+		driver.navigate().refresh();
+		waitFor(5);
+		homePage.navigateTo_StateOfficer_Screen(2);
 		homePage.navigateTo_CW();
 		CW_Details_Page.verify_SO_Begin_review();
 		homePage.logoutAs_currentUser();
@@ -43,6 +47,8 @@ public class CertificationWorkflow_TestSuite extends TestBase {
 	
 	@Test
 	public void TC_003_Verifying_CMS_Certification_Lead_Review() {
+		driver.navigate().refresh();
+		waitFor(5);
 		homePage.navigateTo_Certification_Lead_Screen();
 		homePage.navigateTo_CW();
 		CW_Details_Page.verify_CMS_Certification_lead_review();
@@ -54,6 +60,8 @@ public class CertificationWorkflow_TestSuite extends TestBase {
 	
 	@Test
 	public void TC_004_Verifying_DSS_DSG_Review() {
+		driver.navigate().refresh();
+		waitFor(5);
 		homePage.navigateTo_DSS_DSG_Screen();
 		homePage.navigateTo_CW();
 		CW_Details_Page.verify_DSS_DSG_review();
@@ -65,10 +73,14 @@ public class CertificationWorkflow_TestSuite extends TestBase {
 	
 	@Test
 	public void TC_005_Verifying_Pending_Issuance_To_State_Review() {
+		driver.navigate().refresh();
+		waitFor(5);
 		homePage.navigateTo_Pending_Issuance_To_State_Screen();
 		homePage.navigateTo_CW();
 		CW_Details_Page.verify_pending_issuance_review();
 		
 	}
+	
+	
 
 }

@@ -157,11 +157,11 @@ public interface DecisionPackage_Loc {
 	public static final By uncheckEmergencyRequest = By.xpath("//*[contains(text(),'Emergency requests cannot')]/preceding-sibling::div//input");
 			
 	public static final By emergencyRequestMsg = By.xpath("//*[contains(text(), 'Emergency requests cannot be')]");
-	public static final By oPDiv_HHS = By.xpath("//*[text()='OpDiv']/following::*[@data-value='HHS']");
-	public static final By add_oPDiv_HHS = By.xpath("//*[text()='OpDiv']/following::*[text()='OpDiv']/following::*[@data-value='HHS']/following::button[1]");
-	public static final By remove_OpDiv_HHS = By.xpath("//div[text()='OpDiv']//following::button[@title='Move selection to Available']");
+	public static final By oPDiv_HHS = By.xpath("//*[text()='OpDiv(s)']/following::*[@data-value='HHS']");
+	public static final By add_oPDiv_HHS = By.xpath("//*[text()='OpDiv(s)']/following::*[text()='OpDiv(s)']/following::*[@data-value='HHS']/following::button[1]");
+	public static final By remove_OpDiv_HHS = By.xpath("//div[text()='OpDiv(s)']//following::button[@title='Move selection to Available']");
 
-	public static final By editOpDiv = By.xpath("(//button[@title='Edit OpDiv'])[last()]");
+	public static final By editOpDiv = By.xpath("(//button[@title='Edit OpDiv(s)'])[last()]");
 	
 	public static final By userProfile = By.xpath("//span[contains(@class, 'userProfileCardTriggerRoot')]//button");
 	public static final By logOutButton = By.xpath("//a[text()='Log Out']");

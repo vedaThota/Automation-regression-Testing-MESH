@@ -40,7 +40,7 @@ public class HomePage extends SafeActions implements HomePage_Loc {
 			takeScreenshotFor("User Selection Screen" + userType);
 			switchToFrame(allUsersFrame);
 			jsClickOn(oPsTeam_Login_Link, "oPsTeam_Login_Link");
-			switchToWindowByIndex(1);
+			switchToWindowByIndex(2);
 		} else if (userType.contains("Vedha")) {
 			jsClickOn(userList_T, "userList_T");
 			waitFor(3);
@@ -48,6 +48,14 @@ public class HomePage extends SafeActions implements HomePage_Loc {
 			takeScreenshotFor("User Selection Screen" + userType);
 			switchToFrame(allUsersFrame);
 			jsClickOn(ThotaVEda_Login_Link, "ThotaVEda_Login_Link");
+			switchToWindowByIndex(1);
+		}else if (userType.contains("Banton")) {
+			jsClickOn(userList_B, "userList_B");
+			waitFor(3);
+			driver.switchTo().defaultContent();
+			takeScreenshotFor("User Selection Screen" + userType);
+			switchToFrame(allUsersFrame);
+			jsClickOn(Banton_Login_Link, "Banton_Login_Link");
 			switchToWindowByIndex(1);
 		} else if (userType.contains("State Officer")) {
 			jsClickOn(userList_S, "userList_S");
@@ -94,7 +102,8 @@ public class HomePage extends SafeActions implements HomePage_Loc {
 	}
 
 	public void naviateToDecisionPackage() {
-		waitFor(2);
+		driver.navigate().refresh();
+		waitFor(5);
 		jsClickOn(appLauncher, "appLauncher");
 		waitFor(1);
 		typeText(Escalation_Tracking_PO.appSearchTextField, "Decision Package Workflow", "appSearchTextFiel");
@@ -134,7 +143,7 @@ public class HomePage extends SafeActions implements HomePage_Loc {
 		// Below has been scripted to navigated to All users screen
 		waitFor(8);
 		jsClickOn(setUpIcon, "setUpIcon");
-	
+
 		takeScreenshotFor("Set Up Menu");
 		waitFor(3);
 		jsClickOn(setUpLink, "setUpLink");
@@ -187,11 +196,13 @@ public class HomePage extends SafeActions implements HomePage_Loc {
 
 	public void logoutAs_currentUser() {
 		waitFor(2);
-		jsClickOn(logout_AS, "logout_AS");
+//		jsClickOn(logout_AS, "logout_AS");
+		jsClickOn(userProfile, "userProfile");
+		jsClickOn(logOutButton, "logOutButton");
 		waitFor(2);
 	}
 
-	public void navigateTo_StateOfficer_Screen() {
+	public void navigateTo_StateOfficer_Screen(int windowIndex) {
 		// Below has been scripted to navigated to All users screen
 		waitFor(5);
 		jsClickOn(setUpIcon, "setUpIcon");
@@ -199,7 +210,7 @@ public class HomePage extends SafeActions implements HomePage_Loc {
 		waitFor(1);
 		jsClickOn(setUpLink, "setUpLink");
 		waitFor(1);
-		switchToWindowByIndex(2);
+		switchToWindowByIndex(windowIndex);
 		jsClickOn(userSideMenu, "userSideMenu");
 		jsClickOn(userLink, "userLink");
 		waitFor(30);
@@ -212,7 +223,8 @@ public class HomePage extends SafeActions implements HomePage_Loc {
 		switchToFrame(allUsersFrame);
 		jsClickOn(Brandy_Login_Link, "Brandy_Login_Link");
 		closePreviousWindow();
-		switchToWindowByIndex(1);
+		if (windowIndex == 2)
+			switchToWindowByIndex(1);
 	}
 
 	public void navigateTo_Certification_Lead_Screen() {
@@ -286,7 +298,7 @@ public class HomePage extends SafeActions implements HomePage_Loc {
 		closePreviousWindow();
 		switchToWindowByIndex(1);
 	}
-	
+
 	public void moveToEsalation_Stage() {
 		jsClickOn(edit_EscalationTracking, "edit_EscalationTracking");
 		waitFor(3);
