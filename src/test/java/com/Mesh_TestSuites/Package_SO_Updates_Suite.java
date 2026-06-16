@@ -24,6 +24,8 @@ public class Package_SO_Updates_Suite extends TestBase {
 		waitFor(1);
 		loginToApplication();
 		waitFor(5);
+		driver.navigate().refresh();	
+		waitFor(3);
 		homePage.navigateTo_OpsTeam_DecisionPackage_Screen("State Officer");
 		waitFor(5);
 		homePage.closePreviousWindow();
@@ -33,11 +35,13 @@ public class Package_SO_Updates_Suite extends TestBase {
 		waitFor(1);
 		loginToApplication();
 		waitFor(5);
-		homePage.navigateTo_OpsTeam_DecisionPackage_Screen("Ops Team");
+		driver.navigate().refresh();
+		waitFor(3);
+		homePage.navigateTo_OpsTeam_DecisionPackage_Screen("Banton");
 		waitFor(5);
 		homePage.closePreviousWindow();
 		waitFor(3);
-//
+
 	}
 
 	@Test

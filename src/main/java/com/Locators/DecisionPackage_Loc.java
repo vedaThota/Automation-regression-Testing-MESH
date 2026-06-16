@@ -192,6 +192,32 @@ public interface DecisionPackage_Loc {
 	
 	public static final By completedTab = By.xpath("//a[@title='Completed']");
 	
+	public static final By ReturnToStateOfficer = By.xpath("//button[text()='Return to State Officer']");
+	public static final By comments_Textbox = By.xpath("//label[text()='Comments']/following-sibling::div/textarea");
+	public static final By Next_Button = By.xpath("//button[text()='Next']");
+	public static final By Sub_Status = By.xpath("(//*[text()='Sub-Status']/following::lightning-formatted-text[1])[last()]");
+	public static final By DD_to_SO_Alert_Message = By.xpath("//*[text()='Package has been returned to and is being reviewed by the State Officer']");
+	public static final By Return_To_Deputy_Director = By.xpath("//button[text()='Return to Deputy Director']");
+	public static final By Submit_Button = By.xpath("//button[text()='Submit']");
+	public static final By Package_Status = By.xpath("(//*[text()='Status']/../following-sibling::div//lightning-formatted-text[1])[last()]");
+	public static final By ReturnToDivisionDirector = By.xpath("//button[text()='Move to Division Director']");
+	public static final By ReturnToFM_Reviewer= By.xpath("//button[text()='Return to FM Reviewer']");
+//	public static final By EditStatus = By.xpath("dvfdjvjkfnvfd");
+//	public static final By EditStatus = By.xpath("dvfdjvjkfnvfd");
+//	public static final By EditStatus = By.xpath("dvfdjvjkfnvfd");
+//	public static final By EditStatus = By.xpath("dvfdjvjkfnvfd");
+//	public static final By EditStatus = By.xpath("dvfdjvjkfnvfd");
+//	public static final By EditStatus = By.xpath("dvfdjvjkfnvfd");
+//	public static final By EditStatus = By.xpath("dvfdjvjkfnvfd");
+//	public static final By EditStatus = By.xpath("dvfdjvjkfnvfd");
+//	public static final By EditStatus = By.xpath("dvfdjvjkfnvfd");
+//	public static final By EditStatus = By.xpath("dvfdjvjkfnvfd");
+//	public static final By EditStatus = By.xpath("dvfdjvjkfnvfd");
+//	public static final By EditStatus = By.xpath("dvfdjvjkfnvfd");
+//	public static final By EditStatus = By.xpath("dvfdjvjkfnvfd");
+//	public static final By EditStatus = By.xpath("dvfdjvjkfnvfd");
+//	public static final By EditStatus = By.xpath("dvfdjvjkfnvfd");
+//	public static final By EditStatus = By.xpath("dvfdjvjkfnvfd");
 //	public static final By EditStatus = By.xpath("dvfdjvjkfnvfd");
 //	public static final By EditStatus = By.xpath("dvfdjvjkfnvfd");
 //	public static final By EditStatus = By.xpath("dvfdjvjkfnvfd");

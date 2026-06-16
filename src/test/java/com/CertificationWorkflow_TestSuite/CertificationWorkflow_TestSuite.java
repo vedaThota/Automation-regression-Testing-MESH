@@ -31,7 +31,7 @@ public class CertificationWorkflow_TestSuite extends TestBase {
 		
 	}
 	
-	@Test
+	@Test(dependsOnMethods = "TC_001_Verifying_Certification_Workflow_Creation")
 	public void TC_002_Verifying_CW_SO_Review() {
 		driver.navigate().refresh();
 		waitFor(5);
@@ -45,7 +45,7 @@ public class CertificationWorkflow_TestSuite extends TestBase {
 		
 	}
 	
-	@Test
+	@Test(dependsOnMethods = "TC_002_Verifying_CW_SO_Review")
 	public void TC_003_Verifying_CMS_Certification_Lead_Review() {
 		driver.navigate().refresh();
 		waitFor(5);
@@ -58,7 +58,7 @@ public class CertificationWorkflow_TestSuite extends TestBase {
 		waitFor(5);
 	}
 	
-	@Test
+	@Test(dependsOnMethods = "TC_003_Verifying_CMS_Certification_Lead_Review")
 	public void TC_004_Verifying_DSS_DSG_Review() {
 		driver.navigate().refresh();
 		waitFor(5);
@@ -71,7 +71,7 @@ public class CertificationWorkflow_TestSuite extends TestBase {
 		waitFor(5);
 	}
 	
-	@Test
+	@Test(dependsOnMethods = "TC_004_Verifying_DSS_DSG_Review")
 	public void TC_005_Verifying_Pending_Issuance_To_State_Review() {
 		driver.navigate().refresh();
 		waitFor(5);

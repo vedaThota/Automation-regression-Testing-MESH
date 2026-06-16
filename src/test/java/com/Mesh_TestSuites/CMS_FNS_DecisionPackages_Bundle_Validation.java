@@ -33,8 +33,8 @@ public class CMS_FNS_DecisionPackages_Bundle_Validation extends TestBase {
 		takeScreenshotFor("Amount Shows in APD type");
 		dpp.verifyBeginReviewStatus();
 		takeScreenshotFor("Begin Review status in APD type");
+
 		
-//		
 ////		dpp.verifyFileUpload("APD");
 ////		dpp.verifyDownloadFile("APD");
 ////	////	dpp.verifyDueDate("Due Date when No Emergency");
@@ -153,6 +153,34 @@ public class CMS_FNS_DecisionPackages_Bundle_Validation extends TestBase {
 		homePage.moveToActiveWindow();
 		dpp.navigateToLeadPackage();
 		dpp.performBeginReview();
+		
+		dpp.returnToState_Officer_Verify_SubStatus("Deputy Director");
+		dpp.logoutFromApp();
+		waitFor(1);
+		loginToApplication();
+		waitFor(5);
+		homePage.closePreviousWindow();
+		waitFor(1);
+		homePage.navigateTo_OpsTeam_DecisionPackage_Screen("State Officer");
+		waitFor(5);
+		homePage.closePreviousWindow();
+		waitFor(3);
+		dpp.navigateToLeadPackage();
+		dpp.perform_ReReview_By_StateOfficer();
+		
+		waitFor(1);
+		dpp.logoutFromApp();
+		waitFor(1);
+		loginToApplication();
+		waitFor(5);
+//		//homePage.closePreviousWindows();
+//		//waitFor(1);
+		homePage.navigateTo_OpsTeam_DecisionPackage_Screen("Deputy Director");
+		waitFor(5);
+		homePage.moveToActiveWindow();
+		dpp.navigateToLeadPackage();
+		dpp.performBeginReview();
+		dpp.verifyDeputy_Director_Review_Status();
 		System.out.println("================================ Test Case Four Completed ===========================");
 	}
 	
@@ -173,6 +201,39 @@ public class CMS_FNS_DecisionPackages_Bundle_Validation extends TestBase {
 		homePage.moveToActiveWindow();
 		dpp.navigateToLeadPackage();
 		dpp.performBeginReview_FMReview();
+		
+		// added to validate return to state officer
+		dpp.returnToState_Officer_Verify_SubStatus("FM Reviewer");
+		dpp.logoutFromApp();
+		waitFor(1);
+		loginToApplication();
+		waitFor(5);
+		homePage.closePreviousWindow();
+		waitFor(1);
+		homePage.navigateTo_OpsTeam_DecisionPackage_Screen("State Officer");
+		waitFor(5);
+		homePage.closePreviousWindow();
+		waitFor(3);
+		dpp.navigateToLeadPackage();
+		dpp.perform_ReReview_By_StateOfficer_When_Returned_From_FM_Reviewer();
+		
+		waitFor(1);
+		dpp.logoutFromApp();
+		waitFor(1);
+		loginToApplication();
+		waitFor(5);
+//		homePage.closePreviousWindow();
+//		waitFor(1);
+		driver.navigate().refresh();
+		waitFor(5);
+		homePage.navigateTo_OpsTeam_DecisionPackage_Screen("FM Reviewer");
+		waitFor(5);
+		homePage.moveToActiveWindow();
+		dpp.navigateToLeadPackage();
+		
+		dpp.performBeginReview_FMReview();
+		dpp.verify_FM_Review_Status();
+		
 		clearanceChecklistPage.updateParentDecsionPackage("APD", "FNS");
 		clearanceChecklistPage.moveToFistChildPackage();
 		clearanceChecklistPage.updateFirstChildClearance_CheckList();

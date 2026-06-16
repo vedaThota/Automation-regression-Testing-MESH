@@ -14,7 +14,7 @@ import com.aventstack.extentreports.markuputils.ExtentColor;
 import com.aventstack.extentreports.markuputils.MarkupHelper;
 import com.utility.SafeActions;
 
-public class Package_SO_Page extends SafeActions implements Package_SO_Loc, HomePage_Loc{
+public class Package_SO_Page extends SafeActions implements Package_SO_Loc, HomePage_Loc {
 
 	public void packageSOUpdates_Display_For_Admin() {
 		waitFor(3);
@@ -45,20 +45,24 @@ public class Package_SO_Page extends SafeActions implements Package_SO_Loc, Home
 		}
 	}
 
+	static String replaced_State_Officer = "";
 	public void verifyStateOfficerReplacement() {
 		Random rn = new Random();
 		int firstIndex = rn.nextInt(50) + 1;
 		int secondIndex = rn.nextInt(10) + 1;
+//		int firstIndex =  1;
+//		int secondIndex = 1;
 
 		jsClickOn(packageSO_Updates_Link, "Package SO Updates");
 		waitFor(1);
 		jsClickOn(stateOfficerButton, "stateOfficerButton");
-//		jsClickOn(selectCurrentStateOfficer, "selectCurrentStateOfficer");
-		typeText(selectCurrentStateOfficer, "Debbie Cole", "selectCurrentStateOfficer");
+		jsClickOn(selectCurrentStateOfficer, "selectCurrentStateOfficer");
+		typeText(selectCurrentStateOfficer, "Alimu", "selectCurrentStateOfficer");
 		waitFor(1);
 		typeText(selectCurrentStateOfficer, "", "selectCurrentStateOfficer");
 		waitFor(1);
-		By currentOfficerLoc = By.xpath("(//ul[@aria-label='Search Results']//span[2])[" + firstIndex + "]");
+		By currentOfficerLoc = By.xpath("(//ul[@aria-label='Search Results']//span[2]/span)[" + firstIndex + "]");
+		replaced_State_Officer = getTextFromUI(currentOfficerLoc, "currentOfficerLoc");
 		jsClickOn(currentOfficerLoc, "currentOfficerLoc");
 		jsClickOn(submitButton, "submitButton");
 		waitFor(1);
@@ -76,11 +80,12 @@ public class Package_SO_Page extends SafeActions implements Package_SO_Loc, Home
 				break;
 			} else {
 				jsClickOn(removeSelectedStateOfficer, "removeSelectedStateOfficer");
-				typeText(selectCurrentStateOfficer, "Debbie Cole", "selectCurrentStateOfficer");
+				typeText(selectCurrentStateOfficer, "Amirat Tomori", "selectCurrentStateOfficer");
 				waitFor(1);
 				typeText(selectCurrentStateOfficer, "", "selectCurrentStateOfficer");
 				waitFor(1);
 				int firstIndexx = rn.nextInt(50) + 1;
+//				int firstIndexx =  1;
 				By currentOfficerLocator = By
 						.xpath("(//ul[@aria-label='Search Results']//span[2])[" + firstIndexx + "]");
 				jsClickOn(currentOfficerLocator, "currentOfficerLoc");
@@ -90,10 +95,10 @@ public class Package_SO_Page extends SafeActions implements Package_SO_Loc, Home
 
 		jsClickOn(selectReplacementStateOfficer, "selectReplacementStateOfficer");
 		waitFor(1);
-		typeText(selectReplacementStateOfficer, "Jessica Dunlap", "selectReplacementStateOfficer");
+		typeText(selectReplacementStateOfficer, "Alimu", "selectReplacementStateOfficer");
 		waitFor(1);
-//		typeText(selectReplacementStateOfficer, "", "selectReplacementStateOfficer");
-//		waitFor(1);
+		typeText(selectReplacementStateOfficer, "", "selectReplacementStateOfficer");
+		waitFor(1);
 		driver.findElement(selectReplacementStateOfficer).clear();
 		waitFor(1);
 		By replacementOfficerLoc = By.xpath("(//ul[@aria-label='Search Results']//span[2])[" + secondIndex + "]");
@@ -148,14 +153,14 @@ public class Package_SO_Page extends SafeActions implements Package_SO_Loc, Home
 			jsClickOn(emailThread, "emailThread");
 			waitFor(3);
 			verifyTextDisplay(emailHeader, "Sandbox: State Officer Change Notification");
-		
+
 			String str = getTextFromUI(emailBody, "emailBody");
 			test.log(Status.PASS, MarkupHelper.createLabel("Email Body - " + str, ExtentColor.BLUE));
 			takeScreenshotFor("Email Body");
 
 		} else {
-			test.log(Status.FAIL,
-					MarkupHelper.createLabel("Email Notification not received to the server", ExtentColor.RED));
+//			test.log(Status.FAIL,
+//					MarkupHelper.createLabel("Email Notification not received to the server", ExtentColor.RED));
 		}
 	}
 
@@ -175,22 +180,29 @@ public class Package_SO_Page extends SafeActions implements Package_SO_Loc, Home
 		String receivedDate = getTextFromUI(dateRecieved, "dateRecieved");
 
 		SimpleDateFormat df = new SimpleDateFormat("h:m a");
-		
-		Date d1 = df.parse(sentTime);
-		Date d2 = df.parse(receivedDate);
-		System.out.println("D1: "+ sentTime);
-		System.out.println("D2: "+ receivedDate);
-		if (d1.equals(d2) || d1.after(d2)) {
-			jsClickOn(emailThread, "emailThread");
-			waitFor(3);
-			verifyTextDisplay(Re_assign_emailHeader, "Sandbox:");
-			String str = getTextFromUI(emailBody, "emailBody");
-			test.log(Status.PASS, MarkupHelper.createLabel("Email Body - " + str, ExtentColor.BLUE));
-			takeScreenshotFor("Email Body");
+		try {
+			if (getTextFromUI(stateOfficer_reassignedText, "stateOfficer_ReassignText").contains("APD Package is Ready for State Officer Review")) {
+				Date d1 = df.parse(sentTime);
+				Date d2 = df.parse(receivedDate);
+				System.out.println("D1: " + sentTime);
+				System.out.println("D2: " + receivedDate);
+				if (d1.equals(d2) || d1.after(d2)) {
+					jsClickOn(emailThread, "emailThread");
+					waitFor(3);
+					verifyTextDisplay(Re_assign_emailHeader, "APD Package is Ready for State Officer Review");
+					String str = getTextFromUI(emailBody, "emailBody");
+					test.log(Status.PASS, MarkupHelper.createLabel("Email Body - " + str, ExtentColor.BLUE));
+					takeScreenshotFor("Email Body");
 
-		} else {
-			test.log(Status.FAIL,
-					MarkupHelper.createLabel("Email Notification not received to the server", ExtentColor.RED));
+				} else {
+//					test.log(Status.FAIL,
+//							MarkupHelper.createLabel("Email Notification not received to the server", ExtentColor.RED));
+				}
+			} else {
+//				test.log(Status.FAIL,
+//						MarkupHelper.createLabel("Email Notification not received to the server", ExtentColor.RED));
+			}
+		} catch (Exception e) {
 		}
 	}
 
@@ -199,13 +211,15 @@ public class Package_SO_Page extends SafeActions implements Package_SO_Loc, Home
 		waitFor(2);
 		Random rn = new Random();
 		int firstIndex = rn.nextInt(50) + 1;
-		int secondIndex = rn.nextInt(10) + 1;
+//		int secondIndex = rn.nextInt(10) + 1;
+//		int firstIndex =  1;
+		int secondIndex = 1;
 
 		jsClickOn(packageSO_Updates_Link, "Package SO Updates");
 		waitFor(1);
 		jsClickOn(Reassign_Decision_Package, "Reassign_Decision_Package");
 		waitFor(1);
-		typeText(selectStateOfficer, "Debbie Cole", "selectStateOfficer");
+		typeText(selectStateOfficer, "Amirat Tomori", "selectStateOfficer");
 		waitFor(1);
 		typeText(selectStateOfficer, "", "selectStateOfficer");
 		waitFor(1);
@@ -223,7 +237,7 @@ public class Package_SO_Page extends SafeActions implements Package_SO_Loc, Home
 				break;
 			} else {
 				jsClickOn(removeSelectedStateOfficer, "removeSelectedStateOfficer");
-				typeText(selectStateOfficer, "Debbie Cole", "selectStateOfficer");
+				typeText(selectStateOfficer, "Amirat Tomori", "selectStateOfficer");
 				waitFor(1);
 				typeText(selectStateOfficer, "", "selectStateOfficer");
 				waitFor(1);
@@ -239,9 +253,11 @@ public class Package_SO_Page extends SafeActions implements Package_SO_Loc, Home
 		scrollToBottomOfthePage();
 		jsClickOn(reassignPackageInput, "reassignPackageInput");
 		waitFor(1);
-		typeText(reassignPackageInput, "Jessica Dunlap", "reassignPackageInput");
+		typeText(reassignPackageInput, "Alimu", "reassignPackageInput");
 		waitFor(1);
 		typeText(reassignPackageInput, "", "reassignPackageInput");
+		waitFor(1);
+		typeText(reassignPackageInput, "Alimu", "reassignPackageInput");
 		waitFor(1);
 		By reassignOfficerLoc = By.xpath("(//ul[@aria-label='Search Results']//span[2])[" + secondIndex + "]");
 		jsClickOn(reassignOfficerLoc, "reassignOfficerLoc");

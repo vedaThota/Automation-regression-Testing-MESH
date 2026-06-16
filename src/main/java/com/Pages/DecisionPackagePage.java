@@ -24,7 +24,7 @@ import com.utility.SafeActions;
 
 public class DecisionPackagePage extends SafeActions implements DecisionPackage_Loc {
 
-	int packageCreationDuration = 0;
+	int packageCreationDuration = -1;
 
 	public void validateMandatoryFieldsErrorMessages() {
 		waitFor(3);
@@ -435,7 +435,7 @@ public class DecisionPackagePage extends SafeActions implements DecisionPackage_
 		try {
 			By leadPackage2 = By.xpath("//a[contains(@title, '" + decisionPackageNameText + "')]");
 			if (driver.findElement(leadPackage2).isDisplayed()) {
-				jsClickOn(leadPackage2, "leadPackage");
+				jsClickOn(leadPackage2, "leadPackage2");
 				waitFor(5);
 			}
 		} catch (Exception e) {
@@ -444,6 +444,7 @@ public class DecisionPackagePage extends SafeActions implements DecisionPackage_
 	}
 
 	public void performBeginReview() {
+		
 		jsClickOn(beginReview, "beginReview");
 		waitFor(5);
 		try {
@@ -453,6 +454,56 @@ public class DecisionPackagePage extends SafeActions implements DecisionPackage_
 		}
 		verifyTextDisplay(moveToFMReviewer, "Move to FM Reviewer");
 		takeScreenshotFor("DD successfully started review");
+	}
+	
+	public void verifyDeputy_Director_Review_Status() {
+		waitFor(5);
+		verifyTextDisplay(Package_Status, "Deputy Director Review");
+		verifyTextDisplay(Sub_Status, "In Review");
+		takeScreenshotFor("Decission Package Status & Sub Status after Deputy Director login");
+	}
+	
+	public void perform_ReReview_By_StateOfficer() {
+		jsClickOn(Return_To_Deputy_Director, "Return_To_Deputy_Director");
+		waitFor(3);
+		typeText(comments_Textbox, "Test", "comments_Textbox");
+		jsClickOn(Submit_Button, "Submit_Button");
+		waitFor(5);
+		scrollToTopofThePage();
+		verifyTextDisplay(Package_Status, "Deputy Director Review");
+		verifyTextDisplay(Sub_Status, "Pending Review");
+		takeScreenshotFor("Decission Package Status & Sub-status when Return_To_Deputy_Director");
+	}
+	
+	public void perform_ReReview_By_StateOfficer_When_Returned_From_FM_Reviewer() {
+		jsClickOn(ReturnToFM_Reviewer, "ReturnToFM_Reviewer");
+		waitFor(3);
+		typeText(comments_Textbox, "Test", "comments_Textbox");
+		jsClickOn(Submit_Button, "Submit_Button");
+		waitFor(5);
+		verifyTextDisplay(Package_Status, "FM Review");
+		verifyTextDisplay(Sub_Status, "Pending Review");
+		takeScreenshotFor("Decission Package Status & Sub-status when ReturnToFM_Reviewer");
+	}
+	
+	public void verify_FM_Review_Status() {
+		waitFor(5);
+		verifyTextDisplay(Package_Status, "FM Review");
+		verifyTextDisplay(Sub_Status, "In Review");
+		takeScreenshotFor("Decission Package Status & Sub Status after FM_Reviewer login");
+	}
+	
+	public void returnToState_Officer_Verify_SubStatus(String str) {
+		jsClickOn(ReturnToStateOfficer, "ReturnToStateOfficer");
+		waitFor(1);
+		typeText(comments_Textbox, "Test", "comments_Textbox");
+		jsClickOn(Next_Button, "Next_Button");
+		waitFor(5);
+		scrollToTopofThePage();
+		waitFor(1);
+		verifyTextDisplay(Sub_Status, "Waiting on State Officer Response");
+		verifyTextDisplay(DD_to_SO_Alert_Message, "Package has been returned to and is being reviewed by the State Officer");
+		takeScreenshotFor("Waiting on State Officer Response for "+str+" Comments");
 	}
 
 	public void performBeginReview_FMReview() {

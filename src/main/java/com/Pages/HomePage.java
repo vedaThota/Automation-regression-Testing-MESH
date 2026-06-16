@@ -15,13 +15,16 @@ public class HomePage extends SafeActions implements HomePage_Loc {
 	// Ops user navigation to Decision package screen
 	public void navigateTo_OpsTeam_DecisionPackage_Screen(String userType) {
 		// Below has been scripted to navigated to All users screen
-
+		
+		driver.navigate().refresh();
+		waitFor(5);
 		jsClickOn(setUpIcon, "setUpIcon");
 		takeScreenshotFor("Set Up Menu");
 		waitFor(3);
 		jsClickOn(setUpLink, "setUpLink");
 		waitFor(3);
 		switchToWindowByIndex(1);
+		waitFor(1);
 		jsClickOn(userSideMenu, "userSideMenu");
 		jsClickOn(userLink, "userLink");
 		waitFor(1);
@@ -139,7 +142,7 @@ public class HomePage extends SafeActions implements HomePage_Loc {
 
 	}
 
-	public void navigateTo_Director_Screen() {
+	public void navigateTo_Director_Screen(int index) {
 		// Below has been scripted to navigated to All users screen
 		waitFor(8);
 		jsClickOn(setUpIcon, "setUpIcon");
@@ -148,7 +151,7 @@ public class HomePage extends SafeActions implements HomePage_Loc {
 		waitFor(3);
 		jsClickOn(setUpLink, "setUpLink");
 		waitFor(5);
-		switchToWindowByIndex(2);
+		switchToWindowByIndex(index);
 		jsClickOn(userSideMenu, "userSideMenu");
 		jsClickOn(userLink, "userLink");
 		waitFor(1);
