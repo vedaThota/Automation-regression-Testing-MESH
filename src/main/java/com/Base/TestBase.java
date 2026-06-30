@@ -52,7 +52,10 @@ public class TestBase {
 	public static ExtentTest test;
 	public static WebDriverWait wait;
 
+
+	
 	public static final By userName = By.xpath("//label[contains(text(), 'Username')]/..//input");
+	public static final By NextTo_PWD = By.xpath("//*[@value='Log In to Sandbox']");
 	public static final By password = By.xpath("//label[contains(text(), 'Password')]/following-sibling::input");
 	public static final By loginButton = By.xpath("//*[@value='Log In to Sandbox']");
 	public static final By appLauncher = By.xpath("(//*[@title='App Launcher'])[last()]");
@@ -359,8 +362,9 @@ public class TestBase {
 
 		try {
 			sendTextTo(userName, USER_NAME, "USER_NAME");
+			javaScriptClickOn(NextTo_PWD, "NextTo_PWD");
 			sendTextTo(password, PASSWORD, "PASSWORD");
-			javaScriptClickOn(loginButton, "Login button");
+			javaScriptClickOn(loginButton, "loginButton");
 
 		} catch (Exception e) {
 			e.printStackTrace();
