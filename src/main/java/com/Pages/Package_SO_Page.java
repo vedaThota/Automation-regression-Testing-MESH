@@ -46,6 +46,7 @@ public class Package_SO_Page extends SafeActions implements Package_SO_Loc, Home
 	}
 
 	static String replaced_State_Officer = "";
+
 	public void verifyStateOfficerReplacement() {
 		Random rn = new Random();
 		int firstIndex = rn.nextInt(50) + 1;
@@ -60,8 +61,9 @@ public class Package_SO_Page extends SafeActions implements Package_SO_Loc, Home
 		typeText(selectCurrentStateOfficer, "Alimu", "selectCurrentStateOfficer");
 		waitFor(1);
 		typeText(selectCurrentStateOfficer, "", "selectCurrentStateOfficer");
-		waitFor(1);
-		By currentOfficerLoc = By.xpath("(//ul[@aria-label='Search Results']//span[2]/span)[" + firstIndex + "]");
+		waitFor(5);
+		int searchResultCount = driver.findElements(By.xpath("//ul[@aria-label='Search Results']//span[2]/span")).size() - 1;
+		By currentOfficerLoc = By.xpath("(//ul[@aria-label='Search Results']//span[2]/span)[" + rn.nextInt(searchResultCount) + "]");
 		replaced_State_Officer = getTextFromUI(currentOfficerLoc, "currentOfficerLoc");
 		jsClickOn(currentOfficerLoc, "currentOfficerLoc");
 		jsClickOn(submitButton, "submitButton");
@@ -84,10 +86,10 @@ public class Package_SO_Page extends SafeActions implements Package_SO_Loc, Home
 				waitFor(1);
 				typeText(selectCurrentStateOfficer, "", "selectCurrentStateOfficer");
 				waitFor(1);
-				int firstIndexx = rn.nextInt(50) + 1;
+				int searchResultCountt = driver.findElements(By.xpath("//ul[@aria-label='Search Results']//span[2]/span")).size() - 1;
 //				int firstIndexx =  1;
 				By currentOfficerLocator = By
-						.xpath("(//ul[@aria-label='Search Results']//span[2])[" + firstIndexx + "]");
+						.xpath("(//ul[@aria-label='Search Results']//span[2])[" + rn.nextInt(searchResultCountt) + "]");
 				jsClickOn(currentOfficerLocator, "currentOfficerLoc");
 				waitFor(1);
 			}
@@ -138,7 +140,7 @@ public class Package_SO_Page extends SafeActions implements Package_SO_Loc, Home
 		waitFor(10);
 		typeText(emailAddressTextField, "pghosh@index-analytics.com", "emailAddressTextField");
 		jsClickOn(continueButton, "continueButton");
-		typeText(passwordTextField, "Pass0110!@", "passwordTextField");
+		typeText(passwordTextField, "Pass2288!@", "passwordTextField");
 		jsClickOn(loginButtonEmail, "loginButtonEmail");
 		waitFor(5);
 		takeScreenshotFor("Email notification");
@@ -181,7 +183,8 @@ public class Package_SO_Page extends SafeActions implements Package_SO_Loc, Home
 
 		SimpleDateFormat df = new SimpleDateFormat("h:m a");
 		try {
-			if (getTextFromUI(stateOfficer_reassignedText, "stateOfficer_ReassignText").contains("APD Package is Ready for State Officer Review")) {
+			if (getTextFromUI(stateOfficer_reassignedText, "stateOfficer_ReassignText")
+					.contains("A APD, Contract Package is Ready for State Officer Review")) {
 				Date d1 = df.parse(sentTime);
 				Date d2 = df.parse(receivedDate);
 				System.out.println("D1: " + sentTime);
@@ -189,7 +192,7 @@ public class Package_SO_Page extends SafeActions implements Package_SO_Loc, Home
 				if (d1.equals(d2) || d1.after(d2)) {
 					jsClickOn(emailThread, "emailThread");
 					waitFor(3);
-					verifyTextDisplay(Re_assign_emailHeader, "APD Package is Ready for State Officer Review");
+					verifyTextDisplay(Re_assign_emailHeader, "A APD, Contract Package is Ready for State Officer Review");
 					String str = getTextFromUI(emailBody, "emailBody");
 					test.log(Status.PASS, MarkupHelper.createLabel("Email Body - " + str, ExtentColor.BLUE));
 					takeScreenshotFor("Email Body");
@@ -222,8 +225,9 @@ public class Package_SO_Page extends SafeActions implements Package_SO_Loc, Home
 		typeText(selectStateOfficer, "Amirat Tomori", "selectStateOfficer");
 		waitFor(1);
 		typeText(selectStateOfficer, "", "selectStateOfficer");
-		waitFor(1);
-		By currentOfficerLoc = By.xpath("(//ul[@aria-label='Search Results']//span[2])[" + firstIndex + "]");
+		waitFor(5);
+		int searchResultCount = driver.findElements(By.xpath("//ul[@aria-label='Search Results']//span[2]")).size() -1;
+		By currentOfficerLoc = By.xpath("(//ul[@aria-label='Search Results']//span[2])[" + rn.nextInt(searchResultCount) + "]");
 		jsClickOn(currentOfficerLoc, "currentOfficerLoc");
 		waitFor(2);
 		boolean checkBoxDiplay = false;
@@ -241,9 +245,9 @@ public class Package_SO_Page extends SafeActions implements Package_SO_Loc, Home
 				waitFor(1);
 				typeText(selectStateOfficer, "", "selectStateOfficer");
 				waitFor(1);
-				int firstIndexx = rn.nextInt(50) + 1;
+				int searchResultCountt = driver.findElements(By.xpath("//ul[@aria-label='Search Results']//span[2]")).size() -1;
 				By currentOfficerLocator = By
-						.xpath("(//ul[@aria-label='Search Results']//span[2])[" + firstIndexx + "]");
+						.xpath("(//ul[@aria-label='Search Results']//span[2])[" + rn.nextInt(searchResultCountt) + "]");
 				jsClickOn(currentOfficerLocator, "currentOfficerLocator");
 				waitFor(2);
 			}
@@ -257,9 +261,9 @@ public class Package_SO_Page extends SafeActions implements Package_SO_Loc, Home
 		waitFor(1);
 		typeText(reassignPackageInput, "", "reassignPackageInput");
 		waitFor(1);
-		typeText(reassignPackageInput, "Alimu", "reassignPackageInput");
-		waitFor(1);
-		By reassignOfficerLoc = By.xpath("(//ul[@aria-label='Search Results']//span[2])[" + secondIndex + "]");
+		typeText(reassignPackageInput, "Anil", "reassignPackageInput");
+		waitFor(5);
+		By reassignOfficerLoc = By.xpath("//ul[@aria-label='Search Results']//span[2]");
 		jsClickOn(reassignOfficerLoc, "reassignOfficerLoc");
 		waitFor(2);
 		clickOn(submitButton, "submitButton");
