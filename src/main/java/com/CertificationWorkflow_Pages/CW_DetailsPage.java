@@ -164,6 +164,7 @@ public class CW_DetailsPage extends SafeActions implements CW_DetailsPage_Loc {
 			verifyTextDisplay(emailHeader, "Sandbox: Certification_Package Package Has Been Withdrawn");
 
 			String str = getTextFromUI(emailBody, "emailBody");
+			
 			test.log(Status.PASS, MarkupHelper.createLabel("Email Body - " + str, ExtentColor.BLUE));
 			takeScreenshotFor("Email Body");
 

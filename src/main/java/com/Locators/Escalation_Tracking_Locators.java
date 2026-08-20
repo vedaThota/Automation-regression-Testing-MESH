@@ -62,7 +62,7 @@ public interface Escalation_Tracking_Locators {
 	public static By leadershipAssignedOption = By
 			.xpath("//*[text()='Leadership Assigned']/following::ul/li/lightning-base-combobox-item");
 	public static By LeadershipReview_StageSelection = By.xpath("//a[@title='Leadership Review']");
-	public static By editLeadershipDisposition = By.xpath("//button[@title='Edit Leadership Disposition']");
+	public static By editLeadershipDisposition = By.xpath("(//button[@title='Edit Leadership Disposition'])[last()]");
 
 	public static By leadershipDsipositionDropdown = By
 			.xpath("//*[text()='Leadership Disposition']/following::button[1]");
@@ -79,12 +79,13 @@ public interface Escalation_Tracking_Locators {
 
 	public static By monitoringAwarenessStatus = By.xpath("//a[@title='Monitoring']");
 	public static By resolved_Not_Approvable = By.xpath("//*[@title='Resolved - Not Approvable']");
-	public static By resolvedStatus = By.xpath("//*[@title='Resolved']");
+	public static By resolvedStatus = By.xpath("(//*[@title='Resolved'])[last()]");
 	public static By resolved_DisApproved = By.xpath("//*[@title='Resolved - Disapproved']");
 	public static By awaiting_FollowUp = By.xpath("//*[@title='Awaiting Follow-Up']");
 	public static By noActionNeeded = By.xpath("//*[@title='No Action Needed']");
 	public static By Other_Option = By.xpath("//*[@title='Other']");
 	public static By completedThisField = By.xpath("//*[text()='Complete this field.']");
+	
 	public static By otherDisposition_Reason = By.xpath("//*[text()='Other Disposition']/following::textarea");
 
 	public static By beginReview = By.xpath("//button[text()='Begin Review']");
@@ -112,7 +113,7 @@ public interface Escalation_Tracking_Locators {
 	public static By passwordTextField = By.xpath("//label[text()='Password']/following::input");
 	public static By loginButtonEmail = By.xpath("//button[text()='Log in']");
 	public static By dateRecieved = By.xpath("//div[@data-testid='message-list']//a[2]//div[3]");
-	public static By emailBody = By.xpath("//div[@id='mailcontainer']");
+	public static By emailBody = By.xpath("//div[@data-testid='email-html-viewer']");
 
 	public static By Reassign_Decision_Package = By.xpath("//button[text()='Reassign Decision Package']");
 	public static By selectStateOfficer = By.xpath("//label[text()='Select State Officer']/following::input");
@@ -121,10 +122,15 @@ public interface Escalation_Tracking_Locators {
 			.xpath("//*[text()='Reassign 1 package(s) to New State Officer']/following::input");
 	public static By reassignSuccessMessage = By.xpath("//*[text()='Decision packages reassigned successfully.']");
 	public static By emailThread = By.xpath("//div[@data-testid='message-list']//a[2]");
+	public static By emailThread_Triage = By.xpath("(//div[@data-testid='message-list']//a[2])[2]");
 	public static By emailHeader = By.xpath("//h3[text()='Sandbox: A New Escalation Item Has Been Created and Ready for Triage']");
 	public static By emailHeader2 = By.xpath("//h3[text()='Sandbox: An Escalation Item is Ready for your Review']");
 	public static By emailHeader3 = By.xpath("//h3[text()='Sandbox: Escalation Item Has Been Returned']");
 	public static By emailHeader4 = By.xpath("//h3[text()='Sandbox: Escalation Item Has Been Returned to Director']");
+	public static By emailHeader5 = By.xpath("//h3[text()='Sandbox: Escalation Item Has Been Reassigned to you']");
+	public static By emailHeader6 = By.xpath("//h3[text()='Sandbox: Escalation Item Has Been Closed']");
+	public static By email_Link = By.xpath("//h3[text()='Sandbox: Escalation Item Has Been Resolved']");
+	public static By Assign_Email_Link = By.xpath("//h3[text()='Sandbox: An Escalation Item is Ready for your Review']");
 	
 	public static By editTitle = By.xpath("//button[@title='Edit Title']");
 	public static By issueStatus = By.xpath("//*[text()='Issue Status']/following::button[1]");
@@ -161,6 +167,23 @@ public interface Escalation_Tracking_Locators {
 	public static By returnToDirector = By.xpath("//button[text()='Return to Director']");
 	public static By commentsTextField = By.xpath("//label/following::textarea");
 //	public static By submitButton = By.xpath("//button[text()='Submit']");
+	public static By clearLeaderShipAssigned = By.xpath("//button[@title='Clear Leadership Assigned Selection']");
+	public static By leadership_Input = By.xpath("//label[text()='Leadership Assigned']/following::input[1]");
+	public static By leadership_Assigned_Option = By.xpath("//label[text()='Leadership Assigned']/following::input[1]/following::lightning-base-combobox-item[2]/span[2]");
+	public static By end_Submission = By.xpath("//button[text()='End Submission']");
+	public static By endsubmit_Dropdown = By.xpath("//select[@name='Close_Reason']");
+	public static By Next_button = By.xpath("//button[text()='Next']");
+	public static By closeReason_Withdrawn = By.xpath("//select[@name='Close_Reason']/option[text()='Withdrawn']");
+	public static By closeReason_Other = By.xpath("//select[@name='Close_Reason']/option[text()='Other']");
+	public static By endSub_Other_Reason_Input = By.xpath("//*[text()='End Submission Comments']/following::lightning-textarea//textarea");
+	public static By goBack_Button = By.xpath("//*[text()='Go back']");
+	public static By end_Submit_Comments = By.xpath("//*[contains(text(), 'End Submission Comments')]");
+	public static By refreshButton = By.xpath("//*[text()='Refresh']");
+	public static By issueStatus_ = By.xpath("//*[text()='Issue Status']/following::lightning-formatted-text");
+	public static By issue_Sub_Status_ = By.xpath("//*[text()='Issue Sub-Status']/following::lightning-formatted-text");
 //	public static By underRevieww = By.xpath("dsdfdsfdsf");
+	
+	public static final By uploadFiles = By.xpath("(//*[text()='Upload Files']/lightning-primitive-icon)[last()]");
+	public static final By done_Button = By.xpath("//*[text()='Done']/..");
 
 }

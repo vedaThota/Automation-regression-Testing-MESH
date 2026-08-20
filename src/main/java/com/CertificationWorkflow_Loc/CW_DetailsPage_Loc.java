@@ -53,7 +53,7 @@ public interface CW_DetailsPage_Loc {
 	public static By loginButtonEmail = By.xpath("//button[text()='Log in']");
 //	public static By dateRecieved = By.xpath("//tbody/tr/td[2]/div/div[2]/p");
 	public static By dateRecieved = By.xpath("//div[@data-testid='message-list']//a[2]//div[3]");
-	public static By emailBody = By.xpath("//div[@id='mailcontainer']");
+	public static By emailBody = By.xpath("//div[@data-testid='email-html-viewer']");
 	
 	
 	public static By other_Reason_Without_Comments = By.xpath("//*[text()='Comments are required when \"Other\" is selected as the Reason for Withdraw.']");

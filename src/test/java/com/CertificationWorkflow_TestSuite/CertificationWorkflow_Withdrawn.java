@@ -22,10 +22,10 @@ public class CertificationWorkflow_Withdrawn extends TestBase {
 		CW_Details_Page.jsClickOn(CW_Details_Page.CT_Tab, "CT_Tab");
 		waitFor(3);
 		CW_Creation_Page.verifying_Mandatory_Fields_CW_Creation_Form();
-		CW_Creation_Page.create_Certification_Workflow(15);
+		CW_Creation_Page.create_Certification_Workflow(5);
 		CW_Details_Page.verify_Generate_template_Activity();
 		CW_Details_Page.verify_SO_Review_Activity();
-		CW_Details_Page.verify_Withdrawn_Functionality(15);
+		CW_Details_Page.verify_Withdrawn_Functionality(5);
 		CW_Details_Page.validateEmailNotification("Required");
 		
 	}
@@ -37,7 +37,7 @@ public class CertificationWorkflow_Withdrawn extends TestBase {
 		CW_Details_Page.jsClickOn(CW_Details_Page.CT_Tab, "CT_Tab");
 		waitFor(3);
 		CW_Creation_Page.verifying_Mandatory_Fields_CW_Creation_Form();
-		CW_Creation_Page.create_Certification_Workflow(16);
+		CW_Creation_Page.create_Certification_Workflow(6);
 		CW_Details_Page.verify_Generate_template_Activity();
 		CW_Details_Page.verify_SO_Review_Activity();
 		homePage.logoutAs_currentUser();
@@ -50,7 +50,7 @@ public class CertificationWorkflow_Withdrawn extends TestBase {
 		homePage.navigateTo_CW();
 		CW_Details_Page.verify_SO_Begin_review();
 		
-		CW_Details_Page.verify_Withdrawn_Functionality_Other_Reason(16);
+		CW_Details_Page.verify_Withdrawn_Functionality_Other_Reason(6);
 		CW_Details_Page.validateEmailNotification("No Log in Require");
 		
 	}
