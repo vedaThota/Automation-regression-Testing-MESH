@@ -163,8 +163,10 @@ public class Escalation_Tracking_PO extends SafeActions implements Escalation_Tr
 		driver.findElement(submitButton).click();
 		waitFor(1);
 		sentTime = fetchWeekdayDate("h:m a", 0);
+		
 		verifyTextDisplay(escalationTrackerCreation_SuccessMsg,
 				"The Escalation Tracking record has been created successfully");
+		waitFor(20);
 		takeScreenshotFor("Escalation Tracking Creation");
 		waitFor(5);
 		takeScreenshotFor("Escalation Tracking Creation first half of the screen");
@@ -229,12 +231,12 @@ public class Escalation_Tracking_PO extends SafeActions implements Escalation_Tr
 
 	public void update_Leadership_To_second_Person() {
 		String currentURL = driver.getCurrentUrl();
-
+		waitFor(5);
 		scrollToBottomOfthePage();
 		jsClickOn(editLeaderShipAssigned, "editLeaderShipAssigned");
 		waitFor(1);
 		jsClickOn(clearLeaderShipAssigned, "clearLeaderShipAssigned");
-		typeText(leadership_Input, "Todd", "leadership_Input");
+		typeText(leadership_Input, "Alimu", "leadership_Input");
 		waitFor(1);
 		jsClickOn(leadershipAssignedOption, "leadershipAssignedOption");
 		jsClickOn(save_Button, "Save button");
@@ -254,9 +256,9 @@ public class Escalation_Tracking_PO extends SafeActions implements Escalation_Tr
 		sentTime = fetchWeekdayDate("h:m a", 0);
 		scrollToTopofThePage();
 
-		waitFor(2);
 		verifyTextDisplay(return_Esc_AlertMessage,
 				"Escalation Tracking item has been returned and is being reviewed by the creator");
+		waitFor(20);
 		takeScreenshotFor("Escalation Tracking item has been returned");
 		currentURL = driver.getCurrentUrl();
 	}
@@ -467,7 +469,7 @@ public class Escalation_Tracking_PO extends SafeActions implements Escalation_Tr
 		if (loginRequire.contains("Login Require")) {
 			typeText(emailAddressTextField, "pghosh@index-analytics.com", "emailAddressTextField");
 			jsClickOn(continueButton, "continueButton");
-			typeText(passwordTextField, "Pass0110!@", "passwordTextField");
+			typeText(passwordTextField, "Pass2288!@", "passwordTextField");
 			jsClickOn(loginButtonEmail, "loginButtonEmail");
 			waitFor(3);
 		}
@@ -478,10 +480,10 @@ public class Escalation_Tracking_PO extends SafeActions implements Escalation_Tr
 
 		Date d1 = df.parse(sentTime);
 		Date d2 = df.parse(receivedDate);
-		waitFor(5);
+		waitFor(20);
 		System.out.println("sentTime: " + sentTime);
 		System.out.println("receivedDate: " + receivedDate);
-		if (d1.equals(d2) || d1.after(d2)) {
+		if (d1.equals(d2) || d1.before(d2)) {
 
 			jsClickOn(emailThread_Triage, "emailThread_Triage");
 			waitFor(3);
@@ -509,7 +511,7 @@ public class Escalation_Tracking_PO extends SafeActions implements Escalation_Tr
 		if (loginRequire.contains("Login Require")) {
 			typeText(emailAddressTextField, "pghosh@index-analytics.com", "emailAddressTextField");
 			jsClickOn(continueButton, "continueButton");
-			typeText(passwordTextField, "Pass0110!@", "passwordTextField");
+			typeText(passwordTextField, "Pass2288!@", "passwordTextField");
 			jsClickOn(loginButtonEmail, "loginButtonEmail");
 			waitFor(3);
 		}
@@ -520,10 +522,10 @@ public class Escalation_Tracking_PO extends SafeActions implements Escalation_Tr
 
 		Date d1 = df.parse(sentTime);
 		Date d2 = df.parse(receivedDate);
-		waitFor(5);
+		waitFor(20);
 		System.out.println("sentTime: " + sentTime);
 		System.out.println("receivedDate: " + receivedDate);
-		if (d1.equals(d2) || d1.after(d2)) {
+		if (d1.equals(d2) || d1.before(d2)) {
 
 			jsClickOn(emailThread, "emailThread");
 			waitFor(3);
@@ -553,7 +555,7 @@ public class Escalation_Tracking_PO extends SafeActions implements Escalation_Tr
 		if (loginRequire.contains("Login Require")) {
 			typeText(emailAddressTextField, "pghosh@index-analytics.com", "emailAddressTextField");
 			jsClickOn(continueButton, "continueButton");
-			typeText(passwordTextField, "Pass0110!@", "passwordTextField");
+			typeText(passwordTextField, "Pass2288!@", "passwordTextField");
 			jsClickOn(loginButtonEmail, "loginButtonEmail");
 			waitFor(3);
 		}
@@ -564,10 +566,11 @@ public class Escalation_Tracking_PO extends SafeActions implements Escalation_Tr
 
 		Date d1 = df.parse(sentTime);
 		Date d2 = df.parse(receivedDate);
-		waitFor(5);
+		waitFor(2);
 		System.out.println("sentTime: " + sentTime);
 		System.out.println("receivedDate: " + receivedDate);
-		if (d1.equals(d2) || d2.after(d1)) {
+		// below code commented on 9th September
+		if (d1.equals(d2) || d1.before(d2)) {
 
 			jsClickOn(emailThread, "emailThread");
 			waitFor(3);
@@ -595,7 +598,7 @@ public class Escalation_Tracking_PO extends SafeActions implements Escalation_Tr
 		if (loginRequire.contains("Login Require")) {
 			typeText(emailAddressTextField, "pghosh@index-analytics.com", "emailAddressTextField");
 			jsClickOn(continueButton, "continueButton");
-			typeText(passwordTextField, "Pass0110!@", "passwordTextField");
+			typeText(passwordTextField, "Pass2288!@", "passwordTextField");
 			jsClickOn(loginButtonEmail, "loginButtonEmail");
 			waitFor(3);
 		}
@@ -607,10 +610,10 @@ public class Escalation_Tracking_PO extends SafeActions implements Escalation_Tr
 
 		Date d1 = df.parse(sentTime);
 		Date d2 = df.parse(receivedDate);
-		waitFor(5);
+		waitFor(2);
 		System.out.println("sentTime: " + sentTime);
 		System.out.println("receivedDate: " + receivedDate);
-		if (d1.equals(d2) || d2.after(d1)) {
+		if (d1.equals(d2) || d1.before(d2)) {
 
 			jsClickOn(emailThread, "emailThread");
 			waitFor(3);
@@ -639,7 +642,7 @@ public class Escalation_Tracking_PO extends SafeActions implements Escalation_Tr
 		jsClickOn(save_Button, "save_Button");
 		waitFor(1);
 		sentTime = fetchWeekdayDate("h:m a", 0);
-		waitFor(2);
+		waitFor(20);
 		scrollToTopofThePage();
 		waitFor(2);
 
@@ -666,7 +669,7 @@ public class Escalation_Tracking_PO extends SafeActions implements Escalation_Tr
 
 		Date d1 = df.parse(sentTime);
 		Date d2 = df.parse(receivedDate);
-		if (d1.equals(d2) || d2.after(d1)) {
+		if (d1.equals(d2) || d1.before(d2)) {
 
 			jsClickOn(emailThread, "emailThread");
 			waitFor(3);
@@ -894,7 +897,7 @@ public class Escalation_Tracking_PO extends SafeActions implements Escalation_Tr
 	public void beginReview_VerifyEmail() throws ParseException {
 		verifyReturnEscalationItem();
 		sentTime = fetchWeekdayDate("h:m a", 0);
-		waitFor(8);
+		waitFor(20);
 
 		if (prop.getProperty("url").contains("uat")) {
 			driver.get("https://mailosaur.com/app/servers/tocbb3xf/messages/inbox");
@@ -909,7 +912,7 @@ public class Escalation_Tracking_PO extends SafeActions implements Escalation_Tr
 
 		Date d1 = df.parse(sentTime);
 		Date d2 = df.parse(receivedDate);
-		if (d1.equals(d2) || d1.after(d2)) {
+		if (d1.equals(d2) || d1.before(d2)) {
 
 			jsClickOn(emailThread, "emailThread");
 			waitFor(3);
@@ -933,7 +936,7 @@ public class Escalation_Tracking_PO extends SafeActions implements Escalation_Tr
 		jsClickOn(submitButton, "submitButton");
 		waitFor(5);
 		sentTime = fetchWeekdayDate("h:m a", 0);
-		waitFor(2);
+		waitFor(20);
 
 		if (prop.getProperty("url").contains("uat")) {
 			driver.get("https://mailosaur.com/app/servers/tocbb3xf/messages/inbox");
@@ -948,7 +951,7 @@ public class Escalation_Tracking_PO extends SafeActions implements Escalation_Tr
 
 		Date d1 = df.parse(sentTime);
 		Date d2 = df.parse(receivedDate);
-		if (d1.equals(d2) || d2.after(d1)) {
+		if (d1.equals(d2) || d1.before(d2)) {
 
 			jsClickOn(emailThread, "emailThread");
 			waitFor(3);
@@ -966,7 +969,7 @@ public class Escalation_Tracking_PO extends SafeActions implements Escalation_Tr
 	}
 
 	public void VerifyEmail_When_Director_move_Status_To_Resolved() throws ParseException {
-
+	
 		if (prop.getProperty("url").contains("uat")) {
 			driver.get("https://mailosaur.com/app/servers/tocbb3xf/messages/inbox");
 		} else {
@@ -975,37 +978,37 @@ public class Escalation_Tracking_PO extends SafeActions implements Escalation_Tr
 		waitFor(10);
 		takeScreenshotFor("Inbox of Email notification - when Escalation Item Has been Resolved");
 		String receivedDate = getTextFromUI(dateRecieved, "dateRecieved");
-
+	
 		SimpleDateFormat df = new SimpleDateFormat("h:m a");
-
+	
 		try {
 			if (driver.findElement(email_Link).isDisplayed()) {
 				Date d1 = df.parse(sentTime);
 				Date d2 = df.parse(receivedDate);
 				if (d1.equals(d2) || d2.after(d1)) {
-
+	
 					jsClickOn(emailThread, "emailThread");
 					waitFor(3);
 					verifyTextDisplay(emailHeader4, "Sandbox: Escalation Item has been resolved");
 					String str = getTextFromUI(emailBody, "emailBody");
 					test.log(Status.PASS, MarkupHelper.createLabel("Email Body - " + str, ExtentColor.BLUE));
 					takeScreenshotFor("Email Body - Escalation Item Has been Resolved");
-
+	
 				} else {
 					test.log(Status.FAIL,
 							MarkupHelper.createLabel("Email Notification not received to the server", ExtentColor.RED));
 				}
-
+	
 			} else {
 				test.log(Status.FAIL,
 						MarkupHelper.createLabel("Email Notification not received to the server", ExtentColor.RED));
 			}
-
+	
 		} catch (Exception e) {
 			test.log(Status.FAIL,
 					MarkupHelper.createLabel("Email Notification not received to the server", ExtentColor.RED));
 		}
-
+	
 		driver.get(currentURL);
 	}
 
@@ -1024,7 +1027,7 @@ public class Escalation_Tracking_PO extends SafeActions implements Escalation_Tr
 		jsClickOn(save_Button, "save_Button");
 		waitFor(2);
 		sentTime = fetchWeekdayDate("h:m a", 0);
-		waitFor(2);
+		waitFor(20);
 		scrollToTopofThePage();
 		takeScreenshotFor("Escalation moved to Resolved status");
 		String monitoringAwareness_Status = getAttribute(resolvedStatus, "aria-selected", "resolvedStatus");

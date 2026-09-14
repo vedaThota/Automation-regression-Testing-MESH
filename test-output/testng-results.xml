@@ -2,165 +2,172 @@
 <testng-results ignored="0" total="5" passed="5" failed="0" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2026-08-19T09:42:30 EDT" name="Default suite" finished-at="2026-08-19T09:47:19 EDT" duration-ms="289239">
+  <suite started-at="2026-09-11T16:35:10 EDT" name="Default suite" finished-at="2026-09-11T16:56:37 EDT" duration-ms="1286978">
     <groups>
+      <group name="Regression">
+        <method signature="CMS_FNS_DecisionPackages_Bundle_Cross_Role_Validation.DecisionPackage_TC_001_Verify_DecisionPackage_Creation_with_APD_as_SubmisionType()[pri:0, instance:com.Mesh_TestSuites.CMS_FNS_DecisionPackages_Bundle_Cross_Role_Validation@28701274]" name="DecisionPackage_TC_001_Verify_DecisionPackage_Creation_with_APD_as_SubmisionType" class="com.Mesh_TestSuites.CMS_FNS_DecisionPackages_Bundle_Cross_Role_Validation"/>
+        <method signature="CMS_FNS_DecisionPackages_Bundle_Cross_Role_Validation.DecisionPackage_TC_002_Verify_DecisionPackage_Creation_with_RFP_as_SubmisionType()[pri:0, instance:com.Mesh_TestSuites.CMS_FNS_DecisionPackages_Bundle_Cross_Role_Validation@28701274]" name="DecisionPackage_TC_002_Verify_DecisionPackage_Creation_with_RFP_as_SubmisionType" class="com.Mesh_TestSuites.CMS_FNS_DecisionPackages_Bundle_Cross_Role_Validation"/>
+        <method signature="CMS_FNS_DecisionPackages_Bundle_Cross_Role_Validation.DecisionPackage_TC_003_Verify_DecisionPackage_Creation_with_Contract_as_SubmisionType()[pri:0, instance:com.Mesh_TestSuites.CMS_FNS_DecisionPackages_Bundle_Cross_Role_Validation@28701274]" name="DecisionPackage_TC_003_Verify_DecisionPackage_Creation_with_Contract_as_SubmisionType" class="com.Mesh_TestSuites.CMS_FNS_DecisionPackages_Bundle_Cross_Role_Validation"/>
+        <method signature="CMS_FNS_DecisionPackages_Bundle_Cross_Role_Validation.DecisionPackage_TC_004_Verify_Adding_bundle_Packages()[pri:0, instance:com.Mesh_TestSuites.CMS_FNS_DecisionPackages_Bundle_Cross_Role_Validation@28701274]" name="DecisionPackage_TC_004_Verify_Adding_bundle_Packages" class="com.Mesh_TestSuites.CMS_FNS_DecisionPackages_Bundle_Cross_Role_Validation"/>
+        <method signature="CMS_FNS_DecisionPackages_Bundle_Cross_Role_Validation.DecisionPackage_TC_005_Verify_Package_Completion_Flow()[pri:0, instance:com.Mesh_TestSuites.CMS_FNS_DecisionPackages_Bundle_Cross_Role_Validation@28701274]" name="DecisionPackage_TC_005_Verify_Package_Completion_Flow" class="com.Mesh_TestSuites.CMS_FNS_DecisionPackages_Bundle_Cross_Role_Validation"/>
+      </group> <!-- Regression -->
     </groups>
-    <test started-at="2026-08-19T09:42:30 EDT" name="Default test" finished-at="2026-08-19T09:47:19 EDT" duration-ms="289239">
-      <class name="com.Mesh_TestSuites.Package_SO_Updates_Suite">
-        <test-method is-config="true" signature="beforetest(org.testng.ITestContext)[pri:0, instance:com.Mesh_TestSuites.Package_SO_Updates_Suite@28701274]" started-at="2026-08-19T09:42:30 EDT" name="beforetest" finished-at="2026-08-19T09:42:30 EDT" duration-ms="256" status="PASS">
+    <test started-at="2026-09-11T16:35:10 EDT" name="Default test" finished-at="2026-09-11T16:56:37 EDT" duration-ms="1286978">
+      <class name="com.Mesh_TestSuites.CMS_FNS_DecisionPackages_Bundle_Cross_Role_Validation">
+        <test-method is-config="true" signature="beforetest(org.testng.ITestContext)[pri:0, instance:com.Mesh_TestSuites.CMS_FNS_DecisionPackages_Bundle_Cross_Role_Validation@28701274]" started-at="2026-09-11T16:35:10 EDT" name="beforetest" finished-at="2026-09-11T16:35:11 EDT" duration-ms="229" status="PASS">
           <params>
             <param index="0">
               <value>
-                <![CDATA[org.testng.TestRunner@2a8f8555]]>
+                <![CDATA[org.testng.TestRunner@40a923e6]]>
               </value>
             </param>
           </params>
           <reporter-output>
           </reporter-output>
         </test-method> <!-- beforetest -->
-        <test-method is-config="true" signature="beforeClass()[pri:0, instance:com.Mesh_TestSuites.Package_SO_Updates_Suite@28701274]" started-at="2026-08-19T09:42:30 EDT" name="beforeClass" finished-at="2026-08-19T09:42:36 EDT" duration-ms="5264" status="PASS">
+        <test-method is-config="true" signature="beforeClass()[pri:0, instance:com.Mesh_TestSuites.CMS_FNS_DecisionPackages_Bundle_Cross_Role_Validation@28701274]" started-at="2026-09-11T16:35:11 EDT" name="beforeClass" finished-at="2026-09-11T16:35:15 EDT" duration-ms="4626" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- beforeClass -->
-        <test-method is-config="true" signature="beofreMethod(org.testng.ITestResult)[pri:0, instance:com.Mesh_TestSuites.Package_SO_Updates_Suite@28701274]" started-at="2026-08-19T09:42:36 EDT" name="beofreMethod" finished-at="2026-08-19T09:42:36 EDT" duration-ms="1" status="PASS">
+        <test-method is-config="true" signature="beofreMethod(org.testng.ITestResult)[pri:0, instance:com.Mesh_TestSuites.CMS_FNS_DecisionPackages_Bundle_Cross_Role_Validation@28701274]" started-at="2026-09-11T16:35:15 EDT" name="beofreMethod" finished-at="2026-09-11T16:35:15 EDT" duration-ms="1" status="PASS">
           <params>
             <param index="0">
               <value>
-                <![CDATA[[TestResult name={null} status=CREATED method=Package_SO_Updates_Suite.TC_001_Verify_Package_SO_Updates_Displays_Only_For_Admin_OPsTeam()[pri:0, instance:com.Mesh_TestSuites.Package_SO_Updates_Suite@28701274] output={null}]]]>
+                <![CDATA[[TestResult name={null} status=CREATED method=CMS_FNS_DecisionPackages_Bundle_Cross_Role_Validation.DecisionPackage_TC_001_Verify_DecisionPackage_Creation_with_APD_as_SubmisionType()[pri:0, instance:com.Mesh_TestSuites.CMS_FNS_DecisionPackages_Bundle_Cross_Role_Validation@28701274] output={null}]]]>
               </value>
             </param>
           </params>
           <reporter-output>
           </reporter-output>
         </test-method> <!-- beofreMethod -->
-        <test-method signature="TC_001_Verify_Package_SO_Updates_Displays_Only_For_Admin_OPsTeam()[pri:0, instance:com.Mesh_TestSuites.Package_SO_Updates_Suite@28701274]" started-at="2026-08-19T09:42:36 EDT" name="TC_001_Verify_Package_SO_Updates_Displays_Only_For_Admin_OPsTeam" finished-at="2026-08-19T09:45:21 EDT" duration-ms="165611" status="PASS">
+        <test-method signature="DecisionPackage_TC_001_Verify_DecisionPackage_Creation_with_APD_as_SubmisionType()[pri:0, instance:com.Mesh_TestSuites.CMS_FNS_DecisionPackages_Bundle_Cross_Role_Validation@28701274]" started-at="2026-09-11T16:35:15 EDT" name="DecisionPackage_TC_001_Verify_DecisionPackage_Creation_with_APD_as_SubmisionType" finished-at="2026-09-11T16:37:56 EDT" duration-ms="160524" status="PASS">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- TC_001_Verify_Package_SO_Updates_Displays_Only_For_Admin_OPsTeam -->
-        <test-method is-config="true" signature="afterMethod(org.testng.ITestResult)[pri:0, instance:com.Mesh_TestSuites.Package_SO_Updates_Suite@28701274]" started-at="2026-08-19T09:45:21 EDT" name="afterMethod" finished-at="2026-08-19T09:45:22 EDT" duration-ms="239" status="PASS">
+        </test-method> <!-- DecisionPackage_TC_001_Verify_DecisionPackage_Creation_with_APD_as_SubmisionType -->
+        <test-method is-config="true" signature="afterMethod(org.testng.ITestResult)[pri:0, instance:com.Mesh_TestSuites.CMS_FNS_DecisionPackages_Bundle_Cross_Role_Validation@28701274]" started-at="2026-09-11T16:37:56 EDT" name="afterMethod" finished-at="2026-09-11T16:37:56 EDT" duration-ms="179" status="PASS">
           <params>
             <param index="0">
               <value>
-                <![CDATA[[TestResult name=TC_001_Verify_Package_SO_Updates_Displays_Only_For_Admin_OPsTeam status=SUCCESS method=Package_SO_Updates_Suite.TC_001_Verify_Package_SO_Updates_Displays_Only_For_Admin_OPsTeam()[pri:0, instance:com.Mesh_TestSuites.Package_SO_Updates_Suite@28701274] output={null}]]]>
+                <![CDATA[[TestResult name=DecisionPackage_TC_001_Verify_DecisionPackage_Creation_with_APD_as_SubmisionType status=SUCCESS method=CMS_FNS_DecisionPackages_Bundle_Cross_Role_Validation.DecisionPackage_TC_001_Verify_DecisionPackage_Creation_with_APD_as_SubmisionType()[pri:0, instance:com.Mesh_TestSuites.CMS_FNS_DecisionPackages_Bundle_Cross_Role_Validation@28701274] output={null}]]]>
               </value>
             </param>
           </params>
           <reporter-output>
           </reporter-output>
         </test-method> <!-- afterMethod -->
-        <test-method signature="TC_002_Verify_Package_SO_Updates_StateOfficer_Replacement()[pri:0, instance:com.Mesh_TestSuites.Package_SO_Updates_Suite@28701274]" started-at="2026-08-19T09:45:22 EDT" name="TC_002_Verify_Package_SO_Updates_StateOfficer_Replacement" finished-at="2026-08-19T09:46:08 EDT" duration-ms="46779" status="PASS">
+        <test-method signature="DecisionPackage_TC_002_Verify_DecisionPackage_Creation_with_RFP_as_SubmisionType()[pri:0, instance:com.Mesh_TestSuites.CMS_FNS_DecisionPackages_Bundle_Cross_Role_Validation@28701274]" started-at="2026-09-11T16:37:56 EDT" name="DecisionPackage_TC_002_Verify_DecisionPackage_Creation_with_RFP_as_SubmisionType" finished-at="2026-09-11T16:39:40 EDT" duration-ms="103891" status="PASS">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- TC_002_Verify_Package_SO_Updates_StateOfficer_Replacement -->
-        <test-method is-config="true" signature="beofreMethod(org.testng.ITestResult)[pri:0, instance:com.Mesh_TestSuites.Package_SO_Updates_Suite@28701274]" started-at="2026-08-19T09:45:22 EDT" name="beofreMethod" finished-at="2026-08-19T09:45:22 EDT" duration-ms="0" status="PASS">
+        </test-method> <!-- DecisionPackage_TC_002_Verify_DecisionPackage_Creation_with_RFP_as_SubmisionType -->
+        <test-method is-config="true" signature="beofreMethod(org.testng.ITestResult)[pri:0, instance:com.Mesh_TestSuites.CMS_FNS_DecisionPackages_Bundle_Cross_Role_Validation@28701274]" started-at="2026-09-11T16:37:56 EDT" name="beofreMethod" finished-at="2026-09-11T16:37:56 EDT" duration-ms="0" status="PASS">
           <params>
             <param index="0">
               <value>
-                <![CDATA[[TestResult name={null} status=CREATED method=Package_SO_Updates_Suite.TC_002_Verify_Package_SO_Updates_StateOfficer_Replacement()[pri:0, instance:com.Mesh_TestSuites.Package_SO_Updates_Suite@28701274] output={null}]]]>
+                <![CDATA[[TestResult name={null} status=CREATED method=CMS_FNS_DecisionPackages_Bundle_Cross_Role_Validation.DecisionPackage_TC_002_Verify_DecisionPackage_Creation_with_RFP_as_SubmisionType()[pri:0, instance:com.Mesh_TestSuites.CMS_FNS_DecisionPackages_Bundle_Cross_Role_Validation@28701274] output={null}]]]>
               </value>
             </param>
           </params>
           <reporter-output>
           </reporter-output>
         </test-method> <!-- beofreMethod -->
-        <test-method is-config="true" signature="afterMethod(org.testng.ITestResult)[pri:0, instance:com.Mesh_TestSuites.Package_SO_Updates_Suite@28701274]" started-at="2026-08-19T09:46:08 EDT" name="afterMethod" finished-at="2026-08-19T09:46:09 EDT" duration-ms="220" status="PASS">
+        <test-method is-config="true" signature="afterMethod(org.testng.ITestResult)[pri:0, instance:com.Mesh_TestSuites.CMS_FNS_DecisionPackages_Bundle_Cross_Role_Validation@28701274]" started-at="2026-09-11T16:39:40 EDT" name="afterMethod" finished-at="2026-09-11T16:39:40 EDT" duration-ms="152" status="PASS">
           <params>
             <param index="0">
               <value>
-                <![CDATA[[TestResult name=TC_002_Verify_Package_SO_Updates_StateOfficer_Replacement status=SUCCESS method=Package_SO_Updates_Suite.TC_002_Verify_Package_SO_Updates_StateOfficer_Replacement()[pri:0, instance:com.Mesh_TestSuites.Package_SO_Updates_Suite@28701274] output={null}]]]>
+                <![CDATA[[TestResult name=DecisionPackage_TC_002_Verify_DecisionPackage_Creation_with_RFP_as_SubmisionType status=SUCCESS method=CMS_FNS_DecisionPackages_Bundle_Cross_Role_Validation.DecisionPackage_TC_002_Verify_DecisionPackage_Creation_with_RFP_as_SubmisionType()[pri:0, instance:com.Mesh_TestSuites.CMS_FNS_DecisionPackages_Bundle_Cross_Role_Validation@28701274] output={null}]]]>
               </value>
             </param>
           </params>
           <reporter-output>
           </reporter-output>
         </test-method> <!-- afterMethod -->
-        <test-method is-config="true" signature="beofreMethod(org.testng.ITestResult)[pri:0, instance:com.Mesh_TestSuites.Package_SO_Updates_Suite@28701274]" started-at="2026-08-19T09:46:09 EDT" name="beofreMethod" finished-at="2026-08-19T09:46:09 EDT" duration-ms="1" status="PASS">
+        <test-method is-config="true" signature="beofreMethod(org.testng.ITestResult)[pri:0, instance:com.Mesh_TestSuites.CMS_FNS_DecisionPackages_Bundle_Cross_Role_Validation@28701274]" started-at="2026-09-11T16:39:40 EDT" name="beofreMethod" finished-at="2026-09-11T16:39:40 EDT" duration-ms="0" status="PASS">
           <params>
             <param index="0">
               <value>
-                <![CDATA[[TestResult name={null} status=CREATED method=Package_SO_Updates_Suite.TC_003_Verify_Email_Notification_After_StateOfficer_Replacement()[pri:0, instance:com.Mesh_TestSuites.Package_SO_Updates_Suite@28701274] output={null}]]]>
+                <![CDATA[[TestResult name={null} status=CREATED method=CMS_FNS_DecisionPackages_Bundle_Cross_Role_Validation.DecisionPackage_TC_003_Verify_DecisionPackage_Creation_with_Contract_as_SubmisionType()[pri:0, instance:com.Mesh_TestSuites.CMS_FNS_DecisionPackages_Bundle_Cross_Role_Validation@28701274] output={null}]]]>
               </value>
             </param>
           </params>
           <reporter-output>
           </reporter-output>
         </test-method> <!-- beofreMethod -->
-        <test-method signature="TC_003_Verify_Email_Notification_After_StateOfficer_Replacement()[pri:0, instance:com.Mesh_TestSuites.Package_SO_Updates_Suite@28701274]" started-at="2026-08-19T09:46:09 EDT" name="TC_003_Verify_Email_Notification_After_StateOfficer_Replacement" finished-at="2026-08-19T09:46:34 EDT" duration-ms="25546" status="PASS">
+        <test-method signature="DecisionPackage_TC_003_Verify_DecisionPackage_Creation_with_Contract_as_SubmisionType()[pri:0, instance:com.Mesh_TestSuites.CMS_FNS_DecisionPackages_Bundle_Cross_Role_Validation@28701274]" started-at="2026-09-11T16:39:40 EDT" name="DecisionPackage_TC_003_Verify_DecisionPackage_Creation_with_Contract_as_SubmisionType" finished-at="2026-09-11T16:41:31 EDT" duration-ms="111010" status="PASS">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- TC_003_Verify_Email_Notification_After_StateOfficer_Replacement -->
-        <test-method is-config="true" signature="afterMethod(org.testng.ITestResult)[pri:0, instance:com.Mesh_TestSuites.Package_SO_Updates_Suite@28701274]" started-at="2026-08-19T09:46:34 EDT" name="afterMethod" finished-at="2026-08-19T09:46:34 EDT" duration-ms="198" status="PASS">
+        </test-method> <!-- DecisionPackage_TC_003_Verify_DecisionPackage_Creation_with_Contract_as_SubmisionType -->
+        <test-method is-config="true" signature="afterMethod(org.testng.ITestResult)[pri:0, instance:com.Mesh_TestSuites.CMS_FNS_DecisionPackages_Bundle_Cross_Role_Validation@28701274]" started-at="2026-09-11T16:41:31 EDT" name="afterMethod" finished-at="2026-09-11T16:41:31 EDT" duration-ms="136" status="PASS">
           <params>
             <param index="0">
               <value>
-                <![CDATA[[TestResult name=TC_003_Verify_Email_Notification_After_StateOfficer_Replacement status=SUCCESS method=Package_SO_Updates_Suite.TC_003_Verify_Email_Notification_After_StateOfficer_Replacement()[pri:0, instance:com.Mesh_TestSuites.Package_SO_Updates_Suite@28701274] output={null}]]]>
+                <![CDATA[[TestResult name=DecisionPackage_TC_003_Verify_DecisionPackage_Creation_with_Contract_as_SubmisionType status=SUCCESS method=CMS_FNS_DecisionPackages_Bundle_Cross_Role_Validation.DecisionPackage_TC_003_Verify_DecisionPackage_Creation_with_Contract_as_SubmisionType()[pri:0, instance:com.Mesh_TestSuites.CMS_FNS_DecisionPackages_Bundle_Cross_Role_Validation@28701274] output={null}]]]>
               </value>
             </param>
           </params>
           <reporter-output>
           </reporter-output>
         </test-method> <!-- afterMethod -->
-        <test-method is-config="true" signature="beofreMethod(org.testng.ITestResult)[pri:0, instance:com.Mesh_TestSuites.Package_SO_Updates_Suite@28701274]" started-at="2026-08-19T09:46:34 EDT" name="beofreMethod" finished-at="2026-08-19T09:46:34 EDT" duration-ms="0" status="PASS">
+        <test-method is-config="true" signature="beofreMethod(org.testng.ITestResult)[pri:0, instance:com.Mesh_TestSuites.CMS_FNS_DecisionPackages_Bundle_Cross_Role_Validation@28701274]" started-at="2026-09-11T16:41:31 EDT" name="beofreMethod" finished-at="2026-09-11T16:41:31 EDT" duration-ms="0" status="PASS">
           <params>
             <param index="0">
               <value>
-                <![CDATA[[TestResult name={null} status=CREATED method=Package_SO_Updates_Suite.TC_004_Verify_Package_SO_Updates_StateOfficer_Re_ASSIGN()[pri:0, instance:com.Mesh_TestSuites.Package_SO_Updates_Suite@28701274] output={null}]]]>
+                <![CDATA[[TestResult name={null} status=CREATED method=CMS_FNS_DecisionPackages_Bundle_Cross_Role_Validation.DecisionPackage_TC_004_Verify_Adding_bundle_Packages()[pri:0, instance:com.Mesh_TestSuites.CMS_FNS_DecisionPackages_Bundle_Cross_Role_Validation@28701274] output={null}]]]>
               </value>
             </param>
           </params>
           <reporter-output>
           </reporter-output>
         </test-method> <!-- beofreMethod -->
-        <test-method signature="TC_004_Verify_Package_SO_Updates_StateOfficer_Re_ASSIGN()[pri:0, instance:com.Mesh_TestSuites.Package_SO_Updates_Suite@28701274]" started-at="2026-08-19T09:46:34 EDT" name="TC_004_Verify_Package_SO_Updates_StateOfficer_Re_ASSIGN" finished-at="2026-08-19T09:47:05 EDT" duration-ms="30815" status="PASS">
+        <test-method signature="DecisionPackage_TC_004_Verify_Adding_bundle_Packages()[pri:0, instance:com.Mesh_TestSuites.CMS_FNS_DecisionPackages_Bundle_Cross_Role_Validation@28701274]" started-at="2026-09-11T16:41:31 EDT" name="DecisionPackage_TC_004_Verify_Adding_bundle_Packages" finished-at="2026-09-11T16:49:26 EDT" duration-ms="475344" status="PASS">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- TC_004_Verify_Package_SO_Updates_StateOfficer_Re_ASSIGN -->
-        <test-method is-config="true" signature="afterMethod(org.testng.ITestResult)[pri:0, instance:com.Mesh_TestSuites.Package_SO_Updates_Suite@28701274]" started-at="2026-08-19T09:47:05 EDT" name="afterMethod" finished-at="2026-08-19T09:47:05 EDT" duration-ms="305" status="PASS">
+        </test-method> <!-- DecisionPackage_TC_004_Verify_Adding_bundle_Packages -->
+        <test-method is-config="true" signature="afterMethod(org.testng.ITestResult)[pri:0, instance:com.Mesh_TestSuites.CMS_FNS_DecisionPackages_Bundle_Cross_Role_Validation@28701274]" started-at="2026-09-11T16:49:26 EDT" name="afterMethod" finished-at="2026-09-11T16:49:27 EDT" duration-ms="131" status="PASS">
           <params>
             <param index="0">
               <value>
-                <![CDATA[[TestResult name=TC_004_Verify_Package_SO_Updates_StateOfficer_Re_ASSIGN status=SUCCESS method=Package_SO_Updates_Suite.TC_004_Verify_Package_SO_Updates_StateOfficer_Re_ASSIGN()[pri:0, instance:com.Mesh_TestSuites.Package_SO_Updates_Suite@28701274] output={null}]]]>
+                <![CDATA[[TestResult name=DecisionPackage_TC_004_Verify_Adding_bundle_Packages status=SUCCESS method=CMS_FNS_DecisionPackages_Bundle_Cross_Role_Validation.DecisionPackage_TC_004_Verify_Adding_bundle_Packages()[pri:0, instance:com.Mesh_TestSuites.CMS_FNS_DecisionPackages_Bundle_Cross_Role_Validation@28701274] output={null}]]]>
               </value>
             </param>
           </params>
           <reporter-output>
           </reporter-output>
         </test-method> <!-- afterMethod -->
-        <test-method is-config="true" signature="beofreMethod(org.testng.ITestResult)[pri:0, instance:com.Mesh_TestSuites.Package_SO_Updates_Suite@28701274]" started-at="2026-08-19T09:47:05 EDT" name="beofreMethod" finished-at="2026-08-19T09:47:05 EDT" duration-ms="1" status="PASS">
+        <test-method is-config="true" signature="beofreMethod(org.testng.ITestResult)[pri:0, instance:com.Mesh_TestSuites.CMS_FNS_DecisionPackages_Bundle_Cross_Role_Validation@28701274]" started-at="2026-09-11T16:49:27 EDT" name="beofreMethod" finished-at="2026-09-11T16:49:27 EDT" duration-ms="0" status="PASS">
           <params>
             <param index="0">
               <value>
-                <![CDATA[[TestResult name={null} status=CREATED method=Package_SO_Updates_Suite.TC_005_Verify_Email_Notification_After_StateOfficer_ReAssignment()[pri:0, instance:com.Mesh_TestSuites.Package_SO_Updates_Suite@28701274] output={null}]]]>
+                <![CDATA[[TestResult name={null} status=CREATED method=CMS_FNS_DecisionPackages_Bundle_Cross_Role_Validation.DecisionPackage_TC_005_Verify_Package_Completion_Flow()[pri:0, instance:com.Mesh_TestSuites.CMS_FNS_DecisionPackages_Bundle_Cross_Role_Validation@28701274] output={null}]]]>
               </value>
             </param>
           </params>
           <reporter-output>
           </reporter-output>
         </test-method> <!-- beofreMethod -->
-        <test-method signature="TC_005_Verify_Email_Notification_After_StateOfficer_ReAssignment()[pri:0, instance:com.Mesh_TestSuites.Package_SO_Updates_Suite@28701274]" started-at="2026-08-19T09:47:05 EDT" name="TC_005_Verify_Email_Notification_After_StateOfficer_ReAssignment" finished-at="2026-08-19T09:47:19 EDT" duration-ms="13230" status="PASS">
+        <test-method signature="DecisionPackage_TC_005_Verify_Package_Completion_Flow()[pri:0, instance:com.Mesh_TestSuites.CMS_FNS_DecisionPackages_Bundle_Cross_Role_Validation@28701274]" started-at="2026-09-11T16:49:27 EDT" name="DecisionPackage_TC_005_Verify_Package_Completion_Flow" finished-at="2026-09-11T16:56:36 EDT" duration-ms="429898" status="PASS">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- TC_005_Verify_Email_Notification_After_StateOfficer_ReAssignment -->
-        <test-method is-config="true" signature="afterMethod(org.testng.ITestResult)[pri:0, instance:com.Mesh_TestSuites.Package_SO_Updates_Suite@28701274]" started-at="2026-08-19T09:47:19 EDT" name="afterMethod" finished-at="2026-08-19T09:47:19 EDT" duration-ms="260" status="PASS">
+        </test-method> <!-- DecisionPackage_TC_005_Verify_Package_Completion_Flow -->
+        <test-method is-config="true" signature="afterMethod(org.testng.ITestResult)[pri:0, instance:com.Mesh_TestSuites.CMS_FNS_DecisionPackages_Bundle_Cross_Role_Validation@28701274]" started-at="2026-09-11T16:56:36 EDT" name="afterMethod" finished-at="2026-09-11T16:56:37 EDT" duration-ms="146" status="PASS">
           <params>
             <param index="0">
               <value>
-                <![CDATA[[TestResult name=TC_005_Verify_Email_Notification_After_StateOfficer_ReAssignment status=SUCCESS method=Package_SO_Updates_Suite.TC_005_Verify_Email_Notification_After_StateOfficer_ReAssignment()[pri:0, instance:com.Mesh_TestSuites.Package_SO_Updates_Suite@28701274] output={null}]]]>
+                <![CDATA[[TestResult name=DecisionPackage_TC_005_Verify_Package_Completion_Flow status=SUCCESS method=CMS_FNS_DecisionPackages_Bundle_Cross_Role_Validation.DecisionPackage_TC_005_Verify_Package_Completion_Flow()[pri:0, instance:com.Mesh_TestSuites.CMS_FNS_DecisionPackages_Bundle_Cross_Role_Validation@28701274] output={null}]]]>
               </value>
             </param>
           </params>
           <reporter-output>
           </reporter-output>
         </test-method> <!-- afterMethod -->
-        <test-method is-config="true" signature="afterClass()[pri:0, instance:com.Mesh_TestSuites.Package_SO_Updates_Suite@28701274]" started-at="2026-08-19T09:47:19 EDT" name="afterClass" finished-at="2026-08-19T09:47:19 EDT" duration-ms="1" status="PASS">
+        <test-method is-config="true" signature="afterClass()[pri:0, instance:com.Mesh_TestSuites.CMS_FNS_DecisionPackages_Bundle_Cross_Role_Validation@28701274]" started-at="2026-09-11T16:56:37 EDT" name="afterClass" finished-at="2026-09-11T16:56:37 EDT" duration-ms="0" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- afterClass -->
-        <test-method is-config="true" signature="afterTest()[pri:0, instance:com.Mesh_TestSuites.Package_SO_Updates_Suite@28701274]" started-at="2026-08-19T09:47:19 EDT" name="afterTest" finished-at="2026-08-19T09:47:19 EDT" duration-ms="449" status="PASS">
+        <test-method is-config="true" signature="afterTest()[pri:0, instance:com.Mesh_TestSuites.CMS_FNS_DecisionPackages_Bundle_Cross_Role_Validation@28701274]" started-at="2026-09-11T16:56:37 EDT" name="afterTest" finished-at="2026-09-11T16:56:37 EDT" duration-ms="643" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- afterTest -->
-      </class> <!-- com.Mesh_TestSuites.Package_SO_Updates_Suite -->
+      </class> <!-- com.Mesh_TestSuites.CMS_FNS_DecisionPackages_Bundle_Cross_Role_Validation -->
     </test> <!-- Default test -->
   </suite> <!-- Default suite -->
 </testng-results>

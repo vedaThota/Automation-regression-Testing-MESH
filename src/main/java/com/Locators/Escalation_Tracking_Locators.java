@@ -123,13 +123,13 @@ public interface Escalation_Tracking_Locators {
 	public static By reassignSuccessMessage = By.xpath("//*[text()='Decision packages reassigned successfully.']");
 	public static By emailThread = By.xpath("//div[@data-testid='message-list']//a[2]");
 	public static By emailThread_Triage = By.xpath("(//div[@data-testid='message-list']//a[2])[2]");
-	public static By emailHeader = By.xpath("//h3[text()='Sandbox: A New Escalation Item Has Been Created and Ready for Triage']");
-	public static By emailHeader2 = By.xpath("//h3[text()='Sandbox: An Escalation Item is Ready for your Review']");
-	public static By emailHeader3 = By.xpath("//h3[text()='Sandbox: Escalation Item Has Been Returned']");
-	public static By emailHeader4 = By.xpath("//h3[text()='Sandbox: Escalation Item Has Been Returned to Director']");
-	public static By emailHeader5 = By.xpath("//h3[text()='Sandbox: Escalation Item Has Been Reassigned to you']");
-	public static By emailHeader6 = By.xpath("//h3[text()='Sandbox: Escalation Item Has Been Closed']");
-	public static By email_Link = By.xpath("//h3[text()='Sandbox: Escalation Item Has Been Resolved']");
+	public static By emailHeader = By.xpath("(//*[text()='Sandbox: A New Escalation Item Has Been Created and Ready for Triage'])[last()]");
+	public static By emailHeader2 = By.xpath("(//*[text()='Sandbox: An Escalation Item is Ready for your Review'])[last()]");
+	public static By emailHeader3 = By.xpath("(//*[text()='Sandbox: Escalation Item Has Been Returned'])[last()]");
+	public static By emailHeader4 = By.xpath("(//*[text()='Sandbox: Escalation Item Has Been Returned to Director'])[last()]");
+	public static By emailHeader5 = By.xpath("(//*[text()='Sandbox: Escalation Item Has Been Reassigned to you'])[last()]");
+	public static By emailHeader6 = By.xpath("(//*[text()='Sandbox: Escalation Item Has Been Closed'])[last()]");
+	public static By email_Link = By.xpath("(//*[text()='Sandbox: Escalation Item Has Been Resolved'])[last()]");
 	public static By Assign_Email_Link = By.xpath("//h3[text()='Sandbox: An Escalation Item is Ready for your Review']");
 	
 	public static By editTitle = By.xpath("//button[@title='Edit Title']");

@@ -146,7 +146,7 @@ public class CW_DetailsPage extends SafeActions implements CW_DetailsPage_Loc {
 		if (login_Cond.contains("Required")) {
 			typeText(emailAddressTextField, "pghosh@index-analytics.com", "emailAddressTextField");
 			jsClickOn(continueButton, "continueButton");
-			typeText(passwordTextField, "Pass0110!@", "passwordTextField");
+			typeText(passwordTextField, "Pass2288!@", "passwordTextField");
 			jsClickOn(loginButtonEmail, "loginButtonEmail");
 		}
 		waitFor(5);
