@@ -3,6 +3,7 @@ package com.Pages;
 import java.awt.AWTException;
 import java.awt.Robot;
 import java.awt.event.KeyEvent;
+import java.util.Iterator;
 
 import org.openqa.selenium.By;
 
@@ -15,16 +16,20 @@ public class HomePage extends SafeActions implements HomePage_Loc {
 	// Ops user navigation to Decision package screen
 	public void navigateTo_OpsTeam_DecisionPackage_Screen(String userType) {
 		// Below has been scripted to navigated to All users screen
-
+		
+		driver.navigate().refresh();
+		waitFor(5);
 		jsClickOn(setUpIcon, "setUpIcon");
 		takeScreenshotFor("Set Up Menu");
 		waitFor(3);
 		jsClickOn(setUpLink, "setUpLink");
 		waitFor(3);
-		switchToWindowByIndex(1);
-		jsClickOn(userSideMenu, "userSideMenu");
-		jsClickOn(userLink, "userLink");
+		switchToWindowByIndex(driver.getWindowHandles().size()-1);
 		waitFor(1);
+		jsClickOn(userSideMenu, "userSideMenu");
+		waitFor(3);
+		jsClickOn(userLink, "userLink");
+		waitFor(3);
 		switchToFrame(allUsersFrame);
 		// Navigating to T Users list
 //		jsClickOn(userList_O, "userList_O");
@@ -40,7 +45,7 @@ public class HomePage extends SafeActions implements HomePage_Loc {
 			takeScreenshotFor("User Selection Screen" + userType);
 			switchToFrame(allUsersFrame);
 			jsClickOn(oPsTeam_Login_Link, "oPsTeam_Login_Link");
-			switchToWindowByIndex(2);
+			closePreviousWindow();
 		} else if (userType.contains("Vedha")) {
 			jsClickOn(userList_T, "userList_T");
 			waitFor(3);
@@ -48,7 +53,7 @@ public class HomePage extends SafeActions implements HomePage_Loc {
 			takeScreenshotFor("User Selection Screen" + userType);
 			switchToFrame(allUsersFrame);
 			jsClickOn(ThotaVEda_Login_Link, "ThotaVEda_Login_Link");
-			switchToWindowByIndex(1);
+			closePreviousWindow();
 		}else if (userType.contains("Banton")) {
 			jsClickOn(userList_B, "userList_B");
 			waitFor(3);
@@ -56,7 +61,7 @@ public class HomePage extends SafeActions implements HomePage_Loc {
 			takeScreenshotFor("User Selection Screen" + userType);
 			switchToFrame(allUsersFrame);
 			jsClickOn(Banton_Login_Link, "Banton_Login_Link");
-			switchToWindowByIndex(1);
+			closePreviousWindow();
 		} else if (userType.contains("State Officer")) {
 			jsClickOn(userList_S, "userList_S");
 			waitFor(3);
@@ -123,7 +128,7 @@ public class HomePage extends SafeActions implements HomePage_Loc {
 		waitFor(1);
 		jsClickOn(setUpLink, "setUpLink");
 		waitFor(1);
-		switchToWindowByIndex(1);
+		switchToWindowByIndex(driver.getWindowHandles().size() -1);
 		jsClickOn(userSideMenu, "userSideMenu");
 		jsClickOn(userLink, "userLink");
 		waitFor(1);
@@ -135,11 +140,11 @@ public class HomePage extends SafeActions implements HomePage_Loc {
 		takeScreenshotFor("User Selection Screen");
 		switchToFrame(allUsersFrame);
 		jsClickOn(Melendez_Login_Link, "Melendez_Login_Link");
-		// Navigating to Ops Team login screen
+		closePreviousWindow();
 
 	}
 
-	public void navigateTo_Director_Screen() {
+	public void navigateTo_Director_Screen(int index) {
 		// Below has been scripted to navigated to All users screen
 		waitFor(8);
 		jsClickOn(setUpIcon, "setUpIcon");
@@ -148,7 +153,7 @@ public class HomePage extends SafeActions implements HomePage_Loc {
 		waitFor(3);
 		jsClickOn(setUpLink, "setUpLink");
 		waitFor(5);
-		switchToWindowByIndex(2);
+		switchToWindowByIndex(driver.getWindowHandles().size()-1);
 		jsClickOn(userSideMenu, "userSideMenu");
 		jsClickOn(userLink, "userLink");
 		waitFor(1);
@@ -161,6 +166,7 @@ public class HomePage extends SafeActions implements HomePage_Loc {
 		switchToFrame(allUsersFrame);
 		jsClickOn(Alimu_Login_Link, "Alimu_Login_Link");
 		// Navigating to Ops Team login screen
+		closePreviousWindow();
 
 	}
 
@@ -210,7 +216,7 @@ public class HomePage extends SafeActions implements HomePage_Loc {
 		waitFor(1);
 		jsClickOn(setUpLink, "setUpLink");
 		waitFor(1);
-		switchToWindowByIndex(windowIndex);
+		switchToWindowByIndex(driver.getWindowHandles().size()-1);
 		jsClickOn(userSideMenu, "userSideMenu");
 		jsClickOn(userLink, "userLink");
 		waitFor(30);
@@ -223,8 +229,7 @@ public class HomePage extends SafeActions implements HomePage_Loc {
 		switchToFrame(allUsersFrame);
 		jsClickOn(Brandy_Login_Link, "Brandy_Login_Link");
 		closePreviousWindow();
-		if (windowIndex == 2)
-			switchToWindowByIndex(1);
+		
 	}
 
 	public void navigateTo_Certification_Lead_Screen() {
@@ -235,7 +240,7 @@ public class HomePage extends SafeActions implements HomePage_Loc {
 		waitFor(1);
 		jsClickOn(setUpLink, "setUpLink");
 		waitFor(1);
-		switchToWindowByIndex(2);
+		switchToWindowByIndex(driver.getWindowHandles().size()-1);
 		jsClickOn(userSideMenu, "userSideMenu");
 		jsClickOn(userLink, "userLink");
 		waitFor(30);
@@ -248,7 +253,6 @@ public class HomePage extends SafeActions implements HomePage_Loc {
 		switchToFrame(allUsersFrame);
 		jsClickOn(Johnson_Login_Link, "Johnson_Login_Link");
 		closePreviousWindow();
-		switchToWindowByIndex(1);
 	}
 
 	public void navigateTo_DSS_DSG_Screen() {
@@ -259,7 +263,7 @@ public class HomePage extends SafeActions implements HomePage_Loc {
 		waitFor(1);
 		jsClickOn(setUpLink, "setUpLink");
 		waitFor(1);
-		switchToWindowByIndex(2);
+		switchToWindowByIndex(driver.getWindowHandles().size()-1);
 		jsClickOn(userSideMenu, "userSideMenu");
 		jsClickOn(userLink, "userLink");
 		waitFor(30);
@@ -272,7 +276,6 @@ public class HomePage extends SafeActions implements HomePage_Loc {
 		switchToFrame(allUsersFrame);
 		jsClickOn(johnson_Login_Link, "johnson_Login_Link");
 		closePreviousWindow();
-		switchToWindowByIndex(1);
 	}
 
 	public void navigateTo_Pending_Issuance_To_State_Screen() {
@@ -283,7 +286,7 @@ public class HomePage extends SafeActions implements HomePage_Loc {
 		waitFor(1);
 		jsClickOn(setUpLink, "setUpLink");
 		waitFor(1);
-		switchToWindowByIndex(2);
+		switchToWindowByIndex(driver.getWindowHandles().size()-1);
 		jsClickOn(userSideMenu, "userSideMenu");
 		jsClickOn(userLink, "userLink");
 		waitFor(30);
@@ -296,7 +299,7 @@ public class HomePage extends SafeActions implements HomePage_Loc {
 		switchToFrame(allUsersFrame);
 		jsClickOn(Walter_Login_Link, "Walter_Login_Link");
 		closePreviousWindow();
-		switchToWindowByIndex(1);
+		
 	}
 
 	public void moveToEsalation_Stage() {
@@ -310,25 +313,32 @@ public class HomePage extends SafeActions implements HomePage_Loc {
 
 	public void navigateTo_CW() {
 		waitFor(5);
-		jsClickOn(recentlyViewed, "recentlyViewed");
-		waitFor(2);
-		jsClickOn(All_CW, "All_CW");
+		jsClickOn(certification_Workflow_Tab, "certification_Workflow_Tab");
+		waitFor(5);
 		String str = CW_CreationPage.CW_Title_text;
-		jsClickOn(search_CW_text_Field, "search_CW_text_Field");
 		waitFor(2);
-		typeText(search_CW_text_Field, str, "search_CW_text_Field");
+//		By cwTitle = By.xpath("//*[@title='" + str + "']");
+//		jsClickOn(cwTitle, "cwTitle");
+//		waitFor(2);
+		
+		By leadPackage_Global = By.xpath("(//span[contains(@title, '" + str + "')])[last()-1]");
+		waitFor(3);
+
+		jsClickOn(gloablSearch_button, "gloablSearch_button");
 		waitFor(2);
+		typeText(globalSearch_Input, str, "globalSearch_Input");
+		waitFor(3);
 		Robot robot;
 		try {
 			robot = new Robot();
 			robot.keyPress(KeyEvent.VK_ENTER);
 			robot.keyRelease(KeyEvent.VK_ENTER);
+			waitFor(1);
 		} catch (Exception e) {
 		}
-		waitFor(2);
-		By cwTitle = By.xpath("//*[@title='" + str + "']");
-		jsClickOn(cwTitle, "cwTitle");
-		waitFor(2);
+		waitFor(3);
+		jsClickOn(leadPackage_Global, "leadPackage_Global");
+		waitFor(5);
 
 	}
 
@@ -358,10 +368,20 @@ public class HomePage extends SafeActions implements HomePage_Loc {
 	}
 
 	public void closePreviousWindow() {
+		
+		int windowSize = driver.getWindowHandles().size()-1;
+		System.out.println("windowSize: "+ windowSize);
+		switchToWindowByIndex(windowSize);
+		for (int i = 0; i < windowSize; i++) {
+			waitFor(1);
+			switchToWindowByIndex(0);
+			System.out.println("Closing window: "+ i);
+			waitFor(1);
+			driver.close();
+		}
 		switchToWindowByIndex(0);
-		driver.close();
-		System.out.println("Closed first Window");
-		switchToWindowByIndex(0);
+		driver.navigate().refresh();
+		waitFor(3);
 	}
 
 	public void moveToActiveWindow() {

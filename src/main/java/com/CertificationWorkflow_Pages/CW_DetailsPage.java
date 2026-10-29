@@ -23,6 +23,8 @@ public class CW_DetailsPage extends SafeActions implements CW_DetailsPage_Loc {
 		waitFor(3);
 		jsClickOn(certification_Workflow_Nav_Link, "certification_Workflow_Nav_Link");
 		waitFor(3);
+		jsClickOn(certification_Workflow_Tab, "certification_Workflow_Nav_Link");
+		waitFor(3);
 		takeScreenshotFor("Navigated to Certification Workflow screen");
 	}
 
@@ -146,7 +148,7 @@ public class CW_DetailsPage extends SafeActions implements CW_DetailsPage_Loc {
 		if (login_Cond.contains("Required")) {
 			typeText(emailAddressTextField, "pghosh@index-analytics.com", "emailAddressTextField");
 			jsClickOn(continueButton, "continueButton");
-			typeText(passwordTextField, "Pass0110!@", "passwordTextField");
+			typeText(passwordTextField, "Pass2288!@", "passwordTextField");
 			jsClickOn(loginButtonEmail, "loginButtonEmail");
 		}
 		waitFor(5);
@@ -164,6 +166,7 @@ public class CW_DetailsPage extends SafeActions implements CW_DetailsPage_Loc {
 			verifyTextDisplay(emailHeader, "Sandbox: Certification_Package Package Has Been Withdrawn");
 
 			String str = getTextFromUI(emailBody, "emailBody");
+			
 			test.log(Status.PASS, MarkupHelper.createLabel("Email Body - " + str, ExtentColor.BLUE));
 			takeScreenshotFor("Email Body");
 

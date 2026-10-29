@@ -116,10 +116,10 @@ public class ClearenceChecklist extends SafeActions implements ClearenceCheckLis
 	}
 
 	public void moveToMainPage() {
-		driver.switchTo().window(new ArrayList<String>(driver.getWindowHandles()).get(0));
-		driver.close();
-		driver.switchTo().window(new ArrayList<String>(driver.getWindowHandles()).get(0));
-
+//		driver.switchTo().window(new ArrayList<String>(driver.getWindowHandles()).get(0));
+//		driver.close();
+//		driver.switchTo().window(driver.getWindowHandles().size()-1);
+		switchToWindowByIndex(driver.getWindowHandles().size()-1);
 	}
 
 	public void moveToFistChildPackage() {

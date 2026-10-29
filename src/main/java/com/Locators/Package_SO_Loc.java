@@ -21,6 +21,7 @@ public interface Package_SO_Loc {
 	public static By startDate_ErrorMsg = By.xpath("//*[text()='Start Date is required when End Date is provided.']");
 	// https://mailosaur.com/app/servers/drwhn6bn/messages/inbox
 	public static By emailThread = By.xpath("//div[@data-testid='message-list']//a[2]");
+	public static By emailThread_Replacement = By.xpath("//div[@data-testid='message-list']//a[2]");
 	public static By emailHeader = By.xpath("//h3[@data-testid='subject']");
 	public static By Re_assign_emailHeader = By.xpath("//h3[contains(text(),'Sandbox:')]");
 	public static By emptyServer = By.xpath("//*[text()='Empty Server']");
@@ -31,14 +32,14 @@ public interface Package_SO_Loc {
 	public static By loginButtonEmail = By.xpath("//button[text()='Log in']");
 //	public static By dateRecieved = By.xpath("//tbody/tr/td[2]/div/div[2]/p");
 	public static By dateRecieved = By.xpath("//div[@data-testid='message-list']//a[2]//div[3]");
-	public static By emailBody = By.xpath("//div[@id='mailcontainer']");
+	public static By emailBody = By.xpath("//div[@data-testid='email-html-viewer']");
 	
 	public static By Reassign_Decision_Package = By.xpath("//button[text()='Reassign Decision Package']");
 	public static By selectStateOfficer = By.xpath("//label[text()='Select State Officer']/following::input");
 	public static By checkBoxOne = By.xpath("//input[@part='checkbox']/..//span[1]");
 	public static By reassignPackageInput = By.xpath("//*[text()='Reassign 1 package(s) to New State Officer']/following::input");
 	public static By reassignSuccessMessage = By.xpath("//*[text()='Decision packages reassigned successfully.']");
-//	public static By packageSO_Updates_Link = By.xpath("//a[@title='Package SO Updates']");
+	public static By stateOfficer_reassignedText = By.xpath("//div[@data-testid='message-list']//a[2]/div[2]/div/span[contains(text(), 'APD Package is Ready for State Officer Review')]");
 //	public static By packageSO_Updates_Link = By.xpath("//a[@title='Package SO Updates']");
 //	public static By packageSO_Updates_Link = By.xpath("//a[@title='Package SO Updates']");
 //	public static By packageSO_Updates_Link = By.xpath("//a[@title='Package SO Updates']");

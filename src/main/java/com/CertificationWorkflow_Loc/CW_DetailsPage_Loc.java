@@ -5,6 +5,7 @@ import org.openqa.selenium.By;
 public interface CW_DetailsPage_Loc {
 	public static By appSearchTextField = By.xpath("//input[@placeholder='Search apps and items...']");
 	public static By certification_Workflow_Nav_Link = By.xpath("//b[text()='Certification Workflow']");
+	public static By certification_Workflow_Tab = By.xpath("//*[@href='/lightning/o/Certification_Workflow__c/home']");
 	public static By decisionPackageWorkFlow = By.xpath("//b[text()='Decision Package Workflow']");
 	public static By generate_Template_button = By.xpath("//button[text()='Generate Template']");
 	public static By generate_Word_Document_button = By.xpath("//button[text()='Generate Word Document']");
@@ -53,7 +54,7 @@ public interface CW_DetailsPage_Loc {
 	public static By loginButtonEmail = By.xpath("//button[text()='Log in']");
 //	public static By dateRecieved = By.xpath("//tbody/tr/td[2]/div/div[2]/p");
 	public static By dateRecieved = By.xpath("//div[@data-testid='message-list']//a[2]//div[3]");
-	public static By emailBody = By.xpath("//div[@id='mailcontainer']");
+	public static By emailBody = By.xpath("//div[@data-testid='email-html-viewer']");
 	
 	
 	public static By other_Reason_Without_Comments = By.xpath("//*[text()='Comments are required when \"Other\" is selected as the Reason for Withdraw.']");

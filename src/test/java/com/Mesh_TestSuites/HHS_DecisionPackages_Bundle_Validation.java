@@ -35,6 +35,7 @@ public class HHS_DecisionPackages_Bundle_Validation extends TestBase {
 		dpp.verifyBeginReviewStatus();
 		takeScreenshotFor("Begin Review status in APD type");
 		
+		dpp.addModule_BussinessArea("APD");
 ////		dpp.verifyFileUpload("APD");
 ////		dpp.verifyDownloadFile("APD");
 ////	////	dpp.verifyDueDate("Due Date when No Emergency");
@@ -62,6 +63,7 @@ public class HHS_DecisionPackages_Bundle_Validation extends TestBase {
 ////		dpp.selectEmergencyRequestInthe_DecisionPackage();
 		dpp.verifyBeginReviewStatus();
 		takeScreenshotFor("Begin Review status in RFP type");
+		dpp.addModule_BussinessArea("RFP");
 ////		dpp.verifyFileUpload("RFP");
 ////		dpp.verifyDownloadFile("RFP");
 //		clearanceChecklistPage.updateClearanceChecklist("RFP");
