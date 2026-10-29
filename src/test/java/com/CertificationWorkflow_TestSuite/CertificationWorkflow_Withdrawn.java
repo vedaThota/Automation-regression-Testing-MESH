@@ -37,7 +37,7 @@ public class CertificationWorkflow_Withdrawn extends TestBase {
 		CW_Details_Page.jsClickOn(CW_Details_Page.CT_Tab, "CT_Tab");
 		waitFor(3);
 		CW_Creation_Page.verifying_Mandatory_Fields_CW_Creation_Form();
-		CW_Creation_Page.create_Certification_Workflow(6);
+		CW_Creation_Page.create_Certification_Workflow(7);
 		CW_Details_Page.verify_Generate_template_Activity();
 		CW_Details_Page.verify_SO_Review_Activity();
 		homePage.logoutAs_currentUser();

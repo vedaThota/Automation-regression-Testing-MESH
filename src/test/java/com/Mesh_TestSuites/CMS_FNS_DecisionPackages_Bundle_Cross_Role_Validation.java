@@ -33,7 +33,7 @@ public class CMS_FNS_DecisionPackages_Bundle_Cross_Role_Validation extends TestB
 		takeScreenshotFor("Amount Shows in APD type");
 		dpp.verifyBeginReviewStatus();
 		takeScreenshotFor("Begin Review status in APD type");
-		
+		dpp.addModule_BussinessArea("APD");
 //		
 ////		dpp.verifyFileUpload("APD");
 ////		dpp.verifyDownloadFile("APD");
@@ -62,6 +62,7 @@ public class CMS_FNS_DecisionPackages_Bundle_Cross_Role_Validation extends TestB
 ////		dpp.selectEmergencyRequestInthe_DecisionPackage();
 		dpp.verifyBeginReviewStatus();
 		takeScreenshotFor("Begin Review status in RFP type");
+		dpp.addModule_BussinessArea("RFP");
 ////		dpp.verifyFileUpload("RFP");
 ////		dpp.verifyDownloadFile("RFP");
 //		clearanceChecklistPage.updateClearanceChecklist("RFP");
@@ -120,7 +121,7 @@ public class CMS_FNS_DecisionPackages_Bundle_Cross_Role_Validation extends TestB
 		homePage.closePreviousWindow();
 		waitFor(3);
 		dpp.verifyAddingBundleChanges("FNS");
-		waitFor(2);
+		waitFor(4);
 		dpp.verifyMoveToDeputyDirector_BeforeAll_Fields_Submit("CMS");
 		dpp.removeOpDiv_OnCMS_FNS();
 		clearanceChecklistPage.updateClearanceChecklist("APD", "FNS");

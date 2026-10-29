@@ -142,6 +142,9 @@ public class Escalation_Tracking_PO extends SafeActions implements Escalation_Tr
 		}
 		title = generateRandomString(10);
 		typeText(titleInput, title, "titleInput");
+//		waitFor(5000);
+		jsClickOn(issueDescription_TxtArea, "issueDescription_TxtArea");
+		waitFor(1);
 		typeText(issueDescription, generateRandomString(10), "issueDescription");
 		jsClickOn(riskImpactButton, "riskImpactButton");
 		waitFor(1);
@@ -236,7 +239,7 @@ public class Escalation_Tracking_PO extends SafeActions implements Escalation_Tr
 		jsClickOn(editLeaderShipAssigned, "editLeaderShipAssigned");
 		waitFor(1);
 		jsClickOn(clearLeaderShipAssigned, "clearLeaderShipAssigned");
-		typeText(leadership_Input, "Alimu", "leadership_Input");
+		typeText(leadership_Input, "Tiffany", "leadership_Input");
 		waitFor(1);
 		jsClickOn(leadershipAssignedOption, "leadershipAssignedOption");
 		jsClickOn(save_Button, "Save button");
@@ -267,7 +270,10 @@ public class Escalation_Tracking_PO extends SafeActions implements Escalation_Tr
 		jsClickOn(createEscaltionTracking, "createEscaltionTracking");
 		waitFor(2);
 		typeText(titleInput, generateRandomString(10), "titleInput");
+		jsClickOn(issueDescription_TxtArea, "issueDescription_TxtArea");
+		waitFor(1);
 		typeText(issueDescription, generateRandomString(10), "issueDescription");
+//		typeText(issueDescription, generateRandomString(10), "issueDescription");
 		jsClickOn(riskImpactButton, "riskImpactButton");
 		waitFor(1);
 		jsClickOn(riskImpactOption, "riskImpactOption");
@@ -440,7 +446,7 @@ public class Escalation_Tracking_PO extends SafeActions implements Escalation_Tr
 		verifyTextDisplay(issue_Sub_Status, "Pending Review");
 
 		jsClickOn(editLeaderShipAssigned, "editLeaderShipAssigned");
-		typeText(leadershipAssigngedInput, "Alimu", "leadershipAssigngedInput");
+		typeText(leadershipAssigngedInput, "Alim", "leadershipAssigngedInput");
 		jsClickOn(leadershipAssignedOption, "leadershipAssignedOption");
 		jsClickOn(save_Button, "save_Button");
 		waitFor(2);
@@ -483,6 +489,10 @@ public class Escalation_Tracking_PO extends SafeActions implements Escalation_Tr
 		waitFor(20);
 		System.out.println("sentTime: " + sentTime);
 		System.out.println("receivedDate: " + receivedDate);
+		test.log(Status.INFO,
+				MarkupHelper.createLabel("sentTime: " + sentTime, ExtentColor.BLUE));
+		test.log(Status.INFO,
+				MarkupHelper.createLabel("receivedDate: " + receivedDate, ExtentColor.BLUE));
 		if (d1.equals(d2) || d1.before(d2)) {
 
 			jsClickOn(emailThread_Triage, "emailThread_Triage");
@@ -529,7 +539,7 @@ public class Escalation_Tracking_PO extends SafeActions implements Escalation_Tr
 
 			jsClickOn(emailThread, "emailThread");
 			waitFor(3);
-			verifyTextDisplay(emailHeader6, "Sandbox: Escalation Item Has Been Closed");
+			verifyTextDisplay(emailHeader6, "Sandbox: Escalation Item Submission has been Ended");
 			String str = getTextFromUI(emailBody, "emailBody");
 			test.log(Status.PASS, MarkupHelper.createLabel("Email Body - " + str, ExtentColor.BLUE));
 			takeScreenshotFor("Email Body - Sandbox: Escalation Item Has Been Closed");
@@ -966,6 +976,7 @@ public class Escalation_Tracking_PO extends SafeActions implements Escalation_Tr
 		}
 
 		driver.get(currentURL);
+		waitFor(5);
 	}
 
 	public void VerifyEmail_When_Director_move_Status_To_Resolved() throws ParseException {

@@ -32,7 +32,8 @@ public interface Escalation_Tracking_Locators {
 	public static By DecisionPackage_Input = By
 			.xpath("(//*[text()='Decision Package Lookup']/following::input[1])[last()]");
 	public static By titleInput = By.xpath("(//*[text()='Title']/following::input[1])[last()]");
-	public static By issueDescription = By.xpath("//*[text()='Issue Description']/following::textarea[1]");
+	public static By issueDescription = By.xpath("//*[contains(@class, 'editor ql-container')]/div");
+	public static By issueDescription_TxtArea = By.xpath("//div[contains(@class, 'slds-rich-text-area__content')]");
 	public static By recomendationbutton = By.xpath("//*[text()='Recommendation']/following::button[1]");
 	public static By recommendationOption = By
 			.xpath("//*[text()='Recommendation']/following::button[1]/following::lightning-base-combobox-item[1]");
@@ -128,7 +129,7 @@ public interface Escalation_Tracking_Locators {
 	public static By emailHeader3 = By.xpath("(//*[text()='Sandbox: Escalation Item Has Been Returned'])[last()]");
 	public static By emailHeader4 = By.xpath("(//*[text()='Sandbox: Escalation Item Has Been Returned to Director'])[last()]");
 	public static By emailHeader5 = By.xpath("(//*[text()='Sandbox: Escalation Item Has Been Reassigned to you'])[last()]");
-	public static By emailHeader6 = By.xpath("(//*[text()='Sandbox: Escalation Item Has Been Closed'])[last()]");
+	public static By emailHeader6 = By.xpath("(//*[text()='Sandbox: Escalation Item Submission has been Ended'])[last()]");
 	public static By email_Link = By.xpath("(//*[text()='Sandbox: Escalation Item Has Been Resolved'])[last()]");
 	public static By Assign_Email_Link = By.xpath("//h3[text()='Sandbox: An Escalation Item is Ready for your Review']");
 	

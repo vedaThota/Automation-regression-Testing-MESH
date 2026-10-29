@@ -1,3 +1,4 @@
+
 package com.Mesh_TestSuites;
 
 import java.awt.AWTException;
@@ -84,7 +85,7 @@ public class Escalation_Tracking extends TestBase {
 		dpp.logoutFromApp();
 		waitFor(1);
 		loginToApplication();
-		waitFor(5);
+		waitFor(10);
 		homePage.navigateTo_OpsTeam_DecisionPackage_Screen("Banton");
 		homePage.jsClickOn(DecisionPackagePage.newDecisionPackage, "newDecisionPackage");
 		dpp.verifyUserCanCreate_DecisionPackage(DecisionPackagePage.SubmissionTypeOption_APD, "APD", "CMSFNS");
@@ -107,8 +108,8 @@ public class Escalation_Tracking extends TestBase {
 		homePage.go_to_Escalation_Tracking_Screen();
 		ET_PO.OpenNew_ET_Creation_Form();
 		ET_PO.verify_Escalation_Tracking_Creation();
-		ET_PO.validateEmailNotification("Login NOT Require");
-//		ET_PO.validateEmailNotification("Login Require");
+//		ET_PO.validateEmailNotification("Login NOT Require");
+		ET_PO.validateEmailNotification("Login Require");
 		ET_PO.assignLeaderShip_VerifyEmail();
 		dpp.logoutFromApp();
 		waitFor(1);

@@ -222,7 +222,7 @@ public class Package_SO_Page extends SafeActions implements Package_SO_Loc, Home
 		waitFor(1);
 		jsClickOn(Reassign_Decision_Package, "Reassign_Decision_Package");
 		waitFor(1);
-		typeText(selectStateOfficer, "Amirat Tomori", "selectStateOfficer");
+		typeText(selectStateOfficer, "Anil", "selectStateOfficer");
 		waitFor(1);
 		typeText(selectStateOfficer, "", "selectStateOfficer");
 		waitFor(5);
@@ -241,7 +241,7 @@ public class Package_SO_Page extends SafeActions implements Package_SO_Loc, Home
 				break;
 			} else {
 				jsClickOn(removeSelectedStateOfficer, "removeSelectedStateOfficer");
-				typeText(selectStateOfficer, "Amirat Tomori", "selectStateOfficer");
+				typeText(selectStateOfficer, "Anil", "selectStateOfficer");
 				waitFor(1);
 				typeText(selectStateOfficer, "", "selectStateOfficer");
 				waitFor(1);
@@ -257,11 +257,11 @@ public class Package_SO_Page extends SafeActions implements Package_SO_Loc, Home
 		scrollToBottomOfthePage();
 		jsClickOn(reassignPackageInput, "reassignPackageInput");
 		waitFor(1);
-		typeText(reassignPackageInput, "Alimu", "reassignPackageInput");
+		typeText(reassignPackageInput, "Tiffany Fisher", "reassignPackageInput");
 		waitFor(1);
 		typeText(reassignPackageInput, "", "reassignPackageInput");
 		waitFor(1);
-		typeText(reassignPackageInput, "Anil", "reassignPackageInput");
+		typeText(reassignPackageInput, "Tiffany Fisher", "reassignPackageInput");
 		waitFor(5);
 		By reassignOfficerLoc = By.xpath("//ul[@aria-label='Search Results']//span[2]");
 		jsClickOn(reassignOfficerLoc, "reassignOfficerLoc");

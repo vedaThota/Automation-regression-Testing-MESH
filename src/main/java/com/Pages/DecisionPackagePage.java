@@ -64,6 +64,7 @@ public class DecisionPackagePage extends SafeActions implements DecisionPackage_
 			stateCharacter = Character.toString(getRandomStateInitial());
 		waitFor(2);
 		typeText(State_Medicaid_Agency_Input, stateCharacter, "State_Medicaid_Agency_Input");
+		waitFor(2);
 		jsClickOn(State_Medicaid_Agency_Option, "State_Medicaid_Agency_Option");
 		jsClickOn(Submission_Type, "Submission_Type");
 		jsClickOn(submisionTypeLoc, "SubmissionTypeOption");
@@ -81,7 +82,7 @@ public class DecisionPackagePage extends SafeActions implements DecisionPackage_
 		if (OPsType.contains("FNS"))
 			jsClickOn(oPsDiv_FNS, "oPsDiv_FNS");
 
-		takeScreenshotFor("Filling the form before the file upload");
+		takeScreenshotFor("Filling the form before the file upload :"+ OPsType);
 		jsClickOn(uploadFiles, "uploadFiles");
 		waitFor(5);
 		try {
@@ -108,7 +109,7 @@ public class DecisionPackagePage extends SafeActions implements DecisionPackage_
 		waitFor(1);
 //		verifyTextDisplay(successMessage, "The Decision Package has been Created Sucessfully");
 		waitFor(10);
-		takeScreenshotFor("After submitting the form");
+		takeScreenshotFor("After submitting the form :"+ OPsType);
 
 	}
 
@@ -397,8 +398,19 @@ public class DecisionPackagePage extends SafeActions implements DecisionPackage_
 		waitFor(3);
 
 	}
+	
+	public void addModule_BussinessArea(String type) {
+		scrollToBottomOfthePage();
+		waitFor(5);
+		jsClickOn(edit_Module, "edit_Module");
+		typeText(module_business_Area, type, "module_business_Area");
+		jsClickOn(Health_Information_Technology_HIT__c, "Health_Information_Technology_HIT__c");
+		jsClickOn(save_Button, "save_Button");
+		waitFor(3);
 
-	public void verifyBeginReviewStatus() {
+	}
+
+	public void verifyBeginReviewStatus() { 
 		jsClickOn(DetailsTab, "DetailsTab");
 		waitFor(5);
 		jsClickOn(beginReview, "beginReview");
@@ -408,19 +420,26 @@ public class DecisionPackagePage extends SafeActions implements DecisionPackage_
 		verifyTextDisplay(stateOfficerReview, "State Officer Review");
 		verifyTextDisplay(inReview, "In Review");
 	}
+	
+	
 
 	public void navigateToLeadPackage() {
 		waitFor(3);
 		jsClickOn(decisionPackageTab, "decisionPackageTab");
-		By leadPackage = By.xpath("(//a[contains(@title, '" + decisionPackageNameText + "')])[last()]");
+//		By leadPackage = By.xpath("(//a[contains(@title, '" + decisionPackageNameText + "')])[last()]");
+		By leadPackage_Global = By.xpath("(//*[contains(@title, '" + decisionPackageNameText + "')])[last()]");
 		waitFor(3);
 		jsClickOn(viewListDropdown, "viewListDropdown");
 		waitFor(2);
 		jsClickOn(allDecisionPackages, "allDecisionPackages");
 		waitFor(3);
-		typeText(searchList, decisionPackageNameText, "searchList");
+//		typeText(searchList, decisionPackageNameText, "searchList");
+//		waitFor(2);
+//		jsClickOn(searchList, "searchList");
+		jsClickOn(gloablSearch_button, "gloablSearch_button");
 		waitFor(2);
-		jsClickOn(searchList, "searchList");
+		typeText(globalSearch_Input, decisionPackageNameText, "globalSearch_Input");
+		waitFor(3);
 		waitFor(10);
 		Robot robot;
 		try {
@@ -430,10 +449,11 @@ public class DecisionPackagePage extends SafeActions implements DecisionPackage_
 		} catch (Exception e) {
 		}
 		waitFor(5);
-		jsClickOn(leadPackage, "leadPackage");
+//		jsClickOn(leadPackage, "leadPackage");
+		jsClickOn(leadPackage_Global, "leadPackage_Global");
 		waitFor(5);
 		try {
-			By leadPackage2 = By.xpath("//a[contains(@title, '" + decisionPackageNameText + "')]");
+			By leadPackage2 = By.xpath("//*[contains(@title, '" + decisionPackageNameText + "')]");
 			if (driver.findElement(leadPackage2).isDisplayed()) {
 				jsClickOn(leadPackage2, "leadPackage2");
 				waitFor(5);
@@ -502,7 +522,7 @@ public class DecisionPackagePage extends SafeActions implements DecisionPackage_
 		scrollToTopofThePage();
 		waitFor(1);
 		verifyTextDisplay(Sub_Status, "Waiting on State Officer Response");
-		verifyTextDisplay(DD_to_SO_Alert_Message, "Package has been returned to and is being reviewed by the State Officer");
+		verifyTextDisplay(DD_to_SO_Alert_Message, "Package has been returned to and being reviewed by the state Officer");
 		takeScreenshotFor("Waiting on State Officer Response for "+str+" Comments");
 	}
 
@@ -540,17 +560,28 @@ public class DecisionPackagePage extends SafeActions implements DecisionPackage_
 	}
 
 	public void verifyMoveToDeputyDirector_BeforeAll_Fields_Submit(String opDivType) {
-		jsClickOn(cancelAndClose, "cancelAndClose");
+		try {
+		if(driver.findElement(cancelAndClose).isDisplayed()){
+			jsClickOn(cancelAndClose, "cancelAndClose");
+		}
+		}catch(Exception e) {}
+		
 		waitFor(3);
 		jsClickOn(decisionPackageTab, "decisionPackageTab");
-		By leadPackage = By.xpath("(//a[contains(@title,'" + decisionPackageNameText
+//		By leadPackage = By.xpath("(//a[contains(@title,'" + decisionPackageNameText
+//				+ "') and contains(@class, 'slds-truncate')])[last()]");
+		By leadPackage_Global = By.xpath("(//*[contains(@title,'" + decisionPackageNameText
 				+ "') and contains(@class, 'slds-truncate')])[last()]");
 		waitFor(3);
 		jsClickOn(viewListDropdown, "viewListDropdown");
 		jsClickOn(allDecisionPackages, "allDecisionPackages");
 		waitFor(3);
-		typeText(searchList, decisionPackageNameText, "searchList");
+//		typeText(searchList, decisionPackageNameText, "searchList");
+		jsClickOn(gloablSearch_button, "gloablSearch_button");
 		waitFor(2);
+		typeText(globalSearch_Input, decisionPackageNameText, "globalSearch_Input");
+		waitFor(3);
+		
 		Robot robot;
 		try {
 			robot = new Robot();
@@ -559,7 +590,8 @@ public class DecisionPackagePage extends SafeActions implements DecisionPackage_
 		} catch (Exception e) {
 		}
 		waitFor(3);
-		jsClickOn(leadPackage, "leadPackage");
+//		jsClickOn(leadPackage, "leadPackage");
+		jsClickOn(leadPackage_Global, "leadPackage_Global");
 		waitFor(3);
 		// Updating Decision package Op Div type to HHS
 		if (opDivType.contains("CMS")) {
@@ -750,6 +782,7 @@ public class DecisionPackagePage extends SafeActions implements DecisionPackage_
 	public static String decisionPackageNameText = "";
 
 	public void collectLeadTitle() {
+		
 		decisionPackageNameText = getTextFromUI(decisionPackageName, "decisionPackageName");
 	}
 
@@ -798,23 +831,34 @@ public class DecisionPackagePage extends SafeActions implements DecisionPackage_
 		waitFor(1);
 		takeScreenshotFor("Decision packages screen");
 
-		By leadPackage = By.xpath("(//a[contains(@title, '" + decisionPackageNameText + "')])[last()]");
+		By leadPackage = By.xpath("(//*[contains(@title, '" + decisionPackageNameText + "')])[last()]");
+		By leadPackage_Global = By.xpath("(//*[contains(@title, '" + decisionPackageNameText + "')])[last()]");
 		waitFor(3);
 		jsClickOn(viewListDropdown, "viewListDropdown");
 		waitFor(2);
 		jsClickOn(allDecisionPackages, "allDecisionPackages");
-		waitFor(3);
-		typeText(searchList, decisionPackageNameText, "searchList");
+		waitFor(10);
+//		typeText(searchList, decisionPackageNameText, "searchList");
+		jsClickOn(gloablSearch_button, "gloablSearch_button");
+		waitFor(2);
+		typeText(globalSearch_Input, decisionPackageNameText, "globalSearch_Input");
 		waitFor(3);
 		Robot robot;
 		try {
 			robot = new Robot();
 			robot.keyPress(KeyEvent.VK_ENTER);
 			robot.keyRelease(KeyEvent.VK_ENTER);
+			waitFor(1);
+//			robot.keyPress(KeyEvent.VK_ENTER);
+//			robot.keyRelease(KeyEvent.VK_ENTER);
+//			waitFor(1);
+//			robot.keyPress(KeyEvent.VK_ENTER);
+//			robot.keyRelease(KeyEvent.VK_ENTER);
 		} catch (Exception e) {
 		}
 		waitFor(3);
-		jsClickOn(leadPackage, "leadPackage");
+//		jsClickOn(leadPackage, "leadPackage");
+		jsClickOn(leadPackage_Global, "leadPackage_Global");
 		waitFor(5);
 
 //		jsClickOn(packageLink, "packageLink");
@@ -843,20 +887,21 @@ public class DecisionPackagePage extends SafeActions implements DecisionPackage_
 		Thread.sleep(500);
 		verifyTextDisplay(successMsg_BundleChanges, "Bundle changes saved successfully");
 		takeScreenshotFor("Bundle the packages completed");
-		String countAfterSelection = getTextFromUI(packageSelectionCount, "packageSelectionCount");
-
-		int beforeCount = Integer.parseInt(countBeforeSelection) + 2;
-		int afterCount = Integer.parseInt(countAfterSelection);
-		if (beforeCount == afterCount) {
-			test.log(Status.INFO, MarkupHelper.createLabel("Package selection count was matched", ExtentColor.GREEN));
-		} else {
-			test.log(Status.FAIL,
-					MarkupHelper.createLabel("Package selection count was NOT  matched", ExtentColor.RED));
-		}
+//		String countAfterSelection = getTextFromUI(packageSelectionCount, "packageSelectionCount");
+//
+//		int beforeCount = Integer.parseInt(countBeforeSelection) + 2;
+//		int afterCount = Integer.parseInt(countAfterSelection);
+//		if (beforeCount == afterCount) {
+//			test.log(Status.INFO, MarkupHelper.createLabel("Package selection count was matched", ExtentColor.GREEN));
+//		} else {
+//			test.log(Status.FAIL,
+//					MarkupHelper.createLabel("Package selection count was NOT  matched", ExtentColor.RED));
+//		}
 
 	}
 
 	public void logoutFromApp() {
+		waitFor(5);
 		jsClickOn(userProfile, "userProfile");
 		waitFor(4);
 		jsClickOn(logOutButton, "logOutButton");

@@ -33,7 +33,7 @@ public class CMS_FNS_DecisionPackages_Bundle_Validation extends TestBase {
 		takeScreenshotFor("Amount Shows in APD type");
 		dpp.verifyBeginReviewStatus();
 		takeScreenshotFor("Begin Review status in APD type");
-
+		dpp.addModule_BussinessArea("APD");
 		
 ////		dpp.verifyFileUpload("APD");
 ////		dpp.verifyDownloadFile("APD");
@@ -62,6 +62,7 @@ public class CMS_FNS_DecisionPackages_Bundle_Validation extends TestBase {
 ////		dpp.selectEmergencyRequestInthe_DecisionPackage();
 		dpp.verifyBeginReviewStatus();
 		takeScreenshotFor("Begin Review status in RFP type");
+		dpp.addModule_BussinessArea("RFP");
 ////		dpp.verifyFileUpload("RFP");
 ////		dpp.verifyDownloadFile("RFP");
 //		clearanceChecklistPage.updateClearanceChecklist("RFP");

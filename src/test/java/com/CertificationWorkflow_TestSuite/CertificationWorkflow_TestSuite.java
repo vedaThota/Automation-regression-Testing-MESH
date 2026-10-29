@@ -9,7 +9,8 @@ import com.CertificationWorkflow_Pages.CW_CreationPage;
 import com.CertificationWorkflow_Pages.CW_DetailsPage;
 import com.Pages.HomePage;
 
-public class CertificationWorkflow_TestSuite extends TestBase {
+public
+class CertificationWorkflow_TestSuite extends TestBase {
 	
 	CW_DetailsPage CW_Details_Page = new CW_DetailsPage();
 	CW_CreationPage CW_Creation_Page = new CW_CreationPage();
@@ -21,7 +22,7 @@ public class CertificationWorkflow_TestSuite extends TestBase {
 		waitFor(5);
 		CW_Details_Page.navigateTo_Certification_Workflow_Screen();
 		CW_Creation_Page.verifying_Mandatory_Fields_CW_Creation_Form();
-		CW_Creation_Page.create_Certification_Workflow(1);
+		CW_Creation_Page.create_Certification_Workflow(3);
 		CW_Details_Page.verify_Generate_template_Activity();
 		CW_Details_Page.verify_SO_Review_Activity();
 		homePage.logoutAs_currentUser();

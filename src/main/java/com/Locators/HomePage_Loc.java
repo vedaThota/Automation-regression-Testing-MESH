@@ -29,7 +29,7 @@ public interface HomePage_Loc {
 	public static final By Purvi_Login_Link = By.xpath("//a[text()='Dholakia, Purvi']/../preceding-sibling::td/a[text()='Login']");
 	public static final By Johnson_Login_Link = By.xpath("//a[text()='Johnson, Alejandra']/../preceding-sibling::td/a[text()='Login']");
 	public static final By Gabriyelov_Login_Link = By.xpath("//a[text()='Gabriyelov, Eugene']/../preceding-sibling::td/a[text()='Login']");
-	public static final By Alimu_Login_Link = By.xpath("//a[text()='Haimiti, Alimu']/../preceding-sibling::td/a[text()='Login']");
+	public static final By Alimu_Login_Link = By.xpath("//a[text()='Haimiti, Alim']/../preceding-sibling::td/a[text()='Login']");
 	public static final By johnson_Login_Link = By.xpath("//a[text()='Johnson, Alejandra']/../preceding-sibling::td/a[text()='Login']");
 	public static final By Walter_Login_Link = By.xpath("//a[text()='Ellis, Walter']/../preceding-sibling::td/a[text()='Login']");
 	public static final By Banton_Login_Link = By.xpath("//a[text()='BANTON, KIA']/../preceding-sibling::td/a[text()='Login']");
@@ -48,7 +48,7 @@ public interface HomePage_Loc {
 	public static final By edit_EscalationTracking = By.xpath("//button[@title='Edit Escalation Tracking']");
 	public static final By check_Escalation_Tracking = By.xpath("//input[@name='Escalation_Tracking__c']");
 	public static final By save_Button = By.xpath("//*[text()='Save']");
-	
+	public static By certification_Workflow_Tab = By.xpath("//*[@href='/lightning/o/Certification_Workflow__c/home']");
 	public static final By recentlyViewed = By.xpath("//span[text()='Recently Viewed']");
 	public static final By allOption = By.xpath("//lightning-base-combobox-item[@data-value='All']");
 	public static final By searchList = By.xpath("//input[@aria-label='Search this list...']");
@@ -60,6 +60,8 @@ public interface HomePage_Loc {
 	public static final By search_CW_text_Field = By.xpath("//input[@placeholder='Search this list...']");
 	
 	public static final By begin_Review = By.xpath("//*[text()='Begin Review']");
+	public static final By gloablSearch_button = By.xpath("//button[@aria-label='Search']");
+	public static final By globalSearch_Input = By.xpath("//input[@placeholder='Search...']");
 //	public static final By setUp = By.xpath("");
 //	public static final By setUp = By.xpath("");
 //	public static final By setUp = By.xpath("");

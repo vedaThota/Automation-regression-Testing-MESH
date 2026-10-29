@@ -76,6 +76,9 @@ public interface DecisionPackage_Loc {
 	public static final By daysUntilDue = By.xpath("//*[text()='Days Until Due']/following::lightning-formatted-number[1]");
 	public static final By edit_Emergency_Request = By.xpath("//button[@title='Edit Emergency Request']");
 	public static final By emergency_Request_CheckBox = By.xpath("//*[text()='Emergency Request']/following::input[1]");
+	public static final By edit_Module = By.xpath("//button[@title='Edit Module/Business Area Other Info']");
+	public static final By module_business_Area = By.xpath("//label[text()='Module/Business Area Other Info']/following::input[1]");
+	public static final By Health_Information_Technology_HIT__c = By.xpath("//input[@name='Health_Information_Technology_HIT__c']");
 	public static final By ContractNumber = By.xpath("//label[text()='Contract Number']/following::input[1]");
 	public static final By Total_ContractValue = By.xpath("//label[text()='Total Contract Value']/following::input[1]");
 	public static final By contractType = By.xpath("//label[text()='Contract Type']//following::button");
@@ -150,7 +153,7 @@ public interface DecisionPackage_Loc {
 	public static final By Cancel_Close = By.xpath("//button[@title='Cancel and close']");
 	public static final By deputyDirectorTab = By.xpath("//*[@title='Deputy Director Review']");
 	public static final By decisionPackageTab = By.xpath("//a[@title='Decision Packages']");
-	public static final By decisionPackageName = By.xpath("//h1//*[text()='Decision Package']/following::lightning-formatted-text[1]");
+	public static final By decisionPackageName = By.xpath("//h1//lightning-formatted-text[1]");
 	public static final By EditExecutiveSummary = By.xpath("//button[@title='Edit Executive Summary']");
 	public static final By clearMedicaidDirector = By.xpath("//*[text()='State Medicaid Director']/following::button[@title='Clear Selection']");
 	public static final By checkEmergencyRequest = By.xpath("(//*[text()='Emergency Request']/following::input[1])[last()]");
@@ -168,6 +171,9 @@ public interface DecisionPackage_Loc {
 	public static final By viewListDropdown = By.xpath("//h1[text()='Decision Packages']//following::span[text()='Recently Viewed']");
 	public static final By allDecisionPackages = By.xpath("//h1[text()='Decision Packages']//following::span[text()='Recently Viewed']/following::span[@title='All Decision Packages']");
 	public static final By searchList = By.xpath("//input[@placeholder='Search this list...']");
+	public static final By gloablSearch_button = By.xpath("//button[@aria-label='Search']");
+	public static final By globalSearch_Input = By.xpath("//input[@placeholder='Search...']");
+	
 	public static final By editEmergencyRequest = By.xpath("(//button[@title='Edit Emergency Request'])[last()]");
 	public static final By moveToFMReviewer = By.xpath("//button[text()='Move to FM Reviewer']");
 	public static final By confirmButton = By.xpath("//button[text()='Confirm']");
@@ -196,7 +202,7 @@ public interface DecisionPackage_Loc {
 	public static final By comments_Textbox = By.xpath("//label[text()='Comments']/following-sibling::div/textarea");
 	public static final By Next_Button = By.xpath("//button[text()='Next']");
 	public static final By Sub_Status = By.xpath("(//*[text()='Sub-Status']/following::lightning-formatted-text[1])[last()]");
-	public static final By DD_to_SO_Alert_Message = By.xpath("//*[text()='Package has been returned to and is being reviewed by the State Officer']");
+	public static final By DD_to_SO_Alert_Message = By.xpath("//*[text()='Package has been returned to and being reviewed by the state Officer']");
 	public static final By Return_To_Deputy_Director = By.xpath("//button[text()='Return to Deputy Director']");
 	public static final By Submit_Button = By.xpath("//button[text()='Submit']");
 	public static final By Package_Status = By.xpath("(//*[text()='Status']/../following-sibling::div//lightning-formatted-text[1])[last()]");

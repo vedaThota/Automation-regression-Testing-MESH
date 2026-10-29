@@ -23,6 +23,8 @@ public class CW_DetailsPage extends SafeActions implements CW_DetailsPage_Loc {
 		waitFor(3);
 		jsClickOn(certification_Workflow_Nav_Link, "certification_Workflow_Nav_Link");
 		waitFor(3);
+		jsClickOn(certification_Workflow_Tab, "certification_Workflow_Nav_Link");
+		waitFor(3);
 		takeScreenshotFor("Navigated to Certification Workflow screen");
 	}
 
