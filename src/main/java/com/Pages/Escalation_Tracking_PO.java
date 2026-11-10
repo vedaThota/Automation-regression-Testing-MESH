@@ -475,7 +475,7 @@ public class Escalation_Tracking_PO extends SafeActions implements Escalation_Tr
 		if (loginRequire.contains("Login Require")) {
 			typeText(emailAddressTextField, "pghosh@index-analytics.com", "emailAddressTextField");
 			jsClickOn(continueButton, "continueButton");
-			typeText(passwordTextField, "Pass2288!@", "passwordTextField");
+			typeText(passwordTextField, "Enter YourPWD", "passwordTextField");
 			jsClickOn(loginButtonEmail, "loginButtonEmail");
 			waitFor(3);
 		}
@@ -521,7 +521,7 @@ public class Escalation_Tracking_PO extends SafeActions implements Escalation_Tr
 		if (loginRequire.contains("Login Require")) {
 			typeText(emailAddressTextField, "pghosh@index-analytics.com", "emailAddressTextField");
 			jsClickOn(continueButton, "continueButton");
-			typeText(passwordTextField, "Pass2288!@", "passwordTextField");
+			typeText(passwordTextField, "Enter YourPWD", "passwordTextField");
 			jsClickOn(loginButtonEmail, "loginButtonEmail");
 			waitFor(3);
 		}
@@ -565,7 +565,7 @@ public class Escalation_Tracking_PO extends SafeActions implements Escalation_Tr
 		if (loginRequire.contains("Login Require")) {
 			typeText(emailAddressTextField, "pghosh@index-analytics.com", "emailAddressTextField");
 			jsClickOn(continueButton, "continueButton");
-			typeText(passwordTextField, "Pass2288!@", "passwordTextField");
+			typeText(passwordTextField, "Enter YourPWD", "passwordTextField");
 			jsClickOn(loginButtonEmail, "loginButtonEmail");
 			waitFor(3);
 		}
@@ -608,7 +608,7 @@ public class Escalation_Tracking_PO extends SafeActions implements Escalation_Tr
 		if (loginRequire.contains("Login Require")) {
 			typeText(emailAddressTextField, "pghosh@index-analytics.com", "emailAddressTextField");
 			jsClickOn(continueButton, "continueButton");
-			typeText(passwordTextField, "Pass2288!@", "passwordTextField");
+			typeText(passwordTextField, "Enter YourPWD", "passwordTextField");
 			jsClickOn(loginButtonEmail, "loginButtonEmail");
 			waitFor(3);
 		}

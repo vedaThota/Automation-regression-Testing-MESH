@@ -140,7 +140,7 @@ public class Package_SO_Page extends SafeActions implements Package_SO_Loc, Home
 		waitFor(10);
 		typeText(emailAddressTextField, "pghosh@index-analytics.com", "emailAddressTextField");
 		jsClickOn(continueButton, "continueButton");
-		typeText(passwordTextField, "Pass2288!@", "passwordTextField");
+		typeText(passwordTextField, "Enter YourPWD", "passwordTextField");
 		jsClickOn(loginButtonEmail, "loginButtonEmail");
 		waitFor(5);
 		takeScreenshotFor("Email notification");
